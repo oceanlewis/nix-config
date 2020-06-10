@@ -31,4 +31,8 @@ home-manager-switch:
 upgrade: update-nix-channels upgrade-nix upgrade-nix-env home-manager-switch
 
 collect-garbage:
-	nix-collect-garbade -d
+	nix-collect-garbage -d
+
+switch:
+	@ln -fs ./machines/${profile}.nix ./home.nix
+	@home-manager switch

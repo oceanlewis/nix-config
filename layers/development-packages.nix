@@ -1,6 +1,9 @@
-{ pkgs, ... }:
+{ pkgs ? import <nixpkgs> {}
+, ...
+}:
 
-with pkgs; [
+with pkgs;
+[
 
   ## Shells and Unix Environment
   nushell elvish fish
