@@ -8,13 +8,27 @@ install-home-manager:
 
 init: install-nixpkgs install-home-manager
 
-upgrade:
+update-nix-channels:
 	@echo "Updating Nix Channels..."
 	nix-channel --update
 	@echo "Done.\n"
+
+upgrade-nix:
 	@echo "Upgrading Nix..."
 	@nix upgrade-nix
 	@echo "Done.\n"
+
+upgrade-nix-env:
 	@echo "Upgrading Nix Environment..."
 	@nix-env --upgrade
 	@echo "Done."
+
+home-manager-switch:
+	@echo "Activating new Home Manager Generation..."
+	@home-manager switch
+	@echo "Done."
+
+upgrade: update-nix-channels upgrade-nix upgrade-nix-env home-manager-switch
+
+collect-garbage:
+	nix-collect-garbade -d
