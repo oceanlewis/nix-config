@@ -3,15 +3,11 @@
 {
 
   home = {
-    username      = "david";
-    homeDirectory = "/home/david";
+    username      = "davidlewis";
+    homeDirectory = "/Users/davidlewis";
     packages      = import ../layers/development-packages.nix {};
     stateVersion  = "20.09";
   };
-
-  # home.sessionVariables = {
-  #   OPENSSL_LIB_DIR 
-  # }
 
   programs = {
     home-manager.enable = true;
