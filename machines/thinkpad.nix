@@ -3,15 +3,16 @@
 {
 
   home = {
+    stateVersion  = "20.09";
     username      = "david";
     homeDirectory = "/home/david";
-    packages      = import ../layers/development-packages.nix {};
-    stateVersion  = "20.09";
-  };
+    packages      = import ../layers/development-packages.nix {} ++ [ pkgs.ion ];
 
-  # home.sessionVariables = {
-  #   OPENSSL_LIB_DIR 
-  # }
+    sessionVariables = {
+      PAGER  = "less -R";
+      EDITOR = "nvim";
+    };
+  };
 
   programs = {
     home-manager.enable = true;
@@ -19,8 +20,7 @@
     neovim = {
       enable = true;
       vimAlias = true;
-      viAlias = true;
-  
+      viAlias = true; 
       # plugins = with pkgs.vimPlugins; [];
     };
   };

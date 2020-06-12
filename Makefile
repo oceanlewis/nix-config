@@ -28,7 +28,7 @@ home-manager-switch:
 	@home-manager switch
 	@echo "Done."
 
-upgrade: update-nix-channels upgrade-nix upgrade-nix-env home-manager-switch
+upgrade: upgrade-nix update-nix-channels upgrade-nix-env home-manager-switch
 
 collect-garbage:
 	nix-collect-garbage -d

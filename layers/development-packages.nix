@@ -6,49 +6,64 @@ with pkgs;
 [
 
   ## Shells and Unix Environment
-  nushell elvish fish
-  tmux starship
+  nushell
+  elvish
+  fish
+  tmux
+  starship
   
   # Chat & Browsing
-  irssi w3m
+  irssi
+  w3m
   
-  ## Files & Text
-  # List
+  # Files & Text
   exa
-  # Search
-  fd ripgrep
-  # Read
-  bat mdcat diffr tokei
-  # Manage
-  entr pv trash-cli
-  # Usage
-  dua du-dust
-  # Fetch
-  wget rsync youtube-dl
+  fd
+  ripgrep
+  bat
+  mdcat
+  diffr
+  icdiff
+  tokei
+  entr
+  pv
+  dua
+  du-dust
+  wget
+  rsync
+  youtube-dl
   
   # Identity Management
   gnupg
   
   # Process Management
-  htop ytop
+  htop
+  ytop
   
   # Networking
   nmap
   
   ## Developer Tools
+  mdbook
+
   # Git
   gitAndTools.git
   gitAndTools.gh
   gitAndTools.delta
+
   # Build Tools
   autoconf
   pkg-config
+
   # Cloud Tooling
   aws-sam-cli
   awscli
-  terraform terraform-lsp
+  terraform
+  terraform-lsp # TODO: Replace with terraform-ls when it's ready
+
   # Databases
   postgresql
+
   # Languages
   elixir
   erlang
@@ -56,7 +71,11 @@ with pkgs;
   nodejs
   python3
   ruby
+
   # JVM
   maven
+
+  # Rust
+  sccache
 
 ]
