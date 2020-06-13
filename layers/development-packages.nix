@@ -19,6 +19,7 @@ with pkgs;
   exa
   fd
   ripgrep
+  fzf
   bat
   mdcat
   diffr
