@@ -14,15 +14,11 @@
     };
   };
 
-  programs = {
-    home-manager.enable = true;
-  
-    neovim = {
-      enable = true;
-      vimAlias = true;
-      viAlias = true; 
-      # plugins = with pkgs.vimPlugins; [];
-    };
-  };
+  programs.home-manager.enable = true;
+
+  imports = [
+    ../programs/tmux.nix
+    ../programs/neovim.nix
+  ];
 
 }
