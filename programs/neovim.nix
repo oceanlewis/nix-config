@@ -139,6 +139,19 @@ let
     let g:airline#extensions#tabline#enabled = 1
   '';
 
+  themeConfig = ''
+    let g:PaperColor_Theme_Options = {
+    \   'theme': {
+    \     'default': {
+    \       'transparent_background': 1
+    \     }
+    \   }
+    \ }
+
+    colorscheme PaperColor
+    call AlignBackground()
+  '';
+
 in
 
 {
@@ -167,6 +180,7 @@ in
         ${toggleLineNumbers}
         ${languageClientConfig}
         ${airlineConfig}
+        ${themeConfig}
 
         " Stop Highlighting on Escape
         nnoremap <esc> :noh<return><esc>
@@ -182,8 +196,9 @@ in
         fzf-vim
 
         # Themes
-        gruvbox-community
+        gruvbox
         papercolor-theme
+        vim-one
       ];
     };
   };

@@ -3,7 +3,6 @@
 {
 
   home = {
-    stateVersion  = "20.09";
     username      = "david";
     homeDirectory = "/home/david";
     packages      = import ../layers/development-packages.nix {} ++ [ pkgs.ion ];
@@ -12,6 +11,8 @@
       PAGER  = "less -R";
       EDITOR = "nvim";
     };
+
+    stateVersion = "20.09";
   };
 
   programs.home-manager.enable = true;
