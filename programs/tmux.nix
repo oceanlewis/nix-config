@@ -19,7 +19,7 @@ let
     bind j select-pane -D
     bind k select-pane -U
     bind l select-pane -R
-    
+
     bind-key -r -T prefix M-h     resize-pane -L
     bind-key -r -T prefix M-j     resize-pane -D
     bind-key -r -T prefix M-k     resize-pane -U
@@ -31,16 +31,44 @@ let
     setw -g mouse on
   '';
 
-  themes = {
-    brightPink = ''
-      # Bright Pink and Default Background
-      set -g status-style fg="#FF006D",bg=default;
-      set-option -g pane-active-border-style fg="#FF006D"
+  colors = {
 
-      # Highlight Color
-      set-window-option -g mode-style bg="#87CEFA",fg="#FF006D"
-    '';
+    default = {
+      status-fg             = "default";
+      status-bg             = "default";
+      pane-active-border-fg = "default";
+      mode-style-bg         = "default";
+      mode-style-fg         = "default";
+    };
+
+    pink = {
+      status-fg             = "#FF006D";
+      status-bg             = "default";
+      pane-active-border-fg = "#FF006D";
+      mode-style-bg         = "#87CEFA";
+      mode-style-fg         = "#FF006D";
+    };
+
+    magenta = {
+      status-fg             = "colour13";
+      status-bg             = "default";
+      pane-active-border-fg = "colout13";
+      mode-style-bg         = "default";
+      mode-style-fg         = "default";
+    };
+
   };
+
+  activeColor = colors.magenta;
+
+  theme = ''
+    # Status Bar and Pane Border
+    set -g status-style fg=${activeColor.status-fg},bg=${activeColor.status-bg};
+    set-option -g pane-active-border-style fg=${activeColor.pane-active-border-fg}
+
+    # Highlight Color
+    set-window-option -g mode-style fg=${activeColor.mode-style-fg},bg=${activeColor.mode-style-bg}
+  '';
 
   style = {
     default = ''
@@ -53,7 +81,7 @@ let
   };
 
   aesthetics = ''
-    ${themes.brightPink}
+    ${theme}
     ${style.default}
   '';
 

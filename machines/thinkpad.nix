@@ -18,8 +18,10 @@
   programs.home-manager.enable = true;
 
   imports = [
+    ../programs/bash.nix
     ../programs/tmux.nix
     ../programs/neovim.nix
+    ../programs/starship.nix
   ];
 
 }

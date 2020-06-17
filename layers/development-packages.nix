@@ -9,7 +9,6 @@ with pkgs;
   nushell
   elvish
   fish
-  starship
   
   # Chat & Browsing
   irssi

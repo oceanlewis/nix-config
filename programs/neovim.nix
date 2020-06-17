@@ -155,51 +155,51 @@ let
 in
 
 {
-  programs = {
-    neovim = {
-      enable   = true;
-      vimAlias = true;
-      viAlias  = true;
+  programs.neovim = {
+    enable   = true;
+    vimAlias = true;
+    viAlias  = true;
 
-      withNodeJs  = true;
-      withPython  = true;
-      withPython3 = true;
-      withRuby    = true;
+    withNodeJs  = true;
+    withPython  = true;
+    withPython3 = true;
+    withRuby    = true;
 
-      extraConfig = ''
-        ${setEncoding}
-        ${remapLeader}
-        ${bufferNavigation}
-        ${mouseNavigation}
-        ${setTabSize}
-        ${alacrittyThemeConfig}
-        ${fileAndTagNavigation}
-        ${reloadConfig}
-        ${toggleVisibleWhitespace}
-        ${trimWhitespace}
-        ${toggleLineNumbers}
-        ${languageClientConfig}
-        ${airlineConfig}
-        ${themeConfig}
+    extraConfig = ''
+      ${setEncoding}
+      ${remapLeader}
+      ${bufferNavigation}
+      ${mouseNavigation}
+      ${setTabSize}
+      ${alacrittyThemeConfig}
+      ${fileAndTagNavigation}
+      ${reloadConfig}
+      ${toggleVisibleWhitespace}
+      ${trimWhitespace}
+      ${toggleLineNumbers}
+      ${languageClientConfig}
+      ${airlineConfig}
+      ${themeConfig}
 
-        " Stop Highlighting on Escape
-        nnoremap <esc> :noh<return><esc>
-      '';
+      " Stop Highlighting on Escape
+      nnoremap <esc> :noh<return><esc>
 
-      plugins = with pkgs.vimPlugins; [
-        LanguageClient-neovim
-        coc-nvim
-        vim-nix
+      " Always use the system clipboard for all Copy/Paste operations
+      set clipboard+=unnamedplus
+    '';
 
-        # UI
-        airline
-        fzf-vim
+    plugins = with pkgs.vimPlugins; [
+      LanguageClient-neovim
+      coc-nvim
+      vim-nix
 
-        # Themes
-        gruvbox
-        papercolor-theme
-        vim-one
-      ];
-    };
+      # UI
+      airline
+      fzf-vim
+
+      # Themes
+      gruvbox
+      papercolor-theme
+    ];
   };
 }
