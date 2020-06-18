@@ -6,9 +6,9 @@
     enableBashIntegration = true;
 
     settings = {
-      add_newline       = false;
+      add_newline       = true;
       scan_timeout      = 30;
-      character.symbol  = "\n➜";
+      character.symbol  = "➜";
       git_branch.symbol = "";
     };
   };
