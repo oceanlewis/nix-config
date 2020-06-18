@@ -62,11 +62,6 @@ in
     historyControl = [ "erasedups" "ignoredups" "ignorespace" ];
     historyIgnore  = [ "ls" "cd" "exit" ];
 
-    sessionVariables = {
-      PAGER  = "less -FR";
-      EDITOR = "nvim";
-    };
-
     shellAliases = {
       ".." = "cd ..";
       theme = "alacritty-theme";

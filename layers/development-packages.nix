@@ -71,8 +71,10 @@ with pkgs;
   python3
   ruby
 
-  # JVM
-  maven
+  ## JVM
+  #maven
+  #openjdk8
+  #kotlin
 
   # Rust
   sccache
