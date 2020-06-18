@@ -47,7 +47,7 @@ let
     linux = {
       open    = "xdg-open";
       cdcopy  = "pwd | xsel -ib";
-      cdpaste = "cd $(xsel -ob)";
+      cdpaste = "cd \"$(xsel -ob)\"";
     };
   };
 
