@@ -52,9 +52,9 @@ let
     magenta = {
       status-fg             = "colour13";
       status-bg             = "default";
-      pane-active-border-fg = "colout13";
-      mode-style-bg         = "default";
-      mode-style-fg         = "default";
+      pane-active-border-fg = "colour13";
+      mode-style-bg         = "#947CD3";
+      mode-style-fg         = "#000000";
     };
 
   };
