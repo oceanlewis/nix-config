@@ -6,7 +6,7 @@ with pkgs;
 [
 
   ## Shells and Unix Environment
-  nushell
+  # nushell # Broken
   elvish
   fish
   
@@ -55,7 +55,7 @@ with pkgs;
   pkg-config
 
   # Cloud Tooling
-  aws-sam-cli
+  #aws-sam-cli # Broken
   awscli
   terraform
   terraform-lsp # TODO: Replace with terraform-ls when it's ready

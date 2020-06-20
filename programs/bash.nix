@@ -71,7 +71,9 @@ in
     // platformSpecific;
 
     initExtra = ''
-      export PATH="$HOME/.cargo/bin:$PATH"
+      export PATH="$HOME/.local/bin/:$HOME/.cargo/bin:$PATH"
+
+      . $HOME/.nix-profile/etc/profile.d/nix.sh
     '';
   };
 }
