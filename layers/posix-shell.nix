@@ -72,7 +72,11 @@
     };
 
     initExtra = ''
-      unset TMUX_TMPDIR
+      export TMUX_TMPDIR=$XDG_RUNTIME_DIR
+
+      if ! test -d $TMUX_TMPDIR; then
+        mkdir -p $TMUX_TMPDIR
+      fi
     '';
 
   };

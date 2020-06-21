@@ -1,15 +1,26 @@
 { config, pkgs, ... }:
 
+let
+
+  USER = "davidlewis";
+  HOME = "/Users/${USER}";
+
+in
+
 {
 
   home = {
-    username      = "davidlewis";
-    homeDirectory = "/Users/davidlewis";
+    username      = USER;
+    homeDirectory = HOME;
     packages      = import ../layers/development-packages.nix { };
 
     sessionVariables = {
-      PAGER  = "less -R";
-      EDITOR = "nvim";
+      PAGER           = "less -R";
+      EDITOR          = "nvim";
+      XDG_CONFIG_HOME = "${HOME}/.config";
+      XDG_DATA_HOME   = "${HOME}/.local/share";
+      XDG_DATA_DIRS   = "${HOME}/.local/data";
+      XDG_RUNTIME_DIR = "${HOME}/.local/run";
     };
 
     stateVersion = "20.09";
