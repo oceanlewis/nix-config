@@ -8,13 +8,11 @@ in
 
 {
 
-  programs.bash = {
+  programs.zsh = {
     enable       = true;
+    dotDir       = ".config/zsh";
     shellAliases = shell.aliases;
     initExtra    = shell.initExtra;
-
-    historyControl = [ "erasedups" "ignoredups" "ignorespace" ];
-    historyIgnore  = [ "ls" "cd" "exit" ];
   };
 
 }

@@ -1,5 +1,7 @@
-{ }:
-{
+{ pkgs }:
+
+let
+
   default = {
 
     aliases = {
@@ -80,5 +82,25 @@
     '';
 
   };
+
+in
+
+{
+
+  aliases =
+    default.aliases // (
+      if      pkgs.stdenv.isLinux  then linux.aliases
+      else if pkgs.stdenv.isDarwin then darwin.aliases
+      else { }
+    );
+
+  initExtra = ''
+    ${default.initExtra}
+    ${
+      if      pkgs.stdenv.isLinux  then linux.initExtra
+      else if pkgs.stdenv.isDarwin then darwin.initExtra
+      else { }
+    }
+  '';
 
 }
