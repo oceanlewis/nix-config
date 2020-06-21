@@ -2,78 +2,33 @@
 
 let
 
-  aliases = {
-    exa = {
-      ls   = "exa";
-      ll   = "exa -l";
-      er   = "clear; ls -lg";
-      r    = "clear; ls";
-      e    = "clear";
-      era  = "clear; ls -la";
-      err  = "clear; ls -lR";
-      erra = "clear; ls -lRa";
-      et   = "clear; ls -TL 1";
-      eta  = "clear; ls -aTL 1";
-      et2  = "clear; ls -TL 2";
-      et3  = "clear; ls -TL 3";
-      et4  = "clear; ls -TL 4";
-      etr  = "clear; ls -T";
-      re   = "clear; ls *";
-      rea  = "clear; ls -a *";
-    };
+  platform = import ../layers/posix-shell.nix { };
 
-    git = {
-      eg  = "clear; git status";
-      egg = "clear; git status; echo; git diff";
-      egc = "clear; git status; echo; git diff --cached";
-    };
+  shellAliases =
+    platform.default.aliases // (
+      if      pkgs.stdenv.isLinux  then platform.linux.aliases
+      else if pkgs.stdenv.isDarwin then platform.darwin.aliases
+      else { }
+    );
 
-    tmux = {
-      te = "tmux list-sessions";
-      ta = "tmux attach";
-    };
-
-    bat = {
-      bat = "bat -p";
-      dat = "bat -p --theme Dracula";
-      lat = "bat -p --theme GitHub";
-    };
-
-    ytop = {
-      ltop = "ytop -c default-dark";
-      dtop = "ytop -c monokai";
-    };
-
-    linux = {
-      open    = "xdg-open";
-      cdcopy  = "pwd | xsel -ib";
-      cdpaste = "cd \"$(xsel -ob)\"";
-    };
-  };
-
-  platformSpecific = if pkgs.stdenv.isLinux then aliases.linux else {};
+  initExtra = ''
+    ${platform.default.initExtra}
+    ${
+      if      pkgs.stdenv.isLinux  then platform.linux.initExtra
+      else if pkgs.stdenv.isDarwin then platform.darwin.initExtra
+      else { }
+    }
+  '';
 
 in
 
 {
   programs.bash = {
-    enable = true;
+    enable       = true;
+    shellAliases = shellAliases;
+    initExtra    = initExtra;
 
     historyControl = [ "erasedups" "ignoredups" "ignorespace" ];
     historyIgnore  = [ "ls" "cd" "exit" ];
-
-    shellAliases = {
-      ".." = "cd ..";
-      theme = "alacritty-theme";
-      tf = "terraform";
-    }
-    // aliases.exa // aliases.git // aliases.tmux // aliases.bat // aliases.ytop
-    // platformSpecific;
-
-    initExtra = ''
-      export PATH="$HOME/.local/bin/:$HOME/.cargo/bin:$PATH"
-
-      . $HOME/.nix-profile/etc/profile.d/nix.sh
-    '';
   };
 }
