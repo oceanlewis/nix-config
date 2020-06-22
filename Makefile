@@ -30,7 +30,7 @@ upgrade:
 switch:
 ifdef profile
 		@$(call print-bold,"Attempting to link Home Manager Profile $(profile)...")
-		@ln -fs ./machines/$(profile).nix ./home.nix
+		@ln -fs ./profiles/$(profile).nix ./home.nix
 endif
 	@$(call print-bold,"Activating Home Manager Profile...")
 	@home-manager switch
