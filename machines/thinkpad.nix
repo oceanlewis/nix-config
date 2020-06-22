@@ -19,6 +19,7 @@
 
   imports = [
     ../programs/bash.nix
+    ../programs/zsh.nix
     ../programs/tmux.nix
     ../programs/neovim.nix
     ../programs/starship.nix
