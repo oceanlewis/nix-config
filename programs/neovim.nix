@@ -148,7 +148,7 @@ let
     \   }
     \ }
 
-    colorscheme gruvbox
+    colorscheme PaperColor
     call AlignBackground()
   '';
 

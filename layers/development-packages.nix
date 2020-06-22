@@ -6,7 +6,7 @@ with pkgs;
 [
 
   ## Shells and Unix Environment
-  # nushell # Broken
+  #nushell # Broken
   elvish
   fish
   

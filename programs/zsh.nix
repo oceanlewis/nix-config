@@ -8,11 +8,14 @@ in
 
 {
 
+  # Program Definition
+  # - https://github.com/rycee/home-manager/blob/master/modules/programs/zsh.nix
   programs.zsh = {
-    enable       = true;
-    dotDir       = ".config/zsh";
-    shellAliases = shell.aliases;
-    initExtra    = shell.initExtra;
+    enable        = true;
+    dotDir        = ".config/zsh";
+    shellAliases  = shell.aliases;
+    initExtra     = shell.initExtra;
+    defaultKeymap = "viins";
   };
 
 }

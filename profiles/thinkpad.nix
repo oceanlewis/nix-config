@@ -10,6 +10,7 @@
     sessionVariables = {
       PAGER  = "less -R";
       EDITOR = "nvim";
+      LC_ALL = "en_US.UTF-8";
     };
 
     stateVersion = "20.09";

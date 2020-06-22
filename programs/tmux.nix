@@ -88,6 +88,9 @@ let
 in
 
 {
+
+  # Program Definition
+  # - https://github.com/rycee/home-manager/blob/master/modules/programs/tmux.nix
    programs.tmux = {
     enable = true;
     keyMode = "vi";
@@ -103,4 +106,5 @@ in
       ${aesthetics}
     '';
   };
+
 }
