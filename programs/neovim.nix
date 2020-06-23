@@ -191,6 +191,7 @@ in
     plugins = with pkgs.vimPlugins; [
       LanguageClient-neovim
       coc-nvim
+      coc-solargraph
       vim-nix
 
       # UI
