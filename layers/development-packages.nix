@@ -9,6 +9,7 @@ with pkgs;
   #nushell # Broken
   elvish
   fish
+  bashInteractive_5
   
   # Chat & Browsing
   irssi
