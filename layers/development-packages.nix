@@ -92,5 +92,6 @@ with pkgs;
 
   # Rust
   sccache
+  rust-analyzer
 
 ]
