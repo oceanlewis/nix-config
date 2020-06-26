@@ -193,6 +193,7 @@ in
       coc-nvim
       coc-solargraph
       vim-nix
+      kotlin-vim
 
       # UI
       airline

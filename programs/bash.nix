@@ -11,7 +11,10 @@ in
   programs.bash = {
     enable       = true;
     shellAliases = shell.aliases;
-    initExtra    = shell.initExtra;
+    initExtra    = ''
+      set -o vi
+      ${shell.initExtra}
+    '';
 
     historyControl = [ "erasedups" "ignoredups" "ignorespace" ];
     historyIgnore  = [ "ls" "cd" "exit" ];

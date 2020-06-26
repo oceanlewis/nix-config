@@ -93,10 +93,12 @@ in
   # - https://github.com/rycee/home-manager/blob/master/modules/programs/tmux.nix
    programs.tmux = {
     enable = true;
-    keyMode = "vi";
-    historyLimit = 100000;
-    baseIndex = 1;
-    escapeTime = 10;
+    keyMode       = "vi";
+    terminal      = "screen-256color";
+    historyLimit  = 100000;
+    baseIndex     = 1;
+    escapeTime    = 10;
+    clock24       = true;
 
     extraConfig = ''
       ${setPrefix}

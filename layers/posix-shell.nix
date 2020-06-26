@@ -62,7 +62,14 @@ let
       cdpaste = "cd \"$(xsel -ob)\"";
     };
 
-    initExtra = "";
+    initExtra = ''
+      function update() {
+        sudo apt update
+        sudo apt upgrade
+        flatpak update
+        pushd $HOME/.config/nixpkgs && make upgrade && popd
+      }
+    '';
 
   };
 
