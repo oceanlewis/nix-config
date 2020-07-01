@@ -47,9 +47,7 @@ with pkgs;
   mdbook
 
   # Git
-  gitAndTools.git
   gitAndTools.gh
-  gitAndTools.delta
 
   # Build Tools
   autoconf

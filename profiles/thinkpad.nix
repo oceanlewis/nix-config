@@ -20,6 +20,7 @@
   programs.home-manager.enable = true;
 
   imports = [
+    ../programs/git/git.nix
     ../programs/bash.nix
     ../programs/zsh.nix
     ../programs/tmux.nix
