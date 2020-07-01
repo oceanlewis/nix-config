@@ -14,8 +14,18 @@ in
     enable        = true;
     dotDir        = ".config/zsh";
     shellAliases  = shell.aliases;
-    initExtra     = shell.initExtra;
+    initExtra     = ''
+      set -o vi
+      ${shell.initExtra}
+    '';
     defaultKeymap = "viins";
+
+    oh-my-zsh = {
+      enable = true;
+      plugins = [
+        "vi-mode"
+      ];
+    };
   };
 
 }

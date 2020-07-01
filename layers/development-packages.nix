@@ -6,7 +6,7 @@ with pkgs;
 [
 
   ## Shells and Unix Environment
-  #nushell # Broken
+  # nushell # broken
   elvish
   fish
   bashInteractive_5
@@ -59,7 +59,7 @@ with pkgs;
   #aws-sam-cli # Broken
   awscli
   terraform
-  terraform-lsp # TODO: Replace with terraform-ls when it's ready
+  terraform-ls
 
   # Databases
   postgresql

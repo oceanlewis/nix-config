@@ -10,6 +10,8 @@
     sessionVariables = {
       PAGER  = "less -R";
       EDITOR = "nvim";
+      VISUAL = "nvim";
+      TERM   = "xterm-256color";
     };
 
     stateVersion = "20.09";

@@ -148,7 +148,11 @@ let
     \   }
     \ }
 
-    colorscheme PaperColor
+    let g:gruvbox_contrast_dark  = "hard"
+    let g:gruvbox_contrast_light = "hard"
+
+    set termguicolors
+    colorscheme gruvbox
     call AlignBackground()
   '';
 
@@ -194,13 +198,14 @@ in
       coc-solargraph
       vim-nix
       kotlin-vim
+      vim-terraform
 
       # UI
       airline
       fzf-vim
 
       # Themes
-      gruvbox
+      gruvbox-community
       papercolor-theme
     ];
   };
