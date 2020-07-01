@@ -17,6 +17,7 @@ in
     sessionVariables = {
       PAGER           = "less -R";
       EDITOR          = "nvim";
+      VISUAL          = "nvim";
       XDG_CONFIG_HOME = "${HOME}/.config";
       XDG_DATA_HOME   = "${HOME}/.local/share";
       XDG_DATA_DIRS   = "${HOME}/.local/data";

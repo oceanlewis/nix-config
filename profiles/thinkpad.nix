@@ -1,10 +1,17 @@
 { config, pkgs, ... }:
 
+let
+
+  USER = "david";
+  HOME = "/home/${USER}";
+
+in
+
 {
 
   home = {
-    username      = "david";
-    homeDirectory = "/home/david";
+    username      = USER;
+    homeDirectory = HOME;
     packages      = import ../layers/development-packages.nix {} ++ [ pkgs.ion ];
 
     sessionVariables = {
