@@ -8,16 +8,20 @@ in
 
 {
 
-  programs.bash = {
-    enable       = true;
-    shellAliases = shell.aliases;
-    initExtra    = ''
-      set -o vi
-      ${shell.initExtra}
-    '';
+  packages = with pkgs; [ bashInteractive_5 ];
 
-    historyControl = [ "erasedups" "ignoredups" "ignorespace" ];
-    historyIgnore  = [ "ls" "cd" "exit" ];
+  program = {
+    programs.bash = {
+      enable       = true;
+      shellAliases = shell.aliases;
+      initExtra    = ''
+        set -o vi
+        ${shell.initExtra}
+      '';
+
+      historyControl = [ "erasedups" "ignoredups" "ignorespace" ];
+      historyIgnore  = [ "ls" "cd" "exit" ];
+    };
   };
 
 }

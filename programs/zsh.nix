@@ -24,6 +24,7 @@ in
       enable = true;
       plugins = [
         "vi-mode"
+        "history-substring-search"
       ];
     };
   };

@@ -46,7 +46,7 @@ let
     };
 
     initExtra = ''
-      export PATH="$HOME/.local/bin/:$HOME/.cargo/bin:$PATH"
+      export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 
       # Initialize Nix Profile
       . $HOME/.nix-profile/etc/profile.d/nix.sh
