@@ -21,6 +21,10 @@ with pkgs;
       userName  = "David Armstrong Lewis";
       userEmail = "david@armstronglewis.com";
 
+      extraConfig = {
+        pull.ff = "only";
+      };
+
       includes = [
         {
           path = ./deep6.git;
