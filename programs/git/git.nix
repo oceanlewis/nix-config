@@ -14,9 +14,15 @@ with pkgs;
     # Program Definition
     # - https://github.com/rycee/home-manager/blob/master/modules/programs/git.nix
     programs.git = {
-      enable       = true;
-      delta.enable = true;
-      package      = gitAndTools.gitFull;
+      enable  = true;
+      package = gitAndTools.gitFull;
+
+      delta = {
+        enable = true;
+        options = [
+          "--light"
+        ];
+      };
 
       userName  = "David Armstrong Lewis";
       userEmail = "david@armstronglewis.com";
