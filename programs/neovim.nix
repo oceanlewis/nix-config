@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
+  currentTheme = "PaperColor";
 
   setEncoding = ''
     set encoding=utf-8
@@ -152,7 +153,7 @@ let
     let g:gruvbox_contrast_light = "hard"
 
     set termguicolors
-    colorscheme gruvbox
+    colorscheme ${currentTheme}
     call AlignBackground()
   '';
 
