@@ -36,29 +36,6 @@ let
     set expandtab
   '';
 
-  alacrittyTheme = { light = "gruvbox_light"; dark  = "gruvbox_super_dark"; };
-
-  alacrittyThemeConfig = ''
-    " Alacritty Theme Integration
-
-    function! AlignBackground()
-      let &background = ( system('alacritty-theme current') =~ "light" ? "light" : "dark" )
-      hi Normal guibg=NONE ctermbg=NONE
-    endfunc
-
-    function! ToggleAlacrittyTheme()
-      if (system('alacritty-theme current') =~ "light")
-        call system('alacritty-theme change ${alacrittyTheme.dark}')
-      else
-        call system('alacritty-theme change ${alacrittyTheme.light}')
-      endif
-      call AlignBackground()
-    endfunc
-
-    nmap <leader>l :call ToggleAlacrittyTheme()<cr>
-    nmap <leader>; :call AlignBackground()<cr>
-  '';
-
   fileAndTagNavigation = ''
     " File and Tag Navigation
     nmap <leader>t :Files<CR>
@@ -153,10 +130,16 @@ let
     \ }
 
     let g:gruvbox_contrast_dark  = "hard"
-    let g:gruvbox_contrast_light = "hard"
+    let g:gruvbox_contrast_light = "medium"
 
     set termguicolors
     colorscheme ${theme.neovim.colorScheme}
+
+    function! AlignBackground()
+      hi Normal guibg=NONE ctermbg=NONE
+    endfunc
+
+    nmap <leader>; :call AlignBackground()<cr>
     call AlignBackground()
   '';
 
@@ -179,7 +162,6 @@ in
       ${bufferNavigation}
       ${mouseNavigation}
       ${setTabSize}
-      ${alacrittyThemeConfig}
       ${fileAndTagNavigation}
       ${reloadConfig}
       ${toggleVisibleWhitespace}
@@ -203,6 +185,7 @@ in
       vim-nix
       kotlin-vim
       vim-terraform
+      dhall-vim
 
       # UI
       airline
