@@ -1,4 +1,9 @@
-{ config, lib, pkgs, theme, ... }:
+{ config
+, lib
+, pkgs
+, theme
+, ...
+}:
 
 let
 
@@ -94,9 +99,6 @@ let
 in
 
 with pkgs; {
-
-  packages = [];
-
   home.programs.alacritty = {
     enable = true;
 
@@ -115,8 +117,9 @@ with pkgs; {
       draw_bold_text_with_bright_colors = true;
 
       mouse.hide_when_typing = true;
-
     };
+
   };
 
+  packages = [];
 }

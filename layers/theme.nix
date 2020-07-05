@@ -1,5 +1,7 @@
 { pkgs
-, alacritty ? { theme = "standard"; variant = "dark"; font = "default"; }
+, theme ? "standard"
+, variant ? "dark"
+, font ? "default"
 , ...
 }:
 
@@ -253,13 +255,21 @@ in
 {
 
   alacritty.colors =
-    if pkgs.stdenv.isDarwin then themes.${alacritty.theme}.${alacritty.variant} else
+    if pkgs.stdenv.isDarwin then themes.${theme}.${variant} else
     if pkgs.stdenv.isLinux  then { /* TODO! */ }
     else { };
 
   alacritty.font =
-    if pkgs.stdenv.isDarwin then fonts.${alacritty.font} else
+    if pkgs.stdenv.isDarwin then fonts.${font} else
     if pkgs.stdenv.isLinux  then { /* TODO! */ }
     else { };
+
+  neovim.colorScheme =
+    if theme != "gruvbox" then "PaperColor"
+    else                       "gruvbox";
+
+  bat.theme =
+    if variant == "light" then "GitHub"
+    else                       "Dracula";
 
 }

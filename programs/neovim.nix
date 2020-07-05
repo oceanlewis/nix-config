@@ -1,8 +1,11 @@
-{ config, lib, pkgs, ... }:
+{ config
+, lib
+, pkgs
+, theme
+, ...
+}:
 
 let
-  currentTheme = "PaperColor";
-
   setEncoding = ''
     set encoding=utf-8
   '';
@@ -153,14 +156,14 @@ let
     let g:gruvbox_contrast_light = "hard"
 
     set termguicolors
-    colorscheme ${currentTheme}
+    colorscheme ${theme.neovim.colorScheme}
     call AlignBackground()
   '';
 
 in
 
 {
-  programs.neovim = {
+  home.programs.neovim = {
     enable   = true;
     vimAlias = true;
     viAlias  = true;
@@ -210,4 +213,6 @@ in
       papercolor-theme
     ];
   };
+
+  packages = [];
 }

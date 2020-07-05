@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{ config
+, lib
+, pkgs
+, theme
+, ...
+}:
 
 with pkgs;
 
@@ -12,15 +17,9 @@ with pkgs;
   # Program Definition
   # - https://github.com/rycee/home-manager/blob/master/modules/programs/git.nix
   home.programs.git = {
-    enable  = true;
-    package = gitAndTools.gitFull;
-
-    delta = {
-      enable = true;
-      options = [
-        "--light"
-      ];
-    };
+    enable       = true;
+    package      = gitAndTools.gitFull;
+    delta.enable = true;
 
     userName  = "David Armstrong Lewis";
     userEmail = "david@armstronglewis.com";
