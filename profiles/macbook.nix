@@ -5,6 +5,16 @@ let
   USER = "davidlewis";
   HOME = "/Users/${USER}";
 
+  theme = import ../layers/theme.nix {
+    inherit pkgs;
+
+    alacritty = {
+      theme   = "gruvbox";
+      variant = "light";
+      font    = "menlo";
+    };
+  };
+
   base           = import ../layers/base.nix            { inherit pkgs; inherit config; inherit lib; };
   git            = import ../programs/git/git.nix       { inherit pkgs; inherit config; inherit lib; };
   bash           = import ../programs/bash.nix          { inherit pkgs; inherit config; inherit lib; };
@@ -12,6 +22,8 @@ let
   beam           = import ../layers/beam.nix            { inherit pkgs; inherit config; inherit lib; };
   ruby           = import ../layers/ruby.nix            { inherit pkgs; inherit config; inherit lib; };
   rust           = import ../layers/rust.nix            { inherit pkgs; inherit config; inherit lib; };
+  alacritty      = import ../programs/alacritty.nix     { inherit pkgs; inherit config; inherit lib;
+                                                          inherit theme; };
 
   packages = import ../layers/development-packages.nix { pkgs = pkgs; } ++
              base.packages ++
@@ -48,8 +60,9 @@ in
   programs.home-manager.enable = true;
 
   imports = [
-    git.program
-    bash.program
+    git.home
+    bash.home
+    alacritty.home
     ../programs/zsh.nix
     ../programs/tmux.nix
     ../programs/neovim.nix

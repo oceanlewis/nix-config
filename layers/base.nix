@@ -30,6 +30,7 @@ with pkgs;
     fzf
     bat
     mdcat
+    jq
     diffr
     icdiff
     tokei

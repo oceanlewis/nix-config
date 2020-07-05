@@ -45,8 +45,8 @@ in
   programs.home-manager.enable = true;
 
   imports = [
-    git.program
-    bash.program
+    git.home
+    bash.home
     ../programs/zsh.nix
     ../programs/tmux.nix
     ../programs/neovim.nix
