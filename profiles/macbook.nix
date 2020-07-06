@@ -9,7 +9,7 @@ let
     pkgs = pkgs;
 
     theme   = "gruvbox";
-    variant = "light";
+    variant = "black";
     font    = "menlo";
   };
 
