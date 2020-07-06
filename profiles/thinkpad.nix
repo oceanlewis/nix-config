@@ -6,7 +6,7 @@ let
     pkgs = pkgs;
 
     theme   = "gruvbox";
-    variant = "dark";
+    variant = "light";
     font    = "firaMono";
   };
 
@@ -110,7 +110,6 @@ in
       EDITOR    = "nvim";
       VISUAL    = "nvim";
       TERM      = "xterm-256color";
-      BAT_THEME = theme.bat.theme;
     };
 
     stateVersion = "20.09";
