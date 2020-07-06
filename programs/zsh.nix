@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, config, lib, ... }:
 
 let
 
@@ -7,10 +7,9 @@ let
 in
 
 {
-
   # Program Definition
   # - https://github.com/rycee/home-manager/blob/master/modules/programs/zsh.nix
-  programs.zsh = {
+  home.programs.zsh = {
     enable        = true;
     dotDir        = ".config/zsh";
     shellAliases  = shell.aliases;
@@ -28,5 +27,4 @@ in
       ];
     };
   };
-
 }

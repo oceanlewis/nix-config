@@ -2,6 +2,7 @@
 , lib
 , pkgs
 , theme
+, extraPlugins
 , ...
 }:
 
@@ -130,7 +131,7 @@ let
     \ }
 
     let g:gruvbox_contrast_dark  = "hard"
-    let g:gruvbox_contrast_light = "medium"
+    let g:gruvbox_contrast_light = "hard"
 
     set termguicolors
     colorscheme ${theme.neovim.colorScheme}
@@ -138,8 +139,9 @@ let
     function! AlignBackground()
       hi Normal guibg=NONE ctermbg=NONE
     endfunc
-
     nmap <leader>; :call AlignBackground()<cr>
+
+    let &background = "${theme.neovim.background}"
     call AlignBackground()
   '';
 
@@ -185,7 +187,6 @@ in
       vim-nix
       kotlin-vim
       vim-terraform
-      dhall-vim
 
       # UI
       airline
@@ -194,7 +195,7 @@ in
       # Themes
       gruvbox-community
       papercolor-theme
-    ];
+    ] ++ extraPlugins;
   };
 
   packages = [];

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, config, lib, ... }:
 
 let
 
@@ -88,10 +88,9 @@ let
 in
 
 {
-
   # Program Definition
   # - https://github.com/rycee/home-manager/blob/master/modules/programs/tmux.nix
-   programs.tmux = {
+  home.programs.tmux = {
     enable = true;
     keyMode       = "vi";
     terminal      = "xterm-256color";
@@ -108,5 +107,4 @@ in
       ${aesthetics}
     '';
   };
-
 }

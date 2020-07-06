@@ -1,6 +1,6 @@
-{ config
+{ pkgs
+, config
 , lib
-, pkgs
 , theme
 , ...
 }:
@@ -8,12 +8,6 @@
 with pkgs;
 
 {
-
-  packages = [
-    gitAndTools.gh
-    gitAndTools.delta
-  ];
-
   # Program Definition
   # - https://github.com/rycee/home-manager/blob/master/modules/programs/git.nix
   home.programs.git = {
@@ -47,7 +41,10 @@ with pkgs;
       lg3 = "lg3-specific --all";
       lg  = "lg1";
     };
-
   };
 
+  packages = [
+    gitAndTools.gh
+    gitAndTools.delta
+  ];
 }

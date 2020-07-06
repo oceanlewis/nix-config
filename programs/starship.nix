@@ -1,7 +1,7 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, config, lib, ... }:
 
 {
-  programs.starship = {
+  home.programs.starship = {
     enable                = true;
     enableBashIntegration = true;
     enableZshIntegration  = true;

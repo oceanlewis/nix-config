@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, config, lib, ... }:
 
 let
 
@@ -7,9 +7,6 @@ let
 in
 
 {
-
-  packages = with pkgs; [ bashInteractive_5 ];
-
   home.programs.bash = {
     enable         = true;
     shellAliases   = shell.aliases;
@@ -22,4 +19,5 @@ in
     '';
   };
 
+  packages = with pkgs; [ bashInteractive_5 ];
 }
