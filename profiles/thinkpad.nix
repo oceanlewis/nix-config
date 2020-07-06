@@ -1,42 +1,116 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, config, lib, ... }:
 
 let
 
-  USER = "david";
-  HOME = "/home/${USER}";
+  theme = import ../layers/theme.nix {
+    pkgs = pkgs;
 
-  base           = import ../layers/base.nix            { inherit pkgs; inherit config; inherit lib; };
-  git            = import ../programs/git/git.nix       { inherit pkgs; inherit config; inherit lib; };
-  bash           = import ../programs/bash.nix          { inherit pkgs; inherit config; inherit lib; };
-  cloudPlatforms = import ../layers/cloud-platforms.nix { inherit pkgs; inherit config; inherit lib; };
-  beam           = import ../layers/beam.nix            { inherit pkgs; inherit config; inherit lib; };
-  ruby           = import ../layers/ruby.nix            { inherit pkgs; inherit config; inherit lib; };
-  rust           = import ../layers/rust.nix            { inherit pkgs; inherit config; inherit lib; };
+    theme   = "gruvbox";
+    variant = "dark";
+    font    = "firaMono";
+  };
 
-  packages = import ../layers/development-packages.nix { pkgs = pkgs; } ++
-             base.packages ++
-             cloudPlatforms.packages ++
-             git.packages ++
-             bash.packages ++
-             beam.packages ++
-             ruby.packages ++
-             rust.packages ++
-             [ pkgs.ion ];
+  base = import ../layers/base.nix {
+    pkgs = pkgs;
+  };
+
+  devPackages = import ../layers/dev-packages.nix {
+    pkgs = pkgs;
+  };
+
+  cloudPlatforms = import ../layers/cloud-platforms.nix {
+    pkgs = pkgs;
+  };
+
+  beam = import ../layers/beam.nix {
+    pkgs = pkgs;
+  };
+
+  ruby = import ../layers/ruby.nix {
+    pkgs = pkgs;
+  };
+
+  rust = import ../layers/rust.nix {
+    pkgs = pkgs;
+  };
+
+  dhall = import ../layers/dhall.nix {
+    pkgs = pkgs;
+  };
+
+  bash = import ../programs/bash.nix {
+    pkgs   = pkgs;
+    config = config;
+    lib    = lib;
+  };
+
+  git = import ../programs/git/git.nix {
+    pkgs   = pkgs;
+    config = config;
+    lib    = lib;
+    theme  = theme;
+  };
+
+  alacritty = import ../programs/alacritty.nix {
+    pkgs   = pkgs;
+    config = config;
+    lib    = lib;
+    theme  = theme;
+  };
+
+  neovim = import ../programs/neovim.nix {
+    pkgs   = pkgs;
+    config = config;
+    lib    = lib;
+    theme  = theme;
+
+    extraPlugins = dhall.vimPlugins;
+  };
+
+  zsh = import ../programs/zsh.nix {
+    pkgs   = pkgs;
+    config = config;
+    lib    = lib;
+  };
+
+  tmux = import ../programs/tmux.nix {
+    pkgs   = pkgs;
+    config = config;
+    lib    = lib;
+  };
+
+  starship = import ../programs/starship.nix {
+    pkgs   = pkgs;
+    config = config;
+    lib    = lib;
+  };
 
 in
 
 {
 
   home = {
-    username      = USER;
-    homeDirectory = HOME;
-    packages      = packages;
+    username      = "david";
+    homeDirectory = "/home/david";
+
+    packages =
+      devPackages ++
+      base.packages ++
+      cloudPlatforms.packages ++
+      beam.packages ++
+      ruby.packages ++
+      rust.packages ++
+      git.packages ++
+      dhall.packages ++
+      bash.packages ++
+      [ pkgs.ion ];
 
     sessionVariables = {
-      PAGER  = "less -R";
-      EDITOR = "nvim";
-      VISUAL = "nvim";
-      TERM   = "xterm-256color";
+      PAGER     = "less -R";
+      EDITOR    = "nvim";
+      VISUAL    = "nvim";
+      TERM      = "xterm-256color";
+      BAT_THEME = theme.bat.theme;
     };
 
     stateVersion = "20.09";
@@ -47,10 +121,11 @@ in
   imports = [
     git.home
     bash.home
-    ../programs/zsh.nix
-    ../programs/tmux.nix
-    ../programs/neovim.nix
-    ../programs/starship.nix
+    alacritty.home
+    neovim.home
+    zsh.home
+    tmux.home
+    starship.home
   ];
 
 }

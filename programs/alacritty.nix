@@ -88,13 +88,16 @@ let
       { key = "Backslash"; mods = "Alt|Shift"; chars  = ''\x1b|'';            } # Alt + |;
     ];
 
-    linux = [ ];
+    linux = [
+      { key = "F11"; mods = "None";    action = "ToggleFullscreen"; }
+      { key = "N";   mods = "Control"; action = "SpawnNewInstance"; }
+    ];
   };
 
   systemKeybindings =
     if pkgs.stdenv.isDarwin then key_bindings.darwin else
     if pkgs.stdenv.isLinux  then key_bindings.linux
-    else { };
+    else [ ];
 
 in
 

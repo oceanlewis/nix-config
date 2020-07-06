@@ -24,6 +24,21 @@ let
     };
   };
 
+  fonts.firaMono = {
+    normal = {
+      family = "Fira Mono";
+      style  = "Normal";
+    };
+    bold = {
+      family = "Fira Mono";
+      style  = "Medium";
+    };
+    italic = {
+      family = "Fira Mono";
+      style  = "Italic";
+    };
+  };
+
   themes.standard.light = {
     primary = {
       background        = "0xFFFFFF";
@@ -255,26 +270,23 @@ in
 
 {
 
-  alacritty.colors =
-    if pkgs.stdenv.isDarwin then themes.${theme}.${variant} else
-    if pkgs.stdenv.isLinux  then { /* TODO! */ }
-    else { };
+  alacritty = {
+    colors = themes.${theme}.${variant};
+    font   = fonts.${font};
+  };
 
-  alacritty.font =
-    if pkgs.stdenv.isDarwin then fonts.${font} else
-    if pkgs.stdenv.isLinux  then { /* TODO! */ }
-    else { };
+  neovim = {
+    colorScheme =
+      if theme != "gruvbox" then "PaperColor"
+      else "gruvbox";
 
-  neovim.colorScheme =
-    if theme != "gruvbox" then "PaperColor"
-    else                       "gruvbox";
-
-  neovim.background =
-    if variant == "light" then "light"
-    else "dark";
+    background =
+      if variant == "light" then "light"
+      else "dark";
+  };
 
   bat.theme =
     if variant == "light" then "GitHub"
-    else                       "Dracula";
+    else "Dracula";
 
 }
