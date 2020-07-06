@@ -6,7 +6,7 @@ let
   HOME = "/Users/${USER}";
 
   theme = import ../layers/theme.nix {
-    inherit pkgs;
+    pkgs = pkgs;
 
     theme   = "gruvbox";
     variant = "light";
@@ -17,7 +17,9 @@ let
     pkgs = pkgs;
   };
 
-  devPackages = import ../layers/dev-packages.nix { inherit pkgs; };
+  devPackages = import ../layers/dev-packages.nix {
+    pkgs = pkgs;
+  };
 
   cloudPlatforms = import ../layers/cloud-platforms.nix {
     pkgs = pkgs;
@@ -40,49 +42,50 @@ let
   };
 
   bash = import ../programs/bash.nix {
-    pkgs = pkgs;
+    pkgs   = pkgs;
     config = config;
-    lib = lib;
+    lib    = lib;
   };
 
   git = import ../programs/git/git.nix {
-    pkgs = pkgs;
+    pkgs   = pkgs;
     config = config;
-    lib = lib;
-    theme = theme;
+    lib    = lib;
+    theme  = theme;
   };
 
   alacritty = import ../programs/alacritty.nix {
-    pkgs = pkgs;
+    pkgs   = pkgs;
     config = config;
-    lib = lib;
-    theme = theme;
+    lib    = lib;
+    theme  = theme;
   };
 
   neovim = import ../programs/neovim.nix {
-    pkgs = pkgs;
+    pkgs   = pkgs;
     config = config;
-    lib = lib;
-    theme = theme;
+    lib    = lib;
+    theme  = theme;
+
     extraPlugins = dhall.vimPlugins;
   };
 
   zsh = import ../programs/zsh.nix {
-    pkgs = pkgs;
+    pkgs   = pkgs;
     config = config;
-    lib = lib;
+    lib    = lib;
   };
 
   tmux = import ../programs/tmux.nix {
-    pkgs = pkgs;
+    pkgs   = pkgs;
     config = config;
-    lib = lib;
+    lib    = lib;
   };
 
   starship = import ../programs/starship.nix {
-    pkgs = pkgs;
+    pkgs   = pkgs;
     config = config;
-    lib = lib;
+    lib    = lib;
   };
 
 in
