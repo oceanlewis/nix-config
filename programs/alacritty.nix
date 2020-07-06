@@ -109,7 +109,7 @@ with pkgs; {
       window = {
         title      = "";
         dimensions = { columns = 96; lines = 21; };
-        padding    = { x = 5; y = 0; };
+        padding    = { x = 5; y = 5; };
       };
 
       key_bindings = systemKeybindings;
