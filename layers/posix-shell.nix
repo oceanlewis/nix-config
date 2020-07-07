@@ -50,6 +50,13 @@ let
 
       # Initialize Nix Profile
       . $HOME/.nix-profile/etc/profile.d/nix.sh
+
+      function purge_docker() {
+        docker system prune --force
+        docker volume prune --force
+        docker image prune --force
+        docker container prune --force
+      }
     '';
 
   };
@@ -64,10 +71,12 @@ let
 
     initExtra = ''
       function update() {
-        sudo apt update
-        sudo apt upgrade
-        flatpak update
-        pushd $HOME/.config/nixpkgs && make upgrade && popd
+        local origDir=$(pwd)
+
+        sudo apt update && \
+        sudo apt upgrade && \
+        flatpak update && \
+        cd $HOME/.config/nixpkgs && make upgrade && cd $origDir
       }
     '';
 

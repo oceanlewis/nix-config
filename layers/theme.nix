@@ -287,6 +287,6 @@ in
 
   bat.theme =
     if variant == "light" then "GitHub"
-    else "Dracula";
+    else "TwoDark";
 
 }
