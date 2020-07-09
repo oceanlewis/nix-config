@@ -2,6 +2,7 @@
 , config
 , lib
 , theme
+, extraGitIgnores ? []
 , ...
 }:
 
@@ -27,6 +28,8 @@ with pkgs;
     extraConfig = {
       pull.ff = "only";
     };
+
+    ignores = extraGitIgnores;
 
     includes = [
       {

@@ -49,10 +49,11 @@ let
   };
 
   git = import ../programs/git/git.nix {
-    pkgs   = pkgs;
-    config = config;
-    lib    = lib;
-    theme  = theme;
+    pkgs            = pkgs;
+    config          = config;
+    lib             = lib;
+    theme           = theme;
+    extraGitIgnores = jvm.git.ignores;
   };
 
   alacritty = import ../programs/alacritty.nix {

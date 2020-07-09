@@ -9,4 +9,8 @@
     #kotlin
   ];
 
+  git.ignores = [
+    "**/.idea"
+  ];
+
 }
