@@ -5,9 +5,9 @@ let
   theme = import ../layers/theme.nix {
     pkgs = pkgs;
 
-    theme   = "gruvbox";
-    variant = "black";
-    font    = "firaMono";
+    theme   = "standard";
+    variant = "light";
+    font    = "Fira Mono";
   };
 
   base = import ../layers/base.nix {
@@ -31,6 +31,10 @@ let
   };
 
   rust = import ../layers/rust.nix {
+    pkgs = pkgs;
+  };
+
+  jvm = import ../layers/jvm.nix {
     pkgs = pkgs;
   };
 
@@ -100,6 +104,7 @@ in
       beam.packages ++
       ruby.packages ++
       rust.packages ++
+      jvm.packages ++
       git.packages ++
       dhall.packages ++
       bash.packages ++

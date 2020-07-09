@@ -102,6 +102,22 @@ let
     nmap <leader>q :call LanguageClient_textDocument_hover()<CR>
     nmap <leader>w :call LanguageClient_textDocument_definition()<CR>
     nmap <leader>e :call LanguageClient_textDocument_rename()<CR>
+
+    " Rename - rn => rename
+    noremap <leader>rn :call LanguageClient#textDocument_rename()<CR>
+
+    " Rename - rc => rename camelCase
+    noremap <leader>rc :call LanguageClient#textDocument_rename(
+                \ {'newName': Abolish.camelcase(expand('<cword>'))})<CR>
+
+    " Rename - rs => rename snake_case
+    noremap <leader>rs :call LanguageClient#textDocument_rename(
+                \ {'newName': Abolish.snakecase(expand('<cword>'))})<CR>
+
+    " Rename - ru => rename UPPERCASE
+    noremap <leader>ru :call LanguageClient#textDocument_rename(
+                \ {'newName': Abolish.uppercase(expand('<cword>'))})<CR>
+<
   '';
 
   youCompleteMeConfig = ''

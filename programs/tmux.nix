@@ -91,7 +91,7 @@ in
   # Program Definition
   # - https://github.com/rycee/home-manager/blob/master/modules/programs/tmux.nix
   home.programs.tmux = {
-    enable = true;
+    enable        = true;
     keyMode       = "vi";
     terminal      = "xterm-256color";
     historyLimit  = 100000;

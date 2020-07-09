@@ -6,7 +6,7 @@ with pkgs;
 
   packages = [
     # Cloud Tooling
-    #aws-sam-cli # broken
+    aws-sam-cli
     awscli
     terraform
     terraform-ls

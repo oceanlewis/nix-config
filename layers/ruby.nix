@@ -1,7 +1,5 @@
 { pkgs , ...  }:
 
-with pkgs;
-
 {
 
   /*
@@ -9,7 +7,7 @@ with pkgs;
    * - https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/ruby.section.md
    * - https://github.com/NixOS/nixpkgs/blob/master/pkgs/development/ruby-modules/with-packages/default.nix
    */
-  packages = [
+  packages = with pkgs; [
     (ruby.withPackages (selector:
       with selector; [
         nokogiri

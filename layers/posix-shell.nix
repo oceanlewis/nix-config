@@ -33,9 +33,9 @@ let
       ta = "tmux attach";
 
       # Bat
-      bat = "bat -p";
-      dat = "bat -p --theme Dracula";
-      lat = "bat -p --theme GitHub";
+      bat = "bat --style=plain";
+      dat = "bat --theme Dracula";
+      lat = "bat --theme GitHub";
 
       # Ytop
       ltop = "ytop -c default-dark";

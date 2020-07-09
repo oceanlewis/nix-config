@@ -12,9 +12,4 @@ with pkgs;
   nodejs
   python3
 
-  ## JVM
-  #maven
-  #openjdk8
-  #kotlin
-
 ]

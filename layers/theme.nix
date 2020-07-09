@@ -2,6 +2,7 @@
 , theme ? "standard"
 , variant ? "dark"
 , font ? "default"
+, fontSize ? 13
 , ...
 }:
 
@@ -9,7 +10,7 @@ let
 
   fonts.default = { };
 
-  fonts.menlo = {
+  fonts.Menlo = {
     normal = {
       family = "Menlo";
       style  = "Regular";
@@ -24,7 +25,7 @@ let
     };
   };
 
-  fonts.firaMono = {
+  fonts."Fira Mono" = {
     normal = {
       family = "Fira Mono";
       style  = "Normal";
@@ -36,6 +37,29 @@ let
     italic = {
       family = "Fira Mono";
       style  = "Italic";
+    };
+  };
+
+  fonts."IBM Plex Mono" = {
+    normal = {
+      family = "IBM Plex Mono";
+      style  = "Regular";
+    };
+    bold = {
+      family = "IBM Plex Mono";
+      style  = "Medium";
+    };
+    italic = {
+      family = "IBM Plex Mono";
+      style  = "Regular Italic";
+    };
+    offset = {
+      x = 0;
+      y = 0;
+    };
+    glyph_offset = {
+      x = 0;
+      y = 0;
     };
   };
 
@@ -272,7 +296,9 @@ in
 
   alacritty = {
     colors = themes.${theme}.${variant};
-    font   = fonts.${font};
+    font   = fonts.${font} // {
+               size = fontSize;
+             };
   };
 
   neovim = {
