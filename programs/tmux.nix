@@ -6,6 +6,7 @@ let
     # Use ` as control character
     unbind C-b
     set -g prefix `
+    bind ` send-prefix
   '';
 
   reloadConfig = ''
