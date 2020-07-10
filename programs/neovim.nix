@@ -117,7 +117,6 @@ let
     " Rename - ru => rename UPPERCASE
     noremap <leader>ru :call LanguageClient#textDocument_rename(
                 \ {'newName': Abolish.uppercase(expand('<cword>'))})<CR>
-<
   '';
 
   youCompleteMeConfig = ''
