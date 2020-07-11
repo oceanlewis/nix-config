@@ -2,15 +2,13 @@
 
 let
 
-  USER = "davidlewis";
-  HOME = "/Users/${USER}";
-
   theme = import ../layers/theme.nix {
     pkgs = pkgs;
 
-    theme   = "gruvbox";
-    variant = "black";
-    font    = "menlo";
+    theme    = "gruvbox";
+    variant  = "black";
+    font     = "Menlo";
+    fontSize = 15;
   };
 
   base = import ../layers/base.nix {
@@ -37,6 +35,10 @@ let
     pkgs = pkgs;
   };
 
+  jvm = import ../layers/jvm.nix {
+    pkgs = pkgs;
+  };
+
   dhall = import ../layers/dhall.nix {
     pkgs = pkgs;
   };
@@ -48,10 +50,11 @@ let
   };
 
   git = import ../programs/git/git.nix {
-    pkgs   = pkgs;
-    config = config;
-    lib    = lib;
-    theme  = theme;
+    pkgs            = pkgs;
+    config          = config;
+    lib             = lib;
+    theme           = theme;
+    extraGitIgnores = jvm.git.ignores;
   };
 
   alacritty = import ../programs/alacritty.nix {
@@ -88,6 +91,9 @@ let
     lib    = lib;
   };
 
+  USER = "davidlewis";
+  HOME = "/Users/${USER}";
+
 in
 
 {
@@ -103,6 +109,7 @@ in
       beam.packages ++
       ruby.packages ++
       rust.packages ++
+      jvm.packages ++
       git.packages ++
       dhall.packages ++
       bash.packages;
@@ -116,7 +123,6 @@ in
       XDG_DATA_HOME   = "${HOME}/.local/share";
       XDG_DATA_DIRS   = "${HOME}/.local/data";
       XDG_RUNTIME_DIR = "${HOME}/.local/run";
-      BAT_THEME       = theme.bat.theme;
     };
 
     stateVersion = "20.09";
