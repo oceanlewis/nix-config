@@ -5,9 +5,9 @@ let
   theme = import ../layers/theme.nix {
     pkgs = pkgs;
 
-    theme   = "standard";
-    variant = "light";
-    font    = "Fira Mono";
+    theme      = "standard";
+    variant    = "light";
+    fontFamily = "Fira Mono";
   };
 
   base = import ../layers/base.nix {

@@ -5,10 +5,10 @@ let
   theme = import ../layers/theme.nix {
     pkgs = pkgs;
 
-    theme    = "gruvbox";
-    variant  = "black";
-    font     = "Menlo";
-    fontSize = 15;
+    theme      = "gruvbox";
+    variant    = "black";
+    fontFamily = "Menlo";
+    fontSize   = 15;
   };
 
   base = import ../layers/base.nix {

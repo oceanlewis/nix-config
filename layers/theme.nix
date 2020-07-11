@@ -1,7 +1,7 @@
 { pkgs
 , theme ? "standard"
 , variant ? "dark"
-, font ? "default"
+, fontFamily ? "default"
 , fontSize ? 13
 , ...
 }:
@@ -296,7 +296,7 @@ in
 
   alacritty = {
     colors = themes.${theme}.${variant};
-    font   = fonts.${font} // {
+    font   = fonts.${fontFamily} // {
                size = fontSize;
              };
   };
