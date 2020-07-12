@@ -5,8 +5,8 @@ let
   theme = import ../layers/theme.nix {
     pkgs = pkgs;
 
-    theme      = "standard";
-    variant    = "light";
+    theme      = "gruvbox";
+    variant    = "dark";
     fontFamily = "Fira Mono";
   };
 
