@@ -3,7 +3,7 @@
 let
 
   theme = import ../layers/theme.nix {
-    pkgs = pkgs;
+    inherit pkgs;
 
     theme      = "gruvbox";
     variant    = "dark";
@@ -12,87 +12,73 @@ let
   };
 
   base = import ../layers/base.nix {
-    pkgs = pkgs;
+    inherit pkgs;
   };
 
   devPackages = import ../layers/dev-packages.nix {
-    pkgs = pkgs;
+    inherit pkgs;
   };
 
   cloudPlatforms = import ../layers/cloud-platforms.nix {
-    pkgs = pkgs;
+    inherit pkgs;
   };
 
   beam = import ../layers/beam.nix {
-    pkgs = pkgs;
+    inherit pkgs;
   };
 
   ruby = import ../layers/ruby.nix {
-    pkgs = pkgs;
+    inherit pkgs;
   };
 
   rust = import ../layers/rust.nix {
-    pkgs = pkgs;
+    inherit pkgs;
   };
 
   jvm = import ../layers/jvm.nix {
-    pkgs = pkgs;
+    inherit pkgs;
   };
 
   nodejs = import ../layers/nodejs.nix {
-    pkgs = pkgs;
+    inherit pkgs;
   };
 
   dhall = import ../layers/dhall.nix {
-    pkgs = pkgs;
+    inherit pkgs;
   };
 
   bash = import ../programs/bash.nix {
-    pkgs   = pkgs;
-    config = config;
-    lib    = lib;
+    inherit pkgs config lib;
   };
 
   git = import ../programs/git/git.nix {
-    pkgs            = pkgs;
-    config          = config;
-    lib             = lib;
-    theme           = theme;
+    inherit pkgs config lib theme;
     extraGitIgnores = jvm.git.ignores;
   };
 
   alacritty = import ../programs/alacritty.nix {
-    pkgs   = pkgs;
-    config = config;
-    lib    = lib;
-    theme  = theme;
+    inherit pkgs config lib theme;
   };
 
   neovim = import ../programs/neovim.nix {
-    pkgs   = pkgs;
-    config = config;
-    lib    = lib;
-    theme  = theme;
-
+    inherit pkgs config lib theme;
     extraPlugins = dhall.vimPlugins;
   };
 
   zsh = import ../programs/zsh.nix {
-    pkgs   = pkgs;
-    config = config;
-    lib    = lib;
+    inherit pkgs config lib;
   };
 
   tmux = import ../programs/tmux.nix {
-    pkgs   = pkgs;
-    config = config;
-    lib    = lib;
+    inherit pkgs config lib;
   };
 
   starship = import ../programs/starship.nix {
-    pkgs   = pkgs;
-    config = config;
-    lib    = lib;
+    inherit pkgs config lib;
+  };
+
+  lorri = import ../services/lorri.nix {
+    inherit pkgs config lib;
   };
 
 in
@@ -100,7 +86,6 @@ in
 {
 
   programs.home-manager.enable = true;
-  services.lorri.enable = true;
 
   imports = [
     git.home
@@ -110,6 +95,7 @@ in
     zsh.home
     tmux.home
     starship.home
+    lorri.home
   ];
 
   home = {
@@ -128,6 +114,7 @@ in
       git.packages ++
       dhall.packages ++
       bash.packages ++
+      lorri.packages ++
       [ pkgs.ion ];
 
     sessionVariables = {

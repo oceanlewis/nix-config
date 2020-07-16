@@ -11,7 +11,4 @@ with pkgs;
   go
   python3
 
-  # ** Magic! **
-  direnv
-
 ]
