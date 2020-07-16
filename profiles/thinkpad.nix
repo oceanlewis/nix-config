@@ -8,6 +8,7 @@ let
     theme      = "gruvbox";
     variant    = "dark";
     fontFamily = "Fira Mono";
+    fontSize   = 15;
   };
 
   base = import ../layers/base.nix {
@@ -35,6 +36,10 @@ let
   };
 
   jvm = import ../layers/jvm.nix {
+    pkgs = pkgs;
+  };
+
+  nodejs = import ../layers/nodejs.nix {
     pkgs = pkgs;
   };
 
@@ -94,6 +99,19 @@ in
 
 {
 
+  programs.home-manager.enable = true;
+  services.lorri.enable = true;
+
+  imports = [
+    git.home
+    bash.home
+    alacritty.home
+    neovim.home
+    zsh.home
+    tmux.home
+    starship.home
+  ];
+
   home = {
     username      = "david";
     homeDirectory = "/home/david";
@@ -106,6 +124,7 @@ in
       ruby.packages ++
       rust.packages ++
       jvm.packages ++
+      nodejs.packages ++
       git.packages ++
       dhall.packages ++
       bash.packages ++
@@ -120,17 +139,5 @@ in
 
     stateVersion = "20.09";
   };
-
-  programs.home-manager.enable = true;
-
-  imports = [
-    git.home
-    bash.home
-    alacritty.home
-    neovim.home
-    zsh.home
-    tmux.home
-    starship.home
-  ];
 
 }

@@ -11,6 +11,9 @@
 
   git.ignores = [
     "**/.idea"
+    "/.classpath"
+    "/.project"
+    "/.settings"
   ];
 
 }

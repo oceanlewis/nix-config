@@ -90,7 +90,6 @@ let
 
     linux = [
       { key = "F11"; mods = "None";    action = "ToggleFullscreen"; }
-      { key = "N";   mods = "Control"; action = "SpawnNewInstance"; }
     ];
   };
 

@@ -9,7 +9,9 @@ with pkgs;
 
   # Languages
   go
-  nodejs
   python3
+
+  # ** Magic! **
+  direnv
 
 ]

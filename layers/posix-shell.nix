@@ -57,6 +57,10 @@ let
         docker image prune --force
         docker container prune --force
       }
+
+      if test -x "$(which direnv)"; then
+        eval "$(direnv hook zsh)"
+      fi
     '';
 
   };
@@ -78,6 +82,10 @@ let
         flatpak update && \
         cd $HOME/.config/nixpkgs && make upgrade && cd $origDir
       }
+
+      # export NVM_DIR="$HOME/.nvm"
+      # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+      # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
     '';
 
   };

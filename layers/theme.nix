@@ -38,6 +38,14 @@ let
       family = "Fira Mono";
       style  = "Italic";
     };
+    offset = {
+      x = 0;
+      y = 5;
+    };
+    glyph_offset = {
+      x = 0;
+      y = 0;
+    };
   };
 
   fonts."IBM Plex Mono" = {
