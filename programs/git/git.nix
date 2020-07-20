@@ -17,9 +17,9 @@ with pkgs;
 
     delta = {
       enable = true;
-      options = [
-        "--syntax-theme ${theme.bat.theme}"
-      ];
+      options = {
+        syntax-theme = theme.bat.theme;
+      };
     };
 
     userName  = "David Armstrong Lewis";
