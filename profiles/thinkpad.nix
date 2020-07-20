@@ -6,9 +6,9 @@ let
     inherit pkgs;
 
     theme      = "gruvbox";
-    variant    = "dark";
+    variant    = "light";
     fontFamily = "Fira Mono";
-    fontSize   = 15;
+    fontSize   = 13;
   };
 
   base = import ../layers/base.nix {
@@ -85,7 +85,10 @@ in
 
 {
 
-  programs.home-manager.enable = true;
+  programs = {
+    home-manager.enable = true;
+    man.enable = false;
+  };
 
   imports = [
     git.home
@@ -117,6 +120,7 @@ in
       lorri.packages ++
       [ pkgs.ion ];
 
+    extraOutputsToInstall = [ "man" ];
     sessionVariables = {
       PAGER     = "less -R";
       EDITOR    = "nvim";
