@@ -3,92 +3,82 @@
 let
 
   theme = import ../layers/theme.nix {
-    pkgs = pkgs;
+    inherit pkgs;
 
-    theme      = "gruvbox";
-    variant    = "black";
+    theme      = "standard";
+    variant    = "light";
     fontFamily = "Menlo";
     fontSize   = 15;
   };
 
   base = import ../layers/base.nix {
-    pkgs = pkgs;
+    inherit pkgs;
   };
 
   devPackages = import ../layers/dev-packages.nix {
-    pkgs = pkgs;
+    inherit pkgs;
   };
 
   cloudPlatforms = import ../layers/cloud-platforms.nix {
-    pkgs = pkgs;
+    inherit pkgs;
   };
 
   beam = import ../layers/beam.nix {
-    pkgs = pkgs;
+    inherit pkgs;
   };
 
   ruby = import ../layers/ruby.nix {
-    pkgs = pkgs;
+    inherit pkgs;
   };
 
   rust = import ../layers/rust.nix {
-    pkgs = pkgs;
+    inherit pkgs;
   };
 
   jvm = import ../layers/jvm.nix {
-    pkgs = pkgs;
+    inherit pkgs;
+  };
+
+  nodejs = import ../layers/nodejs.nix {
+    inherit pkgs;
   };
 
   dhall = import ../layers/dhall.nix {
-    pkgs = pkgs;
+    inherit pkgs;
   };
 
   bash = import ../programs/bash.nix {
-    pkgs   = pkgs;
-    config = config;
-    lib    = lib;
+    inherit pkgs config lib;
   };
 
   git = import ../programs/git/git.nix {
-    pkgs            = pkgs;
-    config          = config;
-    lib             = lib;
-    theme           = theme;
+    inherit pkgs config lib theme;
     extraGitIgnores = jvm.git.ignores;
   };
 
   alacritty = import ../programs/alacritty.nix {
-    pkgs   = pkgs;
-    config = config;
-    lib    = lib;
-    theme  = theme;
+    inherit pkgs config lib theme;
   };
 
   neovim = import ../programs/neovim.nix {
-    pkgs   = pkgs;
-    config = config;
-    lib    = lib;
-    theme  = theme;
-
+    inherit pkgs config lib theme;
     extraPlugins = dhall.vimPlugins;
   };
 
   zsh = import ../programs/zsh.nix {
-    pkgs   = pkgs;
-    config = config;
-    lib    = lib;
+    inherit pkgs config lib;
   };
 
   tmux = import ../programs/tmux.nix {
-    pkgs   = pkgs;
-    config = config;
-    lib    = lib;
+    inherit pkgs config lib;
   };
 
   starship = import ../programs/starship.nix {
-    pkgs   = pkgs;
-    config = config;
-    lib    = lib;
+    inherit pkgs config lib;
+  };
+
+  lorri = import ../services/lorri.nix {
+    inherit pkgs config lib;
   };
 
   USER = "davidlewis";
@@ -97,6 +87,18 @@ let
 in
 
 {
+
+  programs.home-manager.enable = true;
+
+  imports = [
+    git.home
+    bash.home
+    alacritty.home
+    neovim.home
+    zsh.home
+    tmux.home
+    starship.home
+  ];
 
   home = {
     username      = USER;
@@ -110,9 +112,11 @@ in
       ruby.packages ++
       rust.packages ++
       jvm.packages ++
+      nodejs.packages ++
       git.packages ++
       dhall.packages ++
-      bash.packages;
+      bash.packages ++
+      lorri.packages ++ [ pkgs.lorri ];
 
     sessionVariables = {
       PAGER           = "less -R";
@@ -127,17 +131,5 @@ in
 
     stateVersion = "20.09";
   };
-
-  programs.home-manager.enable = true;
-
-  imports = [
-    git.home
-    bash.home
-    alacritty.home
-    neovim.home
-    zsh.home
-    tmux.home
-    starship.home
-  ];
 
 }
