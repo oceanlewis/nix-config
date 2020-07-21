@@ -78,8 +78,8 @@ let
         local origDir=$(pwd)
 
         sudo apt update && \
-        sudo apt upgrade && \
-        flatpak update && \
+        sudo apt upgrade --yes && \
+        flatpak update --assumeyes && \
         cd $HOME/.config/nixpkgs && make upgrade && cd $origDir
       }
 
