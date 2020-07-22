@@ -23,6 +23,37 @@ let
       family = "Menlo";
       style  = "Italic";
     };
+    offset = {
+      x = 0;
+      y = 0;
+    };
+    glyph_offset = {
+      x = 0;
+      y = 0;
+    };
+  };
+
+  fonts."SF Mono" = {
+    normal = {
+      family = "SF Mono";
+      style  = "Regular";
+    };
+    bold = {
+      family = "SF Mono";
+      style  = "Medium";
+    };
+    italic = {
+      family = "SF Mono";
+      style  = "Regular Italic";
+    };
+    offset = {
+      x = 0;
+      y = 3;
+    };
+    glyph_offset = {
+      x = 0;
+      y = 0;
+    };
   };
 
   fonts."Fira Mono" = {

@@ -6,9 +6,9 @@ let
     inherit pkgs;
 
     theme      = "standard";
-    variant    = "light";
-    fontFamily = "Menlo";
-    fontSize   = 15;
+    variant    = "dark";
+    fontFamily = "SF Mono";
+    fontSize   = 13;
   };
 
   base = import ../layers/base.nix {
