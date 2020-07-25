@@ -36,15 +36,15 @@ let
   fonts."SF Mono" = {
     normal = {
       family = "SF Mono";
-      style  = "Regular";
+      style  = "Light";
     };
     bold = {
       family = "SF Mono";
-      style  = "Medium";
+      style  = "Regular";
     };
     italic = {
       family = "SF Mono";
-      style  = "Regular Italic";
+      style  = "Light Italic";
     };
     offset = {
       x = 0;
