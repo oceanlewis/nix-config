@@ -46,8 +46,6 @@ let
     };
 
     initExtra = ''
-      export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
-
       # Initialize Nix Profile
       . $HOME/.nix-profile/etc/profile.d/nix.sh
 
@@ -74,6 +72,8 @@ let
     };
 
     initExtra = ''
+      export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+
       function update() {
         local origDir=$(pwd)
 
@@ -98,6 +98,8 @@ let
     };
 
     initExtra = ''
+      export PATH="$HOME/Library/Python/3.7/bin:$HOME/.cargo/bin:$PATH"
+
       export TMUX_TMPDIR=$XDG_RUNTIME_DIR
 
       if ! test -d $TMUX_TMPDIR; then

@@ -5,7 +5,7 @@ let
   theme = import ../layers/theme.nix {
     inherit pkgs;
 
-    theme      = "standard";
+    theme      = "gruvbox";
     variant    = "dark";
     fontFamily = "SF Mono";
     fontSize   = 13;
@@ -75,6 +75,9 @@ let
 
   starship = import ../programs/starship.nix {
     inherit pkgs config lib;
+    extraConfig = {
+      java.disabled = true;
+    };
   };
 
   lorri = import ../services/lorri.nix {

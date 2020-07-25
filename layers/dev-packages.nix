@@ -1,14 +1,12 @@
 { pkgs , ...  }:
 
-with pkgs;
-
-[
+with pkgs; [
 
   # Databases
   postgresql
 
   # Languages
   go
-  python3
+  python3Full
 
 ]

@@ -143,8 +143,8 @@ let
     primary = {
       background = "0x1A1A1A";
       # background: "0x282828"
-      foreground = "0xFAEED9";          # Sepia
-      # foreground: "0xD9DCDE"        # Traditional
+      # foreground = "0xFAEED9";          # Sepia
+      foreground = "0xD9DCDE";        # Traditional
       bright_foreground = "0xFF9C9C";
     };
 
