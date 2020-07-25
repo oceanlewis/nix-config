@@ -12,9 +12,14 @@
       with selector; [
         nokogiri
         pry
+        rubocop
       ]
     ))
     solargraph
+  ];
+
+  vimPlugins = with pkgs.vimPlugins; [
+    coc-solargraph
   ];
 
 }

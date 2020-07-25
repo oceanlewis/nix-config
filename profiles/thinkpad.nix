@@ -62,7 +62,7 @@ let
 
   neovim = import ../programs/neovim.nix {
     inherit pkgs config lib theme;
-    extraPlugins = dhall.vimPlugins;
+    extraPlugins = dhall.vimPlugins ++ ruby.vimPlugins;
   };
 
   zsh = import ../programs/zsh.nix {
