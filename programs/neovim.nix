@@ -99,9 +99,11 @@ let
     \ }
 
     " Keybindings for LanguageClient (Language Server Protocol)
-    nmap <leader>q :call LanguageClient_textDocument_hover()<CR>
-    nmap <leader>w :call LanguageClient_textDocument_definition()<CR>
-    nmap <leader>e :call LanguageClient_textDocument_rename()<CR>
+    nmap <leader>h :call LanguageClient_textDocument_hover()<CR>
+    nmap <leader>d :call LanguageClient_textDocument_definition()<CR>
+
+    " Language Client - Open Context Menu
+    nnoremap <leader><leader> :call LanguageClient_contextMenu()<CR>
 
     " Rename - rn => rename
     noremap <leader>rn :call LanguageClient#textDocument_rename()<CR>
