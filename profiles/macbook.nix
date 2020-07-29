@@ -53,7 +53,7 @@ let
 
   git = import ../programs/git/git.nix {
     inherit pkgs config lib theme;
-    extraGitIgnores = jvm.git.ignores;
+    extraGitIgnores = jvm.git.ignores ++ [ ".vscode" ];
   };
 
   alacritty = import ../programs/alacritty.nix {
@@ -134,6 +134,9 @@ in
       XDG_DATA_HOME   = "${HOME}/.local/share";
       XDG_DATA_DIRS   = "${HOME}/.local/data";
       XDG_RUNTIME_DIR = "${HOME}/.local/run";
+
+      # TODO: Refactor into rust.nix
+      RUSTC_WRAPPER   = "${HOME}/.nix-profile/bin/sccache";
     };
 
     stateVersion = "20.09";

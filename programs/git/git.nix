@@ -26,6 +26,7 @@ with pkgs;
     userEmail = "david@armstronglewis.com";
 
     extraConfig = {
+      init.defaultBranch = "main";
       pull.ff = "only";
     };
 
