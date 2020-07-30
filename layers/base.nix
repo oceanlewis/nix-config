@@ -20,6 +20,7 @@ with pkgs;
     
     ## Developer Tools
     mdbook
+    neuron-notes
 
     # Build Tools
     autoconf

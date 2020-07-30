@@ -6,7 +6,7 @@ let
     inherit pkgs;
 
     theme      = "gruvbox";
-    variant    = "light";
+    variant    = "dark";
     fontFamily = "SF Mono";
     fontSize   = 13;
   };
@@ -123,7 +123,10 @@ in
       git.packages ++
       dhall.packages ++
       bash.packages ++
-      lorri.packages ++ [ pkgs.lorri ];
+      lorri.packages ++ [
+        pkgs.lorri
+        pkgs.neuron-notes 
+      ];
 
     sessionVariables = {
       PAGER           = "less -R";
