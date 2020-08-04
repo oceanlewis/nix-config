@@ -213,6 +213,7 @@ in
     plugins = with pkgs.vimPlugins; [
       LanguageClient-neovim
       coc-nvim
+      coc-tsserver
       vim-nix
       kotlin-vim
       vim-terraform

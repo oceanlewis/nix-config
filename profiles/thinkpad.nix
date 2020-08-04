@@ -119,10 +119,13 @@ in
       jvm.packages ++
       nodejs.packages ++
       git.packages ++
+      neovim.packages ++
       dhall.packages ++
       bash.packages ++
-      lorri.packages ++
-      [ pkgs.ion ];
+      lorri.packages ++ [
+        pkgs.ion
+        pkgs.neuron-notes
+      ];
 
     extraOutputsToInstall = [ "man" ];
     sessionVariables = {
