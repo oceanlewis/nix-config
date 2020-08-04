@@ -8,97 +8,145 @@
 
 let
 
-  fonts.default = { };
+  fonts = {
+    default = { };
 
-  fonts.Menlo = {
-    normal = {
-      family = "Menlo";
-      style  = "Regular";
+    "Menlo" = {
+      normal = {
+        family = "Menlo";
+        style  = "Regular";
+      };
+      bold = {
+        family = "Menlo";
+        style  = "Regular";
+      };
+      italic = {
+        family = "Menlo";
+        style  = "Italic";
+      };
+      offset = {
+        x = 0;
+        y = 0;
+      };
+      glyph_offset = {
+        x = 0;
+        y = 0;
+      };
     };
-    bold = {
-      family = "Menlo";
-      style  = "Regular";
-    };
-    italic = {
-      family = "Menlo";
-      style  = "Italic";
-    };
-    offset = {
-      x = 0;
-      y = 0;
-    };
-    glyph_offset = {
-      x = 0;
-      y = 0;
-    };
-  };
 
-  fonts."SF Mono" = {
-    normal = {
-      family = "SF Mono";
-      style  = "Light";
+    "SF Mono" = {
+      normal = {
+        family = "SF Mono";
+        style  = "Light";
+      };
+      bold = {
+        family = "SF Mono";
+        style  = "Regular";
+      };
+      italic = {
+        family = "SF Mono";
+        style  = "Light Italic";
+      };
+      offset = {
+        x = 0;
+        y = 3;
+      };
+      glyph_offset = {
+        x = 0;
+        y = 0;
+      };
     };
-    bold = {
-      family = "SF Mono";
-      style  = "Regular";
-    };
-    italic = {
-      family = "SF Mono";
-      style  = "Light Italic";
-    };
-    offset = {
-      x = 0;
-      y = 3;
-    };
-    glyph_offset = {
-      x = 0;
-      y = 0;
-    };
-  };
 
-  fonts."Fira Mono" = {
-    normal = {
-      family = "Fira Mono";
-      style  = "Normal";
+    "Fira Mono" = {
+      normal = {
+        family = "Fira Mono";
+        style  = "Normal";
+      };
+      bold = {
+        family = "Fira Mono";
+        style  = "Medium";
+      };
+      italic = {
+        family = "Fira Mono";
+        style  = "Italic";
+      };
+      offset = {
+        x = 0;
+        y = 5;
+      };
+      glyph_offset = {
+        x = 0;
+        y = 0;
+      };
     };
-    bold = {
-      family = "Fira Mono";
-      style  = "Medium";
-    };
-    italic = {
-      family = "Fira Mono";
-      style  = "Italic";
-    };
-    offset = {
-      x = 0;
-      y = 5;
-    };
-    glyph_offset = {
-      x = 0;
-      y = 0;
-    };
-  };
 
-  fonts."IBM Plex Mono" = {
-    normal = {
-      family = "IBM Plex Mono";
-      style  = "Regular";
+    "IBM Plex Mono" = {
+      normal = {
+        family = "IBM Plex Mono";
+        style  = "Regular";
+      };
+      bold = {
+        family = "IBM Plex Mono";
+        style  = "Medium";
+      };
+      italic = {
+        family = "IBM Plex Mono";
+        style  = "Regular Italic";
+      };
+      offset = {
+        x = 0;
+        y = 0;
+      };
+      glyph_offset = {
+        x = 0;
+        y = 0;
+      };
     };
-    bold = {
-      family = "IBM Plex Mono";
-      style  = "Medium";
+
+    "Comic Mono" = {
+      normal = {
+        family = "Comic Mono";
+        style  = "Normal";
+      };
+      bold = {
+        family = "Comic Mono";
+        style  = "Bold";
+      };
+      italic = {
+        family = "Comic Mono";
+        style  = "Normal";
+      };
+      offset = {
+        x = 1;
+        y = 5;
+      };
+      glyph_offset = {
+        x = 0;
+        y = 0;
+      };
     };
-    italic = {
-      family = "IBM Plex Mono";
-      style  = "Regular Italic";
-    };
-    offset = {
-      x = 0;
-      y = 0;
-    };
-    glyph_offset = {
-      x = 0;
-      y = 0;
+
+    "DM Mono" = {
+      normal = {
+        family = "DM Mono";
+        style  = "Light";
+      };
+      bold = {
+        family = "DM Mono";
+        style  = "Regular";
+      };
+      italic = {
+        family = "DM Mono";
+        style  = "Light";
+      };
+      offset = {
+        x = 0;
+        y = 0;
+      };
+      glyph_offset = {
+        x = 0;
+        y = 0;
+      };
     };
   };
 
@@ -144,7 +192,7 @@ let
       background = "0x1A1A1A";
       # background: "0x282828"
       # foreground = "0xFAEED9";          # Sepia
-      foreground = "0xD9DCDE";        # Traditional
+      foreground = "0xF1F1F1";        # Traditional
       bright_foreground = "0xFF9C9C";
     };
 
@@ -336,8 +384,8 @@ in
   alacritty = {
     colors = themes.${theme}.${variant};
     font   = fonts.${fontFamily} // {
-               size = fontSize;
-             };
+      size = fontSize;
+    };
   };
 
   neovim = {

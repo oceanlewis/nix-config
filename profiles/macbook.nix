@@ -6,8 +6,8 @@ let
     inherit pkgs;
 
     theme      = "gruvbox";
-    variant    = "dark";
-    fontFamily = "SF Mono";
+    variant    = "black";
+    fontFamily = "DM Mono";
     fontSize   = 13;
   };
 
@@ -138,9 +138,27 @@ in
       XDG_DATA_DIRS   = "${HOME}/.local/data";
       XDG_RUNTIME_DIR = "${HOME}/.local/run";
 
-      # TODO: Refactor into rust.nix
-      RUSTC_WRAPPER   = "${HOME}/.nix-profile/bin/sccache";
+      # TODO: Refactor
+      RUSTC_WRAPPER       = "${HOME}/.nix-profile/bin/sccache";
+      FZF_DEFAULT_COMMAND = "fd --type f";
     };
+
+    file.".config/nvim/coc-settings.json".text = ''
+      {
+      	"languageserver": {
+      		"terraform": {
+      			"command": "terraform-ls",
+      			"args": ["serve"],
+      			"filetypes": [
+      				"terraform",
+      				"tf"
+      			],
+      			"initializationOptions": {},
+      			"settings": {}
+      		}
+      	}
+      }
+    '';
 
     stateVersion = "20.09";
   };

@@ -7,10 +7,9 @@ with pkgs;
   packages = [
     # Cloud Tooling
     aws-sam-cli
-    awscli
+    awscli2
     terraform
     terraform-ls
-    terraform-lsp
   ];
 
 }

@@ -37,9 +37,10 @@ let
     set expandtab
   '';
 
-  fileAndTagNavigation = ''
-    " File and Tag Navigation
+  fzfConfig = ''
+    " FZF Configuration
     nmap <leader>t :Files<CR>
+    nmap <leader>f :Rg<CR>
     nmap <leader>r :Tags<CR>
   '';
 
@@ -162,6 +163,10 @@ let
     call AlignBackground()
   '';
 
+  cocConfig = ''
+    nmap <leader>c :CocCommand<cr>
+  '';
+
 in
 
 {
@@ -181,7 +186,7 @@ in
       ${bufferNavigation}
       ${mouseNavigation}
       ${setTabSize}
-      ${fileAndTagNavigation}
+      ${fzfConfig}
       ${reloadConfig}
       ${toggleVisibleWhitespace}
       ${trimWhitespace}
@@ -189,12 +194,20 @@ in
       ${languageClientConfig}
       ${airlineConfig}
       ${themeConfig}
+      ${cocConfig}
 
       " Stop Highlighting on Escape
       nnoremap <esc> :noh<return><esc>
 
       " Always use the system clipboard for all Copy/Paste operations
       set clipboard+=unnamedplus
+
+      " Tab and Shift-Tab navigate completion list
+      inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+      inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+      " Enter confirms completion selection
+      inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
     '';
 
     plugins = with pkgs.vimPlugins; [
