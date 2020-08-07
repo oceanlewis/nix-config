@@ -1,4 +1,8 @@
-{ pkgs, config, lib, ... }:
+{ pkgs
+, config
+, lib
+, ...
+}:
 
 let
 
@@ -33,7 +37,6 @@ let
   '';
 
   colors = {
-
     default = {
       status-fg             = "default";
       status-bg             = "default";
@@ -57,7 +60,6 @@ let
       mode-style-bg         = "#947CD3";
       mode-style-fg         = "#000000";
     };
-
   };
 
   activeColor = colors.magenta;
