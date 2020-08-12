@@ -158,6 +158,10 @@ in
 
     file.".config/nu/config.toml".text = ''
       use_starship = true
+      edit_mode = "vi"
+      completion_mode = "circular"
+
+      table_mode = "light"
 
       startup = [
         "alias er   [dir] { clear; exa -lg    $dir }",
