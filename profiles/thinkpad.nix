@@ -4,8 +4,8 @@ let
 
   theme = import ../layers/theme.nix {
     inherit pkgs;
-    theme      = "gruvbox";
-    variant    = "dark";
+    theme      = "standard";
+    variant    = "light";
     fontFamily = "Fira Mono";
     fontSize   = 11.5;
   };
@@ -46,10 +46,6 @@ let
     inherit pkgs;
   };
 
-  bash = import ../programs/bash.nix {
-    inherit pkgs config lib;
-  };
-
   git = import ../programs/git/git.nix {
     inherit pkgs config lib theme;
     extraGitIgnores = jvm.git.ignores;
@@ -68,8 +64,17 @@ let
     );
   };
 
+
+  shell = import ../layers/posix-shell.nix {
+    inherit pkgs;
+  };
+
   zsh = import ../programs/zsh.nix {
-    inherit pkgs config lib;
+    inherit pkgs shell;
+  };
+
+  bash = import ../programs/bash.nix {
+    inherit pkgs shell;
   };
 
   tmux = import ../programs/tmux.nix {
@@ -149,6 +154,43 @@ in
       		}
       	}
       }
+    '';
+
+    file.".config/nu/config.toml".text = ''
+      use_starship = true
+
+      startup = [
+        "alias er   [dir] { clear; exa -lg    $dir }",
+        "alias r    [dir] { clear; exa        $dir }",
+        "alias e    [dir] { clear; exa        $dir }",
+        "alias era  [dir] { clear; exa -la    $dir }",
+        "alias err  [dir] { clear; exa -lR    $dir }",
+        "alias erra [dir] { clear; exa -lRa   $dir }",
+        "alias et   [dir] { clear; exa -TL 1  $dir }",
+        "alias eta  [dir] { clear; exa -aTL 1 $dir }",
+        "alias et2  [dir] { clear; exa -TL 2  $dir }",
+        "alias et3  [dir] { clear; exa -TL 3  $dir }",
+        "alias et4  [dir] { clear; exa -TL 4  $dir }",
+        "alias etr  [dir] { clear; exa -T     $dir }",
+        "alias re   [   ] { clear; exa        *    }",
+        "alias rea  [   ] { clear; exa -a     *    }",
+
+        "alias eg  [] { clear; git status }",
+        "alias egg [] { clear; git status; echo; git diff }",
+        "alias egc  [] { clear; git status; echo; git diff --cached }",
+
+        "alias te [] { tmux list-sessions }",
+        "alias ta [] { tmux attach }",
+
+        "alias bat [path] { bat --style=plain $path }",
+        "alias dat [path] { ^bat --theme Dracula $path }",
+        "alias lat [path] { ^bat --theme GitHub $path }",
+
+        "alias ltop [] { ytop -c default-dark }",
+        "alias dtop [] { ytop -c monokai }",
+
+        "alias tf [] { terraform }",
+      ]
     '';
 
     stateVersion = "20.09";

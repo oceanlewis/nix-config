@@ -1,10 +1,4 @@
-{ pkgs, config, lib, ... }:
-
-let
-
-  shell = import ../layers/posix-shell.nix { inherit pkgs; };
-
-in
+{ pkgs, shell, ...  }:
 
 {
   home.programs.bash = {
