@@ -4,8 +4,8 @@ let
 
   theme = import ../layers/theme.nix {
     inherit pkgs;
-    theme      = "standard";
-    variant    = "light";
+    theme      = "gruvbox";
+    variant    = "black";
     fontFamily = "Fira Mono";
     fontSize   = 11.5;
   };
@@ -157,16 +157,18 @@ in
     '';
 
     file.".config/nu/config.toml".text = ''
+      skip_welcome_message = true
       use_starship = true
       edit_mode = "vi"
       completion_mode = "circular"
+      rm_always_trash = true
 
       table_mode = "light"
 
       startup = [
+        "alias e    [   ] { clear                  }",
         "alias er   [dir] { clear; exa -lg    $dir }",
         "alias r    [dir] { clear; exa        $dir }",
-        "alias e    [dir] { clear; exa        $dir }",
         "alias era  [dir] { clear; exa -la    $dir }",
         "alias err  [dir] { clear; exa -lR    $dir }",
         "alias erra [dir] { clear; exa -lRa   $dir }",
@@ -194,6 +196,9 @@ in
         "alias dtop [] { ytop -c monokai }",
 
         "alias tf [] { terraform }",
+
+        "alias cdcopy [] { pwd | xsel -ib }",
+        "alias cdpaste [] { cd $(xsel -ob) }",
       ]
     '';
 
