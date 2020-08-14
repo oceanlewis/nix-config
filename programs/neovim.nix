@@ -161,6 +161,16 @@ let
 
     let &background = "${theme.neovim.background}"
     call AlignBackground()
+
+    function! ToggleBackground()
+      if &background == "light"
+        let &background = "dark"
+      else
+        let &background = "light"
+      endif
+      call AlignBackground()
+    endfunc
+    nmap <leader>l :call ToggleBackground()<cr>
   '';
 
   cocConfig = ''

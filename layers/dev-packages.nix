@@ -9,4 +9,7 @@ with pkgs; [
   go
   python3Full
 
+  # Nix
+  niv
+
 ]

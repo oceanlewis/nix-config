@@ -4,8 +4,8 @@ let
 
   theme = import ../layers/theme.nix {
     inherit pkgs;
-    theme      = "gruvbox";
-    variant    = "black";
+    theme      = "standard";
+    variant    = "light";
     fontFamily = "Fira Mono";
     fontSize   = 11.5;
   };
@@ -157,13 +157,12 @@ in
     '';
 
     file.".config/nu/config.toml".text = ''
+      edit_mode            = "vi"
+      completion_mode      = "circular"
+      rm_always_trash      = true
+      use_starship         = true
       skip_welcome_message = true
-      use_starship = true
-      edit_mode = "vi"
-      completion_mode = "circular"
-      rm_always_trash = true
-
-      table_mode = "light"
+      table_mode           = "light"
 
       startup = [
         "alias e    [   ] { clear                  }",
