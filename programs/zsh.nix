@@ -9,6 +9,8 @@
     shellAliases  = shell.aliases;
     initExtra     = ''
       set -o vi
+
+      export TERM=screen-256color
       ${shell.initExtra}
     '';
     defaultKeymap = "viins";

@@ -7,7 +7,6 @@ with pkgs;
   packages = [
 
     ## Shells and Unix Environment
-    nushell
     elvish
     fish
     

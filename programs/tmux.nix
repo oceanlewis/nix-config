@@ -65,6 +65,9 @@ let
   activeColor = colors.magenta;
 
   theme = ''
+    # Enable TrueColors
+    set-option -sa terminal-overrides ',screen-256color:RGB,xterm-256color:RGB'
+
     # Status Bar and Pane Border
     set -g status-style fg=${activeColor.status-fg},bg=${activeColor.status-bg};
     set-option -g pane-active-border-style fg=${activeColor.pane-active-border-fg}
@@ -96,7 +99,7 @@ in
   home.programs.tmux = {
     enable        = true;
     keyMode       = "vi";
-    terminal      = "xterm-256color";
+    terminal      = "screen-256color";
     historyLimit  = 100000;
     baseIndex     = 1;
     escapeTime    = 10;
