@@ -42,7 +42,7 @@
         "alias ltop [] { ytop -c default-dark }"
         "alias dtop [] { ytop -c monokai }"
 
-        "alias tf [] { terraform }"
+        "alias tf [args] { terraform $args }"
 
         "alias cdcopy [] { pwd | xsel -ib }"
         "alias cdpaste [] { cd $(xsel -ob) }"

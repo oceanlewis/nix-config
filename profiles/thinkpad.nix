@@ -5,7 +5,7 @@ let
   theme = import ../layers/theme.nix {
     inherit pkgs;
     theme      = "gruvbox";
-    variant    = "light";
+    variant    = "dark";
     fontFamily = "Fira Mono";
     fontSize   = 11.5;
   };
@@ -146,18 +146,18 @@ in
 
     file.".config/nvim/coc-settings.json".text = ''
       {
-      	"languageserver": {
-      		"terraform": {
-      			"command": "terraform-ls",
-      			"args": ["serve"],
-      			"filetypes": [
-      				"terraform",
-      				"tf"
-      			],
-      			"initializationOptions": {},
-      			"settings": {}
-      		}
-      	}
+        "languageserver": {
+          "terraform": {
+            "command": "terraform-ls",
+            "args": ["serve"],
+            "filetypes": [
+              "terraform",
+              "tf"
+            ],
+            "initializationOptions": {},
+            "settings": {}
+          }
+        }
       }
     '';
 
