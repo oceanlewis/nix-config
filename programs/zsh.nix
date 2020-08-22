@@ -11,6 +11,11 @@
       set -o vi
 
       export TERM=screen-256color
+
+      if test -x "$(which zoxide)"; then
+        eval "$(zoxide init zsh)"
+      fi
+
       ${shell.initExtra}
     '';
     defaultKeymap = "viins";

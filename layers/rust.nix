@@ -16,7 +16,6 @@
     cargo-flamegraph
     cargo-geiger
     cargo-generate
-    cargo-tree
     cargo-udeps
     cargo-watch
     cargo-web

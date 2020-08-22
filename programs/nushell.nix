@@ -42,10 +42,14 @@
         "alias ltop [] { ytop -c default-dark }"
         "alias dtop [] { ytop -c monokai }"
 
-        "alias tf [args] { terraform $args }"
-
         "alias cdcopy [] { pwd | xsel -ib }"
         "alias cdpaste [] { cd $(xsel -ob) }"
+
+        "alias z  [a b c d] { cd $(zoxide query $a $b $c $d | trim) }"
+        "alias zi [a b c d] { cd $(zoxide query -i $a $b $c $d | trim) }"
+        "alias za [] { zoxide add }"
+
+        ''alias zvi [] { vi "$(fzf)" }''
       ];
     };
   };

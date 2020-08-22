@@ -176,7 +176,6 @@ with pkgs; {
 
       font = theme.alacritty.font;
       colors = theme.alacritty.colors;
-
       draw_bold_text_with_bright_colors = true;
 
       mouse.hide_when_typing = true;

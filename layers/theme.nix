@@ -377,6 +377,45 @@ let
     indexed_colors = [];
   };
 
+  themes.snazzy.dark = {
+    primary = {
+      background = "#282A36";
+      foreground = "#EFF0EB";
+      bright_foreground = "#9AEDFE";
+    };
+
+    cursor = {
+      cursor = "#97979B";
+    };
+
+    selection = {
+      text       = "#282A36";
+      background = "#FEFFFF";
+    };
+
+    normal = {
+      black   = "#282A36";
+      red     = "#FF5C57";
+      green   = "#5AF78E";
+      yellow  = "#F3F99D";
+      blue    = "#57C7FF";
+      magenta = "#FF6AC1";
+      cyan    = "#9AEDFE";
+      white   = "#F1F1F0";
+    };
+
+    bright = {
+      black   = "#686868";
+      red     = "#FF5C57";
+      green   = "#5AF78E";
+      yellow  = "#F3F99D";
+      blue    = "#57C7FF";
+      magenta = "#FF6AC1";
+      cyan    = "#9AEDFE";
+      white   = "#EFF0EB";
+    };
+  };
+
 in
 
 {

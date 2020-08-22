@@ -43,6 +43,8 @@ let
 
       theme = "alacritty-theme";
       tf = "terraform";
+
+      zvi = ''vi "$(fzf)"'';
     };
 
     initExtra = ''

@@ -9,6 +9,11 @@
 
     initExtra    = ''
       set -o vi
+
+      if test -x "$(which zoxide)"; then
+        eval "$(zoxide init bash)"
+      fi
+
       ${shell.initExtra}
     '';
   };

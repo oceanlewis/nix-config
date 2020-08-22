@@ -9,7 +9,7 @@ with pkgs;
     ## Shells and Unix Environment
     elvish
     fish
-    
+
     # Chat & Browsing
     irssi
     w3m
@@ -28,6 +28,7 @@ with pkgs;
     # Files & Text
     exa
     fzf
+    zoxide
     bat
     mdcat
     jq
