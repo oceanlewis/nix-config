@@ -146,10 +146,11 @@ in
       ];
 
     sessionVariables = {
-      PAGER           = "less -R";
-      EDITOR          = "nvim";
-      VISUAL          = "nvim";
-      TERM            = "xterm-256color";
+      PAGER     = "less -R";
+      EDITOR    = "nvim";
+      VISUAL    = "nvim";
+      TERM      = "screen-256color";
+
       XDG_CONFIG_HOME = "${HOME}/.config";
       XDG_DATA_HOME   = "${HOME}/.local/share";
       XDG_DATA_DIRS   = "${HOME}/.local/data";

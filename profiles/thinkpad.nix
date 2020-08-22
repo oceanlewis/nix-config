@@ -38,6 +38,10 @@ let
     inherit pkgs;
   };
 
+  python = import ../layers/python.nix {
+    inherit pkgs;
+  };
+
   nodejs = import ../layers/nodejs.nix {
     inherit pkgs;
   };
@@ -60,6 +64,7 @@ let
     extraPlugins = (
       dhall.vimPlugins ++
       ruby.vimPlugins ++
+      python.vimPlugins ++
       rust.vimPlugins
     );
   };
@@ -93,6 +98,9 @@ let
     inherit pkgs config lib;
   };
 
+  USER = "david";
+  HOME = "/home/${USER}";
+
 in
 
 {
@@ -115,8 +123,8 @@ in
   ];
 
   home = {
-    username      = "david";
-    homeDirectory = "/home/david";
+    username      = USER;
+    homeDirectory = HOME;
 
     packages =
       devPackages ++
@@ -126,6 +134,7 @@ in
       ruby.packages ++
       rust.packages ++
       jvm.packages ++
+      python.packages ++
       nodejs.packages ++
       git.packages ++
       neovim.packages ++
@@ -142,6 +151,10 @@ in
       EDITOR    = "nvim";
       VISUAL    = "nvim";
       TERM      = "screen-256color";
+
+      # TODO: Refactor
+      RUSTC_WRAPPER       = "${HOME}/.nix-profile/bin/sccache";
+      FZF_DEFAULT_COMMAND = "fd --type f";
     };
 
     file.".config/nvim/coc-settings.json".text = ''
