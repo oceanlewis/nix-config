@@ -7,7 +7,6 @@ with pkgs; [
 
   # Languages
   go
-  python3Full
 
   # Nix
   niv

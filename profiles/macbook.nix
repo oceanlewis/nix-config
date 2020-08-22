@@ -6,7 +6,7 @@ let
     inherit pkgs;
 
     theme      = "gruvbox";
-    variant    = "black";
+    variant    = "dark";
     fontFamily = "DM Mono";
     fontSize   = 13;
   };
@@ -39,16 +39,16 @@ let
     inherit pkgs;
   };
 
+  python = import ../layers/python.nix {
+    inherit pkgs;
+  };
+
   nodejs = import ../layers/nodejs.nix {
     inherit pkgs;
   };
 
   dhall = import ../layers/dhall.nix {
     inherit pkgs;
-  };
-
-  bash = import ../programs/bash.nix {
-    inherit pkgs config lib;
   };
 
   git = import ../programs/git/git.nix {
@@ -65,12 +65,26 @@ let
     extraPlugins = (
       dhall.vimPlugins ++
       ruby.vimPlugins ++
+      python.vimPlugins ++
       rust.vimPlugins
     );
   };
 
+
+  shell = import ../layers/posix-shell.nix {
+    inherit pkgs;
+  };
+
   zsh = import ../programs/zsh.nix {
-    inherit pkgs config lib;
+    inherit pkgs shell;
+  };
+
+  bash = import ../programs/bash.nix {
+    inherit pkgs shell;
+  };
+
+  nushell = import ../programs/nushell.nix {
+    inherit pkgs;
   };
 
   tmux = import ../programs/tmux.nix {
@@ -103,6 +117,7 @@ in
     alacritty.home
     neovim.home
     zsh.home
+    nushell.home
     tmux.home
     starship.home
   ];
@@ -119,13 +134,15 @@ in
       ruby.packages ++
       rust.packages ++
       jvm.packages ++
+      python.packages ++
       nodejs.packages ++
       git.packages ++
+      neovim.packages ++
       dhall.packages ++
       bash.packages ++
       lorri.packages ++ [
         pkgs.lorri
-        pkgs.neuron-notes 
+        pkgs.neuron-notes
       ];
 
     sessionVariables = {
@@ -145,18 +162,18 @@ in
 
     file.".config/nvim/coc-settings.json".text = ''
       {
-      	"languageserver": {
-      		"terraform": {
-      			"command": "terraform-ls",
-      			"args": ["serve"],
-      			"filetypes": [
-      				"terraform",
-      				"tf"
-      			],
-      			"initializationOptions": {},
-      			"settings": {}
-      		}
-      	}
+        "languageserver": {
+          "terraform": {
+            "command": "terraform-ls",
+            "args": ["serve"],
+            "filetypes": [
+              "terraform",
+              "tf"
+            ],
+            "initializationOptions": {},
+            "settings": {}
+          }
+        }
       }
     '';
 

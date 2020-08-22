@@ -99,7 +99,7 @@ let
     };
 
     initExtra = ''
-      export PATH="$HOME/Library/Python/3.7/bin:$HOME/.cargo/bin:$PATH"
+      export PATH="$HOME/.cargo/bin:$PATH"
 
       export TMUX_TMPDIR=$XDG_RUNTIME_DIR
 
