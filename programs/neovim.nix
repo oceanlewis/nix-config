@@ -97,6 +97,7 @@ let
   languageClientConfig = ''
     let g:LanguageClient_serverCommands = {
     \ 'rust': ['rust-analyzer'],
+    \ 'nix': ['rnix-lsp'],
     \ }
 
     " Keybindings for LanguageClient (Language Server Protocol)

@@ -10,5 +10,6 @@ with pkgs; [
 
   # Nix
   niv
+  nixFlakes
 
 ]

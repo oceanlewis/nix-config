@@ -1,12 +1,11 @@
 { pkgs, config, lib, ... }:
 
 let
-
   theme = import ../layers/theme.nix {
     inherit pkgs;
 
     theme      = "gruvbox";
-    variant    = "black";
+    variant    = "light";
     fontFamily = "Hack";
     fontSize   = 13;
   };
@@ -123,6 +122,8 @@ in
   ];
 
   home = {
+    stateVersion = "20.09";
+
     username      = USER;
     homeDirectory = HOME;
 
@@ -173,12 +174,21 @@ in
             ],
             "initializationOptions": {},
             "settings": {}
+          },
+          "nix": {
+            "command": "rnix-lsp",
+            "filetypes": [
+              "nix"
+            ]
           }
         }
       }
     '';
 
-    stateVersion = "20.09";
+    file.".config/nix/nix.conf".text = ''
+      experimental-features = nix-command flakes
+    '';
+
   };
 
 }
