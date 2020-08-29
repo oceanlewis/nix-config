@@ -148,6 +148,29 @@ let
         y = 0;
       };
     };
+
+    Hack = {
+      normal = {
+        family = "Hack";
+        style  = "Regular";
+      };
+      bold = {
+        family = "Hack";
+        style  = "Bold";
+      };
+      italic = {
+        family = "Hack";
+        style  = "Italic";
+      };
+      offset = {
+        x = 0;
+        y = 0;
+      };
+      glyph_offset = {
+        x = 1;
+        y = 1;
+      };
+    };
   };
 
   themes.standard.light = {

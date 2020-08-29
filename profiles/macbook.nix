@@ -6,8 +6,8 @@ let
     inherit pkgs;
 
     theme      = "gruvbox";
-    variant    = "dark";
-    fontFamily = "DM Mono";
+    variant    = "black";
+    fontFamily = "Hack";
     fontSize   = 13;
   };
 
