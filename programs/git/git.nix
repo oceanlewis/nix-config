@@ -56,5 +56,6 @@ with pkgs;
   packages = [
     gitAndTools.gh
     gitAndTools.delta
+    gitAndTools.gitui
   ];
 }
