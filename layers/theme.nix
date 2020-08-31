@@ -80,6 +80,29 @@ let
       };
     };
 
+    Monospace = {
+      normal = {
+        family = "Monospace";
+        style  = "Normal";
+      };
+      bold = {
+        family = "Monospace";
+        style  = "Medium";
+      };
+      italic = {
+        family = "Monospace";
+        style  = "Italic";
+      };
+      offset = {
+        x = 0;
+        y = 7;
+      };
+      glyph_offset = {
+        x = 0;
+        y = 0;
+      };
+    };
+
     "IBM Plex Mono" = {
       normal = {
         family = "IBM Plex Mono";
@@ -164,11 +187,11 @@ let
       };
       offset = {
         x = 0;
-        y = 0;
+        y = 4;
       };
       glyph_offset = {
-        x = 1;
-        y = 1;
+        x = 0;
+        y = 0;
       };
     };
   };

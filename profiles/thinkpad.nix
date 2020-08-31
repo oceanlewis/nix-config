@@ -5,8 +5,8 @@ let
   theme = import ../layers/theme.nix {
     inherit pkgs;
     theme      = "gruvbox";
-    variant    = "dark";
-    fontFamily = "Fira Mono";
+    variant    = "black";
+    fontFamily = "Hack";
     fontSize   = 11.5;
   };
 
