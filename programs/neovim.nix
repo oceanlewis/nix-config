@@ -178,9 +178,8 @@ let
     nmap <leader>c :CocCommand<cr>
   '';
 
-in
+in {
 
-{
   home.programs.neovim = {
     enable   = true;
     vimAlias = true;
@@ -240,4 +239,5 @@ in
   };
 
   packages = [];
+
 }

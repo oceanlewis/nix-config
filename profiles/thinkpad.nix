@@ -5,7 +5,7 @@ let
   theme = import ../layers/theme.nix {
     inherit pkgs;
     theme      = "gruvbox";
-    variant    = "black";
+    variant    = "dark";
     fontFamily = "Hack";
     fontSize   = 11.5;
   };
@@ -69,6 +69,9 @@ let
     );
   };
 
+  emacs = import ../programs/emacs.nix {
+    inherit pkgs;
+  };
 
   shell = import ../layers/posix-shell.nix {
     inherit pkgs;
@@ -115,6 +118,7 @@ in
     bash.home
     alacritty.home
     neovim.home
+    emacs.home
     zsh.home
     nushell.home
     tmux.home
@@ -123,6 +127,8 @@ in
   ];
 
   home = {
+    stateVersion = "20.09";
+
     username      = USER;
     homeDirectory = HOME;
 
@@ -169,12 +175,17 @@ in
             ],
             "initializationOptions": {},
             "settings": {}
+          },
+          "nix": {
+            "command": "rnix-lsp",
+            "filetypes": [
+              "nix"
+            ]
           }
         }
       }
     '';
 
-    stateVersion = "20.09";
   };
 
 }
