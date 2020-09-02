@@ -187,7 +187,7 @@ let
       };
       offset = {
         x = 0;
-        y = 4;
+        y = 0;
       };
       glyph_offset = {
         x = 0;
