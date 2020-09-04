@@ -6,7 +6,7 @@ with pkgs;
 
   packages = [
     # Cloud Tooling
-    aws-sam-cli
+    # aws-sam-cli
     awscli2
     awslogs
     terraform

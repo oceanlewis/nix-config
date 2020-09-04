@@ -1,9 +1,9 @@
 { pkgs, config, lib, ... }:
 
 let
+
   theme = import ../layers/theme.nix {
     inherit pkgs;
-
     theme      = "gruvbox";
     variant    = "light";
     fontFamily = "Hack";

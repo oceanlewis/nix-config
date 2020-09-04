@@ -5,7 +5,7 @@ let
   theme = import ../layers/theme.nix {
     inherit pkgs;
     theme      = "gruvbox";
-    variant    = "dark";
+    variant    = "light";
     fontFamily = "Hack";
     fontSize   = 11.5;
   };
@@ -52,7 +52,7 @@ let
 
   git = import ../programs/git/git.nix {
     inherit pkgs config lib theme;
-    extraGitIgnores = jvm.git.ignores;
+    extraGitIgnores = jvm.git.ignores ++ [ ".vscode" ];
   };
 
   alacritty = import ../programs/alacritty.nix {
