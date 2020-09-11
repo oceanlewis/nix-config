@@ -8,9 +8,9 @@
       edit_mode            = "vi";
       completion_mode      = "circular";
       rm_always_trash      = true;
-      use_starship         = true;
       skip_welcome_message = true;
       table_mode           = "light";
+      # prompt               = "echo $(starship prompt)";
 
       startup = [
         "alias e    [   ] { clear                  }"

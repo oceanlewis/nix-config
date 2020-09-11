@@ -36,6 +36,13 @@ let
     setw -g mouse on
   '';
 
+  enableCopyToSystemClipboard = 
+    if pkgs.stdenv.isLinux then
+    ''
+      bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
+    ''
+    else "";
+
   colors = {
     default = {
       status-fg             = "default";
@@ -86,11 +93,6 @@ let
     '';
   };
 
-  aesthetics = ''
-    ${theme}
-    ${style.default}
-  '';
-
 in
 
 {
@@ -110,7 +112,9 @@ in
       ${reloadConfig}
       ${enableViNavigation}
       ${enableMouseIntegration}
-      ${aesthetics}
+      ${enableCopyToSystemClipboard}
+      ${theme}
+      ${style.default}
     '';
   };
 }
