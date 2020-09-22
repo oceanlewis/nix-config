@@ -198,7 +198,7 @@ let
 
   themes.standard.light = {
     primary = {
-      background        = "0xFFFFFF";
+      background        = "0xF0F0F0";
       foreground        = "0x3c3836";
       bright_foreground = "0xA02020";     # Dark Red
     };
@@ -520,6 +520,6 @@ in
 
   bat.theme =
     if variant == "light" then "GitHub"
-    else "TwoDark";
+    else "Dracula";
 
 }

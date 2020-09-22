@@ -29,6 +29,10 @@ let
     bind-key -r -T prefix M-j     resize-pane -D
     bind-key -r -T prefix M-k     resize-pane -U
     bind-key -r -T prefix M-l     resize-pane -R
+
+    # Copy mode is more like Vi
+    bind-key -T copy-mode-vi 'v' send -X begin-selection
+    bind-key -T copy-mode-vi 'y' send -X copy-selection-and-cancel
   '';
 
   enableMouseIntegration = ''
@@ -101,7 +105,7 @@ in
   home.programs.tmux = {
     enable        = true;
     keyMode       = "vi";
-    terminal      = "screen-256color";
+    terminal      = "xterm-256color";
     historyLimit  = 100000;
     baseIndex     = 1;
     escapeTime    = 10;

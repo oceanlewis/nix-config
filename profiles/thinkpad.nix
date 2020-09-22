@@ -5,7 +5,7 @@ let
   theme = import ../layers/theme.nix {
     inherit pkgs;
     theme      = "gruvbox";
-    variant    = "dark";
+    variant    = "light";
     fontFamily = "Fira Mono";
     fontSize   = 13.5;
   };
@@ -156,7 +156,7 @@ in
       PAGER     = "less -R";
       EDITOR    = "nvim";
       VISUAL    = "nvim";
-      TERM      = "screen-256color";
+      TERM      = "xterm-256color";
 
       # TODO: Refactor
       RUSTC_WRAPPER       = "${HOME}/.nix-profile/bin/sccache";

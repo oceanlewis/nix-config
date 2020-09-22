@@ -10,8 +10,6 @@
     initExtra     = ''
       set -o vi
 
-      export TERM=screen-256color
-
       ${shell.initExtra}
 
       if test -x "$(which zoxide)"; then
