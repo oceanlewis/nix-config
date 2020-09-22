@@ -10,5 +10,7 @@ with pkgs; [
 
   # Nix
   niv
+  nixpkgs-fmt
+  manix
 
 ]
