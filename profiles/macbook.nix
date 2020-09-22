@@ -5,7 +5,7 @@ let
   theme = import ../layers/theme.nix {
     inherit pkgs;
     theme      = "gruvbox";
-    variant    = "light";
+    variant    = "dark";
     fontFamily = "Hack";
     fontSize   = 13;
   };
@@ -69,6 +69,9 @@ let
     );
   };
 
+  emacs = import ../programs/emacs.nix {
+    inherit pkgs;
+  };
 
   shell = import ../layers/posix-shell.nix {
     inherit pkgs;
@@ -115,8 +118,8 @@ in
     bash.home
     alacritty.home
     neovim.home
+    emacs.home
     zsh.home
-    nushell.home
     tmux.home
     starship.home
   ];
@@ -143,14 +146,13 @@ in
       bash.packages ++
       lorri.packages ++ [
         pkgs.lorri
-        pkgs.neuron-notes
       ];
 
     sessionVariables = {
       PAGER     = "less -R";
       EDITOR    = "nvim";
       VISUAL    = "nvim";
-      TERM      = "screen-256color";
+      TERM      = "xterm-256color";
 
       XDG_CONFIG_HOME = "${HOME}/.config";
       XDG_DATA_HOME   = "${HOME}/.local/share";
@@ -183,10 +185,6 @@ in
           }
         }
       }
-    '';
-
-    file.".config/nix/nix.conf".text = ''
-      experimental-features = nix-command flakes
     '';
 
   };
