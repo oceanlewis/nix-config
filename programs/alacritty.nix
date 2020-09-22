@@ -170,6 +170,9 @@ with pkgs; {
         title      = "";
         dimensions = { columns = 96; lines = 21; };
         padding    = { x = 5; y = 5; };
+
+        decorations =
+          if pkgs.stdenv.isDarwin then "none" else null;
       };
 
       key_bindings = keyBindings;
