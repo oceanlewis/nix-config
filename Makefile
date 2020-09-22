@@ -11,26 +11,26 @@ init: install-nixpkgs install-home-manager
 print-bold = (echo "\n\033[1m$1\033[0m")
 
 collect-garbage:
-	@$(call print-bold,"Collecting Garbage...")
+	@echo "\nCollecting Garbage..."
 	@nix-collect-garbage -d
 
 upgrade:
-	@$(call print-bold,"Upgrading Nix...")
+	@echo "\nUpgrading Nix..."
 	@nix upgrade-nix
 
-	@$(call print-bold,"Updating Nix Channels...")
+	@echo "\nUpdating Nix Channels..."
 	@nix-channel --update
 
-	@$(call print-bold,"Upgrading Nix Environment...")
+	@echo "\nUpgrading Nix Environment..."
 	@nix-env --upgrade
 
-	@$(call print-bold,"Activating new Home Manager Generation...")
+	@echo "\nActivating new Home Manager Generation..."
 	@home-manager switch
 
 switch:
 ifdef profile
-		@$(call print-bold,"Attempting to link Home Manager Profile $(profile)...")
+		@echo "\nAttempting to link Home Manager Profile $(profile)..."
 		@ln -fs ./profiles/$(profile).nix ./home.nix
 endif
-	@$(call print-bold,"Activating Home Manager Profile...")
+	@echo "\nActivating Home Manager Profile..."
 	@home-manager switch
