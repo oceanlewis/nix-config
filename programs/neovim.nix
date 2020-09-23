@@ -231,6 +231,7 @@ in {
       # UI
       airline
       fzf-vim
+      nerdtree
 
       # Themes
       gruvbox-community

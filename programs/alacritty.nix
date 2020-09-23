@@ -166,14 +166,16 @@ with pkgs; {
     enable = true;
 
     settings = {
+
       window = {
         title      = "";
         dimensions = { columns = 96; lines = 21; };
         padding    = { x = 5; y = 5; };
-
-        decorations =
-          if pkgs.stdenv.isDarwin then "none" else null;
-      };
+      } // (
+        if pkgs.stdenv.isDarwin
+        then { decorations = "none"; }
+        else { }
+      );
 
       key_bindings = keyBindings;
 
