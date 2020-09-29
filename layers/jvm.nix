@@ -4,7 +4,7 @@
 
   packages = with pkgs; [
     ktlint
-    #maven
+    maven
     #openjdk8
     #kotlin
   ];

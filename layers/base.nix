@@ -17,7 +17,7 @@ with pkgs;
     # Identity Management
     gnupg
     
-    ## Developer Tools
+    ## Writing Tools
     mdbook
     neuron-notes
 

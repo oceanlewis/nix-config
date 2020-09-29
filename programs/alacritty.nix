@@ -169,7 +169,7 @@ with pkgs; {
 
       window = {
         title      = "";
-        dimensions = { columns = 96; lines = 21; };
+        dimensions = { columns = 80; lines = 40; };
         padding    = { x = 5; y = 5; };
       } // (
         if pkgs.stdenv.isDarwin
