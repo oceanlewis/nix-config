@@ -119,6 +119,7 @@ in
     zsh.home
     tmux.home
     starship.home
+    nushell.home
   ];
 
   home = {
@@ -159,6 +160,7 @@ in
       # TODO: Refactor
       RUSTC_WRAPPER       = "${HOME}/.nix-profile/bin/sccache";
       FZF_DEFAULT_COMMAND = "fd --type f";
+      GLAMOUR_STYLE       = theme.gh.style;
     };
 
     file.".config/nvim/coc-settings.json".text = ''

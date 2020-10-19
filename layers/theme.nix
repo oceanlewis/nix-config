@@ -522,4 +522,6 @@ in
     if variant == "light" then "GitHub"
     else "Dracula";
 
+  gh.style = variant;
+
 }

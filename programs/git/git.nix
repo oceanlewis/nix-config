@@ -35,7 +35,7 @@ with pkgs;
     includes = [
       {
         path = ./deep6.git;
-        condition = "gitdir:~/Developer/Deep 6 AI/";
+        condition = "gitdir:~/Deep 6/";
       }
     ];
 

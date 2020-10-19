@@ -16,6 +16,7 @@
         eval "$(zoxide init zsh)"
       fi
     '';
+
     defaultKeymap = "viins";
 
     oh-my-zsh = {
