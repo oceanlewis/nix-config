@@ -161,6 +161,7 @@ in
       RUSTC_WRAPPER       = "${HOME}/.nix-profile/bin/sccache";
       FZF_DEFAULT_COMMAND = "fd --type f";
       GLAMOUR_STYLE       = theme.gh.style;
+      BAT_CONFIG_PATH     = "${HOME}/.config/bat/config";
     };
 
     file.".config/nvim/coc-settings.json".text = ''
@@ -184,6 +185,10 @@ in
           }
         }
       }
+    '';
+
+    file.".config/bat/config".text = ''
+      --theme="${theme.bat.theme}"
     '';
 
   };

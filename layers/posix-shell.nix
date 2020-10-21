@@ -32,11 +32,6 @@ let
       te = "tmux list-sessions";
       ta = "tmux attach";
 
-      # Bat
-      bat = "bat --style=plain";
-      dat = "bat --theme Dracula";
-      lat = "bat --theme GitHub";
-
       # Ytop
       ltop = "ytop -c default-dark";
       dtop = "ytop -c monokai";

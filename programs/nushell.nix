@@ -35,10 +35,6 @@
         "alias te [] { tmux list-sessions }"
         "alias ta [] { tmux attach }"
 
-        "alias bat [path] { bat --style=plain $path }"
-        "alias dat [path] { ^bat --theme Dracula $path }"
-        "alias lat [path] { ^bat --theme GitHub $path }"
-
         "alias ltop [] { ytop -c default-dark }"
         "alias dtop [] { ytop -c monokai }"
 
