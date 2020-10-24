@@ -32,10 +32,6 @@ let
       te = "tmux list-sessions";
       ta = "tmux attach";
 
-      # Ytop
-      ltop = "ytop -c default-dark";
-      dtop = "ytop -c monokai";
-
       theme = "alacritty-theme";
       tf = "terraform";
 

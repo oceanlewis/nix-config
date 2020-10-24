@@ -35,9 +35,6 @@
         "alias te [] { tmux list-sessions }"
         "alias ta [] { tmux attach }"
 
-        "alias ltop [] { ytop -c default-dark }"
-        "alias dtop [] { ytop -c monokai }"
-
         "alias cdcopy [] { pwd | xsel -ib }"
         "alias cdpaste [] { cd $(xsel -ob) }"
 

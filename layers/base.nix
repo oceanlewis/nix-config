@@ -46,7 +46,7 @@ with pkgs;
 
     # Process Management
     htop
-    ytop
+    bottom
   
     # Networking
     nmap
