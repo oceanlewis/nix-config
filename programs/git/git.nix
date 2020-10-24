@@ -6,9 +6,15 @@
 , ...
 }:
 
-with pkgs;
+with pkgs; let
 
-{
+  deltaTheme = { variant, ... }:
+    if variant == "light"
+    then "GitHub"
+    else "OneHalfDark";
+
+in {
+
   # Program Definition
   # - https://github.com/rycee/home-manager/blob/master/modules/programs/git.nix
   home.programs.git = {
@@ -18,7 +24,7 @@ with pkgs;
     delta = {
       enable = true;
       options = {
-        syntax-theme = theme.bat.theme;
+        syntax-theme = deltaTheme theme.config;
       };
     };
 
@@ -58,4 +64,5 @@ with pkgs;
     gitAndTools.delta
     gitAndTools.gitui
   ];
+
 }

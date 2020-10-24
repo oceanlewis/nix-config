@@ -54,7 +54,7 @@ let
       }
 
       if test -x "$(which direnv)"; then
-        eval "$(direnv hook zsh)"
+        eval "$(direnv hook $SHELL)"
       fi
     '';
 

@@ -1,9 +1,19 @@
-{ pkgs, ... }:
-{
+{ pkgs
+, ...
+}:
+
+let
+
+  emacs =
+    if pkgs.stdenv.isDarwin
+    then pkgs.emacsMacport
+    else pkgs.emacs;
+
+in {
 
   home.programs.emacs = {
     enable = true;
-    package = pkgs.emacs;
+    package = emacs;
 
     extraPackages =
       epkgs: [

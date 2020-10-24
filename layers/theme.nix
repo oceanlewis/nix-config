@@ -501,6 +501,13 @@ in
 
 {
 
+  config = {
+    theme      = theme;
+    variant    = variant;
+    fontFamily = fontFamily;
+    fontSize   = fontSize;
+  };
+
   alacritty = {
     colors = themes.${theme}.${variant};
     font   = fonts.${fontFamily} // {

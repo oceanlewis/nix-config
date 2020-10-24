@@ -10,7 +10,7 @@
       rm_always_trash      = true;
       skip_welcome_message = true;
       table_mode           = "light";
-      # prompt               = "echo $(starship prompt)";
+      prompt               = "echo $(starship prompt)";
 
       startup = [
         "alias e    [   ] { clear                  }"
