@@ -55,6 +55,8 @@ let
     extraGitIgnores = jvm.git.ignores ++ [ ".vscode" ];
   };
 
+  github-cli = import ../home/modules/github-cli.nix { inherit pkgs; };
+
   alacritty = import ../programs/alacritty.nix {
     inherit pkgs config lib theme;
   };
@@ -120,6 +122,7 @@ in
     tmux.home
     starship.home
     nushell.home
+    github-cli
   ];
 
   home = {
@@ -160,7 +163,6 @@ in
       # TODO: Refactor
       RUSTC_WRAPPER       = "${HOME}/.nix-profile/bin/sccache";
       FZF_DEFAULT_COMMAND = "fd --type f";
-      GLAMOUR_STYLE       = theme.gh.style;
       BAT_CONFIG_PATH     = "${HOME}/.config/bat/config";
     };
 
