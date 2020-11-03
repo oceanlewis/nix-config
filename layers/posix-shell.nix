@@ -2,6 +2,9 @@
 
 let
 
+  lib = pkgs.lib;
+  isNixOS = builtins.pathExists "/etc/NIXOS";
+
   default = {
 
     aliases = {
@@ -38,21 +41,24 @@ let
       zvi = ''vi "$(fzf)"'';
     };
 
-    initExtra = ''
-      # Initialize Nix Profile
-      . $HOME/.nix-profile/etc/profile.d/nix.sh
+    initExtra = (
+      lib.optionalString (!isNixOS)
+        ''
+          # Initialize Nix Profile
+          . $HOME/.nix-profile/etc/profile.d/nix.sh
+        ''
+      ) + ''
+        function purge_docker() {
+          docker system prune --force
+          docker volume prune --force
+          docker image prune --force
+          docker container prune --force
+        }
 
-      function purge_docker() {
-        docker system prune --force
-        docker volume prune --force
-        docker image prune --force
-        docker container prune --force
-      }
-
-      if test -x "$(which direnv)"; then
-        eval "$(direnv hook $SHELL)"
-      fi
-    '';
+        if test -x "$(which direnv)"; then
+          eval "$(direnv hook $SHELL)"
+        fi
+      '';
 
   };
 

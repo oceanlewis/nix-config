@@ -2,6 +2,8 @@
 
 with pkgs; [
 
+  gnumake
+
   # Databases
   postgresql
 
@@ -11,6 +13,6 @@ with pkgs; [
   # Nix
   niv
   nixpkgs-fmt
-  manix
+  rnix-lsp
 
 ]
