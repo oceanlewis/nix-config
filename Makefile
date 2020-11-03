@@ -8,8 +8,6 @@ install-home-manager:
 
 init: install-nixpkgs install-home-manager
 
-print-bold = (echo "\n\033[1m$1\033[0m")
-
 collect-garbage:
 	@echo "\nCollecting Garbage..."
 	@nix-collect-garbage -d
@@ -29,8 +27,8 @@ upgrade:
 
 switch:
 ifdef profile
-		@echo "\nAttempting to link Home Manager Profile $(profile)..."
+		@echo -e "\nAttempting to link Home Manager Profile $(profile)..."
 		@ln -fs ./profiles/$(profile).nix ./home.nix
 endif
-	@echo "\nActivating Home Manager Profile..."
+	@echo -e "\nActivating Home Manager Profile..."
 	@home-manager switch

@@ -5,17 +5,13 @@ let
   theme = import ../layers/theme.nix {
     inherit pkgs;
     theme      = "gruvbox";
-    variant    = "dark";
+    variant    = "light";
     fontFamily = "Fira Mono";
     fontSize   = 12;
   };
 
   base = import ../layers/base.nix {
-    inherit pkgs;
-  };
-
-  devPackages = import ../layers/dev-packages.nix {
-    inherit pkgs;
+    inherit pkgs lib;
   };
 
   cloudPlatforms = import ../layers/cloud-platforms.nix {
@@ -116,6 +112,7 @@ in
   };
 
   imports = [
+    base
     git.home
     bash.home
     alacritty.home
@@ -136,8 +133,7 @@ in
     homeDirectory = HOME;
 
     packages =
-      devPackages ++
-      base.packages ++
+      #base ++
       cloudPlatforms.packages ++
       beam.packages ++
       ruby.packages ++
