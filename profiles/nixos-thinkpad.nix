@@ -152,10 +152,10 @@ in
 
     extraOutputsToInstall = [ "man" ];
     sessionVariables = {
-      PAGER     = "less -R";
-      EDITOR    = "nvim";
-      VISUAL    = "nvim";
-      TERM      = "xterm-256color";
+      PAGER  = "less -R";
+      EDITOR = "nvim";
+      VISUAL = "nvim";
+      TERM   = "xterm-256color";
 
       # TODO: Refactor
       RUSTC_WRAPPER       = "${HOME}/.nix-profile/bin/sccache";
