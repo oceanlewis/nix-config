@@ -6,7 +6,7 @@ let
     inherit pkgs;
     theme      = "gruvbox";
     variant    = "light";
-    fontFamily = "Fira Mono";
+    fontFamily = "Fira Code";
     fontSize   = 12;
   };
 

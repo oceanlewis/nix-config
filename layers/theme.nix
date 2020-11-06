@@ -80,6 +80,29 @@ let
       };
     };
 
+    "Fira Code" = {
+      normal = {
+        family = "Fira Code";
+        style  = "Retina";
+      };
+      bold = {
+        family = "Fira Code";
+        style  = "SemiBold";
+      };
+      italic = {
+        family = "Fira Code";
+        style  = "Retina";
+      };
+      offset = {
+        x = 0;
+        y = 5;
+      };
+      glyph_offset = {
+        x = 0;
+        y = 0;
+      };
+    };
+
     Monospace = {
       normal = {
         family = "Monospace";

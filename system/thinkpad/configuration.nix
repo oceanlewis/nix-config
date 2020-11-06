@@ -66,12 +66,19 @@
       gnome3.geary
     ]);
 
+    shells = with pkgs; [
+      zsh nushell
+    ];
+
     systemPackages = with pkgs; [
       firefox
       spotify
 
       # IDEs
       jetbrains.idea-community
+
+      # Shells
+      zsh nushell
 
       # Document viewing
       bookworm
@@ -176,6 +183,7 @@
     home = "/home/david";
     description = "David Armstrong Lewis";
     extraGroups = [ "wheel" "networkmanager" "audio" "video" ]; # Enable ‘sudo’ for the user.
+    shell = pkgs.zsh;
   };
 
   # This value determines the NixOS release from which the default
