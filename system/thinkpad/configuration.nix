@@ -20,17 +20,23 @@
 
   xdg.portal.enable = true;
 
-  imports =
-    [ # Include the results of the hardware scan.
-      <nixos-hardware/lenovo/thinkpad/t490>
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    <nixos-hardware/lenovo/thinkpad/t490>
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "armstronglewis"; # Define your hostname.
+
+  networking.nameservers = [
+    "1.1.1.1"
+    "1.0.0.1"
+    "2606:4700:4700::1111"
+    "2606:4700:4700::1001"
+  ];
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -53,42 +59,48 @@
   # Set your time zone.
   time.timeZone = "US/Pacific";
 
-  environment.pantheon.excludePackages = (with pkgs; [
-    gnome3.epiphany
-    gnome3.gnome-font-viewer
-  ]);
+  environment = {
+    pantheon.excludePackages = (with pkgs; [
+      gnome3.epiphany
+      gnome3.gnome-font-viewer
+      gnome3.geary
+    ]);
 
-  environment.systemPackages = with pkgs; [
-    firefox
-    spotify
+    systemPackages = with pkgs; [
+      firefox
+      spotify
 
-    font-manager
+      # IDEs
+      jetbrains.idea-community
 
-    # Document viewing
-    bookworm
-    aesop
+      # Document viewing
+      bookworm
+      aesop
 
-    # Note taking
-    libreoffice
-    obsidian
-    pantheon.notes-up
-    neuron-notes
+      # Note taking
+      libreoffice
+      obsidian
+      pantheon.notes-up
+      neuron-notes
 
-    pantheon.elementary-wallpapers
-    elementary-planner
-    ideogram
+      pantheon.elementary-wallpapers
+      elementary-planner
+      ideogram
+      font-manager
 
-    sequeler
-    hashit
+      sequeler
+      hashit
 
-    slack
-    zoom-us
-    teams
-    
-    _1password-gui
+      slack
+      zoom-us
+      teams
+      discord
 
-    transmission-gtk
-  ];
+      _1password-gui
+
+      transmission-gtk
+    ];
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -116,34 +128,37 @@
   # Enable sound.
   #sound.enable = true;
   #hardware.pulseaudio.enable = true;
-  
+
   # Enable Avahi
   #services.avahi.enable = true;
 
-  services.flatpak.enable = true;
-  services.pantheon.contractor.enable = true;
-  services.xserver = {
-    enable = true;
-    layout = "us";
+  services = {
+    flatpak.enable = true;
+    pantheon.contractor.enable = true;
 
-    displayManager.lightdm.enable = true;
-    desktopManager.pantheon = {
+    xserver = {
       enable = true;
-      extraGSettingsOverrides = ''
-        [org.gnome.desktop.default-application.terminal]
-        exec='alacritty'
-      '';
+      layout = "us";
+
+      displayManager.lightdm.enable = true;
+      desktopManager.pantheon = {
+        enable = true;
+        extraGSettingsOverrides = ''
+          [org.gnome.desktop.default-application.terminal]
+          exec='alacritty'
+        '';
+      };
+
+      # Enable touchpad support.
+      libinput.enable = true;
+
+      resolutions = [
+        { x = 1920; y = 1080; }
+        { x = 1792; y = 1008; }
+        { x = 1664; y = 936;  }
+        { x = 1600; y = 900;  }
+      ];
     };
-
-    # Enable touchpad support.
-    libinput.enable = true;
-
-    resolutions = [
-      { x = 1920; y = 1080; }
-      { x = 1792; y = 1008; }
-      { x = 1664; y = 936;  }
-      { x = 1600; y = 900;  }
-    ];
   };
 
   fonts.fonts = with pkgs; [
@@ -170,6 +185,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "20.03"; # Did you read the comment?
-
 }
-

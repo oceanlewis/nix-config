@@ -10,7 +10,7 @@
       rm_always_trash      = true;
       skip_welcome_message = true;
       table_mode           = "light";
-      prompt               = "echo $(starship prompt)";
+      prompt               = "STARSHIP_SHELL='nu' echo $(starship prompt)";
 
       startup = [
         "alias e    [   ] { clear                  }"
@@ -42,7 +42,7 @@
         "alias zi [a b c d] { cd $(zoxide query -i $a $b $c $d | trim) }"
         "alias za [] { zoxide add }"
 
-        ''alias zvi [] { vi "$(fzf)" }''
+        ''alias zvi [] { nvim "$(fzf)" }''
       ];
     };
   };

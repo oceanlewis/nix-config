@@ -26,9 +26,7 @@ let
     inherit pkgs;
   };
 
-  rust = import ../layers/rust.nix {
-    inherit pkgs;
-  };
+  rust = import ../layers/rust.nix { inherit pkgs; };
 
   jvm = import ../layers/jvm.nix {
     inherit pkgs;
@@ -133,7 +131,6 @@ in
     homeDirectory = HOME;
 
     packages =
-      #base ++
       cloudPlatforms.packages ++
       beam.packages ++
       ruby.packages ++

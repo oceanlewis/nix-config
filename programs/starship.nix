@@ -7,7 +7,7 @@
 
   home.programs.starship = {
     enable                = true;
-    enableBashIntegration = false;
+    enableBashIntegration = true;
     enableZshIntegration  = true;
 
     settings = lib.recursiveUpdate {

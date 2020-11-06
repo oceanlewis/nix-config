@@ -38,7 +38,7 @@ let
       theme = "alacritty-theme";
       tf = "terraform";
 
-      zvi = ''vi "$(fzf)"'';
+      zvi = ''nvim "$(fzf)"'';
     };
 
     initExtra = (
