@@ -80,6 +80,10 @@
       # Shells
       zsh nushell
 
+      # Tools
+      file
+      lsof
+
       # Document viewing
       bookworm
       aesop
@@ -88,13 +92,15 @@
       libreoffice
       obsidian
       pantheon.notes-up
-      neuron-notes
+      # neuron-notes
 
       pantheon.elementary-wallpapers
       elementary-planner
       ideogram
       font-manager
 
+      # Developer System Packages
+      docker docker-compose
       sequeler
       hashit
 
@@ -168,6 +174,8 @@
     };
   };
 
+  virtualisation.docker.enable = true;
+
   fonts.fonts = with pkgs; [
     noto-fonts
     noto-fonts-cjk
@@ -182,7 +190,7 @@
     isNormalUser = true;
     home = "/home/david";
     description = "David Armstrong Lewis";
-    extraGroups = [ "wheel" "networkmanager" "audio" "video" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" "audio" "video" "docker" ];
     shell = pkgs.zsh;
   };
 

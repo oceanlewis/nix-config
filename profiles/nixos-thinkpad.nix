@@ -144,7 +144,6 @@ in
       bash.packages ++
       lorri.packages ++ [
         pkgs.ion
-        pkgs.neuron-notes
       ];
 
     extraOutputsToInstall = [ "man" ];
