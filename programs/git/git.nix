@@ -15,9 +15,15 @@ with pkgs; let
 
 in {
 
+  home.packages = [
+    gitAndTools.delta
+    gitAndTools.gitui
+    github-cli
+  ];
+
   # Program Definition
   # - https://github.com/rycee/home-manager/blob/master/modules/programs/git.nix
-  home.programs.git = {
+  programs.git = {
     enable       = true;
     package      = gitAndTools.gitFull;
 
@@ -58,10 +64,5 @@ in {
       lg  = "lg1";
     };
   };
-
-  packages = [
-    gitAndTools.delta
-    gitAndTools.gitui
-  ];
 
 }

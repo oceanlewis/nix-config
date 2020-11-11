@@ -549,8 +549,10 @@ in
   };
 
   bat.theme =
-    if variant == "light" then "gruvbox-light"
-    else "gruvbox";
+    if variant == "light" then "GitHub"
+    else "zenburn";
+    # if variant == "light" then "gruvbox-light"
+    # else "gruvbox";
 
   gh.style = variant;
 

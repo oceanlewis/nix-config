@@ -49,8 +49,6 @@ let
     extraGitIgnores = jvm.git.ignores ++ [ ".vscode" ];
   };
 
-  github-cli = import ../home/modules/github-cli.nix { inherit pkgs; };
-
   alacritty = import ../programs/alacritty.nix {
     inherit pkgs config lib theme;
   };
@@ -111,7 +109,7 @@ in
 
   imports = [
     base
-    git.home
+    git
     bash.home
     alacritty.home
     neovim.home
@@ -121,7 +119,6 @@ in
     starship.home
     nushell.home
     lorri.home
-    github-cli
   ];
 
   home = {
@@ -138,7 +135,6 @@ in
       jvm.packages ++
       python.packages ++
       nodejs.packages ++
-      git.packages ++
       neovim.packages ++
       dhall.packages ++
       bash.packages ++

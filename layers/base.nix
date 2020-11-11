@@ -47,7 +47,7 @@ in {
 
     # Process Management
     htop
-    bottom
+    # bottom
     
     # Networking
     nmap

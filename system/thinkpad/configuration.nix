@@ -103,6 +103,7 @@
       docker docker-compose
       sequeler
       hashit
+      insomnia
 
       slack
       zoom-us
