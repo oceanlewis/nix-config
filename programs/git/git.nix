@@ -17,7 +17,6 @@ in {
 
   home.packages = [
     gitAndTools.delta
-    gitAndTools.gitui
     github-cli
   ];
 

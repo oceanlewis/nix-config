@@ -11,11 +11,7 @@ let
   };
 
   base = import ../layers/base.nix {
-    inherit pkgs;
-  };
-
-  devPackages = import ../layers/dev-packages.nix {
-    inherit pkgs;
+    inherit pkgs lib;
   };
 
   cloudPlatforms = import ../layers/cloud-platforms.nix {
@@ -30,9 +26,7 @@ let
     inherit pkgs;
   };
 
-  rust = import ../layers/rust.nix {
-    inherit pkgs;
-  };
+  rust = import ../layers/rust.nix { inherit pkgs; };
 
   jvm = import ../layers/jvm.nix {
     inherit pkgs;
@@ -54,8 +48,6 @@ let
     inherit pkgs config lib theme;
     extraGitIgnores = jvm.git.ignores ++ [ ".vscode" ];
   };
-
-  github-cli = import ../home/modules/github-cli.nix { inherit pkgs; };
 
   alacritty = import ../programs/alacritty.nix {
     inherit pkgs config lib theme;
@@ -113,16 +105,16 @@ in
   programs.home-manager.enable = true;
 
   imports = [
-    git.home
+    base
+    git
     bash.home
     alacritty.home
-    neovim.home
     emacs.home
     zsh.home
     tmux.home
     starship.home
     nushell.home
-    github-cli
+    neovim
   ];
 
   home = {
@@ -132,8 +124,6 @@ in
     homeDirectory = HOME;
 
     packages =
-      devPackages ++
-      base.packages ++
       cloudPlatforms.packages ++
       beam.packages ++
       ruby.packages ++
@@ -141,8 +131,6 @@ in
       jvm.packages ++
       python.packages ++
       nodejs.packages ++
-      git.packages ++
-      neovim.packages ++
       dhall.packages ++
       bash.packages ++
       lorri.packages ++ [
@@ -150,10 +138,10 @@ in
       ];
 
     sessionVariables = {
-      PAGER     = "less -R";
-      EDITOR    = "nvim";
-      VISUAL    = "nvim";
-      TERM      = "xterm-256color";
+      PAGER  = "less -R";
+      EDITOR = "nvim";
+      VISUAL = "nvim";
+      TERM   = "xterm-256color";
 
       XDG_CONFIG_HOME = "${HOME}/.config";
       XDG_DATA_HOME   = "${HOME}/.local/share";

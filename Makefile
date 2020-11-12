@@ -27,8 +27,8 @@ upgrade:
 
 switch:
 ifdef profile
-		@echo -e "\nAttempting to link Home Manager Profile $(profile)..."
-		@ln -fs ./profiles/$(profile).nix ./home.nix
+	@echo -e "\nAttempting to link Home Manager Profile $(profile)..."
+	@ln -fs ./profiles/$(profile).nix ./home.nix
 endif
 	@echo -e "\nActivating Home Manager Profile..."
 	@home-manager switch

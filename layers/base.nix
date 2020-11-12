@@ -6,7 +6,7 @@
 with pkgs; 
 let
   platformSpecific =
-    lib.optionalString pkgs.stdenv.isLinux [
+    lib.optionals pkgs.stdenv.isLinux [
       xsel
     ];
 in {

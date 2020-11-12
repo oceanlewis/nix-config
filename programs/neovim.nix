@@ -180,7 +180,7 @@ let
 
 in {
 
-  home.programs.neovim = {
+  programs.neovim = {
     enable   = true;
     vimAlias = true;
     viAlias  = true;
@@ -239,6 +239,6 @@ in {
     ] ++ extraPlugins;
   };
 
-  packages = [];
+  home.packages = [];
 
 }
