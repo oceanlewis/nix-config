@@ -112,12 +112,12 @@ in
     git
     bash.home
     alacritty.home
-    neovim.home
     emacs.home
     zsh.home
     tmux.home
     starship.home
     nushell.home
+    neovim
     lorri.home
   ];
 
@@ -135,14 +135,12 @@ in
       jvm.packages ++
       python.packages ++
       nodejs.packages ++
-      neovim.packages ++
       dhall.packages ++
       bash.packages ++
       lorri.packages ++ [
         pkgs.ion
       ];
 
-    extraOutputsToInstall = [ "man" ];
     sessionVariables = {
       PAGER  = "less -R";
       EDITOR = "nvim";
