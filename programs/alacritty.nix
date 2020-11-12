@@ -174,7 +174,7 @@ with pkgs; {
       } // (
         if pkgs.stdenv.isDarwin
         then { decorations = "none"; }
-        else { }
+        else { gtk_theme_variant = theme.alacritty.variant; }
       );
 
       key_bindings = keyBindings;

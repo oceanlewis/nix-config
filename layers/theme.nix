@@ -532,9 +532,10 @@ in
   };
 
   alacritty = {
-    colors = themes.${theme}.${variant};
-    font   = fonts.${fontFamily} // {
-      size = fontSize;
+    variant = variant;
+    colors  = themes.${theme}.${variant};
+    font    = fonts.${fontFamily} // {
+      size  = fontSize;
     };
   };
 
