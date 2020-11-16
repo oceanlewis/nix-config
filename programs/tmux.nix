@@ -52,8 +52,8 @@ let
       status-fg             = "default";
       status-bg             = "default";
       pane-active-border-fg = "default";
-      mode-style-bg         = "default";
-      mode-style-fg         = "default";
+      mode-style-bg         = "#FF9C9C";
+      mode-style-fg         = "#474646";
     };
 
     pink = {
@@ -73,7 +73,7 @@ let
     };
   };
 
-  activeColor = colors.magenta;
+  activeColor = colors.default;
 
   theme = ''
     # Enable TrueColors
@@ -89,11 +89,11 @@ let
 
   style = {
     default = ''
-      set -g status-left "#S"
+      set -g status-left "" # originally "#S"
       set -g status-right ""
       set -g status-left-length 50
       set -g status-justify right
-      set -g status-position bottom
+      set -g status-position top
     '';
   };
 

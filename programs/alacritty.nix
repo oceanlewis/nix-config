@@ -174,7 +174,10 @@ with pkgs; {
       } // (
         if pkgs.stdenv.isDarwin
         then { decorations = "none"; }
-        else { gtk_theme_variant = theme.alacritty.variant; }
+        else {
+          gtk_theme_variant =
+            if theme.alacritty.variant == "light" then "light" else "dark";
+        }
       );
 
       key_bindings = keyBindings;
@@ -184,6 +187,8 @@ with pkgs; {
       draw_bold_text_with_bright_colors = true;
 
       mouse.hide_when_typing = true;
+
+      background_opacity = 0.9;
     };
 
   };
