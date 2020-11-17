@@ -80,6 +80,53 @@
       # IDEs
       jetbrains.idea-community
 
+      (vscode-with-extensions.override {
+        vscodeExtensions = with vscode-extensions; [
+          vscodevim.vim
+          bbenoist.Nix
+          llvm-org.lldb-vscode
+          matklad.rust-analyzer
+          ms-python.python
+        ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+          {
+            name = "gruvbox-material";
+            publisher = "sainnhe";
+            version = "6.3.4";
+            sha256 = "0dwizyp5rph9z2sfcl2l7dwnmii7976vhrwahzsbsc8smvix1k5f";
+          }
+          {
+            name = "monochrome";
+            publisher = "anotherglitchinthematrix";
+            version = "2.3.0";
+            sha256 = "114q6n51kb60xh1jh9yj5wh1d3a5bw7j4v34mismbr86smsd77z6";
+          }
+          {
+            name = "markdown-all-in-one";
+            publisher = "yzhang";
+            version = "3.4.0";
+            sha256 = "0ihfrsg2sc8d441a2lkc453zbw1jcpadmmkbkaf42x9b9cipd5qb";
+          }
+          {
+            name = "kotlin";
+            publisher = "fwcd";
+            version = "0.2.18";
+            sha256 = "06ni65a2q75zlld3cx8mp7jl38icaqmb7wmcrnblxzr2sxkyjzp9";
+          }
+          {
+            name = "go";
+            publisher = "golang";
+            version = "0.18.1";
+            sha256 = "0ldazkbi5hyqnq0rrkxiwl9n69pmh4q9rwazkg0hjh8b6pfrlrbg";
+          }
+          {
+            name = "terraform";
+            publisher = "hashicorp";
+            version = "2.3.0";
+            sha256 = "0696q8nr6kb5q08295zvbqwj7lr98z18gz1chf0adgrh476zm6qq";
+          }
+        ];
+      })
+
       # Shells
       zsh nushell
 
