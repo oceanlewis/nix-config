@@ -173,7 +173,7 @@ with pkgs; {
         padding    = { x = 5; y = 5; };
       } // (
         if pkgs.stdenv.isDarwin
-        then { decorations = "none"; }
+        then { /*decorations = "none";*/ }
         else {
           gtk_theme_variant =
             if theme.alacritty.variant == "light" then "light" else "dark";

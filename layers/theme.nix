@@ -37,11 +37,11 @@ let
     "SF Mono" = {
       normal = {
         family = "SF Mono";
-        style  = "Light";
+        style  = "Regular";
       };
       bold = {
         family = "SF Mono";
-        style  = "Regular";
+        style  = "Semibold";
       };
       italic = {
         family = "SF Mono";
@@ -550,10 +550,10 @@ in
   };
 
   bat.theme =
-    if variant == "light" then "GitHub"
-    else "zenburn";
-    # if variant == "light" then "gruvbox-light"
-    # else "gruvbox";
+    # if variant == "light" then "GitHub"
+    # else "zenburn";
+    if variant == "light" then "gruvbox-light"
+    else "gruvbox";
 
   gh.style = variant;
 

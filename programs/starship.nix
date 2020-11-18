@@ -16,14 +16,14 @@
       git_branch.symbol = "";
       character = {
         ## Supported by newer versions of `starship`
-        # success_symbol = "[➜](bold green)";
-        # error_symbol = "[➜](bold red)";
-        # vicmd_symbol = "[➜](bold blue)";
+        success_symbol = "[➜](bold green)";
+        error_symbol = "[➜](bold red)";
+        vicmd_symbol = "[➜](bold blue)";
 
-        symbol = "➜";
-        error_symbol = "✖";
-        vicmd_symbol = "◐";
-        use_symbol_for_status = true;
+        # symbol = "➜";
+        # error_symbol = "✖";
+        # vicmd_symbol = "◐";
+        # use_symbol_for_status = true;
       };
     } extraConfig;
   };
