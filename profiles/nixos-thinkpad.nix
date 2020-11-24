@@ -5,7 +5,7 @@ let
   theme = import ../layers/theme.nix {
     inherit pkgs;
     theme      = "gruvbox";
-    variant    = "light";
+    variant    = "dark";
     fontFamily = "Fira Code";
     fontSize   = 12;
   };
@@ -180,6 +180,26 @@ in
       --theme="${theme.bat.theme}"
     '';
 
-  };
+    file.".ideavimrc".text = ''
+      " Enable relative line numbers
+      set relativenumber
+      set number
 
+      " Integrate with system clipboard
+      set clipboard=unnamedplus,unnamed
+      let mapleader = " "
+      " yank to system clipboard
+      set clipboard=unnamed
+      set clipboard+=ideaput
+
+      "" Tab navigation
+      nnoremap <A-l> :tabnext<CR>
+      nnoremap <A-h> :tabprevious<CR>
+      nnoremap <A-BS> :tabclose<CR>
+
+      "" Code Navigation
+      nnoremap <S-CR> :action GotoDeclaration<CR>
+    '';
+
+  };
 }

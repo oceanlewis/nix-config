@@ -30,6 +30,11 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking = {
+    networkmanager = {
+      enable = true;
+      wifi.backend = "iwd";
+    };
+
     hostName = "armstronglewis";
     useDHCP = false;
 
@@ -145,10 +150,13 @@
       pantheon.notes-up
       neuron-notes
 
-      pantheon.elementary-wallpapers
+      ## Desktop Applications
+
       elementary-planner
       ideogram
       font-manager
+      monitor
+      pantheon.elementary-wallpapers
 
       # Developer System Packages
       docker docker-compose
@@ -165,6 +173,8 @@
       _1password-gui
 
       transmission-gtk
+
+      clamav
     ];
   };
 
