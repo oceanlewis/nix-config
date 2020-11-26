@@ -33,6 +33,12 @@
     networkmanager = {
       enable = true;
       wifi.backend = "iwd";
+      insertNameservers = [
+        "1.1.1.1"
+        "1.0.0.1"
+        "2606:4700:4700::1111"
+        "2606:4700:4700::1001"
+      ];
     };
 
     hostName = "armstronglewis";
@@ -43,13 +49,6 @@
     # replicates the default behaviour.
     interfaces.enp0s31f6.useDHCP = true;
     interfaces.wlp0s20f3.useDHCP = true;
-
-    nameservers = [
-      "1.1.1.1"
-      "1.0.0.1"
-      "2606:4700:4700::1111"
-      "2606:4700:4700::1001"
-    ];
 
     # Configure network proxy if necessary
     # networking.proxy.default = "http://user:password@proxy:port/";
