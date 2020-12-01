@@ -2,7 +2,6 @@
 , config
 , lib
 , theme
-, extraGitIgnores ? []
 , ...
 }:
 
@@ -41,7 +40,16 @@ in {
       pull.ff = "only";
     };
 
-    ignores = extraGitIgnores;
+    ignores = [
+      # JVM
+      "**/.idea"
+      "/.classpath"
+      "/.project"
+      "/.settings"
+
+      # VSCode
+      ".vscode"
+    ];
 
     includes = [
       {

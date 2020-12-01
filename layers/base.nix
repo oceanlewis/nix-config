@@ -7,37 +7,28 @@ with pkgs;
 let
   platformSpecific =
     lib.optionals pkgs.stdenv.isLinux [
-      xsel
+      xsel # rmesg
     ];
 in {
+
   home.packages = platformSpecific ++ [
     # Files & Text
-    exa
-    fzf
-    zoxide
-    bat
-    mdcat
-    jq
-    diffr
-    icdiff
+    exa fd ripgrep sd # grex
+    fzf zoxide
+    bat mdcat jq
+    diffr icdiff
     tokei
     entr
     pv
-    dua
-    du-dust
-    fd
-    ripgrep
-    wget
-    rsync
+    dua du-dust
+    wget rsync
     unzip
 
     # Shells and Unix Environment
-    elvish
-    fish
+    elvish fish
 
     # Chat & Browsing
-    irssi
-    w3m
+    irssi w3m
     
     # Identity Management
     gnupg
@@ -46,7 +37,7 @@ in {
     mdbook
 
     # Process Management
-    htop
+    htop gotop procs bandwhich
     # bottom
     
     # Networking
@@ -56,9 +47,7 @@ in {
     youtube-dl
 
     # Build Tools
-    autoconf
-    pkg-config
-    gnumake
+    autoconf pkg-config gnumake
 
     # Databases
     postgresql
@@ -67,8 +56,7 @@ in {
     go
 
     # Nix
-    niv
-    nixpkgs-fmt
-    rnix-lsp
+    niv nixpkgs-fmt rnix-lsp
   ];
+
 }

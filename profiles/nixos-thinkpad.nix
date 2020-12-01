@@ -46,7 +46,6 @@ let
 
   git = import ../programs/git/git.nix {
     inherit pkgs config lib theme;
-    extraGitIgnores = jvm.git.ignores ++ [ ".vscode" ];
   };
 
   alacritty = import ../programs/alacritty.nix {
@@ -108,8 +107,8 @@ in
   };
 
   imports = [
-    base
-    git
+    base git
+    jvm
     bash.home
     alacritty.home
     emacs.home
@@ -132,7 +131,6 @@ in
       beam.packages ++
       ruby.packages ++
       rust.packages ++
-      jvm.packages ++
       python.packages ++
       nodejs.packages ++
       dhall.packages ++
