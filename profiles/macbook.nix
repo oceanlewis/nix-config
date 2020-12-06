@@ -5,7 +5,7 @@ let
   theme = import ../layers/theme.nix {
     inherit pkgs;
     theme      = "gruvbox";
-    variant    = "light";
+    variant    = "dark";
     fontFamily = "SF Mono";
     fontSize   = 13.5;
   };
@@ -46,7 +46,6 @@ let
 
   git = import ../programs/git/git.nix {
     inherit pkgs config lib theme;
-    extraGitIgnores = jvm.git.ignores ++ [ ".vscode" ];
   };
 
   alacritty = import ../programs/alacritty.nix {
@@ -105,8 +104,8 @@ in
   programs.home-manager.enable = true;
 
   imports = [
-    base
-    git
+    base git
+    jvm
     bash.home
     alacritty.home
     emacs.home
@@ -128,14 +127,14 @@ in
       beam.packages ++
       ruby.packages ++
       rust.packages ++
-      jvm.packages ++
       python.packages ++
       nodejs.packages ++
       dhall.packages ++
       bash.packages ++
-      lorri.packages ++ [
-        pkgs.lorri
-      ];
+      lorri.packages ++ (with pkgs; [
+        lorri
+        neuron-notes
+      ]);
 
     sessionVariables = {
       PAGER  = "less -R";
