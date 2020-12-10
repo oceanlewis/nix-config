@@ -138,6 +138,7 @@
       file
       lsof
       killall
+      bind
 
       # Document viewing
       bookworm
@@ -233,6 +234,23 @@
         { x = 1664; y = 936;  }
         { x = 1600; y = 900;  }
       ];
+    };
+
+    resolved = {
+      enable = true;
+    };
+
+    avahi = {
+      enable          = true;
+      nssmdns         = true;
+      ipv4            = true;
+      ipv6            = true;
+      domainName      = "alocal";
+
+      publish = {
+        enable = true;
+        addresses = true;
+      };
     };
   };
 
