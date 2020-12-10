@@ -34,10 +34,6 @@ let
     inherit pkgs;
   };
 
-  jvm = import ../layers/jvm.nix {
-    inherit pkgs;
-  };
-
   python = import ../layers/python.nix {
     inherit pkgs;
   };
@@ -52,7 +48,6 @@ let
 
   git = import ../programs/git/git.nix {
     inherit pkgs config lib theme;
-    extraGitIgnores = jvm.git.ignores ++ [ ".vscode" ];
   };
 
   alacritty = import ../programs/alacritty.nix {
@@ -139,7 +134,6 @@ in
       beam.packages ++
       ruby.packages ++
       rust.packages ++
-      jvm.packages ++
       python.packages ++
       nodejs.packages ++
       git.packages ++

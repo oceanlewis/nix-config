@@ -28,10 +28,6 @@ let
 
   rust = import ../layers/rust.nix { inherit pkgs; };
 
-  jvm = import ../layers/jvm.nix {
-    inherit pkgs;
-  };
-
   python = import ../layers/python.nix {
     inherit pkgs;
   };
@@ -108,7 +104,6 @@ in
 
   imports = [
     base git
-    jvm
     bash.home
     alacritty.home
     emacs.home
