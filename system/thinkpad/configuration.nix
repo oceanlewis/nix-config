@@ -2,8 +2,17 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+let
+  CloudflareDNS = [
+    "1.1.1.1"
+    "1.0.0.1"
+    "2606:4700:4700::1111"
+    "2606:4700:4700::1001"
+  ];
 
+in
+
+{ config, pkgs, ... }:
 {
 
   nix.allowedUsers = [ "@wheel" ];
@@ -30,15 +39,12 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking = {
+    nameservers = CloudflareDNS;
     networkmanager = {
       enable = true;
       wifi.backend = "iwd";
-      insertNameservers = [
-        "1.1.1.1"
-        "1.0.0.1"
-        "2606:4700:4700::1111"
-        "2606:4700:4700::1001"
-      ];
+      insertNameservers = CloudflareDNS;
+      dns = "systemd-resolved";
     };
 
     hostName = "armstronglewis";
