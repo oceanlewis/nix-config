@@ -89,7 +89,8 @@ let
     ];
 
     linux = [
-      { key = "F11"; mods = "None";    action = "ToggleFullscreen"; }
+      { key = "F11";    mods = "None";      action = "ToggleFullscreen"; }
+      { key = "Q";      mods = "Control";   action = "Quit";             }
     ];
 
     default = [
