@@ -18,6 +18,7 @@ in
   nix.allowedUsers = [ "@wheel" ];
   nixpkgs.config.allowUnfree = true;
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.initrd.luks.devices = {
     root = {
       device = "/dev/nvme0n1p2";
@@ -88,7 +89,7 @@ in
       spotify
 
       # IDEs
-      jetbrains.idea-community
+      jetbrains.idea-ultimate
 
       (vscode-with-extensions.override {
         vscodeExtensions = with vscode-extensions; [
@@ -181,6 +182,9 @@ in
       transmission-gtk
 
       clamav
+
+      # Remote Desktop
+      x11vnc
     ];
   };
 
@@ -215,6 +219,7 @@ in
   #services.avahi.enable = true;
 
   services = {
+    fwupd.enable = true;
     flatpak.enable = true;
     pantheon.contractor.enable = true;
 
