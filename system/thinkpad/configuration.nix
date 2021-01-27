@@ -93,12 +93,17 @@ in
 
       (vscode-with-extensions.override {
         vscodeExtensions = with vscode-extensions; [
-          vscodevim.vim
           bbenoist.Nix
           llvm-org.lldb-vscode
           matklad.rust-analyzer
           ms-python.python
         ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+          {
+            name = "vim";
+            publisher = "vscodevim";
+            version = "1.18.5";
+            sha256 = "0cbmmhkbr4f1afk443sgdihp2q5zkzchbr2yhp7bm5qnv7xdv5l4";
+          }
           {
             name = "gruvbox-material";
             publisher = "sainnhe";
@@ -120,20 +125,20 @@ in
           {
             name = "kotlin";
             publisher = "fwcd";
-            version = "0.2.18";
-            sha256 = "06ni65a2q75zlld3cx8mp7jl38icaqmb7wmcrnblxzr2sxkyjzp9";
+            version = "0.2.20";
+            sha256 = "1psq1p5pwqspxwm7zgshisqrmc9f7y04p6ic3idlm90q6w0j7qd0";
           }
           {
             name = "go";
             publisher = "golang";
-            version = "0.18.1";
-            sha256 = "0ldazkbi5hyqnq0rrkxiwl9n69pmh4q9rwazkg0hjh8b6pfrlrbg";
+            version = "0.21.1";
+            sha256 = "1914kicadrqp653mcd4h26n7g4fzlzw55r36ws3r0lf8rzcb8sva";
           }
           {
             name = "terraform";
             publisher = "hashicorp";
-            version = "2.3.0";
-            sha256 = "0696q8nr6kb5q08295zvbqwj7lr98z18gz1chf0adgrh476zm6qq";
+            version = "2.5.0";
+            sha256 = "12qc63kvx0hsxfci86x9gzcsqckcsridpcsy4nm6b8s7g6aq8jx8";
           }
         ];
       })
