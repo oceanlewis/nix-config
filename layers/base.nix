@@ -15,7 +15,7 @@ in {
     # Files & Text
     exa fd ripgrep sd # grex
     fzf zoxide
-    bat mdcat jq
+    bat jq mdcat
     diffr icdiff
     tokei
     entr

@@ -50,12 +50,12 @@ let
 
   neovim = import ../programs/neovim.nix {
     inherit pkgs config lib theme;
-    extraPlugins = (
-      dhall.vimPlugins ++
-      ruby.vimPlugins ++
-      python.vimPlugins ++
+    extraPlugins = lib.concatLists([
+      dhall.vimPlugins
+      ruby.vimPlugins
+      python.vimPlugins
       rust.vimPlugins
-    );
+    ]);
   };
 
   emacs = import ../programs/emacs.nix {
