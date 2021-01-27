@@ -10,85 +10,31 @@ let
     fontSize   = 12;
   };
 
-  base = import ../layers/base.nix {
-    inherit pkgs lib;
-  };
 
-  cloudPlatforms = import ../layers/cloud-platforms.nix {
-    inherit pkgs;
-  };
-
-  beam = import ../layers/beam.nix {
-    inherit pkgs;
-  };
-
-  ruby = import ../layers/ruby.nix {
-    inherit pkgs;
-  };
-
-  rust = import ../layers/rust.nix { inherit pkgs; };
-
-  python = import ../layers/python.nix {
-    inherit pkgs;
-  };
-
-  nodejs = import ../layers/nodejs.nix {
-    inherit pkgs;
-  };
-
-  dhall = import ../layers/dhall.nix {
-    inherit pkgs;
-  };
-
-  git = import ../programs/git/git.nix {
-    inherit pkgs config lib theme;
-  };
-
-  alacritty = import ../programs/alacritty.nix {
-    inherit pkgs config lib theme;
-  };
+  git = import ../programs/git/git.nix { inherit pkgs config lib theme; };
+  alacritty = import ../programs/alacritty.nix { inherit pkgs config lib theme; };
+  emacs = import ../programs/emacs.nix { inherit pkgs; };
+  zsh = import ../programs/zsh.nix { inherit pkgs shell; };
+  bash = import ../programs/bash.nix { inherit pkgs shell; };
+  nushell = import ../programs/nushell.nix { inherit pkgs; };
+  tmux = import ../programs/tmux.nix { inherit pkgs config lib; };
+  starship = import ../programs/starship.nix { inherit pkgs config lib; };
 
   neovim = import ../programs/neovim.nix {
     inherit pkgs config lib theme;
-    extraPlugins = (
-      dhall.vimPlugins ++
-      ruby.vimPlugins ++
-      python.vimPlugins ++
-      rust.vimPlugins
-    );
+    extraPlugins = (dhall.vimPlugins ++ ruby.vimPlugins ++ python.vimPlugins ++ rust.vimPlugins);
   };
 
-  emacs = import ../programs/emacs.nix {
-    inherit pkgs;
-  };
-
-  shell = import ../layers/posix-shell.nix {
-    inherit pkgs;
-  };
-
-  zsh = import ../programs/zsh.nix {
-    inherit pkgs shell;
-  };
-
-  bash = import ../programs/bash.nix {
-    inherit pkgs shell;
-  };
-
-  nushell = import ../programs/nushell.nix {
-    inherit pkgs;
-  };
-
-  tmux = import ../programs/tmux.nix {
-    inherit pkgs config lib;
-  };
-
-  starship = import ../programs/starship.nix {
-    inherit pkgs config lib;
-  };
-
-  lorri = import ../services/lorri.nix {
-    inherit pkgs config lib;
-  };
+  shell = import ../layers/posix-shell.nix { inherit pkgs; };
+  base = import ../layers/base.nix { inherit pkgs lib; };
+  cloudPlatforms = import ../layers/cloud-platforms.nix { inherit pkgs; };
+  beam = import ../layers/beam.nix { inherit pkgs; };
+  ruby = import ../layers/ruby.nix { inherit pkgs; };
+  rust = import ../layers/rust.nix { inherit pkgs; };
+  python = import ../layers/python.nix { inherit pkgs; };
+  nodejs = import ../layers/nodejs.nix { inherit pkgs; };
+  dhall = import ../layers/dhall.nix { inherit pkgs; };
+  lorri = import ../services/lorri.nix { inherit pkgs config lib; };
 
   USER = "david";
   HOME = "/home/${USER}";
