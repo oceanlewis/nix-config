@@ -111,6 +111,13 @@ in
             sha256 = "0dwizyp5rph9z2sfcl2l7dwnmii7976vhrwahzsbsc8smvix1k5f";
           }
           {
+            name = "lucy-vscode";
+            publisher = "juliettepretot";
+            version = "2.8.2";
+            sha256 = "0r4d3cbagxzvwhqa5d2mri4i3wipnba9h9yicml6ik1qwb26p2qz";
+          }
+
+          {
             name = "monochrome";
             publisher = "anotherglitchinthematrix";
             version = "2.3.0";
