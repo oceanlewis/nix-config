@@ -176,6 +176,7 @@ in
       font-manager
       monitor
       pantheon.elementary-wallpapers
+      torrential
 
       # Developer System Packages
       docker docker-compose

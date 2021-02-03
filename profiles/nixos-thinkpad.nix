@@ -10,7 +10,6 @@ let
     fontSize   = 12;
   };
 
-
   git = import ../programs/git/git.nix { inherit pkgs config lib theme; };
   alacritty = import ../programs/alacritty.nix { inherit pkgs config lib theme; };
   emacs = import ../programs/emacs.nix { inherit pkgs; };
