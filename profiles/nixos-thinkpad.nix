@@ -4,11 +4,15 @@ let
 
   theme = import ../layers/theme.nix {
     inherit pkgs;
-    theme      = "gruvbox";
-    variant    = "dark";
+    theme      = "standard";
+    variant    = "light";
     fontFamily = "Fira Code";
-    fontSize   = 12;
+    fontSize   = 14.5;
   };
+
+  base = import ../layers/base.nix { inherit pkgs lib; };
+  shell = import ../layers/posix-shell.nix { inherit pkgs; };
+  lorri = import ../services/lorri.nix { inherit pkgs config lib; };
 
   git = import ../programs/git/git.nix { inherit pkgs config lib theme; };
   alacritty = import ../programs/alacritty.nix { inherit pkgs config lib theme; };
@@ -24,16 +28,15 @@ let
     extraPlugins = (dhall.vimPlugins ++ ruby.vimPlugins ++ python.vimPlugins ++ rust.vimPlugins);
   };
 
-  shell = import ../layers/posix-shell.nix { inherit pkgs; };
-  base = import ../layers/base.nix { inherit pkgs lib; };
   cloudPlatforms = import ../layers/cloud-platforms.nix { inherit pkgs; };
+
+  # Languages
   beam = import ../layers/beam.nix { inherit pkgs; };
   ruby = import ../layers/ruby.nix { inherit pkgs; };
   rust = import ../layers/rust.nix { inherit pkgs; };
   python = import ../layers/python.nix { inherit pkgs; };
   nodejs = import ../layers/nodejs.nix { inherit pkgs; };
   dhall = import ../layers/dhall.nix { inherit pkgs; };
-  lorri = import ../services/lorri.nix { inherit pkgs config lib; };
 
   USER = "david";
   HOME = "/home/${USER}";

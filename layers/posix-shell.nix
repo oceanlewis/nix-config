@@ -72,18 +72,6 @@ let
 
     initExtra = ''
       export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
-
-      function update() {
-        local origDir=$(pwd)
-
-        sudo apt update && \
-        sudo apt upgrade --yes && \
-        flatpak update --assumeyes
-
-        cd $HOME/.config/nixpkgs
-        make upgrade
-        cd $origDir
-      }
     '';
 
   };
@@ -111,12 +99,11 @@ in
 
 {
 
-  aliases =
-    default.aliases // (
-      if      pkgs.stdenv.isLinux  then linux.aliases
-      else if pkgs.stdenv.isDarwin then darwin.aliases
-      else { }
-    );
+  aliases = default.aliases // (
+    if      pkgs.stdenv.isLinux  then linux.aliases
+    else if pkgs.stdenv.isDarwin then darwin.aliases
+    else { }
+  );
 
   initExtra = ''
     ${default.initExtra}
