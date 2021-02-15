@@ -258,9 +258,7 @@ let
 
   themes.standard.dark = {
     primary = {
-      background = "0x1A1A1A";
-      # background: "0x282828"
-      # foreground = "0xFAEED9";          # Sepia
+      background = "0x272727";
       foreground = "0xF1F1F1";        # Traditional
       bright_foreground = "0xFF9C9C";
     };
@@ -298,9 +296,8 @@ let
 
   themes.standard.black = {
     primary = {
-      background = "0x000000";
+      background = "0x1A1A1A";
       foreground = "0xFAEED9";          # Sepia
-      # foreground = "0xD9DCDE";        # Traditional
       bright_foreground = "0xFF9C9C";
     };
 
@@ -336,7 +333,6 @@ let
 
   themes.gruvbox.light = {
     primary = {
-      #background        = "0xFBF1C7";
       background        = "0xF9F5D7";
       foreground        = "0x3C3836";
       bright_foreground = "0xA02020";     # Dark Red
@@ -374,7 +370,7 @@ let
 
   themes.gruvbox.dark = {
     primary = {
-      background        = "0x1A1A1A";
+      background        = "0x272727";
       foreground        = "0xEBDBB2";
       bright_foreground = "0xFF9C9C";
     };
@@ -411,7 +407,7 @@ let
 
   themes.gruvbox.black = {
     primary = {
-      background        = "0x000000";
+      background        = "0x1A1A1A";
       foreground        = "0xEBDBB2";
       bright_foreground = "0xFF9C9C";
     };
@@ -550,8 +546,6 @@ in
   };
 
   bat.theme =
-    # if variant == "light" then "GitHub"
-    # else "zenburn";
     if variant == "light" then "gruvbox-light"
     else "gruvbox";
 
