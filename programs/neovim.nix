@@ -241,5 +241,27 @@ in {
   };
 
   home.packages = [];
+  home.file.".config/nvim/coc-settings.json".text = ''
+    {
+      "languageserver": {
+        "terraform": {
+          "command": "terraform-ls",
+          "args": ["serve"],
+          "filetypes": [
+            "terraform",
+            "tf"
+          ],
+          "initializationOptions": {},
+          "settings": {}
+        },
+        "nix": {
+          "command": "rnix-lsp",
+          "filetypes": [
+            "nix"
+          ]
+        }
+      }
+    }
+  '';
 
 }

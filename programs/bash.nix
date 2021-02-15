@@ -1,7 +1,7 @@
 { pkgs, shell, ...  }:
 
 {
-  home.programs.bash = {
+  programs.bash = {
     enable         = true;
     shellAliases   = shell.aliases;
     historyControl = [ "erasedups" "ignoredups" "ignorespace" ];
@@ -18,5 +18,5 @@
     '';
   };
 
-  packages = with pkgs; [ bashInteractive_5 ];
+  home.packages = with pkgs; [ bashInteractive_5 ];
 }

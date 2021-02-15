@@ -102,7 +102,7 @@ in
 {
   # Program Definition
   # - https://github.com/rycee/home-manager/blob/master/modules/programs/tmux.nix
-  home.programs.tmux = {
+  programs.tmux = {
     enable        = true;
     keyMode       = "vi";
     terminal      = "xterm-256color";

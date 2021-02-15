@@ -1,7 +1,7 @@
 { pkgs, ...  }:
 
 {
-  home.programs.nushell = {
+  programs.nushell = {
     enable = true;
 
     settings = {

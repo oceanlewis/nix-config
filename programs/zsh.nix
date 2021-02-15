@@ -3,7 +3,7 @@
 {
   # Program Definition
   # - https://github.com/rycee/home-manager/blob/master/modules/programs/zsh.nix
-  home.programs.zsh = {
+  programs.zsh = {
     enable        = true;
     dotDir        = ".config/zsh";
     shellAliases  = shell.aliases;
