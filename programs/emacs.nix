@@ -11,7 +11,7 @@ let
 
 in {
 
-  home.programs.emacs = {
+  programs.emacs = {
     enable = true;
     package = emacs;
 

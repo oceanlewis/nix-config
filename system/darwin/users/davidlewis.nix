@@ -56,29 +56,6 @@ in {
       BAT_CONFIG_PATH     = "${HOME}/.config/bat/config";
     };
 
-    file.".config/nvim/coc-settings.json".text = ''
-      {
-        "languageserver": {
-          "terraform": {
-            "command": "terraform-ls",
-            "args": ["serve"],
-            "filetypes": [
-              "terraform",
-              "tf"
-            ],
-            "initializationOptions": {},
-            "settings": {}
-          },
-          "nix": {
-            "command": "rnix-lsp",
-            "filetypes": [
-              "nix"
-            ]
-          }
-        }
-      }
-    '';
-
     file.".config/bat/config".text = ''
       --theme="${theme.bat.theme}"
     '';

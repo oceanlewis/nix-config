@@ -163,11 +163,10 @@ let
 in
 
 with pkgs; {
-  home.programs.alacritty = {
+  programs.alacritty = {
     enable = true;
 
     settings = {
-
       window = {
         title         = "";
         dynamic_title = false;
@@ -175,7 +174,7 @@ with pkgs; {
         padding       = { x = 5; y = 5; };
       } // (
         if pkgs.stdenv.isDarwin
-        then { /*decorations = "none";*/ }
+        then { decorations = "none"; }
         else {
           gtk_theme_variant =
             if theme.alacritty.variant == "light" then "light" else "dark";
@@ -192,8 +191,5 @@ with pkgs; {
 
       background_opacity = 0.96;
     };
-
   };
-
-  packages = [];
 }

@@ -63,15 +63,10 @@ in {
       programs.home-manager.enable = true;
 
       imports = [
-        base git
-        bash.home
-        alacritty.home
-        emacs.home
-        zsh.home
-        tmux.home
-        starship.home
-        nushell.home
-        neovim
+        base git tmux
+        bash zsh nushell
+        starship neovim emacs
+        alacritty
       ];
 
       home = {
@@ -88,7 +83,6 @@ in {
           python
           nodejs
           dhall
-          bash
           lorri
         ] ++ [
           pkgs.lorri
@@ -112,29 +106,6 @@ in {
           BAT_CONFIG_PATH     = "${HOME}/.config/bat/config";
         };
 
-        file.".config/nvim/coc-settings.json".text = ''
-          {
-            "languageserver": {
-              "terraform": {
-                "command": "terraform-ls",
-                "args": ["serve"],
-                "filetypes": [
-                  "terraform",
-                  "tf"
-                ],
-                "initializationOptions": {},
-                "settings": {}
-              },
-              "nix": {
-                "command": "rnix-lsp",
-                "filetypes": [
-                  "nix"
-                ]
-              }
-            }
-          }
-        '';
-
         file.".config/bat/config".text = ''
           --theme="${theme.bat.theme}"
         '';
@@ -151,8 +122,8 @@ in {
   ];
 
   # Use a custom configuration.nix location.
-  # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
-  environment.darwinConfig = "$HOME/.config/nixpkgs/systems/darwin/configuration.nix";
+  # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/system/darwin/configuration.nix
+  environment.darwinConfig = "$HOME/.config/nixpkgs/system/darwin/configuration.nix";
 
   # Auto upgrade nix package and the daemon service.
   # services.nix-daemon.enable = true;
