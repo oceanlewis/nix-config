@@ -175,11 +175,11 @@ let
     "DM Mono" = {
       normal = {
         family = "DM Mono";
-        style  = "Light";
+        style  = "Regular";
       };
       bold = {
         family = "DM Mono";
-        style  = "Regular";
+        style  = "Medium";
       };
       italic = {
         family = "DM Mono";
@@ -221,7 +221,8 @@ let
 
   themes.standard.light = {
     primary = {
-      background        = "0xF0F0F0";
+      #background        = "0xF0F0F0";
+      background        = "0xFFFFFF";
       foreground        = "0x3c3836";
       bright_foreground = "0xA02020";     # Dark Red
     };
@@ -370,7 +371,7 @@ let
 
   themes.gruvbox.dark = {
     primary = {
-      background        = "0x272727";
+      background        = "0x292828";
       foreground        = "0xEBDBB2";
       bright_foreground = "0xFF9C9C";
     };
@@ -547,7 +548,7 @@ in
 
   bat.theme =
     if variant == "light" then "gruvbox-light"
-    else "gruvbox";
+    else "gruvbox-dark";
 
   gh.style = variant;
 

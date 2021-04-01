@@ -15,7 +15,7 @@ in {
     # Files & Text
     exa fd ripgrep sd # grex
     fzf zoxide
-    bat jq mdcat
+    bat jq yq mdcat
     diffr icdiff
     tokei
     entr
@@ -41,7 +41,7 @@ in {
     # bottom
     
     # Networking
-    nmap
+    nmap httpie
  
     # Content
     youtube-dl
@@ -53,7 +53,7 @@ in {
     postgresql
 
     # Languages
-    go
+    go gopls
 
     # Nix
     niv nixpkgs-fmt rnix-lsp

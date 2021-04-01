@@ -9,8 +9,8 @@ let
   theme = import (layer "theme.nix") {
     inherit pkgs;
     theme      = "gruvbox";
-    variant    = "dark";
-    fontFamily = "SF Mono";
+    variant    = "light";
+    fontFamily = "DM Mono";
     fontSize   = 13.5;
   };
 
@@ -43,22 +43,41 @@ let
   tmux = import (program "tmux.nix") { inherit pkgs config lib; };
   starship = import (program "starship.nix") { inherit pkgs config lib; };
   lorri = import (service "lorri.nix") { inherit pkgs config lib; };
+  rip = pkgs.callPackage (program "rip.nix") {};
 
-  USER = "davidlewis";
+  USER = "david";
   HOME = "/Users/${USER}";
 
 in {
 
   imports = [ <home-manager/nix-darwin> ];
 
-  users.users.davidlewis = {
+  system.defaults = {
+    dock = {
+      autohide = true;        # Autohide Dock
+      orientation = "bottom";
+    };
+
+    trackpad = {
+      Clicking = true;
+      TrackpadThreeFingerDrag = true;
+    };
+
+    NSGlobalDomain = {
+      InitialKeyRepeat = 25;
+      KeyRepeat = 2;
+      _HIHideMenuBar = true;    # Autohide Menubar
+    };
+  };
+
+  users.users.david = {
     home = HOME;
     isHidden = false;
     shell = pkgs.zsh;
   };
 
   home-manager = {
-    users.davidlewis = { pkgs, ... } :{
+    users.david = { pkgs, ... } :{
 
       programs.home-manager.enable = true;
 
@@ -87,6 +106,7 @@ in {
         ] ++ [
           pkgs.lorri
           pkgs.neuron-notes
+          rip
         ];
 
         sessionVariables = {
@@ -101,14 +121,43 @@ in {
           XDG_RUNTIME_DIR = "${HOME}/.local/run";
 
           # TODO: Refactor
-          RUSTC_WRAPPER       = "${HOME}/.nix-profile/bin/sccache";
           FZF_DEFAULT_COMMAND = "fd --type f";
           BAT_CONFIG_PATH     = "${HOME}/.config/bat/config";
+          GOPATH              = "${HOME}/Developer/go/";
         };
 
         file.".config/bat/config".text = ''
           --theme="${theme.bat.theme}"
         '';
+
+        file.".ideavimrc".text = ''
+          " Enable relative line numbers
+          set relativenumber
+          set number
+        
+          " Integrate with system clipboard
+          set clipboard=unnamedplus,unnamed
+          let mapleader = " "
+          " yank to system clipboard
+          set clipboard=unnamed
+          set clipboard+=ideaput
+        
+          "" Tab navigation
+          nnoremap <A-l> :tabnext<CR>
+          nnoremap <A-h> :tabprevious<CR>
+          nnoremap <A-BS> :tabclose<CR>
+        
+          "" Code Navigation
+          nnoremap <S-CR> :action GotoDeclaration<CR>
+        '';
+
+        file."${HOME}/.config/nu/config.toml".onChange = ''
+          echo Linking in nushell config file
+          ln -sfv "${HOME}/.config/nu/config.toml" "${HOME}/Library/Application Support/org.nushell.nu/config.toml"
+        '';
+
+        #file."${HOME}/Library/Application Support/org.nushell.nu/config.toml".source =
+        #  "${HOME}/.config/nu/config.toml";
 
       };
     };
@@ -128,6 +177,9 @@ in {
   # Auto upgrade nix package and the daemon service.
   # services.nix-daemon.enable = true;
   # nix.package = pkgs.nix;
+  services = {
+    lorri.enable = true;
+  };
 
   # Create /etc/bashrc that loads the nix-darwin environment.
   programs.zsh.enable = true;  # default shell on catalina

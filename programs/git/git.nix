@@ -17,6 +17,7 @@ in {
   home.packages = [
     gitAndTools.delta
     github-cli
+    act
   ];
 
   # Program Definition
@@ -49,6 +50,9 @@ in {
 
       # VSCode
       ".vscode"
+
+      # macOS
+      ".DS_Store"
     ];
 
     includes = [

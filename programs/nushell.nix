@@ -10,7 +10,11 @@
       rm_always_trash      = true;
       skip_welcome_message = true;
       table_mode           = "light";
-      prompt               = "STARSHIP_SHELL='nu' echo $(starship prompt)";
+      prompt               = "starship prompt";
+
+      env = {
+        STARSHIP_SHELL = "nushell";
+      };
 
       startup = [
         "alias e    [   ] { clear                  }"
@@ -46,4 +50,5 @@
       ];
     };
   };
+
 }
