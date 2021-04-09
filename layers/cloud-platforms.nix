@@ -1,10 +1,6 @@
-{ pkgs , ...  }:
+{ pkgs , ...  }: {
 
-with pkgs;
-
-{
-
-  packages = [
+  packages = with pkgs; [
     # Cloud Tooling
     aws-sam-cli
     awscli2

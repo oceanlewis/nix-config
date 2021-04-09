@@ -11,6 +11,7 @@
       set -o vi
 
       ${shell.initExtra}
+      unset RPS1
 
       if test -x "$(which zoxide)"; then
         eval "$(zoxide init zsh)"
