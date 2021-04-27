@@ -221,6 +221,8 @@ in {
 
       " Enter confirms completion selection
       inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+      autocmd VimEnter * :call AlignBackground()
     '';
 
     plugins = with pkgs.vimPlugins; [

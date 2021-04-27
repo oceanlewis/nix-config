@@ -2,7 +2,8 @@
 
 {
   programs.nushell = {
-    enable = true;
+    enable  = true;
+    package = pkgs.nushell;
 
     settings = {
       edit_mode            = "vi";
