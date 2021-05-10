@@ -70,14 +70,14 @@ in {
     };
   };
 
-  users.users.david = {
+  users.users."${USER}" = {
     home = HOME;
     isHidden = false;
     shell = pkgs.zsh;
   };
 
   home-manager = {
-    users.david = { pkgs, ... } :{
+    users."${USER}" = { pkgs, ... } :{
 
       programs.home-manager.enable = true;
 
