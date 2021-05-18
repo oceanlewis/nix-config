@@ -1,2 +1,7 @@
 { pkgs }:
-{ allowUnfree = true; /* allowUnsupportedSystem = true; */ }
+{
+  allowUnfree = true;
+
+  # For using Nix's `dockerTools`
+  allowUnsupportedSystem = true;
+}

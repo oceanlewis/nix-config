@@ -9,7 +9,7 @@ let
   theme = import (layer "theme.nix") {
     inherit pkgs;
     theme      = "gruvbox";
-    variant    = "light";
+    variant    = "dark";
     fontFamily = "DM Mono";
     fontSize   = 13.5;
   };
@@ -43,7 +43,7 @@ let
   tmux = import (program "tmux.nix") { inherit pkgs config lib; };
   starship = import (program "starship.nix") { inherit pkgs config lib; };
   lorri = import (service "lorri.nix") { inherit pkgs config lib; };
-  rip = pkgs.callPackage (program "rip.nix") {};
+  #rip = pkgs.callPackage (program "rip.nix") {};
 
   USER = "david";
   HOME = "/Users/${USER}";
@@ -106,7 +106,7 @@ in {
         ] ++ [
           pkgs.lorri
           pkgs.neuron-notes
-          rip
+          #rip
         ];
 
         sessionVariables = {

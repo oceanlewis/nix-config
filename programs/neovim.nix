@@ -178,17 +178,39 @@ let
     nmap <leader>c :CocCommand<cr>
   '';
 
+  fileContents."coc-settings.json" = ''
+    {
+      "languageserver": {
+        "terraform": {
+          "command": "terraform-ls",
+          "args": ["serve"],
+          "filetypes": [
+            "terraform",
+            "tf"
+          ],
+          "initializationOptions": {},
+          "settings": {}
+        },
+        "nix": {
+          "command": "rnix-lsp",
+          "filetypes": [
+            "nix"
+          ]
+        }
+      }
+    }
+  '';
+
 in {
 
   programs.neovim = {
-    enable   = true;
-    vimAlias = true;
-    viAlias  = true;
-
-    withNodeJs  = true;
-    withPython  = true;
-    withPython3 = true;
-    withRuby    = true;
+    enable       = true;
+    vimAlias     = true;
+    viAlias      = true;
+    vimdiffAlias = true;
+    withNodeJs   = true;
+    withPython3  = true;
+    withRuby     = true;
 
     extraConfig = ''
       ${setEncoding}
@@ -246,27 +268,6 @@ in {
   };
 
   home.packages = [];
-  home.file.".config/nvim/coc-settings.json".text = ''
-    {
-      "languageserver": {
-        "terraform": {
-          "command": "terraform-ls",
-          "args": ["serve"],
-          "filetypes": [
-            "terraform",
-            "tf"
-          ],
-          "initializationOptions": {},
-          "settings": {}
-        },
-        "nix": {
-          "command": "rnix-lsp",
-          "filetypes": [
-            "nix"
-          ]
-        }
-      }
-    }
-  '';
+  home.file.".config/nvim/coc-settings.json".text = fileContents."coc-settings.json";
 
 }

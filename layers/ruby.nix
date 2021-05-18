@@ -10,7 +10,6 @@
   packages = with pkgs; [
     (ruby.withPackages (selector:
       with selector; [
-        nokogiri
         pry
         rubocop
       ]

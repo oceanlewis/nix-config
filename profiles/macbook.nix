@@ -143,7 +143,6 @@ in
       XDG_RUNTIME_DIR = "${HOME}/.local/run";
 
       # TODO: Refactor
-      RUSTC_WRAPPER       = "${HOME}/.nix-profile/bin/sccache";
       FZF_DEFAULT_COMMAND = "fd --type f";
       BAT_CONFIG_PATH     = "${HOME}/.config/bat/config";
     };

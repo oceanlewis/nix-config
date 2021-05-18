@@ -15,7 +15,7 @@ in {
     # Files & Text
     exa fd ripgrep sd # grex
     fzf zoxide
-    bat jq yq mdcat
+    bat jq yq-go mdcat
     diffr icdiff
     tokei
     entr
@@ -47,7 +47,7 @@ in {
     youtube-dl
 
     # Build Tools
-    autoconf pkg-config gnumake
+    # autoconf pkg-config gnumake
 
     # Databases
     postgresql

@@ -3,22 +3,21 @@
 {
 
   packages = with pkgs; [
-    sccache
     rust-analyzer
 
     rustup
-    cargo-audit
-    cargo-asm
-    cargo-bloat
-    cargo-deps
+    # cargo-audit
+    # cargo-asm
+    # cargo-bloat
+    # cargo-deps
     cargo-edit
-    cargo-expand
-    cargo-flamegraph
-    cargo-geiger
-    cargo-generate
-    cargo-udeps
-    cargo-watch
-    cargo-web
+    # cargo-expand
+    # cargo-flamegraph
+    # cargo-geiger
+    # cargo-generate
+    # cargo-udeps
+    # cargo-watch # PR
+    # cargo-web
   ];
 
   vimPlugins = with pkgs.vimPlugins; [
