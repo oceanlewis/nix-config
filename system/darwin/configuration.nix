@@ -10,7 +10,7 @@ let
     inherit pkgs;
     theme      = "gruvbox";
     variant    = "light";
-    fontFamily = "DM Mono";
+    fontFamily = "Menlo";
     fontSize   = 13.5;
   };
 
