@@ -16,7 +16,7 @@
     # cargo-geiger
     # cargo-generate
     # cargo-udeps
-    # cargo-watch # PR
+    cargo-watch
     # cargo-web
   ];
 
