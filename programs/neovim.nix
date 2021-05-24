@@ -206,6 +206,9 @@ in {
       ${themeConfig}
       ${cocConfig}
 
+      " Wrap on words
+      set linebreak
+
       " Stop Highlighting on Escape
       nnoremap <esc> :noh<return><esc>
 
