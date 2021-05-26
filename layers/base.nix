@@ -37,8 +37,8 @@ in {
     mdbook
 
     # Process Management
-    htop gotop procs bandwhich
-    # bottom
+    htop procs bandwhich
+    bottom
     
     # Networking
     nmap httpie
