@@ -7,50 +7,58 @@
 }:
 
 let
-  setEncoding = ''
-    set encoding=utf-8
-  '';
 
-  remapLeader = ''
+
+  vim-colors-xcode = pkgs.vimUtils.buildVimPlugin {
+    name = "vim-colors-xcode";
+    src = pkgs.fetchFromGitHub {
+      owner = "arzg";
+      repo = "vim-colors-xcode";
+      rev = "26707a8d9d17d5e4fcd3835cd6b5086c680c6fc6";
+      sha256 = "sha256:0ij5597a2i9grxm7xahh9niywkz8ljafpg82f6m8g0syq9b47lzq";
+    };
+  };
+
+  common = ''
+    " Use UTF-8 encoding
+    set encoding=utf-8
+
+
     " Remap Leader key to Space
     let mapleader = "\<Space>"
-  '';
 
-  bufferNavigation = ''
+
+    " Mouse scroll scrolls window, not cursor
+    set mouse=a
+
+
     " Buffer Navigation
     nmap <M-k>  :buffers<CR>
     nmap <M-h>  :bprevious<CR>
     nmap <M-l>  :bnext<CR>
     nmap <M-BS> :bdelete<CR>
-  '';
 
-  mouseNavigation = ''
-    " Mouse scroll scrolls window, not cursor
-    set mouse=a
-  '';
 
-  setTabSize = ''
     " Set Tab Size and Indents
     set tabstop=2
     set shiftwidth=2
     set softtabstop=2
     set expandtab
-  '';
 
-  fzfConfig = ''
-    " FZF Configuration
-    nmap <leader>t :Files<CR>
-    nmap <leader>f :Rg<CR>
-    nmap <leader>r :Tags<CR>
-  '';
 
-  reloadConfig = ''
-    " Reload Neovim Configuration
-    map <leader>s :source ~/.config/nvim/init.vim<cr>
-  '';
+    " Wrap on words
+    set linebreak
 
-  toggleVisibleWhitespace = ''
-    " Visible Trailing Whitespace and Newlines
+
+    " Stop Highlighting on Escape
+    nnoremap <esc> :noh<return><esc>
+
+
+    " Always use the system clipboard for all Copy/Paste operations
+    set clipboard+=unnamedplus
+
+
+    " Toggling visibility of trailing whitespace and newlines
     set listchars=eol:¬,tab:>\ ,trail:-,nbsp:+
 
     function! ToggleVisibleWhitespace()
@@ -60,11 +68,11 @@ let
         set list
       endif
     endfunc
-
     map <leader>i :call ToggleVisibleWhitespace()<cr>
-  '';
 
-  toggleLineNumbers = ''
+
+
+    " Toggling visibility of line numbers using Control-N and Control-Alt-N
     function! ToggleLineNumbering()
       if(&relativenumber == 1)
         set number
@@ -82,15 +90,27 @@ let
 
     nnoremap <C-n> :call ToggleLineNumbering()<cr>
     nnoremap <C-A-n> :call DisableLineNumbering()<cr>
-  '';
 
-  trimWhitespace = ''
+
+    " Trim trailing whitespace on all lines
     fun! TrimWhitespace()
         let l:save = winsaveview()
         %s/\s\+$//e
         call winrestview(l:save)
     endfun
     command! TrimWhitespace call TrimWhitespace()
+  '';
+
+  fzfConfig = ''
+    " FZF Configuration
+    nmap <leader>t :Files<CR>
+    nmap <leader>f :Rg<CR>
+    nmap <leader>r :Tags<CR>
+  '';
+
+  reloadConfig = ''
+    " Reload Neovim Configuration
+    map <leader>s :source ~/.config/nvim/init.vim<cr>
   '';
 
 
@@ -133,6 +153,13 @@ let
     \     'project_root_files': ['Cargo.toml']
     \   }
     \ ]
+
+    " Tab and Shift-Tab navigate completion list
+    inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+    " Enter confirms completion selection
+    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
   '';
 
   airlineConfig = ''
@@ -172,6 +199,9 @@ let
       call AlignBackground()
     endfunc
     nmap <leader>l :call ToggleBackground()<cr>
+
+    " Automatically call AlignBackground when opening vim
+    autocmd VimEnter * :call AlignBackground()
   '';
 
   cocConfig = ''
@@ -213,38 +243,14 @@ in {
     withRuby     = true;
 
     extraConfig = ''
-      ${setEncoding}
-      ${remapLeader}
-      ${bufferNavigation}
-      ${mouseNavigation}
-      ${setTabSize}
+      ${common}
+
       ${fzfConfig}
       ${reloadConfig}
-      ${toggleVisibleWhitespace}
-      ${trimWhitespace}
-      ${toggleLineNumbers}
       ${languageClientConfig}
+      ${cocConfig}
       ${airlineConfig}
       ${themeConfig}
-      ${cocConfig}
-
-      " Wrap on words
-      set linebreak
-
-      " Stop Highlighting on Escape
-      nnoremap <esc> :noh<return><esc>
-
-      " Always use the system clipboard for all Copy/Paste operations
-      set clipboard+=unnamedplus
-
-      " Tab and Shift-Tab navigate completion list
-      inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-      inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-      " Enter confirms completion selection
-      inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-      autocmd VimEnter * :call AlignBackground()
     '';
 
     plugins = with pkgs.vimPlugins; [
@@ -264,6 +270,9 @@ in {
       # Themes
       gruvbox-community
       papercolor-theme
+      oceanic-next
+      onehalf
+      vim-colors-xcode
     ] ++ extraPlugins;
   };
 

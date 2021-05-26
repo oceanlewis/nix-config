@@ -175,7 +175,7 @@ with pkgs; {
       } // (
         if pkgs.stdenv.isDarwin
         then {
-          decorations = "none";
+          # decorations = "none";
           use_thin_strokes = true;
         }
         else {
