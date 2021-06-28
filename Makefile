@@ -6,24 +6,32 @@ install-home-manager:
 	nix-channel --update
 	nix-shell '<home-manager>' -A install
 
-init: install-nixpkgs install-home-manager
+install-nix-darwin:
+	nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer
+	./result/bin/darwin-installer
+	@echo "NOTE: the system activation scripts don't overwrite existing etc files, so files like /etc/bashrc and /etc/zshrc won't be updated by default. If you didn't use the installer or skipped some of the options you'll have to take care of this yourself. Either modify the existing file to source/import the one from /etc/static or remove it."
+	@echo "\n\nIf the installation was successful, it's safe to remove the 'result' directory"
 
 collect-garbage:
 	@echo "\nCollecting Garbage..."
 	@nix-collect-garbage -d
 
+update:
+	@echo "\nUpdating Nix Channels..."
+	@nix-channel --update
+
 upgrade:
 	@echo "\nUpgrading Nix..."
 	@nix upgrade-nix
-
-	@echo "\nUpdating Nix Channels..."
-	@nix-channel --update
 
 	@echo "\nUpgrading Nix Environment..."
 	@nix-env --upgrade
 
 	@echo "\nActivating new Home Manager Generation..."
 	@home-manager switch
+
+darwin:
+	@darwin-rebuild switch
 
 switch:
 ifdef profile
