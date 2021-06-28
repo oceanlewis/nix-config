@@ -9,7 +9,7 @@ let
   theme = import (layer "theme.nix") {
     inherit pkgs;
     theme      = "gruvbox";
-    variant    = "light";
+    variant    = "black";
     fontFamily = "Menlo";
     fontSize   = 13.5;
   };
@@ -43,7 +43,6 @@ let
   tmux = import (program "tmux.nix") { inherit pkgs config lib; };
   starship = import (program "starship.nix") { inherit pkgs config lib; };
   lorri = import (service "lorri.nix") { inherit pkgs config lib; };
-  #rip = pkgs.callPackage (program "rip.nix") {};
 
   USER = "david";
   HOME = "/Users/${USER}";
@@ -51,6 +50,23 @@ let
 in {
 
   imports = [ <home-manager/nix-darwin> ];
+
+  nixpkgs.overlays = [
+    (
+      self: super: {
+        # https://github.com/NixOS/nixpkgs/issues/127982
+        awscli2 = (
+          import (
+            builtins.fetchTarball {
+              url =
+                "https://github.com/NixOS/nixpkgs/archive/a81163d83b6ede70aa2d5edd8ba60062ed4eec74.tar.gz";
+              sha256 = "0xwi0m97xgl0x38kf9qq8m3ismcd7zajsmb82brfcxw0i2bm3jyl";
+            }
+          ) { config = { allowUnfree = true; }; }
+        ).awscli2;
+      }
+    )
+  ];
 
   system.defaults = {
     dock = {
@@ -105,8 +121,6 @@ in {
           lorri
         ] ++ [
           pkgs.lorri
-          pkgs.neuron-notes
-          #rip
         ];
 
         sessionVariables = {
@@ -168,6 +182,12 @@ in {
   environment.systemPackages = [
     #pkgs.home-manager.home-manager
     pkgs.alacritty
+    (
+      let
+        neuronSrc = builtins.fetchTarball "https://github.com/srid/neuron/archive/master.tar.gz";
+        neuronPkg = import neuronSrc;
+      in neuronPkg.default
+    )
   ];
 
   # Use a custom configuration.nix location.
