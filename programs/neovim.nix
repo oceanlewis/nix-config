@@ -71,7 +71,6 @@ let
     map <leader>i :call ToggleVisibleWhitespace()<cr>
 
 
-
     " Toggling visibility of line numbers using Control-N and Control-Alt-N
     function! ToggleLineNumbering()
       if(&relativenumber == 1)
@@ -112,7 +111,6 @@ let
     " Reload Neovim Configuration
     map <leader>s :source ~/.config/nvim/init.vim<cr>
   '';
-
 
   languageClientConfig = ''
     let g:LanguageClient_serverCommands = {
@@ -249,6 +247,7 @@ in {
       ${reloadConfig}
       ${languageClientConfig}
       ${cocConfig}
+      ${youCompleteMeConfig}
       ${airlineConfig}
       ${themeConfig}
     '';
