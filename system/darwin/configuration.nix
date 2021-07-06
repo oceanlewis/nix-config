@@ -190,6 +190,10 @@ in {
     )
   ];
 
+  environment.systemPath = [
+     ''/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin''
+  ];
+
   # Use a custom configuration.nix location.
   # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/system/darwin/configuration.nix
   environment.darwinConfig = "$HOME/.config/nixpkgs/system/darwin/configuration.nix";
