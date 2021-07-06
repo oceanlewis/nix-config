@@ -14,15 +14,15 @@ let
     "Menlo" = {
       normal = {
         family = "Menlo";
-        style  = "Regular";
+        style  = "Bold";
       };
       bold = {
         family = "Menlo";
-        style  = "Regular";
+        style  = "Bold";
       };
       italic = {
         family = "Menlo";
-        style  = "Italic";
+        style  = "Bold";
       };
       offset = {
         x = 0;
