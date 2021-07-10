@@ -82,7 +82,6 @@ in {
     NSGlobalDomain = {
       InitialKeyRepeat = 25;
       KeyRepeat = 2;
-      _HIHideMenuBar = true;    # Autohide Menubar
     };
   };
 
