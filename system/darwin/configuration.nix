@@ -9,7 +9,7 @@ let
   theme = import (layer "theme.nix") {
     inherit pkgs;
     theme      = "gruvbox";
-    variant    = "black";
+    variant    = "light";
     fontFamily = "Menlo";
     fontSize   = 13.5;
   };
@@ -67,6 +67,20 @@ in {
       }
     )
   ];
+
+  fonts = {
+    enableFontDir = true;
+    fonts = with pkgs; [
+      (nerdfonts.override {
+        fonts = [
+          "FiraCode"
+          "DejaVuSansMono"
+          "Hack"
+          "IBMPlexMono"
+        ];
+      })
+    ];
+  };
 
   system.defaults = {
     dock = {
