@@ -44,7 +44,7 @@ let
   starship = import (program "starship.nix") { inherit pkgs config lib; };
   lorri = import (service "lorri.nix") { inherit pkgs config lib; };
 
-  USER = "david";
+  USER = "davidlewis";
   HOME = "/Users/${USER}";
 
 in {
@@ -192,31 +192,34 @@ in {
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-  environment.systemPackages = [
-    #pkgs.home-manager.home-manager
-    pkgs.alacritty
-    (
-      let
-        neuronSrc = builtins.fetchTarball "https://github.com/srid/neuron/archive/master.tar.gz";
-        neuronPkg = import neuronSrc;
-      in neuronPkg.default
-    )
-  ];
+  environment = {
+    # Use a custom configuration.nix location.
+    # $ darwin-rebuild switch -I darwin-config=$HOME/.nixpkgs/darwin-configuration.nix
+    darwinConfig = "$HOME/.nixpkgs/darwin-configuration.nix";
 
-  environment.systemPath = [
-     ''/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin''
-  ];
+    systemPath = [
+       ''/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin''
+    ];
 
-  # Use a custom configuration.nix location.
-  # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/system/darwin/configuration.nix
-  environment.darwinConfig = "$HOME/.config/nixpkgs/system/darwin/configuration.nix";
+    systemPackages = [
+      pkgs.alacritty
+      (
+        let
+          neuronSrc = builtins.fetchTarball "https://github.com/srid/neuron/archive/master.tar.gz";
+          neuronPkg = import neuronSrc;
+        in neuronPkg.default
+      )
+    ];
+  };
 
   # Auto upgrade nix package and the daemon service.
-  # services.nix-daemon.enable = true;
-  # nix.package = pkgs.nix;
   services = {
+    nix-daemon.enable = true;
     lorri.enable = true;
   };
+
+  #nix.package = pkgs.nix;
+
 
   # Create /etc/bashrc that loads the nix-darwin environment.
   programs.zsh.enable = true;  # default shell on catalina
