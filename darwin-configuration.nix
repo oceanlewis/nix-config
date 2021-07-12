@@ -9,7 +9,7 @@ let
   theme = import (layer "theme.nix") {
     inherit pkgs;
     theme      = "gruvbox";
-    variant    = "light";
+    variant    = "black";
     fontFamily = "Menlo";
     fontSize   = 13.5;
   };
@@ -49,42 +49,22 @@ let
 
 in {
 
-  imports = [ <home-manager/nix-darwin> ];
-
-  nixpkgs.overlays = [
-    (
-      self: super: {
-        # https://github.com/NixOS/nixpkgs/issues/127982
-        awscli2 = (
-          import (
-            builtins.fetchTarball {
-              url =
-                "https://github.com/NixOS/nixpkgs/archive/a81163d83b6ede70aa2d5edd8ba60062ed4eec74.tar.gz";
-              sha256 = "0xwi0m97xgl0x38kf9qq8m3ismcd7zajsmb82brfcxw0i2bm3jyl";
-            }
-          ) { config = { allowUnfree = true; }; }
-        ).awscli2;
-      }
-    )
+  imports = [
+    <home-manager/nix-darwin>
   ];
 
   fonts = {
     enableFontDir = true;
-    fonts = with pkgs; [
-      (nerdfonts.override {
-        fonts = [
-          "FiraCode"
-          "DejaVuSansMono"
-          "Hack"
-          "IBMPlexMono"
-        ];
+    fonts = [
+      (pkgs.nerdfonts.override {
+        fonts = [ "FiraCode" "DejaVuSansMono" "Hack" "IBMPlexMono" ];
       })
     ];
   };
 
   system.defaults = {
     dock = {
-      autohide = true;        # Autohide Dock
+      autohide = true;
       orientation = "bottom";
     };
 
@@ -105,10 +85,41 @@ in {
     shell = pkgs.zsh;
   };
 
+  environment = {
+    # $ darwin-rebuild switch -I darwin-config=$HOME/.nixpkgs/darwin-configuration.nix
+    darwinConfig = "$HOME/.nixpkgs/darwin-configuration.nix";
+
+    # Append paths to the system PATH
+    systemPath = [
+      ''/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin''
+    ];
+
+    systemPackages = [
+      pkgs.alacritty
+      (
+        let
+          neuronSrc = builtins.fetchTarball "https://github.com/srid/neuron/archive/master.tar.gz";
+          neuronPkg = import neuronSrc;
+        in neuronPkg.default
+      )
+    ];
+  };
+
+  nix.package = pkgs.nix;
+
+  services = {
+    lorri.enable = true;
+    emacs = {
+      enable = true;
+      package = pkgs.emacsMacport;
+    };
+  };
+
+  programs.zsh.enable = true;
+  programs.bash.enable = true;
+
   home-manager = {
     users."${USER}" = { pkgs, ... } :{
-
-      programs.home-manager.enable = true;
 
       imports = [
         base git tmux
@@ -116,6 +127,8 @@ in {
         starship neovim emacs
         alacritty
       ];
+
+      programs.home-manager.enable = true;
 
       home = {
         stateVersion = "20.09";
@@ -132,8 +145,6 @@ in {
           nodejs
           dhall
           lorri
-        ] ++ [
-          pkgs.lorri
         ];
 
         sessionVariables = {
@@ -182,48 +193,9 @@ in {
           echo Linking in nushell config file
           ln -sfv "${HOME}/.config/nu/config.toml" "${HOME}/Library/Application Support/org.nushell.nu/config.toml"
         '';
-
-        #file."${HOME}/Library/Application Support/org.nushell.nu/config.toml".source =
-        #  "${HOME}/.config/nu/config.toml";
-
       };
     };
   };
-
-  # List packages installed in system profile. To search by name, run:
-  # $ nix-env -qaP | grep wget
-  environment = {
-    # Use a custom configuration.nix location.
-    # $ darwin-rebuild switch -I darwin-config=$HOME/.nixpkgs/darwin-configuration.nix
-    darwinConfig = "$HOME/.nixpkgs/darwin-configuration.nix";
-
-    systemPath = [
-       ''/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin''
-    ];
-
-    systemPackages = [
-      pkgs.alacritty
-      (
-        let
-          neuronSrc = builtins.fetchTarball "https://github.com/srid/neuron/archive/master.tar.gz";
-          neuronPkg = import neuronSrc;
-        in neuronPkg.default
-      )
-    ];
-  };
-
-  # Auto upgrade nix package and the daemon service.
-  services = {
-    nix-daemon.enable = true;
-    lorri.enable = true;
-  };
-
-  #nix.package = pkgs.nix;
-
-
-  # Create /etc/bashrc that loads the nix-darwin environment.
-  programs.zsh.enable = true;  # default shell on catalina
-  # programs.fish.enable = true;
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
