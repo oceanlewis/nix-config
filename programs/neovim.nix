@@ -8,7 +8,6 @@
 
 let
 
-
   vim-colors-xcode = pkgs.vimUtils.buildVimPlugin {
     name = "vim-colors-xcode";
     src = pkgs.fetchFromGitHub {
@@ -256,6 +255,7 @@ in {
       LanguageClient-neovim
       coc-nvim
       coc-tsserver
+      coc-pyright
       vim-nix
       kotlin-vim
       vim-terraform

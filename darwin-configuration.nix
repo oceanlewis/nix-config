@@ -19,7 +19,6 @@ let
   beam = import (layer "beam.nix") { inherit pkgs; };
   ruby = import (layer "ruby.nix") { inherit pkgs; };
   rust = import (layer "rust.nix") { inherit pkgs; };
-  python = import (layer "python.nix") { inherit pkgs; };
   nodejs = import (layer "nodejs.nix") { inherit pkgs; };
   dhall = import (layer "dhall.nix") { inherit pkgs; };
   git = import (program "git/git.nix") { inherit pkgs config lib theme; };
@@ -30,7 +29,6 @@ let
     extraPlugins = lib.concatLists([
       dhall.vimPlugins
       ruby.vimPlugins
-      python.vimPlugins
       rust.vimPlugins
     ]);
   };
@@ -142,7 +140,6 @@ in {
           beam
           ruby
           rust
-          python
           nodejs
           dhall
           lorri
