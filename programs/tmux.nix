@@ -112,7 +112,6 @@ in
     clock24       = true;
 
     extraConfig = ''
-      ${setPrefix}
       ${reloadConfig}
       ${enableViNavigation}
       ${enableMouseIntegration}
