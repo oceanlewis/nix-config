@@ -95,6 +95,7 @@ in {
     ];
 
     systemPackages = [
+      pkgs.emacsMacport
       pkgs.alacritty
       (
         let
