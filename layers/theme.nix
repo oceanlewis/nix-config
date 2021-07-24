@@ -34,6 +34,29 @@ let
       };
     };
 
+    "DejaVuSansMono" = {
+      normal = {
+        family = "DejaVuSansMono Nerd Font";
+        style  = "Book";
+      };
+      bold = {
+        family = "DejaVuSansMono Nerd Font";
+        style  = "Bold";
+      };
+      italic = {
+        family = "DejaVuSansMono Nerd Font";
+        style  = "Oblique";
+      };
+      offset = {
+        x = 0;
+        y = 3;
+      };
+      glyph_offset = {
+        x = 0;
+        y = 0;
+      };
+    };
+
     "SF Mono" = {
       normal = {
         family = "SF Mono";

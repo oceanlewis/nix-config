@@ -16,11 +16,10 @@ in {
     exa fd ripgrep sd # grex
     fzf zoxide
     bat jq yq-go mdcat
-    diffr icdiff
+    icdiff
     tokei
     entr
     pv
-    dua du-dust
     wget rsync
     unzip
 

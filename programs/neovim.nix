@@ -259,7 +259,7 @@ in {
       vim-nix
       kotlin-vim
       vim-terraform
-      neuron-vim
+      #neuron-vim
 
       # UI
       airline

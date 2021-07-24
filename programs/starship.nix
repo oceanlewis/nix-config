@@ -25,6 +25,9 @@
         # vicmd_symbol = "◐";
         # use_symbol_for_status = true;
       };
+      
+      nix_shell.format = ''via [$symbol$state]($style) '';
+
     } extraConfig;
   };
 
