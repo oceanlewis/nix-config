@@ -15,10 +15,7 @@
       ]
     ))
     solargraph
-  ];
-
-  vimPlugins = with pkgs.vimPlugins; [
-    coc-solargraph
+    bundix
   ];
 
 }

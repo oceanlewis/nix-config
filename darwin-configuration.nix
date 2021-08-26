@@ -8,10 +8,10 @@ let
 
   theme = import (layer "theme.nix") {
     inherit pkgs;
-    theme      = "gruvbox";
-    variant    = "black";
+    theme = "gruvbox";
+    variant = "black";
     fontFamily = "DejaVuSansMono";
-    fontSize   = 13.5;
+    fontSize = 13.5;
   };
 
   base = import (layer "base.nix") { inherit pkgs lib; };
@@ -20,17 +20,16 @@ let
   ruby = import (layer "ruby.nix") { inherit pkgs; };
   rust = import (layer "rust.nix") { inherit pkgs; };
   nodejs = import (layer "nodejs.nix") { inherit pkgs; };
-  dhall = import (layer "dhall.nix") { inherit pkgs; };
   git = import (program "git/git.nix") { inherit pkgs config lib theme; };
   alacritty = import (program "alacritty.nix") { inherit pkgs config lib theme; };
 
   neovim = import (program "neovim.nix") {
     inherit pkgs config lib theme;
-    extraPlugins = lib.concatLists([
-      dhall.vimPlugins
-      ruby.vimPlugins
-      rust.vimPlugins
-    ]);
+    extraPlugins = lib.concatLists (
+      [
+        rust.vimPlugins
+      ]
+    );
   };
 
   emacs = import (program "emacs.nix") { inherit pkgs; };
@@ -45,7 +44,8 @@ let
   USER = "davidlewis";
   HOME = "/Users/${USER}";
 
-in {
+in
+{
 
   imports = [
     <home-manager/nix-darwin>
@@ -54,9 +54,11 @@ in {
   fonts = {
     enableFontDir = true;
     fonts = [
-      (pkgs.nerdfonts.override {
-        fonts = [ "FiraCode" "DejaVuSansMono" "Hack" "IBMPlexMono" ];
-      })
+      (
+        pkgs.nerdfonts.override {
+          fonts = [ "FiraCode" "DejaVuSansMono" "Hack" "IBMPlexMono" ];
+        }
+      )
     ];
   };
 
@@ -93,14 +95,7 @@ in {
     ];
 
     systemPackages = [
-      pkgs.emacsMacport
-      pkgs.alacritty
-      (
-        let
-          neuronSrc = builtins.fetchTarball "https://github.com/srid/neuron/archive/master.tar.gz";
-          neuronPkg = import neuronSrc;
-        in neuronPkg.default
-      )
+      pkgs.m-cli
     ];
   };
 
@@ -118,12 +113,18 @@ in {
   programs.bash.enable = true;
 
   home-manager = {
-    users."${USER}" = { pkgs, ... } :{
+    users."${USER}" = { pkgs, ... }: {
 
       imports = [
-        base git tmux
-        bash zsh nushell
-        starship neovim emacs
+        base
+        git
+        tmux
+        bash
+        zsh
+        nushell
+        starship
+        neovim
+        emacs
         alacritty
       ];
 
@@ -132,34 +133,33 @@ in {
       home = {
         stateVersion = "20.09";
 
-        username      = USER;
+        username = USER;
         homeDirectory = HOME;
 
         packages = lib.lists.concatMap (mod: mod.packages) [
           cloudPlatforms
           beam
-          ruby
           rust
+          ruby
           nodejs
-          dhall
           lorri
         ];
 
         sessionVariables = {
-          PAGER  = "less -R";
+          PAGER = "less -R";
           EDITOR = "nvim";
           VISUAL = "nvim";
-          TERM   = "xterm-256color";
+          TERM = "xterm-256color";
 
           XDG_CONFIG_HOME = "${HOME}/.config";
-          XDG_DATA_HOME   = "${HOME}/.local/share";
-          XDG_DATA_DIRS   = "${HOME}/.local/data";
+          XDG_DATA_HOME = "${HOME}/.local/share";
+          XDG_DATA_DIRS = "${HOME}/.local/data";
           XDG_RUNTIME_DIR = "${HOME}/.local/run";
 
           # TODO: Refactor
           FZF_DEFAULT_COMMAND = "fd --type f";
-          BAT_CONFIG_PATH     = "${HOME}/.config/bat/config";
-          GOPATH              = "${HOME}/Developer/go/";
+          BAT_CONFIG_PATH = "${HOME}/.config/bat/config";
+          GOPATH = "${HOME}/Developer/go/";
         };
 
         file.".config/bat/config".text = ''

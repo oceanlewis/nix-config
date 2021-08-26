@@ -1,27 +1,14 @@
-{ pkgs , ...  }:
-
-{
+{ pkgs, ... }: {
 
   packages = with pkgs; [
-    rust-analyzer
-
     rustup
-    # cargo-audit
-    # cargo-asm
-    # cargo-bloat
-    # cargo-deps
+    rust-analyzer
     cargo-edit
-    # cargo-expand
-    # cargo-flamegraph
-    # cargo-geiger
-    # cargo-generate
-    # cargo-udeps
     cargo-watch
-    # cargo-web
+    cargo-udeps
   ];
 
   vimPlugins = with pkgs.vimPlugins; [
     coc-rust-analyzer
   ];
-
 }

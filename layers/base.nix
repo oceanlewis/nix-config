@@ -25,6 +25,7 @@ in {
 
     # Shells and Unix Environment
     elvish fish
+    (pkgs.callPackage ../packages/dingus.nix {})
 
     # Chat & Browsing
     irssi w3m

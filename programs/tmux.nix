@@ -15,7 +15,7 @@ let
 
   reloadConfig = ''
     # Reload Tmux configuration
-    bind-key r source-file ~/.tmux.conf \; display-message "Tmux configuration reloaded"
+    bind-key r source-file ~/.config/tmux/tmux.conf \; display-message "Tmux configuration reloaded"
   '';
 
   enableViNavigation = ''
@@ -113,6 +113,7 @@ in
 
     extraConfig = ''
       ${reloadConfig}
+      ${setPrefix}
       ${enableViNavigation}
       ${enableMouseIntegration}
       ${enableCopyToSystemClipboard}

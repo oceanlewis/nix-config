@@ -8,16 +8,6 @@
 
 let
 
-  vim-colors-xcode = pkgs.vimUtils.buildVimPlugin {
-    name = "vim-colors-xcode";
-    src = pkgs.fetchFromGitHub {
-      owner = "arzg";
-      repo = "vim-colors-xcode";
-      rev = "26707a8d9d17d5e4fcd3835cd6b5086c680c6fc6";
-      sha256 = "sha256:0ij5597a2i9grxm7xahh9niywkz8ljafpg82f6m8g0syq9b47lzq";
-    };
-  };
-
   common = ''
     " Use UTF-8 encoding
     set encoding=utf-8
@@ -140,25 +130,6 @@ let
                 \ {'newName': Abolish.uppercase(expand('<cword>'))})<CR>
   '';
 
-  youCompleteMeConfig = ''
-    let g:ycm_language_server =
-    \ [
-    \   {
-    \     'name': 'rust',
-    \     'cmdline': ['rust-analyzer'],
-    \     'filetypes': ['rust'],
-    \     'project_root_files': ['Cargo.toml']
-    \   }
-    \ ]
-
-    " Tab and Shift-Tab navigate completion list
-    inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-    " Enter confirms completion selection
-    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-  '';
-
   airlineConfig = ''
     " Airline Configuration
     let g:airline#extensions#tabline#enabled = 1
@@ -202,7 +173,19 @@ let
   '';
 
   cocConfig = ''
+    let g:coc_global_extensions = ['coc-tsserver']
+
     nmap <leader>c :CocCommand<cr>
+
+    " Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+    " Tab and Shift-Tab navigate completion list
+    inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+    " Enter confirms completion selection
+    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
   '';
 
   fileContents."coc-settings.json" = ''
@@ -211,20 +194,26 @@ let
         "terraform": {
           "command": "terraform-ls",
           "args": ["serve"],
-          "filetypes": [
-            "terraform",
-            "tf"
-          ],
+          "filetypes": ["terraform", "tf"],
           "initializationOptions": {},
           "settings": {}
         },
         "nix": {
           "command": "rnix-lsp",
-          "filetypes": [
-            "nix"
-          ]
+          "filetypes": ["nix"]
         }
-      }
+      },
+      "coc.preferences.formatOnSaveFiletypes": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "json",
+        "graphql",
+        "css",
+        "markdown",
+        "rust"
+      ]
     }
   '';
 
@@ -246,16 +235,18 @@ in {
       ${reloadConfig}
       ${languageClientConfig}
       ${cocConfig}
-      ${youCompleteMeConfig}
       ${airlineConfig}
       ${themeConfig}
     '';
 
     plugins = with pkgs.vimPlugins; [
+      vim-surround
+
       LanguageClient-neovim
       coc-nvim
       coc-tsserver
       coc-pyright
+      coc-solargraph
       vim-nix
       kotlin-vim
       vim-terraform
@@ -271,7 +262,6 @@ in {
       papercolor-theme
       oceanic-next
       onehalf
-      vim-colors-xcode
     ] ++ extraPlugins;
   };
 
