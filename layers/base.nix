@@ -39,6 +39,9 @@ in {
     # Process Management
     htop procs bandwhich
     bottom
+
+    # Device Management
+    smartmontools
     
     # Networking
     nmap httpie
