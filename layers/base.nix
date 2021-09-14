@@ -44,7 +44,7 @@ in {
     smartmontools
     
     # Networking
-    nmap httpie
+    nmap httpie telnet
  
     # Content
     youtube-dl
