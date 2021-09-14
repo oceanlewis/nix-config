@@ -93,7 +93,7 @@ let
       set -g status-right ""
       set -g status-left-length 50
       set -g status-justify right
-      set -g status-position top
+      set -g status-position bottom
     '';
   };
 
