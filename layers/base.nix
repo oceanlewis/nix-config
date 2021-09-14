@@ -13,7 +13,7 @@ in {
 
   home.packages = platformSpecific ++ [
     # Files & Text
-    exa fd ripgrep sd # grex
+    file exa fd ripgrep sd # grex
     fzf zoxide
     bat jq yq-go mdcat
     icdiff
@@ -50,7 +50,7 @@ in {
     youtube-dl
 
     # Build Tools
-    # autoconf pkg-config gnumake
+    autoconf pkg-config gnumake
 
     # Databases
     postgresql
