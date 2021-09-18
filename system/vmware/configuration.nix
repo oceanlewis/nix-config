@@ -69,11 +69,11 @@
   # This is running inside a VM
   virtualisation.vmware.guest.enable = true;
 
-  # Use /mnt for Shared Folders from the Host Machine
+  # Mount `/mnt` for Shared Folders from the Host Machine
   fileSystems."/mnt" = {
     device = ".host:/";
     fsType = "fuse./run/current-system/sw/bin/vmhgfs-fuse";
-    options = ["umask=22" "uid=1000" "gid=1000" "allow_other" "defaults" "auto_unmount"];
+    options = [ "uid=1000" "gid=1000" "allow_other" "defaults" "auto_unmount"];
   };
 
   # Enable Flatpak
