@@ -106,8 +106,7 @@
     isNormalUser = true;
     description = "David Armstrong Lewis";
     extraGroups = [ "wheel" "networkmanager" "audio" "video" "docker" ];
-    #extraGroups = [ "wheel" ];
-    # shell = pkgs.zsh;
+    shell = pkgs.zsh;
   };
 
   # List packages installed in system profile. To search, run:
@@ -127,6 +126,7 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+  programs.zsh.enable = true;
 
   # List services that you want to enable:
 

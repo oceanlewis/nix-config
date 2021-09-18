@@ -55,11 +55,10 @@ in
 
   imports = [
     base git
-    bash
+    bash zsh
     alacritty
-    emacs
-    zsh
     tmux
+    emacs
     starship
     nushell
     neovim
