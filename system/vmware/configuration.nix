@@ -66,8 +66,12 @@
     })
   ];
 
-  # This is running inside a VM
-  virtualisation.vmware.guest.enable = true;
+  virtualisation = {
+    docker.enable = true;
+
+    # This is running inside a VM
+    vmware.guest.enable = true;
+  };
 
   # Mount `/mnt` for Shared Folders from the Host Machine
   fileSystems."/mnt" = {
@@ -101,8 +105,8 @@
   users.users.davidlewis = {
     isNormalUser = true;
     description = "David Armstrong Lewis";
-    #extraGroups = [ "wheel" "networkmanager" "audio" "video" "docker" ];
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "networkmanager" "audio" "video" "docker" ];
+    #extraGroups = [ "wheel" ];
     # shell = pkgs.zsh;
   };
 
