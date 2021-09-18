@@ -100,7 +100,10 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.davidlewis = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    description = "David Armstrong Lewis";
+    #extraGroups = [ "wheel" "networkmanager" "audio" "video" "docker" ];
+    extraGroups = [ "wheel" ];
+    # shell = pkgs.zsh;
   };
 
   # List packages installed in system profile. To search, run:
