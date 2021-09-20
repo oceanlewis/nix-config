@@ -189,10 +189,10 @@ with pkgs; {
       font = theme.alacritty.font;
       colors = theme.alacritty.colors;
       draw_bold_text_with_bright_colors = true;
-
-      mouse.hide_when_typing = true;
-
       background_opacity = 0.96;
+
+      cursor.style.blinking = "Always";
+      mouse.hide_when_typing = true;
     };
   };
 }

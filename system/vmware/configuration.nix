@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
@@ -61,9 +62,11 @@
     # mplus-outline-fonts
     # dina-font
     # proggyfonts
-    (nerdfonts.override {
-      fonts = [ "FiraCode" "DejaVuSansMono" "Hack" "IBMPlexMono" ];
-    })
+    (
+      nerdfonts.override {
+        fonts = [ "FiraCode" "DejaVuSansMono" "Hack" "IBMPlexMono" ];
+      }
+    )
   ];
 
   virtualisation = {
@@ -77,7 +80,7 @@
   fileSystems."/mnt" = {
     device = ".host:/";
     fsType = "fuse./run/current-system/sw/bin/vmhgfs-fuse";
-    options = [ "uid=1000" "gid=1000" "allow_other" "defaults" "auto_unmount"];
+    options = [ "uid=1000" "gid=1000" "allow_other" "defaults" "auto_unmount" ];
   };
 
   # Enable Flatpak
@@ -102,11 +105,17 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.davidlewis = {
-    isNormalUser = true;
-    description = "David Armstrong Lewis";
-    extraGroups = [ "wheel" "networkmanager" "audio" "video" "docker" ];
-    shell = pkgs.zsh;
+  users = {
+    mutableUsers = false;
+    defaultUserShell = pkgs.zsh;
+
+    extraUsers.davidlewis = {
+      hashedPassword = "$6$Njc3WONFSurN$RCBNs7moPFyzwdXKOSKFZYpXtFKrOvZM8seZnPo5JQwSNJttOoZfmuQI745Sr/edXgqv7kiCx89olerMu1dEa.";
+      isNormalUser = true;
+      description = "David Armstrong Lewis";
+      extraGroups = [ "wheel" "networkmanager" "audio" "video" "docker" ];
+      useDefaultShell = true;
+    };
   };
 
   # List packages installed in system profile. To search, run:
@@ -148,4 +157,3 @@
   system.stateVersion = "21.05"; # Did you read the comment?
 
 }
-
