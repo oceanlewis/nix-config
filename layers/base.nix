@@ -37,6 +37,7 @@ in {
     mdbook
 
     # Process Management
+    killall
     htop procs bandwhich
     bottom
 
