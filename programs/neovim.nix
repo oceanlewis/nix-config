@@ -178,7 +178,7 @@ let
     nmap <leader>c :CocCommand<cr>
 
     " Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
+    autocmd CursorHold * silent call CocActionAsync('highlight')
 
     " Tab and Shift-Tab navigate completion list
     inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -217,16 +217,17 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
     }
   '';
 
-in {
+in
+{
 
   programs.neovim = {
-    enable       = true;
-    vimAlias     = true;
-    viAlias      = true;
+    enable = true;
+    vimAlias = true;
+    viAlias = true;
     vimdiffAlias = true;
-    withNodeJs   = true;
-    withPython3  = true;
-    withRuby     = true;
+    withNodeJs = true;
+    withPython3 = true;
+    withRuby = true;
 
     extraConfig = ''
       ${common}
@@ -247,10 +248,10 @@ in {
       coc-tsserver
       coc-pyright
       coc-solargraph
+      coc-rust-analyzer
       vim-nix
       kotlin-vim
       vim-terraform
-      #neuron-vim
 
       # UI
       airline
@@ -265,7 +266,10 @@ in {
     ] ++ extraPlugins;
   };
 
-  home.packages = [];
-  home.file.".config/nvim/coc-settings.json".text = fileContents."coc-settings.json";
+  home.packages = [
+    pkgs.rust-analyzer
+  ];
 
+  home.file.".config/nvim/coc-settings.json".text =
+    fileContents."coc-settings.json";
 }
