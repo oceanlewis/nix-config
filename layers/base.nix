@@ -42,6 +42,7 @@ in {
     bottom
 
     # Device Management
+    usbutils # lsusb and others
     smartmontools
     
     # Networking
