@@ -54,7 +54,7 @@ in
     starship
     nushell
     neovim
-    lorri.home
+    lorri
   ];
 
   home = {
