@@ -260,9 +260,10 @@ in
 
       # Themes
       gruvbox-community
+      vim-gruvbox8
       papercolor-theme
-      oceanic-next
       onehalf
+      palenight-vim
     ] ++ extraPlugins;
   };
 

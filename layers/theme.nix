@@ -562,7 +562,7 @@ in
   neovim = {
     colorScheme =
       if theme != "gruvbox" then "PaperColor"
-      else "gruvbox";
+      else "gruvbox8";
 
     background =
       if variant == "light" then "light"

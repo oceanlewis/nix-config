@@ -55,13 +55,17 @@
     };
   };
 
-  fonts.fonts = with pkgs; [
-    (
-      nerdfonts.override {
-        fonts = [ "FiraCode" "DejaVuSansMono" "Hack" "IBMPlexMono" ];
-      }
-    )
-  ];
+  fonts = {
+    enableDefaultFonts = true;
+
+    fonts = with pkgs; [
+      (
+        nerdfonts.override {
+          fonts = [ "FiraCode" "DejaVuSansMono" "Hack" "IBMPlexMono" ];
+        }
+      )
+    ];
+  };
 
   virtualisation = {
     docker.enable = true;
