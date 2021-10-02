@@ -3,65 +3,86 @@
 , ...
 }:
 
-with pkgs; 
+with pkgs;
 let
   platformSpecific =
     lib.optionals pkgs.stdenv.isLinux [
       xsel # rmesg
+      usbutils # lsusb and others
     ];
-in {
+in
+{
 
   home.packages = platformSpecific ++ [
     # Files & Text
-    file exa fd ripgrep sd # grex
-    fzf zoxide
-    bat jq yq-go mdcat
+    file
+    exa
+    fd
+    ripgrep
+    sd # grex
+    fzf
+    zoxide
+    bat
+    jq
+    yq-go
+    mdcat
     icdiff
     tokei
     entr
     pv
-    wget rsync
+    wget
+    rsync
     unzip
 
     # Shells and Unix Environment
-    elvish fish
+    elvish
+    fish
     (pkgs.callPackage ../packages/dingus.nix {})
 
     # Chat & Browsing
-    irssi w3m
-    
+    irssi
+    w3m
+
     # Identity Management
     gnupg
-    
+
     ## Writing Tools
     mdbook
 
     # Process Management
     killall
-    htop procs bandwhich
+    htop
+    procs
+    bandwhich
     bottom
 
     # Device Management
-    usbutils # lsusb and others
     smartmontools
-    
+
     # Networking
-    nmap httpie telnet
- 
+    nmap
+    httpie
+    telnet
+
     # Content
     youtube-dl
 
     # Build Tools
-    autoconf pkg-config gnumake
+    autoconf
+    pkg-config
+    gnumake
 
     # Databases
     postgresql
 
     # Languages
-    go gopls
+    go
+    gopls
 
     # Nix
-    niv nixpkgs-fmt rnix-lsp
+    niv
+    nixpkgs-fmt
+    rnix-lsp
   ];
 
 }

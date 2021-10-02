@@ -142,8 +142,7 @@ in
           rust
           ruby
           nodejs
-          lorri
-        ];
+        ] ++ [ pkgs.direnv ];
 
         sessionVariables = {
           PAGER = "less -R";
