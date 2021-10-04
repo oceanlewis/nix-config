@@ -124,12 +124,16 @@
     wget
     firefox
     alacritty
+    gnome.gnome-tweaks
+    gnomeExtensions.user-themes
+    pantheon.elementary-gtk-theme
+    pantheon.elementary-icon-theme
+    pantheon.elementary-sound-theme
   ];
 
   programs = {
     zsh.enable = true;
-    pantheon-tweaks.enable = true;
   };
 
-  system.stateVersion = "21.05"; # Did you read the comment?
+  system.stateVersion = "21.05";
 }

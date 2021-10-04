@@ -27,7 +27,7 @@ in {
     package      = gitAndTools.gitFull;
 
     delta = {
-      enable = false;
+      enable = true;
       options = {
         syntax-theme = deltaTheme theme.config;
       };

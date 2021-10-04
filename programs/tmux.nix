@@ -90,9 +90,9 @@ let
   style = {
     default = ''
       set -g status-left "" # originally "#S"
-      set -g status-right ""
+      set -g status-right "#{pane_width}x#{pane_height}"
       set -g status-left-length 50
-      set -g status-justify right
+      set -g status-justify left
       set -g status-position bottom
     '';
   };

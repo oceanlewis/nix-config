@@ -46,21 +46,25 @@ in
     home-manager.enable = true;
   };
 
+  services.lorri.enable = true;
+
   imports = [
-    base git
-    bash zsh
     alacritty
-    tmux
-    starship
-    nushell
-    neovim
+    base
+    bash
+    git
     lorri
+    neovim
+    nushell
+    starship
+    tmux
+    zsh
   ];
 
   home = {
     stateVersion = "21.11";
 
-    username      = USER;
+    username = USER;
     homeDirectory = HOME;
 
     sessionVariables = {
