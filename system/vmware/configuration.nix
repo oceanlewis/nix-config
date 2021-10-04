@@ -46,19 +46,26 @@
   services = {
     xserver = {
       enable = true;
-      desktopManager.pantheon.enable = true;
+      layout = "us";
+      desktopManager.gnome.enable = true;
+      displayManager.gdm = {
+        enable = true;
+        wayland = false;
+      };
     };
 
-    pantheon = {
-      apps.enable = true;
-      contractor.enable = true;
-    };
+    gnome.gnome-settings-daemon.enable = true;
+    dbus.packages = [ pkgs.gnome3.dconf ];
+    udev.packages = [ pkgs.gnome3.gnome-settings-daemon ];
   };
 
   fonts = {
     enableDefaultFonts = true;
 
     fonts = with pkgs; [
+      inter
+      open-sans
+      roboto-mono
       (
         nerdfonts.override {
           fonts = [ "FiraCode" "DejaVuSansMono" "Hack" "IBMPlexMono" ];
