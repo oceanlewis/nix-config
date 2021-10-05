@@ -9,6 +9,8 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./components/gnome-desktop.nix
+      ./components/udev-stf32discovery.nix
     ];
 
   boot = {
@@ -36,28 +38,7 @@
     # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   };
 
-  # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  # };
-
-  services = {
-    xserver = {
-      enable = true;
-      layout = "us";
-      desktopManager.gnome.enable = true;
-      displayManager.gdm = {
-        enable = true;
-        wayland = false;
-      };
-    };
-
-    gnome.gnome-settings-daemon.enable = true;
-    dbus.packages = [ pkgs.gnome3.dconf ];
-    udev.packages = [ pkgs.gnome3.gnome-settings-daemon ];
-  };
+  services.xserver.layout = "us";
 
   fonts = {
     enableDefaultFonts = true;
@@ -131,11 +112,6 @@
     wget
     firefox
     alacritty
-    gnome.gnome-tweaks
-    gnomeExtensions.user-themes
-    pantheon.elementary-gtk-theme
-    pantheon.elementary-icon-theme
-    pantheon.elementary-sound-theme
   ];
 
   programs = {
