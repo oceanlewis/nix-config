@@ -73,11 +73,6 @@ in
       VISUAL = "nvim";
       TERM = "xterm-256color";
 
-      XDG_CONFIG_HOME = "${HOME}/.config";
-      XDG_DATA_HOME = "${HOME}/.local/share";
-      XDG_DATA_DIRS = "${HOME}/.local/data";
-      XDG_RUNTIME_DIR = "${HOME}/.local/run";
-
       # TODO: Refactor
       FZF_DEFAULT_COMMAND = "fd --type f";
       BAT_CONFIG_PATH = "${HOME}/.config/bat/config";
