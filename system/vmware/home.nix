@@ -49,6 +49,7 @@ in
   services.lorri.enable = true;
 
   imports = [
+    ./components/vscode.nix
     alacritty
     base
     bash
