@@ -4,7 +4,15 @@
   services = {
     xserver = {
       enable = true;
-      desktopManager.gnome.enable = true;
+
+      desktopManager.gnome = {
+        enable = true;
+        extraGSettingsOverrides = ''
+          [org.gnome.desktop.interface]
+          scaling-factor=2
+        '';
+      };
+
       displayManager.gdm = {
         enable = true;
         wayland = false;
@@ -12,6 +20,7 @@
     };
 
     gnome.gnome-settings-daemon.enable = true;
+
     dbus.packages = [ pkgs.gnome3.dconf ];
     udev.packages = [ pkgs.gnome3.gnome-settings-daemon ];
   };
