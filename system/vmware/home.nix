@@ -9,7 +9,7 @@ let
   theme = import (layer "theme.nix") {
     inherit pkgs;
     theme = "gruvbox";
-    variant = "dark";
+    variant = "black";
     fontFamily = "DejaVuSansMono";
     fontSize = 12.5;
   };

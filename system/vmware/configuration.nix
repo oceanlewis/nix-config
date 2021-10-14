@@ -122,8 +122,9 @@
       description = "David Armstrong Lewis";
       extraGroups = [ "wheel" "networkmanager" "audio" "video" "docker" ];
       useDefaultShell = true;
+
       openssh.authorizedKeys.keys = [
-        "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDx7WQNPoNA/pVAneWTKWfhbS3Bdtx/6yypKmPPc/e5KXq8IN9YDm7Zzc18rWMZHgBscfJGPDlz1oRo3OMW5MjPgi4n1Em5EAynGSPKsj7/SHFlucE6+TcdibJZlVxX1ZPsfT99b5Sh397Mg64bVfcBMZglTpgrHKYHmqZsYZWIuc5iukP4edMHVxUrSxpohar/Zw4s7+mzq5WgxFO6+Uzggh+olmM00OD4PkFE9w4QwLtJj9PL9hdv70NrSJPkbsMX5fTvmeBiq2iKX/o3CHAF7O3mieneb2LTaGFmf+FGXfm94mgUnhumNJn05k8jiJF7HAtE50Aq7oLozfQV3cqv/51l5p+Nz1Cq2tyul45P5q8CA8m2G7Kt8bRaHUmfTw3CiUdnSRcuEa0Bv58sDOVTbm+eBUQH+mRfAaCumplQJ6Xgepzl07X7q0I+1NQG7hftYve1oXAzx+HF+YKFYOdErLjxpA4SDo4ZL1ESnZPptR/Q8rZFaY13tk8g/jGZGGu52dEHjHjihBNRJoaWNhgpqV7U3XxpqxxZ0QzFwHYzFGmRjWvpNO+5HoEgQjJrFAKEotfNFqWoX95lAe57iMIq41a2BbWF0w2cfLzy+3vnzdXypTC6b1DTFbgw1Md4Ve8pK5KQ9bPqIGzocpexRq+eF+23WZGK7GmSsOAaiYA6bQ== davidlewis@DESKTOP-OC9NH84.localdomain"
+        "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDG7RSPfyioSL+/eh3QF8XKP9ddHBshXT+jfhyJoHHcyhwZvUuz3x8C/sWZbYhAJtUDmcZvBChlsry9//rwzz05NoRfCutwMhkbhca+3qa5Tk7to1O6givyQCg3LYP5XGn7bwLBUDumJnORBpeM+ik7fUcBbw1fFYqcU5xKnTOT0wbzEkWVjHTSgdca31CnwlLbw5XKKQARZ7vjaVlJBhAbNFk5rQEPNF1kp19RQyshORZu16a7NWxAJfFQs3JblUfGYfYi/b9j1msXXTkmE67jmcwjOohZmBB/pamlcDoNvQDZADemNS1MaatweimemophvnZEKs1sfXjNc2CMP3wRTWbprcYM6hKsXCq+NBuERm6Bz/w0f679nNY1YKMAJqHLLkvHdFGKCioSFH9vCSYNHrzFwvniihRzWqoeMkJ5WEUFT64xnpb/5c1BK4tvoVQlC++qRg4UYx+7kfGUYjru0QwvkxnTGw6xIqe71/7TdE0id1d5xx4SyqvJ7eeMJK3foR9Q7qkVNk6/pSH9ahAzZMKk45aZDzFe/kvlIMuHgCC9RV3uz7eaf+dTeZN8qsCzx7reL0+n5CKuF7bmwWWiujeBHg/WaweaBmg8/zFzuHlOwkkj6agLx9ySiUHdBunisXdJ96u1xRiwXRTJOA1D8TVwUKo68qXOorKd6FIRnQ== davidlewis@Thinky.attlocal.net"
       ];
     };
   };
