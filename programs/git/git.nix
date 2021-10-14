@@ -5,14 +5,7 @@
 , ...
 }:
 
-with pkgs; let
-
-  deltaTheme = { variant, ... }:
-    if variant == "light"
-    then "GitHub"
-    else "OneHalfDark";
-
-in {
+with pkgs; {
 
   home.packages = [
     gitAndTools.delta
@@ -23,17 +16,17 @@ in {
   # Program Definition
   # - https://github.com/rycee/home-manager/blob/master/modules/programs/git.nix
   programs.git = {
-    enable       = true;
-    package      = gitAndTools.gitFull;
+    enable = true;
+    package = gitAndTools.gitFull;
 
     delta = {
       enable = true;
       options = {
-        syntax-theme = deltaTheme theme.config;
+        syntax-theme = theme.delta;
       };
     };
 
-    userName  = "David Armstrong Lewis";
+    userName = "David Armstrong Lewis";
     userEmail = "david@armstronglewis.com";
 
     extraConfig = {
@@ -72,7 +65,7 @@ in {
       lg1 = "lg1-specific --all";
       lg2 = "lg2-specific --all";
       lg3 = "lg3-specific --all";
-      lg  = "lg1";
+      lg = "lg1";
     };
   };
 
