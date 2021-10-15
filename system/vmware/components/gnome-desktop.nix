@@ -1,8 +1,6 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  #xdg.autostart.enable = false;
-
   services = {
     xserver = {
       enable = true;
