@@ -27,6 +27,7 @@
 
   environment.systemPackages = with pkgs; [
     gnome.gnome-tweaks
+    gnome.dconf-editor
     gnomeExtensions.user-themes
     pantheon.elementary-gtk-theme
     pantheon.elementary-icon-theme
