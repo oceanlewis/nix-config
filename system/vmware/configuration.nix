@@ -5,7 +5,7 @@
 
   imports = [
     ./hardware-configuration.nix
-    ./components/gnome-desktop.nix
+    ./components/pantheon-desktop.nix
     ./components/udev-stf32discovery.nix
   ];
 
