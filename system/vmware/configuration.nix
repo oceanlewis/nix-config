@@ -84,20 +84,6 @@
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
-  # Configure keymap in X11
-  # services.xserver.layout = "us";
-  # services.xserver.xkbOptions = "eurosign:e";
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
-  # Enable sound.
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
   services.openssh = {
     enable = true;
     allowSFTP = true;
@@ -105,7 +91,18 @@
     forwardX11 = true;
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  environment.systemPackages = with pkgs; [
+    open-vm-tools
+    vim
+    wget
+    firefox
+    alacritty
+  ];
+
+  programs = {
+    zsh.enable = true;
+  };
+
   users = {
     mutableUsers = false;
     defaultUserShell = pkgs.zsh;
@@ -121,20 +118,6 @@
         "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDG7RSPfyioSL+/eh3QF8XKP9ddHBshXT+jfhyJoHHcyhwZvUuz3x8C/sWZbYhAJtUDmcZvBChlsry9//rwzz05NoRfCutwMhkbhca+3qa5Tk7to1O6givyQCg3LYP5XGn7bwLBUDumJnORBpeM+ik7fUcBbw1fFYqcU5xKnTOT0wbzEkWVjHTSgdca31CnwlLbw5XKKQARZ7vjaVlJBhAbNFk5rQEPNF1kp19RQyshORZu16a7NWxAJfFQs3JblUfGYfYi/b9j1msXXTkmE67jmcwjOohZmBB/pamlcDoNvQDZADemNS1MaatweimemophvnZEKs1sfXjNc2CMP3wRTWbprcYM6hKsXCq+NBuERm6Bz/w0f679nNY1YKMAJqHLLkvHdFGKCioSFH9vCSYNHrzFwvniihRzWqoeMkJ5WEUFT64xnpb/5c1BK4tvoVQlC++qRg4UYx+7kfGUYjru0QwvkxnTGw6xIqe71/7TdE0id1d5xx4SyqvJ7eeMJK3foR9Q7qkVNk6/pSH9ahAzZMKk45aZDzFe/kvlIMuHgCC9RV3uz7eaf+dTeZN8qsCzx7reL0+n5CKuF7bmwWWiujeBHg/WaweaBmg8/zFzuHlOwkkj6agLx9ySiUHdBunisXdJ96u1xRiwXRTJOA1D8TVwUKo68qXOorKd6FIRnQ== davidlewis@Thinky.attlocal.net"
       ];
     };
-  };
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    open-vm-tools
-    vim
-    wget
-    firefox
-    alacritty
-  ];
-
-  programs = {
-    zsh.enable = true;
   };
 
   system.stateVersion = "21.05";
