@@ -41,6 +41,7 @@ let
   starship = import (program "starship.nix") { inherit pkgs config lib; };
   lorri = import (service "lorri.nix") { inherit pkgs config lib; };
 
+  HOST_NAME = "Thinky";
   USER = "davidlewis";
   HOME = "/Users/${USER}";
 
@@ -48,9 +49,29 @@ in
 {
   nixpkgs.config.allowUnfree = true;
 
+  nix = {
+    package = pkgs.nix;
+    nixPath = lib.concatStringsSep ":" [
+      "darwin-config=/Users/davidlewis/.nixpkgs/darwin-configuration.nix"
+      "/Users/davidlewis/.nix-defexpr/channels"
+    ];
+  };
+
   imports = [
     <home-manager/nix-darwin>
   ];
+
+  networking = {
+    computerName = HOST_NAME;
+    hostName = HOST_NAME;
+
+    dns = [
+      "1.1.1.1"
+      "1.0.0.1"
+      "2606:4700:4700::1111"
+      "2606:4700:4700::1001"
+    ];
+  };
 
   fonts = {
     enableFontDir = true;
@@ -101,9 +122,8 @@ in
     ];
   };
 
-  nix.package = pkgs.nix;
-
   services = {
+    nix-daemon.enable = true;
     lorri.enable = true;
     emacs = {
       enable = true;
