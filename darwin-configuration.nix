@@ -46,6 +46,7 @@ let
 
 in
 {
+  nixpkgs.config.allowUnfree = true;
 
   imports = [
     <home-manager/nix-darwin>
@@ -96,6 +97,7 @@ in
 
     systemPackages = [
       pkgs.m-cli
+      pkgs.xquartz
     ];
   };
 
