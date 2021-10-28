@@ -8,8 +8,8 @@ let
 
   theme = import (layer "theme.nix") {
     inherit pkgs;
-    theme = "standard";
-    variant = "light";
+    theme = "gruvbox";
+    variant = "dark";
     fontFamily = "DejaVuSansMono";
     fontSize = 12.5;
   };

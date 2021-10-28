@@ -47,6 +47,8 @@
   };
 
   services.xserver.layout = "us";
+  services.xserver.videoDrivers = [ "vmware" "amdgpu" "radeon" "nouveau" "modesetting" "fbdev" ];
+
 
   fonts = {
     enableDefaultFonts = true;
@@ -107,8 +109,8 @@
     mutableUsers = false;
     defaultUserShell = pkgs.zsh;
 
-    extraUsers.davidlewis = {
-      hashedPassword = "$6$Njc3WONFSurN$RCBNs7moPFyzwdXKOSKFZYpXtFKrOvZM8seZnPo5JQwSNJttOoZfmuQI745Sr/edXgqv7kiCx89olerMu1dEa.";
+    extraUsers.armstrong = {
+      hashedPassword = "$6$YmFE0ktOi$gQJJxy6R6iqwZFw18bdgMNijE8/l9YH6eeypZPojjEhcvfrMXvWYRrLO5xvt7W5XCFJR77YV0xnA2TZtQQUzV/";
       isNormalUser = true;
       description = "David Armstrong Lewis";
       extraGroups = [ "wheel" "networkmanager" "audio" "video" "docker" ];
