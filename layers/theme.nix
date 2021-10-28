@@ -563,8 +563,12 @@ in
   };
 
   bat.theme =
-    if variant == "light" then "gruvbox-light"
-    else "gruvbox-dark";
+    if theme == "gruvbox" then
+      if variant == "light" then "gruvbox-light"
+      else "gruvbox-dark"
+    else
+      if variant == "light" then "GitHub"
+      else "Sublime Snazzy";
 
   delta =
     if variant == "light"

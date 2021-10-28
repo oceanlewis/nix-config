@@ -8,8 +8,8 @@ let
 
   theme = import (layer "theme.nix") {
     inherit pkgs;
-    theme = "gruvbox";
-    variant = "black";
+    theme = "standard";
+    variant = "light";
     fontFamily = "DejaVuSansMono";
     fontSize = 12.5;
   };
@@ -36,7 +36,7 @@ let
   starship = import (program "starship.nix") { inherit pkgs config lib; };
   lorri = import (service "lorri.nix") { inherit pkgs config lib; };
 
-  USER = "davidlewis";
+  USER = "armstrong";
   HOME = "/home/${USER}";
 
 in
