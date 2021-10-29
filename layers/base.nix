@@ -38,6 +38,7 @@ in
     elvish
     fish
     (pkgs.callPackage ../packages/dingus.nix {})
+    (pkgs.callPackage ../packages/itm.nix {})
 
     # Chat & Browsing
     irssi
