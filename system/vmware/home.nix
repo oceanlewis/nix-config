@@ -87,5 +87,11 @@ in
       echo Linking in nushell config file
       ln -sfv "${HOME}/.config/nu/config.toml" "${HOME}/Library/Application Support/org.nushell.nu/config.toml"
     '';
+
+    file.".gdbinit".text = ''
+      define hook-quit
+        set confirm off
+      end
+    '';
   };
 }

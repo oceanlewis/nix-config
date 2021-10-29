@@ -32,7 +32,6 @@ let
 
     # Copy mode is more like Vi
     bind-key -T copy-mode-vi 'v' send -X begin-selection
-    bind-key -T copy-mode-vi 'y' send -X copy-selection-and-cancel
   '';
 
   enableMouseIntegration = ''
@@ -40,36 +39,37 @@ let
     setw -g mouse on
   '';
 
-  enableCopyToSystemClipboard = 
-    if pkgs.stdenv.isLinux then
-    ''
+  enableCopyToSystemClipboard =
+    if pkgs.stdenv.isLinux then ''
       bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
     ''
-    else "";
+    else ''
+      bind-key -T copy-mode-vi 'y' send -X copy-selection-and-cancel
+    '';
 
   colors = {
     default = {
-      status-fg             = "default";
-      status-bg             = "default";
+      status-fg = "default";
+      status-bg = "default";
       pane-active-border-fg = "default";
-      mode-style-bg         = "#FF9C9C";
-      mode-style-fg         = "#474646";
+      mode-style-bg = "#FF9C9C";
+      mode-style-fg = "#474646";
     };
 
     pink = {
-      status-fg             = "#FF006D";
-      status-bg             = "default";
+      status-fg = "#FF006D";
+      status-bg = "default";
       pane-active-border-fg = "#FF006D";
-      mode-style-bg         = "#87CEFA";
-      mode-style-fg         = "#FF006D";
+      mode-style-bg = "#87CEFA";
+      mode-style-fg = "#FF006D";
     };
 
     magenta = {
-      status-fg             = "colour13";
-      status-bg             = "default";
+      status-fg = "colour13";
+      status-bg = "default";
       pane-active-border-fg = "colour13";
-      mode-style-bg         = "#947CD3";
-      mode-style-fg         = "#000000";
+      mode-style-bg = "#947CD3";
+      mode-style-fg = "#000000";
     };
   };
 
@@ -103,13 +103,13 @@ in
   # Program Definition
   # - https://github.com/rycee/home-manager/blob/master/modules/programs/tmux.nix
   programs.tmux = {
-    enable        = true;
-    keyMode       = "vi";
-    terminal      = "xterm-256color";
-    historyLimit  = 100000;
-    baseIndex     = 1;
-    escapeTime    = 10;
-    clock24       = true;
+    enable = true;
+    keyMode = "vi";
+    terminal = "xterm-256color";
+    historyLimit = 100000;
+    baseIndex = 1;
+    escapeTime = 10;
+    clock24 = true;
 
     extraConfig = ''
       ${reloadConfig}

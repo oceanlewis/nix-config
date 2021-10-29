@@ -8,6 +8,7 @@ let
   platformSpecific =
     lib.optionals pkgs.stdenv.isLinux [
       xsel # rmesg
+      xclip
       usbutils # lsusb and others
     ];
 in
