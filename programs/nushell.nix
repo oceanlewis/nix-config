@@ -1,8 +1,8 @@
-{ pkgs, ...  }:
+{ pkgs, ... }:
 
 {
   programs.nushell = {
-    enable  = true;
+    enable = true;
     package = pkgs.nushell;
 
     settings = {
@@ -12,8 +12,8 @@
       };
 
       skip_welcome_message = true;
-      table_mode           = "light";
-      prompt               = "starship prompt";
+      table_mode = "light";
+      prompt = "starship prompt";
 
       env = {
         STARSHIP_SHELL = "nushell";
@@ -53,5 +53,4 @@
       ];
     };
   };
-
 }

@@ -23,14 +23,6 @@ let
     inherit pkgs config lib theme;
   };
 
-  shell = import (layer "posix-shell.nix") { inherit pkgs; };
-  zsh = import (program "zsh.nix") { inherit pkgs shell; };
-  bash = import (program "bash.nix") { inherit pkgs shell; };
-  nushell = import (program "nushell.nix") { inherit pkgs; };
-  tmux = import (program "tmux.nix") { inherit pkgs config lib; };
-  starship = import (program "starship.nix") { inherit pkgs config lib; };
-  lorri = import (service "lorri.nix") { inherit pkgs config lib; };
-
   USER = "armstrong";
   HOME = "/home/${USER}";
 
@@ -44,17 +36,15 @@ in
   services.lorri.enable = true;
 
   imports = [
+    ./layers/common.nix
+    ./services/lorri.nix
     ./programs/vscode.nix
-    ./layers/base.nix
+    ./programs/nushell.nix
+    ./programs/tmux.nix
+    ./programs/starship.nix
     alacritty
-    bash
     git
-    lorri
     neovim
-    nushell
-    starship
-    tmux
-    zsh
   ];
 
   home = {
@@ -76,11 +66,6 @@ in
 
     file.".config/bat/config".text = ''
       --theme="${theme.bat.theme}"
-    '';
-
-    file."${HOME}/.config/nu/config.toml".onChange = ''
-      echo Linking in nushell config file
-      ln -sfv "${HOME}/.config/nu/config.toml" "${HOME}/Library/Application Support/org.nushell.nu/config.toml"
     '';
 
     file.".gdbinit".text = ''
