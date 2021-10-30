@@ -14,7 +14,6 @@ let
     fontSize = 12.5;
   };
 
-  base = import (layer "base.nix") { inherit pkgs lib; };
   rust = import (layer "rust.nix") { inherit pkgs; };
   git = import (program "git/git.nix") { inherit pkgs config lib theme; };
   alacritty = import (program "alacritty.nix") { inherit pkgs config lib theme; };
@@ -49,9 +48,9 @@ in
   services.lorri.enable = true;
 
   imports = [
-    ./components/vscode.nix
+    ./programs/vscode.nix
+    ./layers/base.nix
     alacritty
-    base
     bash
     git
     lorri

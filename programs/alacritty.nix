@@ -190,7 +190,7 @@ with pkgs; {
       colors = theme.alacritty.colors;
       draw_bold_text_with_bright_colors = true;
 
-      #background_opacity = 0.90;
+      background_opacity = 0.90;
       mouse.hide_when_typing = true;
     };
   };
