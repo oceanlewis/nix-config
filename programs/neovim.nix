@@ -2,7 +2,6 @@
 , lib
 , pkgs
 , theme
-, extraPlugins
 , ...
 }:
 
@@ -289,8 +288,7 @@ in
       # Custom
       vim-monochrome
       hara
-    ]
-    ++ extraPlugins;
+    ];
   };
 
   home.packages = [

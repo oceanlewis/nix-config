@@ -14,17 +14,13 @@ let
     fontSize = 12.5;
   };
 
-  rust = import (layer "rust.nix") { inherit pkgs; };
   git = import (program "git/git.nix") { inherit pkgs config lib theme; };
-  alacritty = import (program "alacritty.nix") { inherit pkgs config lib theme; };
+  alacritty = import (program "alacritty.nix") {
+    inherit pkgs config lib theme;
+  };
 
   neovim = import (program "neovim.nix") {
     inherit pkgs config lib theme;
-    extraPlugins = lib.concatLists (
-      [
-        rust.vimPlugins
-      ]
-    );
   };
 
   shell = import (layer "posix-shell.nix") { inherit pkgs; };

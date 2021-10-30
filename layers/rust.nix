@@ -7,8 +7,4 @@
     cargo-watch
     cargo-udeps
   ];
-
-  vimPlugins = with pkgs.vimPlugins; [
-    coc-rust-analyzer
-  ];
 }
