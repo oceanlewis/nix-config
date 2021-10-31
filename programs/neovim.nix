@@ -1,16 +1,10 @@
-{ config
-, lib
-, pkgs
-, theme
-, ...
-}:
+{ config, lib, pkgs, ... }:
 
-let
+with pkgs; let
 
   common = ''
     " Use UTF-8 encoding
     set encoding=utf-8
-
 
     " Remap Leader key to Space
     let mapleader = "\<Space>"
@@ -216,9 +210,9 @@ let
     }
   '';
 
-  vim-monochrome = pkgs.vimUtils.buildVimPlugin {
+  vim-monochrome = vimUtils.buildVimPlugin {
     name = "vim-monochrome";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "fxn";
       repo = "vim-monochrome";
       rev = "77017c54b0b611f0ba8f8825f125b716e65c84b9";
@@ -226,9 +220,9 @@ let
     };
   };
 
-  hara = pkgs.vimUtils.buildVimPlugin {
+  hara = vimUtils.buildVimPlugin {
     name = "hara";
-    src = pkgs.fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "scolsen";
       repo = "hara";
       rev = "99600c585e25f71a6ba92a5862835e0be1c3303e";
@@ -259,7 +253,7 @@ in
       ${themeConfig}
     '';
 
-    plugins = with pkgs.vimPlugins; [
+    plugins = with vimPlugins; [
       vim-surround
 
       LanguageClient-neovim
@@ -292,7 +286,7 @@ in
   };
 
   home.packages = [
-    pkgs.rust-analyzer
+    rust-analyzer
   ];
 
   home.file.".config/nvim/coc-settings.json".text =

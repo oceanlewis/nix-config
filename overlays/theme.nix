@@ -1,12 +1,9 @@
-{ pkgs
-, theme ? "standard"
-, variant ? "dark"
-, fontFamily ? "default"
-, fontSize ? 13
-, ...
-}:
-
 let
+
+  theme = "standard";
+  variant = "dark";
+  fontFamily = "DejaVuSansMono";
+  fontSize = 12.5;
 
   fonts = {
     default = { };
@@ -541,38 +538,37 @@ let
   };
 
 in
-
-{
-
-  alacritty = {
-    variant = variant;
-    colors = themes.${theme}.${variant};
-    font = fonts.${fontFamily} // {
-      size = fontSize;
+self: super: {
+  theme = {
+    alacritty = {
+      variant = variant;
+      colors = themes.${theme}.${variant};
+      font = fonts.${fontFamily} // {
+        size = fontSize;
+      };
     };
+
+    neovim = {
+      colorScheme =
+        if theme != "gruvbox" then "PaperColor"
+        else "gruvbox8";
+
+      background =
+        if variant == "light" then "light"
+        else "dark";
+    };
+
+    bat.theme =
+      if theme == "gruvbox" then
+        if variant == "light" then "gruvbox-light"
+        else "gruvbox-dark"
+      else
+        if variant == "light" then "GitHub"
+        else "Sublime Snazzy";
+
+    delta =
+      if variant == "light"
+      then "GitHub"
+      else "OneHalfDark";
   };
-
-  neovim = {
-    colorScheme =
-      if theme != "gruvbox" then "PaperColor"
-      else "gruvbox8";
-
-    background =
-      if variant == "light" then "light"
-      else "dark";
-  };
-
-  bat.theme =
-    if theme == "gruvbox" then
-      if variant == "light" then "gruvbox-light"
-      else "gruvbox-dark"
-    else
-      if variant == "light" then "GitHub"
-      else "Sublime Snazzy";
-
-  delta =
-    if variant == "light"
-    then "GitHub"
-    else "OneHalfDark";
-
 }

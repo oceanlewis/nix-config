@@ -157,6 +157,10 @@ in
 
   home.packages = packages;
 
+  home.file.".config/bat/config".text = ''
+    --theme="${theme.bat.theme}"
+  '';
+
   # Program Definition
   # - https://github.com/rycee/home-manager/blob/master/modules/programs/zsh.nix
   programs.zsh = {

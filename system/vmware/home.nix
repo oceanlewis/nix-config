@@ -2,27 +2,6 @@
 
 let
 
-  layer = fileName: builtins.toPath "${HOME}/.config/nixpkgs/layers/${fileName}";
-  program = fileName: builtins.toPath "${HOME}/.config/nixpkgs/programs/${fileName}";
-  service = fileName: builtins.toPath "${HOME}/.config/nixpkgs/services/${fileName}";
-
-  theme = import (layer "theme.nix") {
-    inherit pkgs;
-    theme = "standard";
-    variant = "dark";
-    fontFamily = "DejaVuSansMono";
-    fontSize = 12.5;
-  };
-
-  git = import (program "git/git.nix") { inherit pkgs config lib theme; };
-  alacritty = import (program "alacritty.nix") {
-    inherit pkgs config lib theme;
-  };
-
-  neovim = import (program "neovim.nix") {
-    inherit pkgs config lib theme;
-  };
-
   USER = "armstrong";
   HOME = "/home/${USER}";
 
@@ -42,9 +21,9 @@ in
     ./programs/nushell.nix
     ./programs/tmux.nix
     ./programs/starship.nix
-    alacritty
-    git
-    neovim
+    ./programs/git/default.nix
+    ./programs/alacritty.nix
+    ./programs/neovim.nix
   ];
 
   home = {
@@ -63,10 +42,6 @@ in
       FZF_DEFAULT_COMMAND = "fd --type f";
       BAT_CONFIG_PATH = "${HOME}/.config/bat/config";
     };
-
-    file.".config/bat/config".text = ''
-      --theme="${theme.bat.theme}"
-    '';
 
     file.".gdbinit".text = ''
       define hook-quit
