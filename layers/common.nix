@@ -28,7 +28,7 @@ with pkgs; let
     elvish
     fish
     (pkgs.callPackage ../packages/dingus.nix { })
-    (pkgs.callPackage ../packages/itm.nix { })
+    (pkgs.callPackage ../packages/itm { })
 
     # Chat & Browsing
     irssi
