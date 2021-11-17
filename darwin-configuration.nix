@@ -12,6 +12,8 @@ in
 
   nix = {
     package = pkgs.nixUnstable;
+    # Sandbox seems to interfere with Rust builds on macOS Moterey 12.0.1
+    # - https://github.com/NixOS/nixpkgs/issues/144704
     useSandbox = false;
     extraOptions = ''
       experimental-features = nix-command
@@ -88,10 +90,8 @@ in
 
       home = {
         stateVersion = "21.11";
-
         username = USER;
         homeDirectory = HOME;
-
         packages = [ pkgs.direnv ];
 
         sessionVariables = {
