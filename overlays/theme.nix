@@ -1,7 +1,7 @@
 let
 
   theme = "standard";
-  variant = "light";
+  variant = "dark";
   fontFamily = "DejaVuSansMono";
   fontSize = 12.5;
 
@@ -10,8 +10,7 @@ let
 
     "Menlo" = {
       normal = {
-        family = "Menlo";
-        style = "Bold";
+        family = "Menlo"; style = "Bold";
       };
       bold = {
         family = "Menlo";
@@ -539,7 +538,7 @@ let
 
 in
 self: super: {
-  theme = {
+  theme = rec {
     alacritty = {
       variant = variant;
       colors = themes.${theme}.${variant};
@@ -566,9 +565,6 @@ self: super: {
         if variant == "light" then "GitHub"
         else "Sublime Snazzy";
 
-    delta =
-      if variant == "light"
-      then "GitHub"
-      else "OneHalfDark";
+    delta = bat.theme;
   };
 }

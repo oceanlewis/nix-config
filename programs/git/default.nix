@@ -19,7 +19,7 @@ with pkgs; {
     package = gitAndTools.gitFull;
 
     delta = {
-      enable = false;
+      enable = true;
       options = {
         syntax-theme = theme.delta;
       };

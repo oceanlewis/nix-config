@@ -17,13 +17,13 @@ in
   imports = [
     ./layers/common.nix
     ./services/lorri.nix
-    ./programs/vscode.nix
     ./programs/nushell.nix
     ./programs/tmux.nix
     ./programs/starship.nix
     ./programs/git/default.nix
-    ./programs/alacritty.nix
     ./programs/neovim.nix
+    ./programs/alacritty.nix
+    ./programs/vscode.nix
   ];
 
   home = {

@@ -2,47 +2,8 @@
 
 let
 
-  layer = fileName: builtins.toPath "${HOME}/.config/nixpkgs/layers/${fileName}";
-  program = fileName: builtins.toPath "${HOME}/.config/nixpkgs/programs/${fileName}";
-  service = fileName: builtins.toPath "${HOME}/.config/nixpkgs/services/${fileName}";
-
-  theme = import (layer "theme.nix") {
-    inherit pkgs;
-    theme = "gruvbox";
-    variant = "black";
-    fontFamily = "DejaVuSansMono";
-    fontSize = 13.5;
-  };
-
-  base = import (layer "base.nix") { inherit pkgs lib; };
-  cloudPlatforms = import (layer "cloud-platforms.nix") { inherit pkgs; };
-  beam = import (layer "beam.nix") { inherit pkgs; };
-  ruby = import (layer "ruby.nix") { inherit pkgs; };
-  rust = import (layer "rust.nix") { inherit pkgs; };
-  nodejs = import (layer "nodejs.nix") { inherit pkgs; };
-  git = import (program "git/git.nix") { inherit pkgs config lib theme; };
-  alacritty = import (program "alacritty.nix") { inherit pkgs config lib theme; };
-
-  neovim = import (program "neovim.nix") {
-    inherit pkgs config lib theme;
-    extraPlugins = lib.concatLists (
-      [
-        rust.vimPlugins
-      ]
-    );
-  };
-
-  emacs = import (program "emacs.nix") { inherit pkgs; };
-  shell = import (layer "posix-shell.nix") { inherit pkgs; };
-  zsh = import (program "zsh.nix") { inherit pkgs shell; };
-  bash = import (program "bash.nix") { inherit pkgs shell; };
-  nushell = import (program "nushell.nix") { inherit pkgs; };
-  tmux = import (program "tmux.nix") { inherit pkgs config lib; };
-  starship = import (program "starship.nix") { inherit pkgs config lib; };
-  lorri = import (service "lorri.nix") { inherit pkgs config lib; };
-
-  HOST_NAME = "Thinky";
-  USER = "davidlewis";
+  HOST_NAME = "Wizard";
+  USER = "armstrong";
   HOME = "/Users/${USER}";
 
 in
@@ -50,11 +11,11 @@ in
   nixpkgs.config.allowUnfree = true;
 
   nix = {
-    package = pkgs.nix;
-    nixPath = lib.concatStringsSep ":" [
-      "darwin-config=/Users/davidlewis/.nixpkgs/darwin-configuration.nix"
-      "/Users/davidlewis/.nix-defexpr/channels"
-    ];
+    package = pkgs.nixUnstable;
+    useSandbox = false;
+    extraOptions = ''
+      experimental-features = nix-command
+    '';
   };
 
   imports = [
@@ -64,13 +25,6 @@ in
   networking = {
     computerName = HOST_NAME;
     hostName = HOST_NAME;
-
-    dns = [
-      "1.1.1.1"
-      "1.0.0.1"
-      "2606:4700:4700::1111"
-      "2606:4700:4700::1001"
-    ];
   };
 
   fonts = {
@@ -84,23 +38,6 @@ in
     ];
   };
 
-  system.defaults = {
-    dock = {
-      autohide = true;
-      orientation = "bottom";
-    };
-
-    trackpad = {
-      Clicking = true;
-      TrackpadThreeFingerDrag = true;
-    };
-
-    NSGlobalDomain = {
-      InitialKeyRepeat = 25;
-      KeyRepeat = 2;
-    };
-  };
-
   users.users."${USER}" = {
     home = HOME;
     isHidden = false;
@@ -109,12 +46,12 @@ in
 
   environment = {
     # $ darwin-rebuild switch -I darwin-config=$HOME/.nixpkgs/darwin-configuration.nix
-    darwinConfig = "$HOME/.nixpkgs/darwin-configuration.nix";
+    darwinConfig = "$HOME/.config/nixpkgs/darwin-configuration.nix";
 
     # Append paths to the system PATH
-    systemPath = [
-      ''/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin''
-    ];
+    #systemPath = [
+    #  ''/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin''
+    #];
 
     systemPackages = [
       pkgs.m-cli
@@ -138,33 +75,24 @@ in
     users."${USER}" = { pkgs, ... }: {
 
       imports = [
-        base
-        git
-        tmux
-        bash
-        zsh
-        nushell
-        starship
-        neovim
-        emacs
-        alacritty
+        ./layers/common.nix
+        ./programs/nushell.nix
+        ./programs/tmux.nix
+        ./programs/starship.nix
+        ./programs/git
+        ./programs/neovim.nix
+        ./programs/alacritty.nix
       ];
 
       programs.home-manager.enable = true;
 
       home = {
-        stateVersion = "20.09";
+        stateVersion = "21.11";
 
         username = USER;
         homeDirectory = HOME;
 
-        packages = lib.lists.concatMap (mod: mod.packages) [
-          cloudPlatforms
-          beam
-          rust
-          ruby
-          nodejs
-        ] ++ [ pkgs.direnv ];
+        packages = [ pkgs.direnv ];
 
         sessionVariables = {
           PAGER = "less -R";
@@ -182,10 +110,6 @@ in
           BAT_CONFIG_PATH = "${HOME}/.config/bat/config";
           GOPATH = "${HOME}/Developer/go/";
         };
-
-        file.".config/bat/config".text = ''
-          --theme="${theme.bat.theme}"
-        '';
 
         file.".ideavimrc".text = ''
           " Enable relative line numbers
