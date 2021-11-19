@@ -1,7 +1,7 @@
 let
 
   theme = "standard";
-  variant = "dark";
+  variant = "light";
   fontFamily = "DejaVuSansMono";
   fontSize = 12.5;
 

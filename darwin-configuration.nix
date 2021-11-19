@@ -15,8 +15,9 @@ in
     # Sandbox seems to interfere with Rust builds on macOS Moterey 12.0.1
     # - https://github.com/NixOS/nixpkgs/issues/144704
     useSandbox = false;
+
     extraOptions = ''
-      experimental-features = nix-command
+      experimental-features = nix-command flakes
     '';
   };
 
@@ -31,9 +32,10 @@ in
 
   fonts = {
     enableFontDir = true;
-    fonts = [
+    fonts = with pkgs; [
+      inter
       (
-        pkgs.nerdfonts.override {
+        nerdfonts.override {
           fonts = [ "FiraCode" "DejaVuSansMono" "Hack" "IBMPlexMono" ];
         }
       )
