@@ -1,7 +1,7 @@
 let
 
   theme = "standard";
-  variant = "light";
+  variant = "black";
   fontFamily = "DejaVuSansMono";
   fontSize = 12.5;
 
@@ -10,7 +10,8 @@ let
 
     "Menlo" = {
       normal = {
-        family = "Menlo"; style = "Bold";
+        family = "Menlo";
+        style = "Bold";
       };
       bold = {
         family = "Menlo";
@@ -548,9 +549,15 @@ self: super: {
     };
 
     neovim = {
-      colorScheme =
-        if theme != "gruvbox" then "PaperColor"
-        else "gruvbox8";
+      colorScheme = {
+        "standard-light" = "github";
+        "standard-dark" = "parsec";
+        "standard-black" = "parsec";
+        "gruvbox-light" = "gruvbox8";
+        "gruvbox-dark" = "gruvbox8";
+        "gruvbox-black" = "gruvbox8";
+      }.${ "${theme}-${variant}" }
+        or (throw "Unsupported theme-variant combination for neovim: ${theme}-${variant}");
 
       background =
         if variant == "light" then "light"
@@ -558,12 +565,15 @@ self: super: {
     };
 
     bat.theme =
-      if theme == "gruvbox" then
-        if variant == "light" then "gruvbox-light"
-        else "gruvbox-dark"
-      else
-        if variant == "light" then "GitHub"
-        else "Sublime Snazzy";
+      {
+        "standard-light" = "GitHub";
+        "standard-dark" = "Sublime Snazzy";
+        "standard-black" = "Sublime Snazzy";
+        "gruvbox-light" = "gruvbox-light";
+        "gruvbox-dark" = "gruvbox-dark";
+        "gruvbox-black" = "gruvbox-dark";
+      }.${ "${theme}-${variant}" }
+        or (throw "Unsupported theme-variant combination for bat theme: ${theme}-${variant}");
 
     delta = bat.theme;
   };

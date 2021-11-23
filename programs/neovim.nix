@@ -210,30 +210,48 @@ with pkgs; let
     }
   '';
 
-  vim-monochrome = vimUtils.buildVimPlugin {
-    name = "vim-monochrome";
-    src = fetchFromGitHub {
-      owner = "fxn";
-      repo = "vim-monochrome";
-      rev = "77017c54b0b611f0ba8f8825f125b716e65c84b9";
-      sha256 = "1dzfjb4i9svc1id4d63sz4saw1hzrkf9n2zk4kmbpx2rh5r6wj9d";
-    };
-  };
+  extraConfig = ''
+    ${common}
+    ${fzfConfig}
+    ${reloadConfig}
+    ${languageClientConfig}
+    ${cocConfig}
+    ${airlineConfig}
+    ${themeConfig}
+  '';
 
-  hara = vimUtils.buildVimPlugin {
-    name = "hara";
-    src = fetchFromGitHub {
-      owner = "scolsen";
-      repo = "hara";
-      rev = "99600c585e25f71a6ba92a5862835e0be1c3303e";
-      sha256 = "0i14cj7gcxmr1hlbdv1xf8642x8x5x717ybpdbxda3yjjs7l0zfx";
-    };
-  };
+  plugins = with vimPlugins; [
+    vim-surround
+
+    LanguageClient-neovim
+    coc-nvim
+    coc-tsserver
+    coc-pyright
+    coc-solargraph
+    coc-rust-analyzer
+    vim-nix
+    kotlin-vim
+    vim-terraform
+
+    # UI
+    airline
+    fzf-vim
+    nerdtree
+
+    # Themes
+    awesome-vim-colorschemes
+    vim-gruvbox8
+
+    # Custom (see overlays)
+    vim-monochrome
+    hara
+  ];
 
 in
 {
-
   programs.neovim = {
+    inherit extraConfig plugins;
+
     enable = true;
     vimAlias = true;
     viAlias = true;
@@ -241,54 +259,11 @@ in
     withNodeJs = true;
     withPython3 = true;
     withRuby = true;
-
-    extraConfig = ''
-      ${common}
-
-      ${fzfConfig}
-      ${reloadConfig}
-      ${languageClientConfig}
-      ${cocConfig}
-      ${airlineConfig}
-      ${themeConfig}
-    '';
-
-    plugins = with vimPlugins; [
-      vim-surround
-
-      LanguageClient-neovim
-      coc-nvim
-      coc-tsserver
-      coc-pyright
-      coc-solargraph
-      coc-rust-analyzer
-      vim-nix
-      kotlin-vim
-      vim-terraform
-
-      # UI
-      airline
-      fzf-vim
-      nerdtree
-
-      # Themes
-      gruvbox-community
-      vim-gruvbox8
-      papercolor-theme
-      onehalf
-      palenight-vim
-      neovim-ayu
-
-      # Custom
-      vim-monochrome
-      hara
-    ];
   };
 
-  home.packages = [
-    rust-analyzer
-  ];
-
-  home.file.".config/nvim/coc-settings.json".text =
-    fileContents."coc-settings.json";
+  home = {
+    packages = [ rust-analyzer ];
+    file.".config/nvim/coc-settings.json".text =
+      fileContents."coc-settings.json";
+  };
 }
