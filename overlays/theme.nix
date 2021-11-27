@@ -1,7 +1,7 @@
 let
 
-  theme = "standard";
-  variant = "black";
+  theme = "gruvbox";
+  variant = "light";
   fontFamily = "DejaVuSansMono";
   fontSize = 12.5;
 

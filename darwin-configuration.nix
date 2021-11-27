@@ -60,6 +60,7 @@ in
     systemPackages = [
       pkgs.m-cli
       pkgs.xquartz
+      pkgs.alacritty
     ];
   };
 
@@ -69,6 +70,10 @@ in
     emacs = {
       enable = true;
       package = pkgs.emacsMacport;
+    };
+    postgresql = {
+      enable = true;
+      dataDir = "${HOME}/.postgresql";
     };
   };
 

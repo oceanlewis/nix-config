@@ -23,6 +23,16 @@ let
         sha256 = "0i14cj7gcxmr1hlbdv1xf8642x8x5x717ybpdbxda3yjjs7l0zfx";
       };
     };
+
+    coc-elixir = vimUtils.buildVimPlugin {
+      name = "coc-elixir";
+      src = fetchFromGitHub {
+        owner = "elixir-lsp";
+        repo = "coc-elixir";
+        rev = "9a0ad5da83d1e5996b9ce44790d00d574baca788";
+        sha256 = "uPQF9r1BM3yL4cPGE7kqAirN3jyY98YSWfZW9sPGvys=";
+      };
+    };
   };
 
 in

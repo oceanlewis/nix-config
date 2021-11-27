@@ -194,6 +194,10 @@ with pkgs; let
         "nix": {
           "command": "rnix-lsp",
           "filetypes": ["nix"]
+        },
+        "elixir": {
+          "command": "elixir-ls",
+          "filetypes": ["elixir", "eelixir"]
         }
       },
       "coc.preferences.formatOnSaveFiletypes": [
@@ -232,6 +236,7 @@ with pkgs; let
     vim-nix
     kotlin-vim
     vim-terraform
+    vim-elixir
 
     # UI
     airline
@@ -243,6 +248,7 @@ with pkgs; let
     vim-gruvbox8
 
     # Custom (see overlays)
+    coc-elixir
     vim-monochrome
     hara
   ];
