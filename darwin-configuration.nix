@@ -57,10 +57,11 @@ in
     #  ''/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin''
     #];
 
-    systemPackages = [
-      pkgs.m-cli
-      pkgs.xquartz
-      pkgs.alacritty
+    systemPackages = with pkgs; [
+      m-cli
+      xquartz
+      alacritty
+      vscode
     ];
   };
 
