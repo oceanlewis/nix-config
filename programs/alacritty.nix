@@ -169,7 +169,7 @@ with pkgs; {
         padding = { x = 5; y = 5; };
       } // (
         if pkgs.stdenv.isDarwin then {
-          decorations = "none";
+          #decorations = "none";
           use_thin_strokes = true;
         }
         else if pkgs.stdenv.isLinux then {

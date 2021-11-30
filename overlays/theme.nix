@@ -1,8 +1,8 @@
 let
 
-  theme = "gruvbox";
+  theme = "standard";
   variant = "black";
-  fontFamily = "DejaVuSansMono";
+  fontFamily = "Fira Code";
   fontSize = 12.5;
 
   fonts = {
@@ -102,15 +102,15 @@ let
 
     "Fira Code" = {
       normal = {
-        family = "Fira Code";
+        family = "FiraCode Nerd Font Mono";
         style = "Retina";
       };
       bold = {
-        family = "Fira Code";
+        family = "FiraCode Nerd Font Mono";
         style = "SemiBold";
       };
       italic = {
-        family = "Fira Code";
+        family = "FiraCode Nerd Font Mono";
         style = "Retina";
       };
       offset = {
