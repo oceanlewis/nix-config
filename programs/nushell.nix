@@ -20,36 +20,29 @@
       };
 
       startup = [
-        "alias e    = clear"
-        "alias er   = exa -lg"
-        "alias r    = exa"
-        "alias era  = exa -la"
-        "alias err  = exa -lR"
-        "alias erra = exa -lRa"
-        "alias et   = exa -TL 1"
-        "alias eta  = exa -aTL 1"
-        "alias et2  = exa -TL 2"
-        "alias et3  = exa -TL 3"
-        "alias et4  = exa -TL 4"
-        "alias etr  = exa -T"
-        "alias re   = exa *"
-        "alias rea  = exa -a *"
+        "alias e = { clear }"
+        "alias er = { clear; lsd -l }"
+        "alias era = { clear; lsd -la }"
+        "alias err = { clear; lsd -lR }"
+        "alias erra = { clear; lsd -lRa }"
+        "alias et = { clear; lsd --tree --depth 1 }"
+        "alias et2 = { clear; lsd --tree --depth 2 }"
+        "alias et3 = { clear; lsd --tree --depth 3 }"
+        "alias et4 = { clear; lsd --tree --depth 4 }"
+        "alias eta = { clear; lsd -a --tree --depth 1 }"
+        "alias etr = { clear; lsd --tree }"
+        "alias r = { clear; lsd }"
+        "alias re = { clear; lsd * }"
+        "alias rea = { clear; lsd -a * }"
 
         "alias eg  = { clear; git status }"
         "alias egg = { clear; git status; echo; git diff }"
         "alias egc = { clear; git status; echo; git diff --cached }"
 
-        "alias te = tmux list-sessions"
-        "alias ta = tmux attach"
+        "alias te = { tmux list-sessions }"
+        "alias ta = { tmux attach }"
 
-        "alias cdcopy  = { pwd | xsel -ib }"
-        "alias cdpaste = { cd $(xsel -ob) }"
-
-        # "alias z  [a b c d] { cd $(zoxide query $a $b $c $d | trim) }"
-        # "alias zi [a b c d] { cd $(zoxide query -i $a $b $c $d | trim) }"
-        # "alias za [] { zoxide add }"
-
-        ''alias zvi = { nvim "$(fzf)" }''
+        "alias zvi = { nvim (fzf) }"
       ];
     };
   };

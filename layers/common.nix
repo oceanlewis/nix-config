@@ -8,7 +8,8 @@ with pkgs; let
     exa
     fd
     ripgrep
-    sd # grex
+    sd
+    grex
     fzf
     zoxide
     bat
@@ -25,8 +26,6 @@ with pkgs; let
 
     # Shells and Unix Environment
     bashInteractive
-    elvish
-    fish
     (pkgs.callPackage ../packages/dingus.nix { })
     (pkgs.callPackage ../packages/itm { })
 
@@ -124,7 +123,6 @@ with pkgs; let
     te = "tmux list-sessions";
     ta = "tmux attach";
 
-    theme = "alacritty-theme";
     tf = "terraform";
 
     zvi = ''nvim "$(fzf)"'';
@@ -201,10 +199,7 @@ in
 
     oh-my-zsh = {
       enable = true;
-      plugins = [
-        "vi-mode"
-        "history-substring-search"
-      ];
+      plugins = [ "vi-mode" "history-substring-search" ];
     };
   };
 
