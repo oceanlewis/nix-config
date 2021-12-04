@@ -78,8 +78,7 @@ with pkgs; let
     usbutils # lsusb and others
   ];
 
-  shell.aliases = {
-    # Exa
+  exaAliases = {
     ls = "exa";
     ll = "exa -l";
     er = "clear; ls -lg";
@@ -96,7 +95,26 @@ with pkgs; let
     etr = "clear; ls -T";
     re = "clear; ls *";
     rea = "clear; ls -a *";
+  };
 
+  lsdAliases = {
+    er = "clear; ls -l";
+    r = "clear; ls";
+    e = "clear";
+    era = "clear; ls -la";
+    err = "clear; ls -lR";
+    erra = "clear; ls -lRa";
+    et = "clear; ls --tree --depth 1";
+    eta = "clear; ls -a --tree --depth 1";
+    et2 = "clear; ls --tree --depth 2";
+    et3 = "clear; ls --tree --depth 3";
+    et4 = "clear; ls --tree --depth 4";
+    etr = "clear; ls --tree";
+    re = "clear; ls *";
+    rea = "clear; ls -a *";
+  };
+
+  shell.aliases = {
     # Git
     eg = "clear; git status";
     egg = "clear; git status; echo; git diff";
@@ -111,6 +129,7 @@ with pkgs; let
 
     zvi = ''nvim "$(fzf)"'';
   }
+  // lsdAliases
   // lib.optionalAttrs stdenv.isLinux {
     open = "xdg-open";
     cdcopy = "pwd | xsel -ib";

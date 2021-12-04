@@ -1,6 +1,6 @@
 let
 
-  theme = "standard";
+  theme = "gruvbox";
   variant = "black";
   fontFamily = "Fira Code";
   fontSize = 12.5;

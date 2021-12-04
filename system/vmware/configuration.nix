@@ -65,6 +65,14 @@
     ];
   };
 
+  services.postgresql = {
+    enable = true;
+    authentication = pkgs.lib.mkOverride 10 ''
+      local all all trust
+      host all all ::1/128 trust
+    '';
+  };
+
   virtualisation = {
     docker.enable = true;
 
@@ -113,7 +121,13 @@
       hashedPassword = "$6$YmFE0ktOi$gQJJxy6R6iqwZFw18bdgMNijE8/l9YH6eeypZPojjEhcvfrMXvWYRrLO5xvt7W5XCFJR77YV0xnA2TZtQQUzV/";
       isNormalUser = true;
       description = "David Armstrong Lewis";
-      extraGroups = [ "wheel" "networkmanager" "audio" "video" "docker" ];
+      extraGroups = [
+        "wheel"
+        "networkmanager"
+        "audio"
+        "video"
+        "docker"
+      ];
       useDefaultShell = true;
 
       openssh.authorizedKeys.keys = [
