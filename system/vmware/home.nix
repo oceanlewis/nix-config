@@ -8,11 +8,7 @@ let
 in
 
 {
-  programs = {
-    home-manager.enable = true;
-  };
-
-  services.lorri.enable = true;
+  programs.home-manager.enable = true;
 
   imports = [
     ./layers/common.nix
