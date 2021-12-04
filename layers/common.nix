@@ -224,4 +224,9 @@ in
       ${shell.init}
     '';
   };
+
+  programs.lsd = {
+    enable = true;
+    enableAliases = true;
+  };
 }
