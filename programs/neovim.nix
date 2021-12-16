@@ -98,6 +98,7 @@ with pkgs; let
     let g:LanguageClient_serverCommands = {
     \ 'rust': ['rust-analyzer'],
     \ 'nix': ['rnix-lsp'],
+    \ 'elixir': ['elixir-ls'],
     \ }
 
     " Keybindings for LanguageClient (Language Server Protocol)

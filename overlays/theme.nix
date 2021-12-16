@@ -1,7 +1,7 @@
 let
 
-  theme = "gruvbox";
-  variant = "black";
+  theme = "standard";
+  variant = "light";
   fontFamily = "Fira Code";
   fontSize = 12.5;
 
@@ -550,9 +550,9 @@ self: super: {
 
     neovim = {
       colorScheme = {
-        "standard-light" = "github";
-        "standard-dark" = "parsec";
-        "standard-black" = "parsec";
+        "standard-light" = "rdark-terminal2";
+        "standard-dark" = "rdark-terminal2";
+        "standard-black" = "rdark-terminal2";
         "gruvbox-light" = "gruvbox8";
         "gruvbox-dark" = "gruvbox8";
         "gruvbox-black" = "gruvbox8";

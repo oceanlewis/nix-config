@@ -15,7 +15,7 @@ in
     # Sandbox seems to interfere with Rust builds on macOS Moterey 12.0.1
     # - https://github.com/NixOS/nixpkgs/issues/144704
     useSandbox = false;
-
+    gc.automatic = true;
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
@@ -74,7 +74,8 @@ in
     };
     postgresql = {
       enable = true;
-      dataDir = "${HOME}/.postgresql";
+      package = pkgs.postgresql_14;
+      dataDir = "${HOME}/.postgresql_14";
     };
   };
 
