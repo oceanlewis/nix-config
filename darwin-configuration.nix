@@ -62,6 +62,7 @@ in
       xquartz
       alacritty
       vscode
+      emacsMacport
     ];
   };
 
