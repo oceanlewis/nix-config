@@ -24,6 +24,9 @@ with pkgs; let
     rsync
     unzip
 
+    # Multimedia
+    ffmpeg
+
     # Shells and Unix Environment
     bashInteractive
     (pkgs.callPackage ../packages/dingus.nix { })
