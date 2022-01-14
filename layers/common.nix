@@ -16,6 +16,7 @@ with pkgs; let
     jq
     yq-go
     mdcat
+    glow
     icdiff
     tokei
     entr
@@ -141,7 +142,7 @@ with pkgs; let
     cdpaste = "cd \"$(pbpaste)\"";
   };
 
-  shell.init = ''
+  shell.init = shell: ''
     function purge_docker() {
       docker system prune --force
       docker volume prune --force
@@ -150,7 +151,7 @@ with pkgs; let
     }
 
     if test -x "$(which direnv)"; then
-      eval "$(direnv hook $SHELL)"
+      eval "$(direnv hook ${shell})"
     fi
   ''
   +
@@ -190,7 +191,7 @@ in
     initExtra = ''
       set -o vi
 
-      ${shell.init}
+      ${shell.init "zsh"}
       unset RPS1
 
       if test -x "$(which zoxide)"; then
@@ -219,7 +220,7 @@ in
         eval "$(zoxide init bash)"
       fi
 
-      ${shell.init}
+      ${shell.init "bash"}
     '';
   };
 

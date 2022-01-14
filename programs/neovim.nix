@@ -99,6 +99,8 @@ with pkgs; let
     \ 'rust': ['rust-analyzer'],
     \ 'nix': ['rnix-lsp'],
     \ 'elixir': ['elixir-ls'],
+    \ 'c': ['clangd'],
+    \ 'cpp': ['clangd'],
     \ }
 
     " Keybindings for LanguageClient (Language Server Protocol)
@@ -229,15 +231,16 @@ with pkgs; let
     vim-surround
 
     LanguageClient-neovim
+    coc-clangd
     coc-nvim
-    coc-tsserver
     coc-pyright
-    coc-solargraph
     coc-rust-analyzer
+    coc-solargraph
+    coc-tsserver
     vim-nix
-    kotlin-vim
     vim-terraform
     vim-elixir
+    kotlin-vim
 
     # UI
     airline

@@ -1,7 +1,7 @@
 let
 
   theme = "standard";
-  variant = "light";
+  variant = "dark";
   fontFamily = "Fira Code";
   fontSize = 12.5;
 
