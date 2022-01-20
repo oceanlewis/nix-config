@@ -45,6 +45,12 @@ with pkgs; {
 
       # macOS
       ".DS_Store"
+
+      # clangd
+      ".cache"
+
+      # direnv
+      ".direnv"
     ];
 
     includes = [
