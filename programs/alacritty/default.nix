@@ -2,7 +2,7 @@
 
 with pkgs; let
 
-  fonts = import ./fonts.nix { inherit pkgs; };
+  font = import ./fonts.nix { inherit pkgs; };
   colors = import ./colors.nix { inherit pkgs; };
   key_bindings = import ./key_bindings.nix { inherit pkgs; };
 
@@ -12,7 +12,7 @@ in
     enable = true;
 
     settings = {
-      inherit fonts colors key_bindings;
+      inherit font colors key_bindings;
 
       window = {
         title = "";
@@ -31,7 +31,6 @@ in
         else { }
       );
 
-      #colors = theme.alacritty.colors;
       draw_bold_text_with_bright_colors = true;
 
       background_opacity = 0.90;

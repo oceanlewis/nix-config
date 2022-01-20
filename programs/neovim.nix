@@ -237,6 +237,7 @@ with pkgs; let
     coc-rust-analyzer
     coc-solargraph
     coc-tsserver
+    coc-prettier
     vim-nix
     vim-terraform
     vim-elixir
