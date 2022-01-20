@@ -35,7 +35,7 @@ in
       inter
       (
         nerdfonts.override {
-          fonts = [ "FiraCode" "DejaVuSansMono" "Hack" "IBMPlexMono" ];
+          fonts = [ "FiraCode" "DejaVuSansMono" "Hack" "IBMPlexMono" "Mononoki" ];
         }
       )
     ];
@@ -92,7 +92,7 @@ in
         ./programs/starship.nix
         ./programs/git
         ./programs/neovim.nix
-        ./programs/alacritty.nix
+        ./programs/alacritty
       ];
 
       programs.home-manager.enable = true;

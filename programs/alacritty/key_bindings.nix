@@ -1,8 +1,8 @@
-{ config, lib, pkgs, ... }:
+{ pkgs }:
 
 let
+  inherit (pkgs) stdenv;
 
-  key_bindings = {
     darwin = [
       { key = "F11"; mods = "None"; action = ''ToggleFullscreen''; }
       { key = "N"; mods = "Command"; action = ''SpawnNewInstance''; }
@@ -146,47 +146,10 @@ let
       { key = "N"; mode = "Vi"; action = "SearchNext"; }
       { key = "N"; mods = "Shift"; mode = "Vi"; action = "SearchPrevious"; }
     ];
-  };
-
-  systemKeybindings =
-    if pkgs.stdenv.isDarwin then key_bindings.darwin else
-    if pkgs.stdenv.isLinux then key_bindings.linux
-    else [ ];
-
-  keyBindings = systemKeybindings ++ key_bindings.default;
 
 in
-
-with pkgs; {
-  programs.alacritty = {
-    enable = true;
-
-    settings = {
-      window = {
-        title = "";
-        dynamic_title = false;
-        dimensions = { columns = 132; lines = 38; };
-        padding = { x = 5; y = 5; };
-      } // (
-        if pkgs.stdenv.isDarwin then {
-          #decorations = "none";
-          use_thin_strokes = true;
-        }
-        else if pkgs.stdenv.isLinux then {
-          gtk_theme_variant =
-            if theme.alacritty.variant == "light" then "light" else "dark";
-        }
-        else { }
-      );
-
-      key_bindings = keyBindings;
-
-      font = theme.alacritty.font;
-      colors = theme.alacritty.colors;
-      draw_bold_text_with_bright_colors = true;
-
-      background_opacity = 0.90;
-      mouse.hide_when_typing = true;
-    };
-  };
-}
+default ++ (
+  if stdenv.isDarwin then darwin else
+  if stdenv.isLinux then linux
+  else [ ]
+)
