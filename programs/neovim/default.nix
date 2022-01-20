@@ -1,6 +1,8 @@
 { config, lib, pkgs, ... }:
 
-with pkgs; let
+let
+
+  theme = import ./theme.nix { inherit pkgs; };
 
   common = ''
     " Use UTF-8 encoding
@@ -144,14 +146,14 @@ with pkgs; let
     let g:gruvbox_contrast_light = "hard"
 
     set termguicolors
-    colorscheme ${theme.neovim.colorScheme}
+    colorscheme ${theme.color_scheme}
 
     function! AlignBackground()
       hi Normal guibg=NONE ctermbg=NONE
     endfunc
     nmap <leader>; :call AlignBackground()<cr>
 
-    let &background = "${theme.neovim.background}"
+    let &background = "${theme.background}"
     call AlignBackground()
 
     function! ToggleBackground()
@@ -227,7 +229,7 @@ with pkgs; let
     ${themeConfig}
   '';
 
-  plugins = with vimPlugins; [
+  plugins = with pkgs.vimPlugins; [
     vim-surround
 
     LanguageClient-neovim
@@ -273,7 +275,7 @@ in
   };
 
   home = {
-    packages = [ rust-analyzer ];
+    packages = [ pkgs.rust-analyzer ];
     file.".config/nvim/coc-settings.json".text =
       fileContents."coc-settings.json";
   };

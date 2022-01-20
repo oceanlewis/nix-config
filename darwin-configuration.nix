@@ -91,7 +91,7 @@ in
         ./programs/tmux.nix
         ./programs/starship.nix
         ./programs/git
-        ./programs/neovim.nix
+        ./programs/neovim
         ./programs/alacritty
       ];
 

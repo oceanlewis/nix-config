@@ -12,22 +12,6 @@ self: super: {
     inherit variant;
     font = { monospace = fontFamily; };
 
-    neovim = {
-      colorScheme = {
-        "standard-light" = "rdark-terminal2";
-        "standard-dark" = "rdark-terminal2";
-        "standard-black" = "rdark-terminal2";
-        "gruvbox-light" = "gruvbox8";
-        "gruvbox-dark" = "gruvbox8";
-        "gruvbox-black" = "gruvbox8";
-      }.${ "${theme}-${variant}" }
-        or (throw "Unsupported theme-variant combination for neovim: ${theme}-${variant}");
-
-      background =
-        if variant == "light" then "light"
-        else "dark";
-    };
-
     bat.theme =
       {
         "standard-light" = "GitHub";
