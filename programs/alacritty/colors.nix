@@ -226,6 +226,44 @@ let
     indexed_colors = [ ];
   };
 
+  themes.monalisa.dark = {
+    primary = {
+      background = "0x160B0E";
+      foreground = "0xF9DB7C";
+      bright_foreground = "0xFF9C9C";
+    };
+
+    cursor = {
+      text = "0x160B0E";
+      cursor = "0xCF7F40";
+    };
+
+    normal = {
+      black = "0x44230F";
+      red = "0xAC3A24";
+      green = "0x767340";
+      yellow = "0xCE8134";
+      blue = "0x646E6F";
+      magenta = "0xAD2E36";
+      cyan = "0x6A9068";
+      white = "0xF9DC6E";
+    };
+
+    bright = {
+      black = "0x9A5534";
+      red = "0xFF5B3E";
+      green = "0xC0BD76";
+      yellow = "0xFFA678";
+      blue = "0xADBFC1";
+      magenta = "0xFF747C";
+      cyan = "0x99D3A0";
+      white = "0xFFE8A7";
+    };
+
+    indexed_colors = [ ];
+  };
+  themes.monalisa.black = themes.monalisa.dark;
+
   themes.snazzy.dark = {
     primary = {
       background = "#282A36";

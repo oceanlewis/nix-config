@@ -44,7 +44,7 @@ in
       style = "Oblique";
     };
     offset = {
-      x = 0;
+      x = 2;
       y = 3;
     };
     glyph_offset = {

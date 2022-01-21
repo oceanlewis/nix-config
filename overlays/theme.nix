@@ -20,6 +20,8 @@ self: super: {
         "gruvbox-light" = "gruvbox-light";
         "gruvbox-dark" = "gruvbox-dark";
         "gruvbox-black" = "gruvbox-dark";
+        "monalisa-dark" = "gruvbox-dark";
+        "monalisa-black" = "gruvbox-dark";
       }.${ "${theme}-${variant}" }
         or (throw "Unsupported theme-variant combination for bat theme: ${theme}-${variant}");
 
