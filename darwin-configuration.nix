@@ -61,10 +61,17 @@ in
   services = {
     nix-daemon.enable = true;
     lorri.enable = true;
+
     emacs = {
       enable = true;
       package = pkgs.emacsMacport;
     };
+
+    redis = {
+      enable = true;
+      dataDir = "${HOME}~/.redis";
+    };
+
     postgresql = {
       enable = true;
       package = pkgs.postgresql_14;
