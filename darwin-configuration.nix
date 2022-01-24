@@ -31,14 +31,7 @@ in
 
   fonts = {
     enableFontDir = true;
-    fonts = with pkgs; [
-      inter
-      (
-        nerdfonts.override {
-          fonts = [ "FiraCode" "DejaVuSansMono" "Hack" "IBMPlexMono" "Mononoki" ];
-        }
-      )
-    ];
+    fonts = import ./layers/fonts.nix { inherit pkgs; };
   };
 
   users.users."${USER}" = {
