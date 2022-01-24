@@ -30,7 +30,7 @@ in
     };
   };
 
-  "DejaVuSansMono" = {
+  "DejaVu" = {
     normal = {
       family = "DejaVuSansMono Nerd Font";
       style = "Book";

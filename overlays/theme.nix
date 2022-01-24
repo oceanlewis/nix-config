@@ -1,16 +1,14 @@
 let
 
-  theme = "gruvbox";
+  name = "standard";
   variant = "black";
-  fontFamily = "Mononoki";
-  fontSize = 12.5;
+  font.monospace = "DejaVu";
 
 in
 self: super: {
+
   theme = rec {
-    name = theme;
-    inherit variant;
-    font = { monospace = fontFamily; };
+    inherit name variant font;
 
     bat.theme =
       {
@@ -22,8 +20,8 @@ self: super: {
         "gruvbox-black" = "gruvbox-dark";
         "monalisa-dark" = "gruvbox-dark";
         "monalisa-black" = "gruvbox-dark";
-      }.${ "${theme}-${variant}" }
-        or (throw "Unsupported theme-variant combination for bat theme: ${theme}-${variant}");
+      }.${ "${name}-${variant}" }
+        or (throw "Unsupported name-variant combination for bat theme: ${name}-${variant}");
 
     delta = bat.theme;
   };

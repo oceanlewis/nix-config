@@ -18,7 +18,7 @@ in
         title = "";
         dynamic_title = false;
         dimensions = { columns = 132; lines = 38; };
-        padding = { x = 5; y = 5; };
+        padding = { x = 10; y = 10; };
       } // (
         if stdenv.isDarwin then {
           decorations = "none";
