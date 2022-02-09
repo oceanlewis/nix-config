@@ -67,8 +67,7 @@ with pkgs; let
     gnumake
 
     # Languages
-    go
-    gopls
+    exercism
 
     # Nix
     niv
