@@ -19,6 +19,7 @@ in
         dynamic_title = false;
         dimensions = { columns = 132; lines = 38; };
         padding = { x = 10; y = 10; };
+        opacity = 0.90;
       } // (
         if stdenv.isDarwin then {
           decorations = "none";
@@ -33,7 +34,6 @@ in
 
       draw_bold_text_with_bright_colors = true;
 
-      background_opacity = 0.90;
       cursor.style.blinking = "Always";
       mouse.hide_when_typing = true;
     };
