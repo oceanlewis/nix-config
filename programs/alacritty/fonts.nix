@@ -171,16 +171,16 @@ let
 
     "IBM Plex Mono" = {
       normal = {
-        family = "IBM Plex Mono";
-        style = "Regular";
+        family = "BlexMono Nerd Font Mono";
+        style = "Book";
       };
       bold = {
-        family = "IBM Plex Mono";
+        family = "BlexMono Nerd Font Mono";
         style = "Medium";
       };
       italic = {
-        family = "IBM Plex Mono";
-        style = "Regular Italic";
+        family = "BlexMono Nerd Font Mono";
+        style = "Italic";
       };
       offset = {
         x = 0;
