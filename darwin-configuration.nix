@@ -54,18 +54,12 @@ in
       xquartz
       alacritty
       vscode
-      emacsMacport
     ];
   };
 
   services = {
     nix-daemon.enable = true;
     lorri.enable = true;
-
-    emacs = {
-      enable = true;
-      package = pkgs.emacsMacport;
-    };
 
     redis = {
       enable = true;

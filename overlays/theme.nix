@@ -1,8 +1,8 @@
 let
 
-  name = "standard";
+  name = "monalisa";
   variant = "black";
-  font.monospace = "DejaVu";
+  font.monospace = "Fira Code";
 
 in
 self: super: {
