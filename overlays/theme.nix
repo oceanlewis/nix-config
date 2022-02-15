@@ -20,8 +20,9 @@ self: super: {
         "gruvbox-black" = "gruvbox-dark";
         "monalisa-dark" = "gruvbox-dark";
         "monalisa-black" = "gruvbox-dark";
-      }.${ "${name}-${variant}" }
-        or (throw "Unsupported name-variant combination for bat theme: ${name}-${variant}");
+      }.${ "${name}-${variant}" } or (
+        throw "Unsupported name-variant combination for bat theme: ${name}-${variant}"
+      );
 
     delta = bat.theme;
   };
