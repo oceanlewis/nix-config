@@ -2,6 +2,9 @@
 
 {
   nixpkgs.config.allowUnfree = true;
+  nix.settings = {
+    extra-experimental-features = [ "nix-command" ];
+  };
 
   imports = [
     ./hardware-configuration.nix
@@ -11,8 +14,7 @@
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
-
-    # Use the systemd-boot EFI boot loader.
+    loader.grub.device = "/dev/disk/by-id/ata-VMware_Virtual_IDE_CDROM_Drive_10000000000000000001";
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
   };
@@ -28,10 +30,6 @@
 
     useDHCP = false;
     interfaces.ens33.useDHCP = true;
-
-    # Configure network proxy if necessary
-    # proxy.default = "http://user:password@proxy:port/";
-    # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   };
 
   services.avahi = {
@@ -118,7 +116,7 @@
     defaultUserShell = pkgs.zsh;
 
     extraUsers.armstrong = {
-      hashedPassword = "$6$YmFE0ktOi$gQJJxy6R6iqwZFw18bdgMNijE8/l9YH6eeypZPojjEhcvfrMXvWYRrLO5xvt7W5XCFJR77YV0xnA2TZtQQUzV/";
+      hashedPassword = "$6$tqrKEXT2FY/km7kj$t/1ONmxKdfRLcdzMZxRqjxp71btl/6seF47I/zPMFPsPhn0wYXcgg32bds86uHZfQDTRQ.bz4UwhMhdbWDgPD0";
       isNormalUser = true;
       description = "David Armstrong Lewis";
       extraGroups = [
@@ -136,5 +134,5 @@
     };
   };
 
-  system.stateVersion = "21.05";
+  system.stateVersion = "21.11"; # Did you read the comment?
 }

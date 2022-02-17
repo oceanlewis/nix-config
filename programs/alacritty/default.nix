@@ -27,7 +27,7 @@ in
         }
         else if stdenv.isLinux then {
           gtk_theme_variant =
-            if theme.alacritty.variant == "light" then "light" else "dark";
+            if theme.variant == "light" then "light" else "dark";
         }
         else { }
       );

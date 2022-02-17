@@ -11,15 +11,15 @@ in
   programs.home-manager.enable = true;
 
   imports = [
-    ./layers/common.nix
-    ./services/lorri.nix
-    ./programs/nushell.nix
-    ./programs/tmux.nix
-    ./programs/starship.nix
-    ./programs/git/default.nix
-    ./programs/neovim.nix
-    ./programs/alacritty.nix
-    ./programs/vscode.nix
+    ../../layers/common.nix
+    ../../services/lorri.nix
+    ../../programs/nushell.nix
+    ../../programs/tmux.nix
+    ../../programs/starship.nix
+    ../../programs/git
+    ../../programs/neovim
+    ../../programs/alacritty
+    #../../programs/vscode.nix
   ];
 
   home = {
