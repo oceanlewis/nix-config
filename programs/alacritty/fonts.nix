@@ -260,6 +260,29 @@ let
         y = 0;
       };
     };
+
+    "Victor Mono" = {
+      normal = {
+        family = "Victor Mono";
+        style = "Regular";
+      };
+      bold = {
+        family = "Victor Mono";
+        style = "Bold";
+      };
+      italic = {
+        family = "Victor Mono";
+        style = "Italic";
+      };
+      offset = {
+        x = 0;
+        y = 0;
+      };
+      glyph_offset = {
+        x = 0;
+        y = 0;
+      };
+    };
   }.${theme.font.monospace};
 
 in

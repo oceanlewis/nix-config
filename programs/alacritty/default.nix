@@ -19,7 +19,7 @@ in
         dynamic_title = false;
         dimensions = { columns = 132; lines = 38; };
         padding = { x = 10; y = 10; };
-        opacity = 0.90;
+        opacity = 0.95;
       } // (
         if stdenv.isDarwin then {
           decorations = "none";

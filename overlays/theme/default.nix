@@ -1,7 +1,7 @@
 let
 
-  name = "monalisa";
-  variant = "black";
+  name = "gruvbox";
+  variant = "light";
   font.monospace = "Fira Code";
 
 in
