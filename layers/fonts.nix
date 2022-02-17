@@ -11,5 +11,6 @@ with pkgs;
     ];
   })
 
+  victor-mono
   inter
 ]
