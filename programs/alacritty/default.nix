@@ -17,8 +17,14 @@ in
       window = {
         title = "";
         dynamic_title = false;
-        dimensions = { columns = 132; lines = 38; };
-        padding = { x = 10; y = 10; };
+        dimensions = {
+          columns = 132;
+          lines = 38;
+        };
+        padding = {
+          x = 15;
+          y = 15;
+        };
         opacity = 0.95;
       } // (
         if stdenv.isDarwin then {

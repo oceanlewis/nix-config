@@ -1,8 +1,8 @@
 let
 
-  name = "gruvbox";
-  variant = "light";
-  font.monospace = "Fira Code";
+  name = "standard";
+  variant = "dark";
+  font.monospace = "DejaVu";
 
 in
 self: super: {
