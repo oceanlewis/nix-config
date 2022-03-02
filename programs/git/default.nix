@@ -4,8 +4,8 @@
 , ...
 }:
 
-with pkgs; {
-
+with pkgs;
+{
   home.packages = [
     gitAndTools.delta
     github-cli
@@ -16,10 +16,9 @@ with pkgs; {
   # - https://github.com/rycee/home-manager/blob/master/modules/programs/git.nix
   programs.git = {
     enable = true;
-    package = gitAndTools.gitFull;
 
     delta = {
-      enable = true;
+      enable = false;
       options = {
         syntax-theme = theme.delta;
       };
@@ -54,10 +53,7 @@ with pkgs; {
     ];
 
     includes = [
-      {
-        path = ./deep6.git;
-        condition = "gitdir:~/Deep 6/";
-      }
+      { path = ./hg.git; condition = "gitdir:~/Developer/hg"; }
     ];
 
     aliases = {
@@ -73,5 +69,4 @@ with pkgs; {
       lg = "lg1";
     };
   };
-
 }

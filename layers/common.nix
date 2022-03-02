@@ -29,12 +29,12 @@ with pkgs; let
     ffmpeg
 
     # Shells and Unix Environment
-    bashInteractive
+    #bashInteractive
     (pkgs.callPackage ../packages/dingus.nix { })
     (pkgs.callPackage ../packages/itm { })
 
     # Chat & Browsing
-    irssi
+    # irssi
     w3m
 
     # Identity Management
@@ -56,7 +56,7 @@ with pkgs; let
     # Networking
     nmap
     httpie
-    telnet
+    inetutils
 
     # Content
     youtube-dl
@@ -70,7 +70,8 @@ with pkgs; let
     exercism
 
     # Nix
-    niv
+    # niv
+    direnv
     nixpkgs-fmt
     rnix-lsp
   ]
@@ -207,7 +208,7 @@ in
   };
 
   programs.bash = {
-    enable = true;
+    enable = false;
     shellAliases = shell.aliases;
     historyControl = [ "erasedups" "ignoredups" "ignorespace" ];
     historyIgnore = [ "ls" "cd" "exit" ];

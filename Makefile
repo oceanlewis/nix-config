@@ -44,6 +44,9 @@ upgrade:
 darwin:
 	@darwin-rebuild switch
 
+armstrong:
+	@darwin-rebuild switch --flake ./system/armstrong#Armstrong
+
 switch:
 ifdef profile
 	@echo -e "\nAttempting to link Home Manager Profile $(profile)..."

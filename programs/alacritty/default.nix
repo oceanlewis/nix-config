@@ -25,7 +25,7 @@ in
           x = 15;
           y = 15;
         };
-        opacity = 0.95;
+        opacity = 0.90;
       } // (
         if stdenv.isDarwin then {
           decorations = "none";
