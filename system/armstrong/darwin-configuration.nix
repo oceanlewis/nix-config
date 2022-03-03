@@ -8,8 +8,12 @@ let
 
 in
 {
-  nix.package = pkgs.nixUnstable;
   nixpkgs.config.allowUnfree = true;
+
+  nix = {
+    package = pkgs.nixUnstable;
+    useSandbox = false;
+  };
 
   networking = {
     computerName = HOST_NAME;
@@ -43,8 +47,8 @@ in
     lorri.enable = true;
 
     redis = {
-      enable = true;
-      dataDir = "${HOME}~/.redis";
+      enable = false;
+      dataDir = "${HOME}/.redis";
     };
 
     postgresql = {

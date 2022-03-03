@@ -63,7 +63,7 @@ in
 
     redis = {
       enable = true;
-      dataDir = "${HOME}~/.redis";
+      dataDir = "${HOME}/.redis";
     };
 
     postgresql = {

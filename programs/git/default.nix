@@ -53,7 +53,7 @@ with pkgs;
     ];
 
     includes = [
-      { path = ./hg.git; condition = "gitdir:~/Developer/hg"; }
+      { path = ./hg.git; condition = "gitdir:~/Developer/hg/"; }
     ];
 
     aliases = {

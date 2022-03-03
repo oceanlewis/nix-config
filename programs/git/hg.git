@@ -1,3 +1,6 @@
+[core]
+  sshCommand = ssh -i ~/.ssh/hg_github
+
 [user]
   email = david.lewis@hginsights.com
   name = David Armstrong Lewis
