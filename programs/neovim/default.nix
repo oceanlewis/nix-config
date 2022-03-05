@@ -2,7 +2,7 @@
 
 let
 
-  theme = import ./theme.nix { inherit pkgs; };
+  theme = import ./colorscheme.nix { inherit pkgs; };
 
   common = ''
     " Use UTF-8 encoding

@@ -40,6 +40,10 @@ in
     systemPackages = with pkgs; [
       vscode
     ];
+
+    shellAliases = {
+      gimme-snowflake-creds = "docker run -it --rm -v ~/.okta_snowflake_login_config:/root/.okta_snowflake_login_config -v ~/.dbt:/root/.dbt -v ~/Library/ODBC:/root/Library/ODBC -v ~/.gsc:/root/.gsc hgdata1/gimme-snowflake-creds";
+    };
   };
 
   services = {
