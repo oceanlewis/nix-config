@@ -21,10 +21,7 @@ in
           columns = 132;
           lines = 38;
         };
-        padding = {
-          x = 15;
-          y = 15;
-        };
+        padding = { x = 5; y = 5; };
         opacity = 0.90;
       } // (
         if stdenv.isDarwin then {
