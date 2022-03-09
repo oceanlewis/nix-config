@@ -22,7 +22,6 @@ in
           lines = 38;
         };
         padding = { x = 5; y = 5; };
-        opacity = 0.90;
       } // (
         if stdenv.isDarwin then {
           decorations = "none";

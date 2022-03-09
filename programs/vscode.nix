@@ -1,7 +1,7 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 let
-  vscodeExtensions = (with pkgs.vscode-extensions; [
+  extensions = (with pkgs.vscode-extensions; [
     vscodevim.vim
 
     bbenoist.nix
@@ -38,7 +38,7 @@ let
 in
 {
   programs.vscode = {
+    inherit extensions;
     enable = true;
-    extensions = vscodeExtensions;
   };
 }
