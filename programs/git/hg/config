@@ -1,5 +1,6 @@
 [core]
   sshCommand = ssh -i ~/.ssh/hg_github
+  excludesFile = ~/Developer/nix-config/programs/git/hg/gitignore
 
 [user]
   email = david.lewis@hginsights.com
