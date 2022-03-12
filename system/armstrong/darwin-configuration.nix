@@ -32,19 +32,8 @@ in
   };
 
   environment = {
-    # Append paths to the system PATH
-    #systemPath = [
-    #  ''/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin''
-    #];
-
-    systemPackages = with pkgs; [
-      #vscode
-    ];
-
-    shellAliases = {
-      #gimme-snowflake-creds = "docker run -it --rm -v ~/.okta_snowflake_login_config:/root/.okta_snowflake_login_config -v ~/.dbt:/root/.dbt -v ~/Library/ODBC:/root/Library/ODBC -v ~/.gsc:/root/.gsc hgdata1/gimme-snowflake-creds";
-      gimme-aws-creds = "docker run -it --rm -v ~/.aws/credentials:/root/.aws/credentials -v ~/.okta_aws_login_config:/root/.okta_aws_login_config hgdata1/gimme-aws-creds";
-    };
+    systemPackages = with pkgs; [ vscode ];
+    shellAliases = { };
   };
 
   services = {

@@ -20,6 +20,7 @@ with pkgs; let
     icdiff
     tokei
     entr
+    fswatch
     pv
     wget
     rsync

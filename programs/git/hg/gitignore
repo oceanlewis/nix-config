@@ -1,5 +1,4 @@
 .direnv
 .envrc
-flake.lock
-flake.nix
-nix/
+.nix-mix
+.nix-hex
