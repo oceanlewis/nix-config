@@ -23,14 +23,16 @@ in
         };
         padding = { x = 5; y = 5; };
       } // (
-        if stdenv.isDarwin then {
-          decorations = "none";
-          use_thin_strokes = true;
-        }
-        else if stdenv.isLinux then {
-          gtk_theme_variant =
-            if theme.variant == "light" then "light" else "dark";
-        }
+        if stdenv.isDarwin then
+          {
+            decorations = "buttonless";
+            use_thin_strokes = true;
+          }
+        else if stdenv.isLinux then
+          {
+            gtk_theme_variant =
+              if theme.variant == "light" then "light" else "dark";
+          }
         else { }
       );
 
