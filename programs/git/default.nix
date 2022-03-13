@@ -27,7 +27,7 @@ with pkgs;
     };
 
     userName = "David Armstrong Lewis";
-    userEmail = "david@armstronglewis.com";
+    userEmail = "david.armstrong.lewis@gmail.com";
 
     extraConfig = {
       init.defaultBranch = "main";
