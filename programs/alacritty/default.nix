@@ -25,6 +25,7 @@ in
       } // (
         if stdenv.isDarwin then
           {
+            padding = { x = 12; y = 9; };
             decorations = "buttonless";
             use_thin_strokes = true;
           }

@@ -1,6 +1,6 @@
 let
-  name = "standard";
-  variant = "black";
+  name = "gruvbox";
+  variant = "dark";
   font.monospace = "DejaVu";
 
 in
