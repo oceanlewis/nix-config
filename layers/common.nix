@@ -121,8 +121,8 @@ with pkgs; let
   shell.aliases = {
     # Git
     eg = "clear; git status";
-    egg = "clear; git status; echo; git diff";
-    egc = "clear; git status; echo; git diff --cached";
+    egg = "clear; git status; echo; git diff | bat";
+    egc = "clear; git status; echo; git diff --cached | bat";
 
     # Tmux
     te = "tmux list-sessions";
@@ -131,14 +131,14 @@ with pkgs; let
     tf = "terraform";
 
     zvi = ''nvim "$(fzf)"'';
-  }
-  // lsdAliases
-  // lib.optionalAttrs stdenv.isLinux {
+  } //
+  lsdAliases //
+  lib.optionalAttrs stdenv.isLinux {
     open = "xdg-open";
     cdcopy = "pwd | xsel -ib";
     cdpaste = "cd \"$(xsel -ob)\"";
-  }
-  // lib.optionalAttrs stdenv.isDarwin {
+  } //
+  lib.optionalAttrs stdenv.isDarwin {
     cdcopy = "pwd | pbcopy";
     cdpaste = "cd \"$(pbpaste)\"";
   };
