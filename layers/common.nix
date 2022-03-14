@@ -121,8 +121,8 @@ with pkgs; let
   shell.aliases = {
     # Git
     eg = "clear; git status";
-    egg = "clear; git status; echo; git diff | bat";
-    egc = "clear; git status; echo; git diff --cached | bat";
+    egg = "clear; git status; echo; git diff | bat --plain";
+    egc = "clear; git status; echo; git diff --cached | bat --plain";
 
     # Tmux
     te = "tmux list-sessions";

@@ -12,7 +12,7 @@ in
 
   nix = {
     package = pkgs.nixUnstable;
-    useSandbox = false;
+    useSandbox = true;
   };
 
   networking = {
