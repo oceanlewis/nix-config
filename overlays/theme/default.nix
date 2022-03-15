@@ -9,7 +9,7 @@ self: super: {
     inherit name variant font;
 
     bat.theme = {
-      "standard-light" = "GitHub";
+      "standard-light" = "Coldark-Cold";
       "standard-dark" = "Sublime Snazzy";
       "standard-black" = "Sublime Snazzy";
       "gruvbox-light" = "gruvbox-light";
