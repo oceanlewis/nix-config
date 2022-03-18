@@ -3,12 +3,8 @@ let
   variant = "dark";
   font.monospace = "DejaVu";
 
-in
-self: super: {
-  theme = rec {
-    inherit name variant font;
-
-    bat.theme = {
+  bat-themes =
+    {
       "standard-light" = "Coldark-Cold";
       "standard-dark" = "Sublime Snazzy";
       "standard-black" = "Sublime Snazzy";
@@ -17,10 +13,30 @@ self: super: {
       "gruvbox-black" = "gruvbox-dark";
       "monalisa-dark" = "gruvbox-dark";
       "monalisa-black" = "gruvbox-dark";
-    }.${ "${name}-${variant}" } or (
-      throw "Unsupported name-variant combination for bat theme: ${name}-${variant}"
+    };
+
+  selectBatTheme = name: variant:
+    bat-themes.${ "${name}-${variant}" } or (
+      throw
+        ''
+          Unsupported name-variant combination for bat theme: ${name}-${variant}
+          Supported combinations:
+          ${
+            builtins.concatStringsSep "\n" (
+              builtins.map (attrName: "  - ${attrName}")
+                (builtins.attrNames bat-themes)
+            )
+          }
+        ''
     );
 
+in
+self: super: {
+  theme = rec {
+    inherit
+      name variant font;
+
+    bat.theme = selectBatTheme name variant;
     delta = bat.theme;
   };
 }

@@ -46,7 +46,7 @@ in
     };
 
     postgresql = {
-      enable = false;
+      enable = true;
       package = pkgs.postgresql_14;
       dataDir = "${HOME}/.postgresql_14";
     };

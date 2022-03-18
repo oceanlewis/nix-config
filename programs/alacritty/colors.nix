@@ -3,7 +3,7 @@
 let
   inherit (pkgs) theme;
 
-  themes.standard.light = {
+  themes."standard-light" = {
     primary = {
       background = "0xFFFFFF";
       foreground = "0x3c3836";
@@ -40,7 +40,7 @@ let
     indexed_colors = [ ];
   };
 
-  themes.standard.dark = {
+  themes."standard-dark" = {
     primary = {
       background = "0x272727";
       foreground = "0xF1F1F1"; # Traditional
@@ -78,7 +78,7 @@ let
 
   };
 
-  themes.standard.black = {
+  themes."standard-black" = {
     primary = {
       background = "0x1A1A1A";
       foreground = "0xFAEED9"; # Sepia
@@ -115,7 +115,7 @@ let
     indexed_colors = [ ];
   };
 
-  themes.gruvbox.light = {
+  themes."gruvbox-light" = {
     primary = {
       background = "0xF9F5D7";
       foreground = "0x3C3836";
@@ -152,7 +152,7 @@ let
     indexed_colors = [ ];
   };
 
-  themes.gruvbox.dark = {
+  themes."gruvbox-dark" = {
     primary = {
       background = "0x292828";
       foreground = "0xEBDBB2";
@@ -189,7 +189,7 @@ let
     indexed_colors = [ ];
   };
 
-  themes.gruvbox.black = {
+  themes."gruvbox-black" = {
     primary = {
       background = "0x1A1A1A";
       foreground = "0xEBDBB2";
@@ -226,7 +226,7 @@ let
     indexed_colors = [ ];
   };
 
-  themes.monalisa.dark = {
+  themes."monalisa-dark" = {
     primary = {
       background = "0x160B0E";
       foreground = "0xF9DB7C";
@@ -262,9 +262,9 @@ let
 
     indexed_colors = [ ];
   };
-  themes.monalisa.black = themes.monalisa.dark;
+  themes."monalisa-black" = themes.monalisa.dark;
 
-  themes.snazzy.dark = {
+  themes."snazzy-dark" = {
     primary = {
       background = "#282A36";
       foreground = "#EFF0EB";
@@ -303,7 +303,7 @@ let
     };
   };
 
-  themes.nord.dark = {
+  themes."nord-dark" = {
     primary = {
       background = "0x2E3440";
       foreground = "0xD8DEE9";
@@ -339,4 +339,15 @@ let
   };
 
 in
-themes.${theme.name}.${theme.variant}
+  themes."${theme.name}-${theme.variant}" or (
+    throw ''
+      Unsupported name-variant combination for alacritty theme: ${theme.name}-${theme.variant}
+      Supported combinations:
+      ${
+        builtins.concatStringsSep "\n" (
+          builtins.map (attrName: "  - ${attrName}")
+            (builtins.attrNames themes)
+        )
+      }
+    ''
+  )
