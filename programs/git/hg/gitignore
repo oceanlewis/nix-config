@@ -1,4 +1,7 @@
 ## from programs.git.ignores in ../default.nix
+# Elixir
+.env.local
+
 # JVM
 **/.idea
 /.classpath

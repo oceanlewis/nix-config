@@ -6,8 +6,8 @@ let
   bat-themes =
     {
       "standard-light" = "Coldark-Cold";
-      "standard-dark" = "Sublime Snazzy";
-      "standard-black" = "Sublime Snazzy";
+      "standard-dark" = "OneHalfDark";
+      "standard-black" = "OneHalfDark";
       "gruvbox-light" = "gruvbox-light";
       "gruvbox-dark" = "gruvbox-dark";
       "gruvbox-black" = "gruvbox-dark";
@@ -16,18 +16,17 @@ let
     };
 
   selectBatTheme = name: variant:
-    bat-themes.${ "${name}-${variant}" } or (
-      throw
-        ''
-          Unsupported name-variant combination for bat theme: ${name}-${variant}
-          Supported combinations:
-          ${
-            builtins.concatStringsSep "\n" (
-              builtins.map (attrName: "  - ${attrName}")
-                (builtins.attrNames bat-themes)
-            )
-          }
-        ''
+    bat-themes."${name}-${variant}" or (
+      throw ''
+        Unsupported name-variant combination for bat theme: ${name}-${variant}
+        Supported combinations:
+        ${
+          builtins.concatStringsSep "\n" (
+            builtins.map (attrName: "  - ${attrName}")
+              (builtins.attrNames bat-themes)
+          )
+        }
+      ''
     );
 
 in

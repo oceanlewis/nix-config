@@ -13,6 +13,11 @@ in
   nix = {
     package = pkgs.nixUnstable;
     useSandbox = true;
+    extraOptions = ''
+      build-users-group = nixbld
+      experimental-features = nix-command flakes
+      extra-platforms = x86_64-darwin aarch64-darwin
+    '';
   };
 
   networking = {

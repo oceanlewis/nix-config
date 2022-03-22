@@ -80,8 +80,8 @@ let
 
   themes."standard-black" = {
     primary = {
-      background = "0x1A1A1A";
-      foreground = "0xFAEED9"; # Sepia
+      background = "0x000000"; #"0x1A1A1A";
+      foreground = "0xFFFFFF"; #"0xFAEED9"; # Sepia
       bright_foreground = "0xFF9C9C";
     };
 
@@ -262,7 +262,9 @@ let
 
     indexed_colors = [ ];
   };
-  themes."monalisa-black" = themes.monalisa.dark;
+  themes."monalisa-black" =
+    pkgs.lib.attrsets.recursiveUpdate themes."monalisa-dark"
+      { primary.background = "0x000000"; };
 
   themes."snazzy-dark" = {
     primary = {
