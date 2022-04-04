@@ -5,10 +5,11 @@ let
   inherit (theme) name variant;
   scheme_name = "${name}-${variant}";
 
+
   color_scheme = {
-    "standard-light" = "rdark-terminal2";
-    "standard-dark" = "rdark-terminal2";
-    "standard-black" = "rdark-terminal2";
+    "standard-light" = "PaperColor"; #"flattened_light";
+    "standard-dark" = "challenger_deep";
+    "standard-black" = "challenger_deep";
     "gruvbox-light" = "gruvbox8";
     "gruvbox-dark" = "gruvbox8";
     "gruvbox-black" = "gruvbox8";

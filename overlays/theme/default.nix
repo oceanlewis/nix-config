@@ -5,7 +5,7 @@ let
 
   bat-themes =
     {
-      "standard-light" = "Coldark-Cold";
+      "standard-light" = "GitHub";
       "standard-dark" = "OneHalfDark";
       "standard-black" = "OneHalfDark";
       "gruvbox-light" = "gruvbox-light";

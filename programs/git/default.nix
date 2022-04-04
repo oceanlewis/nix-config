@@ -12,6 +12,7 @@ with pkgs;
     gitAndTools.lfs
     github-cli
     act
+    difftastic
   ];
 
   # Program Definition
@@ -20,7 +21,7 @@ with pkgs;
     enable = true;
 
     delta = {
-      enable = false;
+      enable = true;
       options = {
         syntax-theme = theme.delta;
       };

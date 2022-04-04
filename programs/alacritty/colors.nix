@@ -42,7 +42,7 @@ let
 
   themes."standard-dark" = {
     primary = {
-      background = "0x272727";
+      background = "0x171717";
       foreground = "0xF1F1F1"; # Traditional
       bright_foreground = "0xFF9C9C";
     };
