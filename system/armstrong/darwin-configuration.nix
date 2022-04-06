@@ -11,8 +11,7 @@ in
   nixpkgs.config.allowUnfree = true;
 
   nix = {
-    package = pkgs.nixUnstable;
-    useSandbox = true;
+    package = pkgs.nixFlakes;
     extraOptions = ''
       build-users-group = nixbld
       experimental-features = nix-command flakes
