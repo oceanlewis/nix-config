@@ -2,6 +2,8 @@
 , lib
 , fetchFromGitHub
 , rustPlatform
+, openssl
+, darwin
 }:
 
 rustPlatform.buildRustPackage rec {
@@ -12,10 +14,13 @@ rustPlatform.buildRustPackage rec {
     owner = "davidarmstronglewis";
     repo = pname;
     rev = "a72f98771402261814c4d68f3f60bece7caf0842";
-    sha256 = lib.fakeSha256; #"0ljqbs3k7wl1jh71ia3svhg7v9byz7mqz43ap2l22cawzx8ma2lf";
+    sha256 = "MxW8YUu7Fr4VQHIpnOovFPXzbrp46ZeiSm3lmzTpb4w=";
   };
 
-  cargoSha256 = lib.fakeSha256;# "19cf49c59bm8dd6w28dknv3d2k3kmy9jckqdx7fv1xrlb8c2insk";
+  cargoSha256 = "qfesMUUVPVWQomqRHEltB1abzPAdz0fG3Hmg0BJRYH8=";
+
+  buildInputs = [ openssl ] ++
+    lib.optionals stdenv.isDarwin [ darwin.Security ];
 
   meta = with lib; {
     description = "Replace my silly shell prompt with a silly rust program that does the same thing!";

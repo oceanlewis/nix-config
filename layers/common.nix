@@ -30,6 +30,7 @@ with pkgs; let
     ffmpeg
 
     # Shells and Unix Environment
+    (pkgs.callPackage ../packages/term-status.nix { })
     #bashInteractive
     (pkgs.callPackage ../packages/dingus.nix { })
     (pkgs.callPackage ../packages/itm { })
@@ -198,6 +199,14 @@ in
       if test -x "$(which zoxide)"; then
         eval "$(zoxide init zsh)"
       fi
+
+      function custom_preexec () {
+       clear
+      }
+      add-zsh-hook preexec custom_preexec
+
+      setopt prompt_subst
+      PS1='$(term_status)'
     '';
 
     defaultKeymap = "viins";
