@@ -15,15 +15,27 @@ let
       "monalisa-black" = "gruvbox-dark";
     };
 
-  selectBatTheme = name: variant:
-    bat-themes."${name}-${variant}" or (
+  vivid-themes =
+    {
+      "standard-light" = "one-light";
+      "standard-dark" = "one-dark";
+      "standard-black" = "one-dark";
+      "gruvbox-light" = "gruvbox-light";
+      "gruvbox-dark" = "gruvbox-dark";
+      "gruvbox-black" = "gruvbox-dark";
+      "monalisa-dark" = "lava";
+      "monalisa-black" = "lava";
+    };
+
+  selectTheme = programName: themeMap: themeName:
+    themeMap.${themeName} or (
       throw ''
-        Unsupported name-variant combination for bat theme: ${name}-${variant}
+        Unsupported name-variant combination for ${programName} theme: ${themeName}
         Supported combinations:
         ${
           builtins.concatStringsSep "\n" (
             builtins.map (attrName: "  - ${attrName}")
-              (builtins.attrNames bat-themes)
+              (builtins.attrNames themeMap)
           )
         }
       ''
@@ -35,7 +47,8 @@ self: super: {
     inherit
       name variant font;
 
-    bat.theme = selectBatTheme name variant;
+    bat.theme = selectTheme "bat" bat-themes "${name}-${variant}";
+    vivid.theme = selectTheme "vivid" vivid-themes "${name}-${variant}";
     delta = bat.theme;
   };
 }

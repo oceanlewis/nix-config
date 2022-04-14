@@ -25,13 +25,13 @@ with pkgs; let
     wget
     rsync
     unzip
+    vivid
 
     # Multimedia
     ffmpeg
 
     # Shells and Unix Environment
     (pkgs.callPackage ../packages/term-status.nix { })
-    #bashInteractive
     (pkgs.callPackage ../packages/dingus.nix { })
     (pkgs.callPackage ../packages/itm { })
 
@@ -72,7 +72,6 @@ with pkgs; let
     exercism
 
     # Nix
-    # niv
     direnv
     nixpkgs-fmt
     rnix-lsp
@@ -184,6 +183,10 @@ in
     --theme="${theme.bat.theme}"
   '';
 
+  home.file.".config/vivid/theme".text = ''
+    ${theme.vivid.theme}
+  '';
+
   # Program Definition
   # - https://github.com/rycee/home-manager/blob/master/modules/programs/zsh.nix
   programs.zsh = {
@@ -201,7 +204,11 @@ in
       fi
 
       function custom_preexec () {
-       clear
+        clear
+
+        if test -x "$(which vivid)"; then
+          export LS_COLORS=$(vivid generate $(cat ~/.config/vivid/theme))
+        fi
       }
       add-zsh-hook preexec custom_preexec
 
