@@ -31,7 +31,6 @@ with pkgs; let
     ffmpeg
 
     # Shells and Unix Environment
-    (pkgs.callPackage ../packages/term-status.nix { })
     (pkgs.callPackage ../packages/dingus.nix { })
     (pkgs.callPackage ../packages/itm { })
 
@@ -61,7 +60,7 @@ with pkgs; let
     inetutils
 
     # Content
-    youtube-dl
+    yt-dlp
 
     # Build Tools
     autoconf
@@ -211,9 +210,6 @@ in
         fi
       }
       add-zsh-hook preexec custom_preexec
-
-      setopt prompt_subst
-      PS1='$(term_status)'
     '';
 
     defaultKeymap = "viins";

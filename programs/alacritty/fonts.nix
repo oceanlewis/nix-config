@@ -11,7 +11,7 @@ let
     "Menlo" = {
       normal = {
         family = "Menlo";
-        style = "Bold";
+        style = "Regular";
       };
       bold = {
         family = "Menlo";
@@ -19,11 +19,11 @@ let
       };
       italic = {
         family = "Menlo";
-        style = "Bold";
+        style = "Italic";
       };
       offset = {
-        x = 0;
-        y = 0;
+        x = 1;
+        y = 4;
       };
       glyph_offset = {
         x = 0;
@@ -45,7 +45,7 @@ let
         style = "Oblique";
       };
       offset = {
-        x = 2;
+        x = 1;
         y = 3;
       };
       glyph_offset = {

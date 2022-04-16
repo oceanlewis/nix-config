@@ -1,7 +1,7 @@
 { ... }: {
 
   programs.starship = {
-    enable = false;
+    enable = true;
     enableBashIntegration = true;
     enableZshIntegration = true;
 
