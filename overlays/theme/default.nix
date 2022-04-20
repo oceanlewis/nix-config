@@ -1,6 +1,6 @@
 let
   name = "gruvbox";
-  variant = "dark";
+  variant = "light";
   font.monospace = "DejaVu";
 
   bat-themes =

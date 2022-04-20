@@ -28,7 +28,7 @@ with pkgs;
     };
 
     userName = "David Armstrong Lewis";
-    userEmail = "david.armstrong.lewis@gmail.com";
+    userEmail = "6754950+davidarmstronglewis@users.noreply.github.com";
 
     extraConfig = {
       init.defaultBranch = "main";

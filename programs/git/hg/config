@@ -1,5 +1,5 @@
 [core]
-  sshCommand = ssh -i ~/.ssh/hg_github
+  sshCommand = ssh -i ~/.ssh/id_rsa
   excludesFile = ~/Developer/nix-config/programs/git/hg/gitignore
 
 [user]
