@@ -10,6 +10,7 @@ let
 
     llvm-org.lldb-vscode
     matklad.rust-analyzer
+    usernamehw.errorlens
 
     github.github-vscode-theme
   ])
