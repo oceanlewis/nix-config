@@ -41,6 +41,10 @@ in
     variables = {
       DYLD_LIBRARY_PATH = "${pkgs.unixODBC}/lib";
     };
+
+    extraInit = ''
+      source ~/.zprofile
+    '';
   };
 
   services = {
