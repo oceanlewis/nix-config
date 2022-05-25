@@ -75,6 +75,7 @@ in
 
   programs.zsh.enable = true;
   programs.bash.enable = true;
+  homebrew.enable = true;
 
   home-manager = {
     users."${USER}" = { pkgs, ... }: {
