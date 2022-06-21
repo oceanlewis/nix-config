@@ -56,7 +56,8 @@ with pkgs; let
 
     # Networking
     nmap
-    httpie
+    # See https://github.com/NixOS/nixpkgs/issues/175875
+    # httpie
     inetutils
 
     # Content
@@ -74,6 +75,7 @@ with pkgs; let
     direnv
     nixpkgs-fmt
     rnix-lsp
+    nix-tree
   ]
   ++ lib.optionals pkgs.stdenv.isLinux [
     xsel # rmesg

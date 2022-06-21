@@ -25,13 +25,19 @@ let
     {
       name = "gruvbox-material";
       publisher = "sainnhe";
-      version = "6.4.6";
+      version = "6.5.0";
+      sha256 = "17xddfkxfgj9qls1364c8iqk359rk0k6fc6xpl93zzqr43hx4vxf";
+    }
+    {
+      name = "gruvbox-concoctis";
+      publisher = "wheredoesyourmindgo";
+      version = "6.5.0";
       sha256 = "17xddfkxfgj9qls1364c8iqk359rk0k6fc6xpl93zzqr43hx4vxf";
     }
     {
       name = "gruvbox";
       publisher = "jdinhlife";
-      version = "1.5.1";
+      version = "1.7.0";
       sha256 = "0bxwkqf73y0mlb59gy3rfps0k5fyj1yqhifidjvdaswn9z84226j";
     }
   ];

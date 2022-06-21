@@ -9,7 +9,7 @@ let
 in
 {
 
-  nixpkgs.overlays = [
+  nixpkgs.overlays = pkgs.overlays ++ [
     (import ../../overlays/theme)
     (import ../../overlays/ipython.nix)
     (import ../../overlays/vimPlugins.nix)
@@ -17,7 +17,7 @@ in
 
   imports = [
     ../../layers/common.nix
-    ../../programs/nushell.nix
+    ../../programs/nushell
     ../../programs/tmux.nix
     ../../programs/starship.nix
     ../../programs/git

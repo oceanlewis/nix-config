@@ -86,9 +86,9 @@ let
 
   fzfConfig = ''
     " FZF Configuration
-    nmap <leader>t :Files<CR>
-    nmap <leader>f :Rg<CR>
-    nmap <leader>r :Tags<CR>
+    nmap <M-t> :Files<CR>
+    nmap <M-f> :Rg<CR>
+    nmap <M-r> :Tags<CR>
   '';
 
   reloadConfig = ''
@@ -223,16 +223,76 @@ let
     ${common}
     ${fzfConfig}
     ${reloadConfig}
-    ${languageClientConfig}
-    ${cocConfig}
     ${airlineConfig}
     ${themeConfig}
+    ${cocConfig}
+
+    lua <<EOF
+    -- Mappings.
+    -- See `:help vim.diagnostic.*` for documentation on any of the below functions
+    local opts = { noremap=true, silent=true }
+    vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+    vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+
+    -- Use an on_attach function to only map the following keys
+    -- after the language server attaches to the current buffer
+    local on_attach = function(client, bufnr)
+      -- Enable completion triggered by <c-x><c-o>
+      vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+      -- Mappings.
+      -- See `:help vim.lsp.*` for documentation on any of the below functions
+      local bufopts = { noremap=true, silent=true, buffer=bufnr }
+      vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+      vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+      vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+      vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+      vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+      vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+      vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+      vim.keymap.set('n', '<leader>wl', function()
+        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+      end, bufopts)
+      vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
+      vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
+      vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
+      vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+      -- vim.keymap.set('n', '<leader>f', vim.lsp.buf.formatting, bufopts)
+    end
+
+    -- Use a loop to conveniently call 'setup' on multiple servers and
+    -- map buffer local keybindings when the language server attaches
+    local servers = {
+      'pyright',
+      'rust_analyzer',
+      'tsserver',
+      'rnix',
+    }
+
+    for _, lsp in pairs(servers) do
+      require('lspconfig')[lsp].setup {
+        on_attach = on_attach,
+        flags = {
+          -- This will be the default in neovim 0.7+
+          debounce_text_changes = 150,
+        }
+      }
+    end
+
+    require'lspconfig'.elixirls.setup{
+      cmd = { "${pkgs.elixir_ls}/lib/language_server.sh" };
+    }
+    EOF
   '';
 
   plugins = with pkgs.vimPlugins; [
-    vim-surround
+    nvim-tree-lua
+    nvim-treesitter
+    nvim-lspconfig
+    nvim-treesitter
 
-    LanguageClient-neovim
     coc-clangd
     coc-nvim
     coc-pyright
@@ -240,6 +300,9 @@ let
     coc-solargraph
     coc-tsserver
     coc-prettier
+
+    vim-surround
+
     vim-nix
     vim-terraform
     vim-elixir
@@ -263,6 +326,7 @@ let
 in
 {
   programs.neovim = {
+    package = pkgs.neovim-nightly;
     inherit extraConfig plugins;
 
     enable = true;
