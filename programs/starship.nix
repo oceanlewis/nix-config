@@ -12,7 +12,7 @@
 
       git_branch = {
         symbol = "";
-        format = "on [$symbol$branch(:$remote_branch)]($style) ";
+        format = "[$symbol$branch(:$remote_branch)]($style) ";
       };
 
       character = {
@@ -20,7 +20,7 @@
         error_symbol = "\n[ λ](bold red)";
         vicmd_symbol = "\n[ λ](bold blue)";
       };
-      nix_shell.format = "[$symbol]($style)";
+      nix_shell.format = "[nix]($style)";
     };
   };
 
