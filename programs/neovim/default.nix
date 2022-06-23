@@ -259,7 +259,7 @@ let
       vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
       vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
       vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-      -- vim.keymap.set('n', '<leader>f', vim.lsp.buf.formatting, bufopts)
+      vim.keymap.set('n', '<leader>f', vim.lsp.buf.formatting, bufopts)
     end
 
     -- Use a loop to conveniently call 'setup' on multiple servers and
