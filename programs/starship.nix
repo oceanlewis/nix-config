@@ -8,15 +8,19 @@
     settings = {
       add_newline = true;
       scan_timeout = 30;
-      git_branch.symbol = "";
+      right_format = "$git_status$git_branch";
 
-      character = {
-        success_symbol = "[➜](bold green)";
-        error_symbol = "[➜](bold red)";
-        vicmd_symbol = "[➜](bold blue)";
+      git_branch = {
+        symbol = "";
+        format = "on [$symbol$branch(:$remote_branch)]($style) ";
       };
 
-      nix_shell.format = ''via [$symbol$state]($style) '';
+      character = {
+        success_symbol = "\n[ λ](bold purple)";
+        error_symbol = "\n[ λ](bold red)";
+        vicmd_symbol = "\n[ λ](bold blue)";
+      };
+      nix_shell.format = "[$symbol]($style)";
     };
   };
 
