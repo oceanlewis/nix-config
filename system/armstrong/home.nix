@@ -24,6 +24,7 @@ in
     ../../programs/neovim
     ../../programs/alacritty
     ../../programs/helix
+    ../../programs/zellij
   ];
 
   programs.home-manager.enable = true;

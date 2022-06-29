@@ -1,6 +1,6 @@
 let
   name = "gruvbox";
-  variant = "light";
+  variant = "dark";
   font.monospace = "DejaVu";
 
   bat-themes =
@@ -38,6 +38,17 @@ let
     "monalisa-black" = "gruvbox";
   };
 
+  zellij-themes = {
+    "standard-light" = "onelight";
+    "standard-dark" = "snazzy";
+    "standard-black" = "snazzy";
+    "gruvbox-light" = "gruvbox-light";
+    "gruvbox-dark" = "gruvbox-dark";
+    "gruvbox-black" = "gruvbox-dark";
+    "monalisa-dark" = "gruvbox-dark";
+    "monalisa-black" = "gruvbox-dark";
+  };
+
   selectTheme = programName: themeMap: themeName:
     themeMap.${themeName} or (
       throw ''
@@ -61,6 +72,7 @@ self: super: {
       name variant font;
 
     helix = selectTheme "helix" helix-themes nv;
+    zellij = selectTheme "zellij" zellij-themes nv;
     bat = selectTheme "bat" bat-themes nv;
     vivid = selectTheme "vivid" vivid-themes nv;
     delta = bat;
