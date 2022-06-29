@@ -1,6 +1,6 @@
 let
-  name = "standard";
-  variant = "black";
+  name = "gruvbox";
+  variant = "light";
   font.monospace = "DejaVu";
 
   bat-themes =
@@ -27,6 +27,17 @@ let
       "monalisa-black" = "lava";
     };
 
+  helix-themes = {
+    "standard-light" = "onelight";
+    "standard-dark" = "snazzy";
+    "standard-black" = "snazzy";
+    "gruvbox-light" = "gruvbox_light";
+    "gruvbox-dark" = "gruvbox";
+    "gruvbox-black" = "gruvbox";
+    "monalisa-dark" = "gruvbox";
+    "monalisa-black" = "gruvbox";
+  };
+
   selectTheme = programName: themeMap: themeName:
     themeMap.${themeName} or (
       throw ''
@@ -41,14 +52,17 @@ let
       ''
     );
 
+  nv = "${name}-${variant}";
+
 in
 self: super: {
   theme = rec {
     inherit
       name variant font;
 
-    bat.theme = selectTheme "bat" bat-themes "${name}-${variant}";
-    vivid.theme = selectTheme "vivid" vivid-themes "${name}-${variant}";
-    delta = bat.theme;
+    helix = selectTheme "helix" helix-themes nv;
+    bat = selectTheme "bat" bat-themes nv;
+    vivid = selectTheme "vivid" vivid-themes nv;
+    delta = bat;
   };
 }

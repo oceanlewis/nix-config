@@ -132,6 +132,7 @@ with pkgs; let
     tf = "terraform";
 
     zvi = ''nvim "$(fzf)"'';
+    zhx = ''hx "$(fzf)"'';
   } //
   lsdAliases //
   lib.optionalAttrs stdenv.isLinux {
@@ -181,11 +182,11 @@ in
   home.packages = packages;
 
   home.file.".config/bat/config".text = ''
-    --theme="${theme.bat.theme}"
+    --theme="${theme.bat}"
   '';
 
   home.file.".config/vivid/theme".text = ''
-    ${theme.vivid.theme}
+    ${theme.vivid}
   '';
 
   # Program Definition

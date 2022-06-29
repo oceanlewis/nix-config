@@ -23,6 +23,7 @@ in
     ../../programs/git
     ../../programs/neovim
     ../../programs/alacritty
+    ../../programs/helix
   ];
 
   programs.home-manager.enable = true;
