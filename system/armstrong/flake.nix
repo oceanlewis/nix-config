@@ -2,7 +2,7 @@
   description = "Darwin Configuration for Armstrong";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     darwin = {
       url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -11,7 +11,6 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
   outputs =
@@ -19,10 +18,9 @@
     , darwin
     , home-manager
     , nixpkgs
-    , neovim-nightly-overlay
     }:
     let
-      overlays = [ neovim-nightly-overlay.overlay ];
+      overlays = [ ];
     in
     {
       darwinConfigurations = {
