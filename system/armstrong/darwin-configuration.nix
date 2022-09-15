@@ -36,7 +36,7 @@ in
   };
 
   environment = {
-    systemPackages = with pkgs; [ vscode unixODBC ];
+    systemPackages = with pkgs; [ unixODBC ];
     shellAliases = { };
     variables = {
       DYLD_LIBRARY_PATH = "${pkgs.unixODBC}/lib";
