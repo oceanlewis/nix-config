@@ -8,6 +8,13 @@
       editor = {
         line-number = "relative";
       };
+
+      keys.normal = {
+        "A-l" = "goto_next_buffer";
+        "A-h" = "goto_previous_buffer";
+        "A-backspace" = ":buffer-close";
+        "A-f" = ":format";
+      };
     };
   };
 }

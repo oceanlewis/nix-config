@@ -33,6 +33,7 @@ with pkgs;
     extraConfig = {
       init.defaultBranch = "main";
       pull.ff = "only";
+      diff.external = "difft";
     };
 
     ignores = [
