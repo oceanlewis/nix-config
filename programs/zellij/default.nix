@@ -4,6 +4,9 @@
     enable = true;
     settings = {
       theme = pkgs.theme.zellij;
+      layout = "compact";
+      simplified_ui = true;
+      pane_frames = false;
       themes = {
         gruvbox-light = {
           bg = [ 251 82 75 ];

@@ -338,7 +338,6 @@ in
     inherit extraConfig plugins;
 
     enable = true;
-    vimAlias = true;
     viAlias = true;
     vimdiffAlias = true;
     withNodeJs = true;

@@ -11,7 +11,6 @@ in
   nixpkgs.config.allowUnfree = true;
 
   nix = {
-    package = pkgs.nixFlakes;
     extraOptions = ''
       build-users-group = nixbld
       experimental-features = nix-command flakes
@@ -42,8 +41,9 @@ in
       DYLD_LIBRARY_PATH = "${pkgs.unixODBC}/lib";
     };
 
-    extraInit = ''
+    interactiveShellInit = ''
       source ~/.zprofile
+      cp ${HOME}/.config/nushell/* ${HOME}/Library/Application\ Support/nushell/
     '';
   };
 

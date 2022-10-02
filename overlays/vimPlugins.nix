@@ -4,8 +4,9 @@ let
   inherit (super) vimUtils fetchFromGitHub;
 
   customPackages = {
-    vim-monochrome = vimUtils.buildVimPlugin {
+    vim-monochrome = vimUtils.buildVimPlugin rec {
       name = "vim-monochrome";
+      pname = name;
       src = fetchFromGitHub {
         owner = "fxn";
         repo = "vim-monochrome";
@@ -14,8 +15,9 @@ let
       };
     };
 
-    hara = vimUtils.buildVimPlugin {
+    hara = vimUtils.buildVimPlugin rec {
       name = "hara";
+      pname = name;
       src = fetchFromGitHub {
         owner = "scolsen";
         repo = "hara";
@@ -24,8 +26,9 @@ let
       };
     };
 
-    coc-elixir = vimUtils.buildVimPlugin {
+    coc-elixir = vimUtils.buildVimPlugin rec {
       name = "coc-elixir";
+      pname = name;
       src = fetchFromGitHub {
         owner = "elixir-lsp";
         repo = "coc-elixir";
