@@ -1,6 +1,6 @@
 let
-  name = "gruvbox";
-  variant = "dark";
+  name = "monalisa";
+  variant = "black";
   font.monospace = "DejaVu";
 
   bat-themes =
@@ -13,6 +13,7 @@ let
       "gruvbox-black" = "gruvbox-dark";
       "monalisa-dark" = "gruvbox-dark";
       "monalisa-black" = "gruvbox-dark";
+      "nord-dark" = "Nord";
     };
 
   vivid-themes =
@@ -25,17 +26,19 @@ let
       "gruvbox-black" = "gruvbox-dark";
       "monalisa-dark" = "lava";
       "monalisa-black" = "lava";
+      "nord-dark" = "nord";
     };
 
   helix-themes = {
     "standard-light" = "onelight";
-    "standard-dark" = "snazzy";
+    "standard-dark" = "dracula_at_night";
     "standard-black" = "dracula_at_night";
     "gruvbox-light" = "gruvbox_light";
     "gruvbox-dark" = "gruvbox";
     "gruvbox-black" = "autumn_night";
-    "monalisa-dark" = "gruvbox";
-    "monalisa-black" = "gruvbox";
+    "monalisa-dark" = "base16_transparent";
+    "monalisa-black" = "base16_transparent";
+    "nord-dark" = "nord";
   };
 
   zellij-themes = {
@@ -47,6 +50,7 @@ let
     "gruvbox-black" = "gruvbox-dark";
     "monalisa-dark" = "gruvbox-dark";
     "monalisa-black" = "gruvbox-dark";
+    "nord-dark" = "nord";
   };
 
   selectTheme = programName: themeMap: themeName:

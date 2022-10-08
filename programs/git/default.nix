@@ -23,7 +23,7 @@ with pkgs;
     delta = {
       enable = true;
       options = {
-        syntax-theme = theme.delta;
+        syntax-theme = lib.optionalString (theme.delta != null) theme.delta;
       };
     };
 

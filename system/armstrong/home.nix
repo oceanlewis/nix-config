@@ -36,7 +36,7 @@ in
 
     sessionVariables = {
       PAGER = "less -R";
-      EDITOR = "nvim";
+      EDITOR = "hx";
       VISUAL = "nvim";
       TERM = "xterm-256color";
 

@@ -15,6 +15,7 @@ let
     "gruvbox-black" = "gruvbox8";
     "monalisa-dark" = "gruvbox8";
     "monalisa-black" = "gruvbox8";
+    "nord-dark" = "nord";
   }.${scheme_name}
     or (throw "Unsupported theme-variant combination for neovim: ${scheme_name}");
 

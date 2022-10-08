@@ -26,6 +26,7 @@ with pkgs; let
     rsync
     unzip
     vivid
+    dua
 
     # Multimedia
     ffmpeg
@@ -181,11 +182,11 @@ in
 
   home.packages = packages;
 
-  home.file.".config/bat/config".text = ''
+  home.file.".config/bat/config".text = lib.optionalString (theme.bat != null) ''
     --theme="${theme.bat}"
   '';
 
-  home.file.".config/vivid/theme".text = ''
+  home.file.".config/vivid/theme".text = lib.optionalString (theme.vivid != null) ''
     ${theme.vivid}
   '';
 
