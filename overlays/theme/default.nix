@@ -1,6 +1,6 @@
 let
-  name = "monalisa";
-  variant = "black";
+  name = "standard";
+  variant = "light";
   font.monospace = "DejaVu";
 
   bat-themes =
@@ -30,14 +30,14 @@ let
     };
 
   helix-themes = {
-    "standard-light" = "onelight";
+    "standard-light" = "emacs";
     "standard-dark" = "dracula_at_night";
     "standard-black" = "dracula_at_night";
     "gruvbox-light" = "gruvbox_light";
     "gruvbox-dark" = "gruvbox";
     "gruvbox-black" = "autumn_night";
-    "monalisa-dark" = "base16_transparent";
-    "monalisa-black" = "base16_transparent";
+    "monalisa-dark" = "base16_terminal";
+    "monalisa-black" = "base16_terminal";
     "nord-dark" = "nord";
   };
 

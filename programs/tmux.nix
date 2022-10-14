@@ -89,7 +89,7 @@ let
 
   style = {
     default = ''
-      set -g status-left "#(uname -n) (#(uname -sm)) - " # originally "#S"
+      set -g status-left "#S :: #(uname -n) (#(uname -sm)) - " # originally "#S"
       set -g status-right "#{pane_width}x#{pane_height}"
       set -g status-left-length 50
       set -g status-justify left

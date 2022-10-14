@@ -31,6 +31,7 @@ with pkgs;
     userEmail = "6754950+davidarmstronglewis@users.noreply.github.com";
 
     extraConfig = {
+      core.editor = "hx";
       init.defaultBranch = "main";
       pull.ff = "only";
       diff.external = "difft";

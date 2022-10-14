@@ -26,8 +26,7 @@ in
         if stdenv.isDarwin then
           {
             padding = { x = 11; y = 9; };
-            #decorations = "buttonless";
-            use_thin_strokes = true;
+            decorations = "none";
           }
         else if stdenv.isLinux then
           {
