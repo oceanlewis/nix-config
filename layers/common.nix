@@ -183,7 +183,7 @@ in
   home.packages = packages;
 
   home.file.".config/bat/config".text = lib.optionalString (theme.bat != null) ''
-    --theme="${theme.bat}"
+    --theme="${theme.bat}" --plain
   '';
 
   home.file.".config/vivid/theme".text = lib.optionalString (theme.vivid != null) ''
