@@ -34,7 +34,12 @@ with pkgs;
       core.editor = "hx";
       init.defaultBranch = "main";
       pull.ff = "only";
-      diff.external = "difft";
+
+      diff.tool = "difftastic";
+      difftool.prompt = false;
+      "difftool \"difftastic\"".cmd = ''difft "$LOCAL" "$REMOTE"'';
+      pager.difftool = true;
+      alias.difft = "difftool";
     };
 
     ignores = [
@@ -78,3 +83,4 @@ with pkgs;
     };
   };
 }
+

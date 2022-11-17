@@ -207,8 +207,6 @@ in
       fi
 
       function custom_preexec () {
-        clear
-
         if test -x "$(which vivid)"; then
           export LS_COLORS=$(vivid generate $(cat ~/.config/vivid/theme))
         fi

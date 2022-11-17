@@ -31,7 +31,7 @@ let
 
   helix-themes = {
     "standard-light" = "emacs";
-    "standard-dark" = "dracula_at_night";
+    "standard-dark" = "night_owl";
     "standard-black" = "dracula_at_night";
     "gruvbox-light" = "gruvbox_light";
     "gruvbox-dark" = "gruvbox";

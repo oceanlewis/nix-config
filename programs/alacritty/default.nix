@@ -26,7 +26,7 @@ in
         if stdenv.isDarwin then
           {
             padding = { x = 11; y = 9; };
-            decorations = "none";
+            decorations = "Buttonless";
           }
         else if stdenv.isLinux then
           {
