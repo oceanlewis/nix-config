@@ -4,6 +4,7 @@ with pkgs; let
 
   packages = [
     # Files & Text
+    felix-fm
     file
     exa
     fd
