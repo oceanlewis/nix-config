@@ -5,6 +5,7 @@ with pkgs; let
   packages = [
     # Files & Text
     felix-fm
+    chafa # required for felix-fm file previews
     file
     exa
     fd
