@@ -21,7 +21,7 @@ in
     ../../programs/tmux.nix
     ../../programs/starship.nix
     ../../programs/git
-    ../../programs/neovim
+    # ../../programs/neovim
     ../../programs/alacritty
     ../../programs/helix
     ../../programs/zellij

@@ -1,6 +1,6 @@
 let
   name = "standard";
-  variant = "light";
+  variant = "dark";
   font.monospace = "DejaVu";
 
   bat-themes =
@@ -32,7 +32,7 @@ let
   helix-themes = {
     "standard-light" = "emacs";
     "standard-dark" = "night_owl";
-    "standard-black" = "dracula_at_night";
+    "standard-black" = "base16_transparent";
     "gruvbox-light" = "gruvbox_light";
     "gruvbox-dark" = "gruvbox";
     "gruvbox-black" = "autumn_night";

@@ -43,7 +43,6 @@ in
 
     interactiveShellInit = ''
       source ~/.zprofile
-      cp ${HOME}/.config/nushell/* ${HOME}/Library/Application\ Support/nushell/
     '';
   };
 

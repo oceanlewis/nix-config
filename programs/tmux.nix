@@ -47,6 +47,10 @@ let
       bind-key -T copy-mode-vi 'y' send -X copy-selection-and-cancel
     '';
 
+  selectDoesNotResetCursorPosition = ''
+    unbind-key -T copy-mode-vi MouseDragEnd1Pane
+  '';
+
   colors = {
     default = {
       status-fg = "default";
@@ -116,6 +120,7 @@ in
       ${setPrefix}
       ${enableViNavigation}
       ${enableMouseIntegration}
+      ${selectDoesNotResetCursorPosition}
       ${enableCopyToSystemClipboard}
       ${theme}
       ${style.default}
