@@ -2,6 +2,7 @@
 {
   programs.helix = {
     enable = true;
+
     settings = {
       theme = pkgs.theme.helix;
 
@@ -16,5 +17,12 @@
         "A-f" = ":format";
       };
     };
+
+    languages = [
+      {
+        name = "nix";
+        language-server.command = "rnix-lsp";
+      }
+    ];
   };
 }
