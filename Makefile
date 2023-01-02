@@ -45,7 +45,7 @@ darwin:
 	@darwin-rebuild switch
 
 armstrong:
-	@darwin-rebuild switch --flake ./system/armstrong#Armstrong
+	@darwin-rebuild switch --flake .#Armstrong
 
 switch:
 ifdef profile

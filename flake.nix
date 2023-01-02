@@ -29,10 +29,10 @@
         Armstrong = darwin.lib.darwinSystem rec {
           system = "aarch64-darwin";
           modules = [
-            ./darwin-configuration.nix
+            ./system/armstrong/darwin-configuration.nix
             home-manager.darwinModules.home-manager
             {
-              home-manager.users."david.lewis" = import ./home.nix {
+              home-manager.users."david.lewis" = import ./system/armstrong/home.nix {
                 pkgs = import nixpkgs {
                   inherit overlays system;
                   config.allowUnfree = true;
