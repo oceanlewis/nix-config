@@ -47,6 +47,9 @@ darwin:
 armstrong:
 	@darwin-rebuild switch --flake .#Armstrong
 
+ghastly:
+	@sudo nixos-rebuild switch --flake .#ghastly
+
 switch:
 ifdef profile
 	@echo -e "\nAttempting to link Home Manager Profile $(profile)..."

@@ -1,8 +1,10 @@
-let
-  name = "standard";
-  variant = "dark";
-  font.monospace = "DejaVu";
+{ name ? "standard"
+, variant ? "dark"
+, font ? { monospace = "DejaVu"; }
+, ...
+}:
 
+let
   bat-themes =
     {
       "standard-light" = "GitHub";
