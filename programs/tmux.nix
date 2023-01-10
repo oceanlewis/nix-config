@@ -53,42 +53,46 @@ let
 
   colors = {
     default = {
-      status-fg = "colour8";
-      status-bg = "default";
-      pane-active-border-fg = "colour8";
+      status.fg = "colour8";
+      status.bg = "default";
+      pane-active-border-style.fg = "colour8";
+      pane-border-style.fg = "colour8";
       mode-style-bg = "#FF9C9C";
       mode-style-fg = "#474646";
     };
 
     pink = {
-      status-fg = "#FF006D";
-      status-bg = "default";
-      pane-active-border-fg = "#FF006D";
+      status.fg = "#FF006D";
+      status.bg = "default";
+      pane-active-border-style.fg = "#FF006D";
+      pane-border-style.fg = "default";
       mode-style-bg = "#87CEFA";
       mode-style-fg = "#FF006D";
     };
 
     magenta = {
-      status-fg = "colour13";
-      status-bg = "default";
-      pane-active-border-fg = "colour13";
+      status.fg = "colour13";
+      status.bg = "default";
+      pane-active-border-style.fg = "colour13";
+      pane-border-style.fg = "default";
       mode-style-bg = "#947CD3";
       mode-style-fg = "#000000";
     };
   };
 
-  activeColor = colors.default;
+  color = colors.default;
 
   theme = ''
     # Enable TrueColors
     set-option -sa terminal-overrides ',screen-256color:RGB,xterm-256color:RGB'
 
     # Status Bar and Pane Border
-    set -g status-style fg=${activeColor.status-fg},bg=${activeColor.status-bg};
-    set-option -g pane-active-border-style fg=${activeColor.pane-active-border-fg}
+    set -g status-style fg=${color.status.fg},bg=${color.status.bg};
+    set-option -g pane-active-border-style fg=${color.pane-active-border-style.fg}
+    set-option -g pane-border-style fg=${color.pane-border-style.fg}
 
     # Highlight Color
-    set-window-option -g mode-style fg=${activeColor.mode-style-fg},bg=${activeColor.mode-style-bg}
+    set-window-option -g mode-style fg=${color.mode-style-fg},bg=${color.mode-style-bg}
   '';
 
   style = {

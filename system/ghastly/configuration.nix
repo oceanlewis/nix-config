@@ -57,11 +57,9 @@
     isNormalUser = true;
     description = "David Lewis";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [ ];
+    packages = with pkgs; [ nushell ];
+    shell = pkgs.nushell;
   };
-
-  # Enable automatic login for the user.
-  services.getty.autologinUser = "david";
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
