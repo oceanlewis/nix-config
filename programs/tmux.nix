@@ -53,9 +53,9 @@ let
 
   colors = {
     default = {
-      status-fg = "default";
+      status-fg = "colour8";
       status-bg = "default";
-      pane-active-border-fg = "default";
+      pane-active-border-fg = "colour8";
       mode-style-bg = "#FF9C9C";
       mode-style-fg = "#474646";
     };
