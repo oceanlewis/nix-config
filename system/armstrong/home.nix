@@ -10,7 +10,7 @@ in
 {
 
   nixpkgs.overlays = pkgs.overlays ++ [
-    (import ../../overlays/theme)
+    (import ../../overlays/theme { name = "standard"; variant = "black"; })
     (import ../../overlays/ipython.nix)
     (import ../../overlays/vimPlugins.nix)
   ];
@@ -21,7 +21,6 @@ in
     ../../programs/tmux.nix
     ../../programs/starship.nix
     ../../programs/git
-    # ../../programs/neovim
     ../../programs/alacritty
     ../../programs/helix
     ../../programs/zellij
@@ -50,32 +49,5 @@ in
       BAT_CONFIG_PATH = "${HOME}/.config/bat/config";
       GOPATH = "${HOME}/Developer/go/";
     };
-
-    file.".ideavimrc".text = ''
-      " Enable relative line numbers
-      set relativenumber
-      set number
-
-      " Integrate with system clipboard
-      set clipboard=unnamedplus,unnamed
-      let mapleader = " "
-      " yank to system clipboard
-      set clipboard=unnamed
-      set clipboard+=ideaput
-
-      "" Tab navigation
-      nnoremap <A-l> :tabnext<CR>
-      nnoremap <A-h> :tabprevious<CR>
-      nnoremap <A-BS> :tabclose<CR>
-
-      "" Code Navigation
-      nnoremap <S-CR> :action GotoDeclaration<CR>
-    '';
-
-    # file."${HOME}/.config/nu/config.toml".onChange = ''
-    #   echo Linking in nushell config file
-    #   ln -sfv "${HOME}/.config/nu/config.toml" "${HOME}/Library/Application Support/org.nushell.nu/config.toml"
-    # '';
   };
-
 }
