@@ -58,7 +58,7 @@
     description = "David Lewis";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [ nushell ];
-    shell = pkgs.nushell;
+    shell = pkgs.zsh;
   };
 
   # Allow unfree packages

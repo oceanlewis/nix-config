@@ -25,7 +25,7 @@ in
     ../programs/helix
     ../programs/zellij
   ];
-
+  
   programs.home-manager.enable = true;
 
   home = {
