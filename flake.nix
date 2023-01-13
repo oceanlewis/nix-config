@@ -42,7 +42,7 @@
       };
     };
     darwinConfigurations = {
-      Armstrong = darwin.lib.darwinSystem rec {
+      armstrong = darwin.lib.darwinSystem rec {
         system = "aarch64-darwin";
         modules = [
           ./system/armstrong/darwin-configuration.nix

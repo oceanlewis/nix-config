@@ -134,8 +134,8 @@ with pkgs; let
 
     tf = "terraform";
 
-    zvi = ''nvim "$(fzf)"'';
-    zhx = ''hx "$(fzf)"'';
+    zvi = ''nvim $(fzf --preview 'bat --style=numbers --color=always {}')'';
+    zhx = ''hx $(fzf --preview 'bat --style=numbers --color=always {}')'';
   } //
   lsdAliases //
   lib.optionalAttrs stdenv.isLinux {
