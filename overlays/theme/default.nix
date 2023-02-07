@@ -34,12 +34,12 @@ let
   helix-themes = {
     "standard-light" = "emacs";
     "standard-dark" = "night_owl";
-    "standard-black" = "base16_transparent";
+    "standard-black" = "trans_fleet_dark";
     "gruvbox-light" = "gruvbox_light";
-    "gruvbox-dark" = "gruvbox";
-    "gruvbox-black" = "autumn_night";
-    "monalisa-dark" = "base16_terminal";
-    "monalisa-black" = "base16_terminal";
+    "gruvbox-dark" = "trans_varua";
+    "gruvbox-black" = "trans_varua";
+    "monalisa-dark" = "trans_varua";
+    "monalisa-black" = "trans_varua";
     "nord-dark" = "nord";
   };
 

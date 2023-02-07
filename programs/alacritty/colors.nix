@@ -191,7 +191,7 @@ let
 
   themes."gruvbox-black" = {
     primary = {
-      background = "0x1A1A1A";
+      background = "0x000000";
       foreground = "0xEBDBB2";
       bright_foreground = "0xFF9C9C";
     };
