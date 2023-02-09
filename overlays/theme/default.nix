@@ -32,10 +32,10 @@ let
     };
 
   helix-themes = {
-    "standard-light" = "emacs";
-    "standard-dark" = "night_owl";
+    "standard-light" = "trans_papercolor-light";
+    "standard-dark" = "trans_fleet_dark";
     "standard-black" = "trans_fleet_dark";
-    "gruvbox-light" = "gruvbox_light";
+    "gruvbox-light" = "trans_gruvbox_light";
     "gruvbox-dark" = "trans_varua";
     "gruvbox-black" = "trans_varua";
     "monalisa-dark" = "trans_varua";

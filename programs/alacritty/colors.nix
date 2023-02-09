@@ -117,7 +117,7 @@ let
 
   themes."gruvbox-light" = {
     primary = {
-      background = "0xFBF1C7";
+      background = "0xF9F5D7";
       foreground = "0x3C3836";
       bright_foreground = "0xA02020"; # Dark Red
     };

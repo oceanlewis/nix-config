@@ -12,7 +12,7 @@ in
   nixpkgs.overlays = pkgs.overlays ++ [
     (import ../../overlays/theme {
       name = "standard";
-      variant = "black";
+      variant = "dark";
     })
     (import ../../overlays/ipython.nix)
     (import ../../overlays/vimPlugins.nix)

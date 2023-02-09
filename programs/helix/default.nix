@@ -46,9 +46,13 @@ in
     themes = makeTrans [
       "bogster"
       "catppuccin_mocha"
+      "emacs"
       "fleet_dark"
       "gruvbox"
+      "gruvbox_light"
       "meliora"
+      "onelight"
+      "papercolor-light"
       "snazzy"
       "spacebones_light"
       "tokyonight"
