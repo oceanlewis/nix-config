@@ -42,8 +42,8 @@ let
 
   themes."standard-dark" = {
     primary = {
-      background = "0x011627";
-      foreground = "0xF1F1F1"; # Traditional
+      background = "0x011111";
+      foreground = "0xF1F1F1";
       bright_foreground = "0xFF9C9C";
     };
 
