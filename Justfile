@@ -9,3 +9,9 @@ update:
 # Armstrong's nix-darwin rebuild command
 armstrong:
 	darwin-rebuild switch --flake .#armstrong
+
+wizard:
+	darwin-rebuild witch --flake .#armstrong
+
+ghastly:
+	sudo nixos-rebuild switch --flake .#ghastly
