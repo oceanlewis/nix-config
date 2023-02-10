@@ -45,8 +45,13 @@
           ./system/ghastly/configuration.nix
           home-manager-nixos.nixosModules.home-manager
           {
-            home-manager.users.david = import ./home/david.nix {
+            home-manager.users.david = import ./home/console_user.nix {
               pkgs = import nixos-stable { inherit overlays system; };
+              config = {
+                user = "david";
+                theme.helix = "base16_transparent";
+                home.state_version = "22.11";
+              };
             };
           }
         ];

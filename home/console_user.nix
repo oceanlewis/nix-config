@@ -1,15 +1,15 @@
-{ pkgs, ... }:
+{ pkgs
+, config
+}:
 
 let
 
-  HOST_NAME = "Ghastly";
-  USER = "david";
-  HOME = "/home/${USER}";
+  HOME =
+    if pkgs.stdenv.isLinux
+    then "/home/${config.user}"
+    else "/Users/${config.user}";
 
-  theme = import ../overlays/theme {
-    name = "standard";
-    variant = "black";
-  };
+  theme = import ../overlays/theme { config = config.theme; };
 
 in
 {
@@ -25,12 +25,12 @@ in
     ../programs/helix
     ../programs/zellij
   ];
-  
+
   programs.home-manager.enable = true;
 
   home = {
-    stateVersion = "22.11";
-    username = USER;
+    stateVersion = config.home.state_version;
+    username = config.user;
     homeDirectory = HOME;
 
     sessionVariables = {
