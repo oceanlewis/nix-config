@@ -22,7 +22,7 @@
   home = {
     stateVersion = config.state_version;
     username = config.user;
-    homeDirectory = HOME;
+    homeDirectory = config.home;
 
     sessionVariables = {
       PAGER = "less -R";
@@ -31,7 +31,7 @@
       TERM = "xterm-256color";
 
       FZF_DEFAULT_COMMAND = "fd --type f";
-      BAT_CONFIG_PATH = "${HOME}/.config/bat/config";
+      BAT_CONFIG_PATH = "${config.home}/.config/bat/config";
     };
   };
 }

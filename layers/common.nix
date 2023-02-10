@@ -70,6 +70,7 @@ with pkgs; let
     autoconf
     pkg-config
     gnumake
+    just
 
     # Languages
     exercism
