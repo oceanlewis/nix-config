@@ -1,20 +1,11 @@
 { pkgs
 , config
+, theme-config ? {}
 }:
-
-let
-
-  HOME =
-    if pkgs.stdenv.isLinux
-    then "/home/${config.user}"
-    else "/Users/${config.user}";
-
-  theme = import ../overlays/theme { config = config.theme; };
-
-in
 {
-
-  nixpkgs.overlays = pkgs.overlays ++ [ theme ];
+  nixpkgs.overlays = pkgs.overlays ++ [
+    (import ../overlays/theme { config = theme-config; })
+  ];
 
   imports = [
     ../layers/common.nix
@@ -29,7 +20,7 @@ in
   programs.home-manager.enable = true;
 
   home = {
-    stateVersion = config.home.state_version;
+    stateVersion = config.state_version;
     username = config.user;
     homeDirectory = HOME;
 

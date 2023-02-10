@@ -45,12 +45,13 @@
           ./system/ghastly/configuration.nix
           home-manager-nixos.nixosModules.home-manager
           {
-            home-manager.users.david = import ./home/console_user.nix {
+            home-manager.users.david = import ./home/console-user.nix {
               pkgs = import nixos-stable { inherit overlays system; };
               config = {
                 user = "david";
+                home = "/home/david";
                 theme.helix = "base16_transparent";
-                home.state_version = "22.11";
+                state_version = "22.11";
               };
             };
           }
@@ -63,10 +64,15 @@
           ./system/armstrong/darwin-configuration.nix
           home-manager-master.darwinModules.home-manager
           {
-            home-manager.users."david.lewis" = import ./system/armstrong/home.nix {
+            home-manager.users."david.lewis" = import ./home/darwin-user.nix {
               pkgs = import nixpkgs-unstable {
                 inherit overlays system;
                 config.allowUnfree = true;
+              };
+              config = {
+                user = "david.lewis";
+                home = "/Users/david.lewis";
+                state_version = "22.11";
               };
             };
           }
