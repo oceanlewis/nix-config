@@ -50,9 +50,9 @@
               config = {
                 user = "david";
                 home = "/home/david";
-                theme.helix = "base16_transparent";
                 state_version = "22.11";
               };
+              theme-config.helix = "base16_transparent";
             };
           }
         ];
