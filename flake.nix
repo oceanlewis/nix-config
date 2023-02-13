@@ -93,12 +93,16 @@
         users.users.test.extraGroups = [ "wheel" ];
         security.sudo.wheelNeedsPassword = false;
       };
+      nixosModules.vm = {...}: {
+        virtualisation.vmVariant.virtualisation.graphics = false;
+      };
 
       nixosConfigurations.linuxBase = nixos-stable.lib.nixosSystem
         {
           system = "aarch64-linux";
           modules = [
             self.nixosModules.base
+            self.nixosModules.vm
           ];
         };
     };
