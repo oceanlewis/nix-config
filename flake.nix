@@ -78,5 +78,28 @@
           }
         ];
       };
+
+      nixosModules.base = { pkgs, ... }: {
+        system.stateVersion = "22.11";
+        # Configure networking
+        networking.useDHCP = false;
+        networking.interfaces.eth0.useDHCP = true;
+
+        # Create user "test"
+        services.getty.autologinUser = "test";
+        users.users.test.isNormalUser = true;
+
+        # Enable passwordless ‘sudo’ for the "test" user
+        users.users.test.extraGroups = [ "wheel" ];
+        security.sudo.wheelNeedsPassword = false;
+      };
+
+      nixosConfigurations.linuxBase = nixos-stable.lib.nixosSystem
+        {
+          system = "aarch64-linux";
+          modules = [
+            self.nixosModules.base
+          ];
+        };
     };
 }        
