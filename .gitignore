@@ -3,3 +3,5 @@ result
 
 # NixOS Builder
 keys
+
+nixos.qcow2

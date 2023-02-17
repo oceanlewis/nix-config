@@ -396,9 +396,9 @@ let-env config = {
     format: "auto" # b, kb, kib, mb, mib, gb, gib, tb, tib, pb, pib, eb, eib, zb, zib, auto
   }
   cursor_shape: {
-    emacs: line # block, underscore, line (line is the default)
+    emacs: block # block, underscore, line (line is the default)
     vi_insert: block # block, underscore, line (block is the default)
-    vi_normal: underscore # block, underscore, line  (underscore is the default)
+    vi_normal: block # block, underscore, line  (underscore is the default)
   }
   color_config: $dark_theme   # if you want a light theme, replace `$dark_theme` to `$light_theme`
   use_grid_icons: true
@@ -406,7 +406,7 @@ let-env config = {
   float_precision: 2
   # buffer_editor: "emacs" # command that will be used to edit the current line buffer with ctrl+o, if unset fallback to $env.EDITOR and $env.VISUAL
   use_ansi_coloring: true
-  edit_mode: emacs # emacs, vi
+  edit_mode: vi # emacs, vi
   shell_integration: true # enables terminal markers and a workaround to arrow keys stop working issue
   show_banner: true # true or false to enable or disable the banner
   render_right_prompt_on_last_line: false # true or false to enable or disable right prompt to be rendered on last line of the prompt.
