@@ -74,6 +74,11 @@
                 home = "/Users/david.lewis";
                 state_version = "22.11";
               };
+              theme-config = {
+                name = "standard";
+                variant = "light";
+                helix = "trans_spacebones_light";
+              };
             };
           }
         ];
