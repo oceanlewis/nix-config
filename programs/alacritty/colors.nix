@@ -42,7 +42,7 @@ let
 
   themes."standard-dark" = {
     primary = {
-      background = "0x011111";
+      background = "0x151515";
       foreground = "0xF1F1F1";
       bright_foreground = "0xFF9C9C";
     };
@@ -154,7 +154,7 @@ let
 
   themes."gruvbox-dark" = {
     primary = {
-      background = "0x292828";
+      background = "0x151515";
       foreground = "0xEBDBB2";
       bright_foreground = "0xFF9C9C";
     };

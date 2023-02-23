@@ -77,7 +77,6 @@
               theme-config = {
                 name = "standard";
                 variant = "light";
-                helix = "trans_spacebones_light";
               };
             };
           }
