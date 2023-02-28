@@ -15,6 +15,8 @@ in
       build-users-group = nixbld
       experimental-features = nix-command flakes
       extra-platforms = x86_64-darwin aarch64-darwin
+      keep-outputs = true
+      keep-derivations = true
     '';
   };
 

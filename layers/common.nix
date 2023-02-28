@@ -76,7 +76,6 @@ with pkgs; let
     exercism
 
     # Nix
-    direnv
     nixpkgs-fmt
     rnix-lsp
     nix-tree
@@ -192,6 +191,11 @@ in
   home.file.".config/vivid/theme".text = lib.optionalString (theme.vivid != null) ''
     ${theme.vivid}
   '';
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
 
   # Program Definition
   # - https://github.com/rycee/home-manager/blob/master/modules/programs/zsh.nix
