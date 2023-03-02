@@ -29,6 +29,8 @@ with pkgs; let
     unzip
     vivid
     dua
+    duf
+    du-dust
 
     # Multimedia
     ffmpeg
