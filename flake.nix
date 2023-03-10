@@ -77,6 +77,7 @@
               theme-config = {
                 name = "standard";
                 variant = "light";
+                font.monospace = "Monaco";
               };
             };
           }
