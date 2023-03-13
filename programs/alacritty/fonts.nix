@@ -7,11 +7,10 @@ let
 
   fontConfig = defaults // {
     "Menlo" = {
-      normal = { family = "Menlo"; style = "Regular"; };
-      bold = { family = "Menlo"; style = "Bold"; };
-      italic = { family = "Menlo"; style = "Italic"; };
-      offset = { x = 1; y = 4; };
-      glyph_offset = { x = 0; y = 0; };
+      normal = { family = "MesloLGL Nerd Font"; style = "Regular"; };
+      bold = { family = "MesloLGL Nerd Font"; style = "Bold"; };
+      italic = { family = "MesloLGL Nerd Font"; style = "Italic"; };
+      size = defaults.size + 1.0;
     };
 
     "Monaco" = {
@@ -30,12 +29,21 @@ let
       glyph_offset = { x = 0; y = 0; };
     };
 
-    "Mononoki" = {
-      normal = { family = "Mononoki Nerd Font"; style = "Regular"; };
-      bold = { family = "Mononoki Nerd Font"; style = "Bold"; };
-      italic = { family = "Mononoki Nerd Font"; style = "Italic"; };
+    "Go" = {
+      normal = { family = "GoMono Nerd Font"; style = "Regular"; };
+      bold = { family = "GoMono Nerd Font"; style = "Bold"; };
+      italic = { family = "GoMono Nerd Font"; style = "Italic"; };
+      offset = { x = 1; y = 3; };
+      glyph_offset = { x = 0; y = 0; };
+    };
+
+    "ShureTech" = {
+      normal = { family = "ShureTechMono Nerd Font"; style = "Regular"; };
+      bold = { family = "ShureTechMono Nerd Font"; style = "Bold"; };
+      italic = { family = "ShureTechMono Nerd Font"; style = "Italic"; };
       offset = { x = 2; y = 2; };
       glyph_offset = { x = 0; y = 0; };
+      size = 15;
     };
 
     "SF Mono" = {

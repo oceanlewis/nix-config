@@ -7,7 +7,9 @@ with pkgs;
       "DejaVuSansMono"
       "Hack"
       "IBMPlexMono"
-      "Mononoki"
+      "Go-Mono"
+      "ShareTechMono"
+      "Meslo"
     ];
   })
 
