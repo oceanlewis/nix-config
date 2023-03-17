@@ -10,7 +10,7 @@
       scan_timeout = 30;
 
       git_branch.symbol = "";
-      nix_shell.format = "[nix]($style)";
+      nix_shell.format = "[nix]($style) ";
 
       character = {
         success_symbol = "\n[ λ](bold purple)";
