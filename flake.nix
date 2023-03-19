@@ -75,7 +75,7 @@
                 state_version = "22.11";
               };
               theme-config = {
-                name = "gruvbox";
+                name = "standard";
                 variant = "light";
                 font.monospace = "Menlo";
               };

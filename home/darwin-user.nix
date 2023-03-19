@@ -18,6 +18,7 @@
     ../programs/alacritty
     ../programs/helix
     ../programs/zellij
+    ../programs/wezterm
   ];
 
   programs.home-manager.enable = true;
