@@ -1,18 +1,18 @@
 {
   inputs = {
     flake-utils.url = github:numtide/flake-utils;
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixos-stable.url = "github:nixos/nixpkgs/nixos-22.11";
+    nixpkgs-unstable.url = github:nixos/nixpkgs/nixpkgs-unstable;
+    nixos-stable.url = github:nixos/nixpkgs/nixos-22.11;
     darwin = {
-      url = "github:lnl7/nix-darwin/master";
+      url = github:lnl7/nix-darwin/master;
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     home-manager-nixos = {
-      url = "github:nix-community/home-manager/release-22.11";
+      url = github:nix-community/home-manager/release-22.11;
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     home-manager-master = {
-      url = "github:nix-community/home-manager/master";
+      url = github:nix-community/home-manager/master;
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
@@ -26,15 +26,17 @@
     , nixpkgs-unstable
     , nixos-stable
     }:
-    let overlays = [ ];
+    let
+      overlays = [ ];
+      config.allowUnfree = true;
     in
     flake-utils.lib.eachDefaultSystem
       (system: {
         devShells.default = import ./shell.nix {
           pkgs =
             if builtins.elem system [ "aarch64-darwin" "x86_64-darwin" ]
-            then import nixpkgs-unstable { inherit overlays system; }
-            else import nixos-stable { inherit overlays system; };
+            then import nixpkgs-unstable { inherit overlays system config; }
+            else import nixos-stable { inherit overlays system config; };
         };
       })
     //
@@ -46,7 +48,7 @@
           home-manager-nixos.nixosModules.home-manager
           {
             home-manager.users.david = import ./home/console-user.nix {
-              pkgs = import nixos-stable { inherit overlays system; };
+              pkgs = import nixos-stable { inherit overlays system config; };
               config = {
                 user = "david";
                 home = "/home/david";
@@ -65,10 +67,7 @@
           home-manager-master.darwinModules.home-manager
           {
             home-manager.users."david.lewis" = import ./home/darwin-user.nix {
-              pkgs = import nixpkgs-unstable {
-                inherit overlays system;
-                config.allowUnfree = true;
-              };
+              pkgs = import nixpkgs-unstable { inherit overlays system config; };
               config = {
                 user = "david.lewis";
                 home = "/Users/david.lewis";

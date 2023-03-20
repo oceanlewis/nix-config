@@ -72,6 +72,7 @@ let
 
     initExtra = ''
       export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+      export CARGO_TARGET_DIR="$HOME/.cargo/target"
     '';
 
   };
