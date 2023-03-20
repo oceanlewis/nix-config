@@ -251,5 +251,6 @@ in
   programs.lsd = {
     enable = true;
     enableAliases = true;
+    settings.color.when = "never";
   };
 }
