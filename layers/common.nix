@@ -84,6 +84,7 @@ with pkgs; let
     # Nix
     nixpkgs-fmt
     rnix-lsp
+    nil
     nix-tree
   ]
   ++ lib.optionals isLinux [

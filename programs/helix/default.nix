@@ -39,7 +39,7 @@ in
     languages = [
       {
         name = "nix";
-        language-server.command = "rnix-lsp";
+        language-server.command = "nil";
       }
     ];
 
