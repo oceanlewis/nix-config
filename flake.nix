@@ -75,8 +75,8 @@
               };
               theme-config = {
                 name = "standard";
-                variant = "dark";
-                font.monospace = "Menlo";
+                variant = "light";
+                font.monospace = "JetBrains Mono";
               };
             };
           }

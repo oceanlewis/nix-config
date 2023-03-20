@@ -10,6 +10,9 @@ with pkgs;
       "Go-Mono"
       "ShareTechMono"
       "Meslo"
+      "BigBlueTerminal"
+      "JetBrainsMono"
+      "CascadiaCode"
     ];
   })
 

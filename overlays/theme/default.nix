@@ -60,10 +60,10 @@ let
   };
 
   wezterm-themes = rec {
-    standard.light = "Mexico Light (base16)";
-    # standard.light = "iA Light (base16)";
-    # standard.light = "Heetch Light (base16)";
-    # standard.light = "Humanoid light (base16)";
+    standard.light = "Humanoid light (base16)";
+    # standard.light = "Mexico Light (base16)";
+      # standard.light = "iA Light (base16)";
+      # standard.light = "Heetch Light (base16)";
 
     standard.dark = "Invisibone (terminal.sexy)";
     # standard.dark = "laserwave (Gogh)";
@@ -86,7 +86,7 @@ let
     monalisa.dark = "IC_Orange_PPL";
     monalisa.black = monalisa.black;
 
-    # nord.dark = "nord";
+    nord.dark = "nord";
   };
 
   selectTheme = programName: themeMap: name: variant:
