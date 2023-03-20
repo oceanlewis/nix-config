@@ -2,6 +2,9 @@
 
 with pkgs; let
 
+  inherit (pkgs) stdenv;
+  inherit (stdenv) isDarwin isLinux;
+
   packages = [
     # Files & Text
     felix-fm
@@ -83,7 +86,7 @@ with pkgs; let
     rnix-lsp
     nix-tree
   ]
-  ++ lib.optionals pkgs.stdenv.isLinux [
+  ++ lib.optionals isLinux [
     xsel # rmesg
     xclip
     usbutils # lsusb and others
@@ -125,66 +128,75 @@ with pkgs; let
     rea = "clear; ls -a *";
   };
 
-  shell.aliases = {
-    # Git
-    eg = "clear; git status";
-    egg = "clear; git status; echo; git diff";
-    egc = "clear; git status; echo; git diff --cached";
 
-    # Tmux
-    te = "tmux list-sessions";
-    ta = "tmux attach";
+  shellFor = program: {
+    sessionVariables = {
+      CARGO_TARGET_DIR = "$HOME/.cargo/target";
+    } // lib.optional isLinux {
+      PATH = "$HOME/.local/bin:$HOME/.cargo/bin:$PATH";
+    } // lib.optional isDarwin {
+      PATH = "$HOME/.cargo/bin:$PATH";
+      TMUX_TMPDIR = "$XDG_RUNTIME_DIR";
+    };
 
-    tf = "terraform";
+    init = ''
+      set -o vi
 
-    zvi = ''nvim $(fzf --preview 'bat --style=numbers --color=always {}')'';
-    zhx = ''hx $(fzf --preview 'bat --style=numbers --color=always {}')'';
-  } //
-  lsdAliases //
-  lib.optionalAttrs stdenv.isLinux {
-    open = "xdg-open";
-    cdcopy = "pwd | xsel -ib";
-    cdpaste = "cd \"$(xsel -ob)\"";
-  } //
-  lib.optionalAttrs stdenv.isDarwin {
-    cdcopy = "pwd | pbcopy";
-    cdpaste = "cd \"$(pbpaste)\"";
+      function purge_docker() {
+        docker system prune --force
+        docker volume prune --force
+        docker image prune --force
+        docker container prune --force
+      }
+
+      if test -x "$(which direnv)"; then
+        eval "$(direnv hook ${program})"
+      fi
+
+      if test -x "$(which zoxide)"; then
+        eval "$(zoxide init ${program})"
+      fi
+    ''
+    +
+    lib.optionalString isDarwin ''
+      if ! test -d $TMUX_TMPDIR; then
+        mkdir -p $TMUX_TMPDIR
+      fi
+
+      if [ "$(uname)" = "Darwin" -a -n "$NIX_LINK" -a -f $NIX_LINK/etc/X11/fonts.conf ]; then
+        export FONTCONFIG_FILE=$NIX_LINK/etc/X11/fonts.conf
+      fi
+    '';
+
+    aliases = {
+      # Git
+      eg = "clear; git status";
+      egg = "clear; git status; echo; git diff";
+      egc = "clear; git status; echo; git diff --cached";
+
+      # Tmux
+      te = "tmux list-sessions";
+      ta = "tmux attach";
+
+      tf = "terraform";
+
+      zvi = ''nvim $(fzf --preview 'bat --style=numbers --color=always {}')'';
+      zhx = ''hx $(fzf --preview 'bat --style=numbers --color=always {}')'';
+    } //
+    lsdAliases //
+    lib.optionalAttrs isLinux {
+      open = "xdg-open";
+      cdcopy = "pwd | xsel -ib";
+      cdpaste = "cd \"$(xsel -ob)\"";
+    } //
+    lib.optionalAttrs isDarwin {
+      cdcopy = "pwd | pbcopy";
+      cdpaste = "cd \"$(pbpaste)\"";
+    };
   };
-
-  shell.init = shell: ''
-    function purge_docker() {
-      docker system prune --force
-      docker volume prune --force
-      docker image prune --force
-      docker container prune --force
-    }
-
-    if test -x "$(which direnv)"; then
-      eval "$(direnv hook ${shell})"
-    fi
-  ''
-  +
-  lib.optionalString stdenv.isLinux ''
-    export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
-  ''
-  +
-  lib.optionalString stdenv.isDarwin ''
-    export PATH="$HOME/.cargo/bin:$PATH"
-
-    export TMUX_TMPDIR=$XDG_RUNTIME_DIR
-
-    if ! test -d $TMUX_TMPDIR; then
-      mkdir -p $TMUX_TMPDIR
-    fi
-
-    if [ "$(uname)" = "Darwin" -a -n "$NIX_LINK" -a -f $NIX_LINK/etc/X11/fonts.conf ]; then
-      export FONTCONFIG_FILE=$NIX_LINK/etc/X11/fonts.conf
-    fi
-  '';
 
 in
 {
-
   home.packages = packages;
 
   home.file.".config/bat/config".text = lib.optionalString (theme.bat != null) ''
@@ -202,56 +214,42 @@ in
 
   # Program Definition
   # - https://github.com/rycee/home-manager/blob/master/modules/programs/zsh.nix
-  programs.zsh = {
-    enable = true;
-    dotDir = ".config/zsh";
-    shellAliases = shell.aliases;
-    initExtra = ''
-      set -o vi
-
-      ${shell.init "zsh"}
-      unset RPS1
-
-      if test -x "$(which zoxide)"; then
-        eval "$(zoxide init zsh)"
-      fi
-
-      function custom_preexec () {
-        if test -x "$(which vivid)"; then
-          export LS_COLORS=$(vivid generate $(cat ~/.config/vivid/theme))
-        fi
-      }
-      add-zsh-hook preexec custom_preexec
-    '';
-
-    defaultKeymap = "viins";
-
-    oh-my-zsh = {
+  programs.zsh = let shell = shellFor "zsh"; in
+    {
       enable = true;
-      plugins = [ "vi-mode" "history-substring-search" ];
+      dotDir = ".config/zsh";
+      shellAliases = shell.aliases;
+      initExtra = ''
+        unset RPS1
+        function custom_preexec () {
+          if test -x "$(which vivid)"; then
+            export LS_COLORS=$(vivid generate $(cat ~/.config/vivid/theme))
+          fi
+        }
+        add-zsh-hook preexec custom_preexec
+
+        ${shell.init}
+      '';
+
+      defaultKeymap = "viins";
+
+      oh-my-zsh = {
+        enable = true;
+        plugins = [ "vi-mode" "history-substring-search" ];
+      };
     };
-  };
 
-  programs.bash = {
-    enable = false;
-    shellAliases = shell.aliases;
-    historyControl = [ "erasedups" "ignoredups" "ignorespace" ];
-    historyIgnore = [ "ls" "cd" "exit" ];
-
-    initExtra = ''
-      set -o vi
-
-      if test -x "$(which zoxide)"; then
-        eval "$(zoxide init bash)"
-      fi
-
-      ${shell.init "bash"}
-    '';
-  };
+  programs.bash = let shell = shellFor "bash"; in
+    {
+      enable = false;
+      shellAliases = shell.aliases;
+      historyControl = [ "erasedups" "ignoredups" "ignorespace" ];
+      historyIgnore = [ "ls" "cd" "exit" ];
+      initExtra = shell.init;
+    };
 
   programs.lsd = {
     enable = true;
     enableAliases = true;
-    settings = { color.when = "never"; };
   };
 }
