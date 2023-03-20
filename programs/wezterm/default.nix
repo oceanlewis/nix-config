@@ -22,36 +22,7 @@ let
     "Victor Mono" = { family = "Victor Mono"; };
   }.${theme.font.monospace};
 
-  color_scheme = rec {
-    standard.light = "Mexico Light (base16)";
-    # standard.light = "iA Light (base16)";
-    # standard.light = "Heetch Light (base16)";
-    # standard.light = "Humanoid light (base16)";
 
-    # standard.dark = "Invisibone (terminal.sexy)";
-    standard.dark = "laserwave (Gogh)";
-    # standard.dark = "hund (terminal.sexy)";
-    # standard.dark = "Chalk (base16)";
-    # standard.dark = "Horizon Dark (base16)";
-    # standard.dark = "Sequoia Moonlight";
-    # standard.dark = "Erebus (terminal.sexy)";
-    standard.black = standard.dark;
-
-    # gruvbox.light = "Gruvbox (Gogh)";
-    gruvbox.light = "Gruvbox Light";
-    # gruvbox.light = "Gruvbox light, hard (base16)";
-
-    # gruvbox.dark = "Darktooth (base16)";
-    # gruvbox.dark = "Gruvbox dark, pale (base16)";
-    gruvbox.dark = "Gruvbox Dark";
-    gruvbox.black = "Gruvbox dark, hard (base16)";
-
-    monalisa.dark = "IC_Orange_PPL";
-    monalisa.black = monalisa.black;
-
-    # nord.dark = "nord";
-  }.${name}.${variant}
-    or (throw "Unsupported theme-variant combination for wezterm: ${name}.${variant}");
 
   adjusted_font = font:
     if variant == "light"
@@ -70,7 +41,7 @@ in
       return {
         font = wezterm.font(${adjusted_font font.family}),
         font_size = ${toString font.size},
-        color_scheme = '${color_scheme}',
+        color_scheme = '${pkgs.theme.wezterm}',
         hide_tab_bar_if_only_one_tab = true,
         tab_bar_at_bottom = true,
         use_fancy_tab_bar = false,

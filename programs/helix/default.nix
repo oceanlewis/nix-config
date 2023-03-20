@@ -51,6 +51,8 @@ in
       "gruvbox"
       "gruvbox_light"
       "meliora"
+      "noctis"
+      "noctis_bordo"
       "onelight"
       "papercolor-light"
       "snazzy"

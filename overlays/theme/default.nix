@@ -35,15 +35,15 @@ let
       nord.dark = "nord";
     };
 
-  helix-themes = {
+  helix-themes = rec {
     standard.light = "trans_spacebones_light";
-    standard.dark = "trans_fleet_dark";
-    standard.black = "trans_fleet_dark";
+    standard.dark = "trans_noctis";
+    standard.black = standard.dark;
     gruvbox.light = "trans_gruvbox_light";
     gruvbox.dark = "trans_varua";
-    gruvbox.black = "trans_varua";
-    monalisa.dark = "trans_varua";
-    monalisa.black = "trans_varua";
+    gruvbox.black = gruvbox.dark;
+    monalisa.dark = gruvbox.dark;
+    monalisa.black = gruvbox.dark;
     nord.dark = "nord";
   };
 
@@ -57,6 +57,36 @@ let
     monalisa.dark = "gruvbox-dark";
     monalisa.black = "gruvbox-dark";
     nord.dark = "nord";
+  };
+
+  wezterm-themes = rec {
+    standard.light = "Mexico Light (base16)";
+    # standard.light = "iA Light (base16)";
+    # standard.light = "Heetch Light (base16)";
+    # standard.light = "Humanoid light (base16)";
+
+    standard.dark = "Invisibone (terminal.sexy)";
+    # standard.dark = "laserwave (Gogh)";
+    # standard.dark = "hund (terminal.sexy)";
+    # standard.dark = "Chalk (base16)";
+    # standard.dark = "Horizon Dark (base16)";
+    # standard.dark = "Sequoia Moonlight";
+    # standard.dark = "Erebus (terminal.sexy)";
+    standard.black = standard.dark;
+
+    # gruvbox.light = "Gruvbox (Gogh)";
+    gruvbox.light = "Gruvbox Light";
+    # gruvbox.light = "Gruvbox light, hard (base16)";
+
+    # gruvbox.dark = "Darktooth (base16)";
+    # gruvbox.dark = "Gruvbox dark, pale (base16)";
+    gruvbox.dark = "Gruvbox Dark";
+    gruvbox.black = "Gruvbox dark, hard (base16)";
+
+    monalisa.dark = "IC_Orange_PPL";
+    monalisa.black = monalisa.black;
+
+    # nord.dark = "nord";
   };
 
   selectTheme = programName: themeMap: name: variant:
@@ -83,6 +113,7 @@ self: super: {
     zellij = selectTheme "zellij" zellij-themes name variant;
     bat = selectTheme "bat" bat-themes name variant;
     vivid = selectTheme "vivid" vivid-themes name variant;
+    wezterm = selectTheme "wezterm" wezterm-themes name variant;
     delta = bat;
   };
 }
