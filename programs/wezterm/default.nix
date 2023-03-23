@@ -1,13 +1,13 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 let
   inherit (pkgs) theme;
-  inherit (theme) name variant;
+  inherit (theme) variant;
 
   defaults = {
     size = 14;
-    light.normal.weight = 500;
     line_height = 1.4;
+    light.normal.weight = 500;
   };
 
   font = defaults // {
@@ -24,15 +24,19 @@ let
     "DM Mono" = { family = "DM Mono"; };
     "Hack" = { family = "Hack"; };
     "Victor Mono" = { family = "Victor Mono"; };
-    "JetBrains Mono" = { family = "JetBrainsMono Nerd Font"; };
+    "JetBrains Mono" = {
+      family = "JetBrainsMono Nerd Font";
+      light.normal.weight = 700;
+    };
     "Cascadia Code" = { family = "CaskaydiaCove Nerd Font"; size = defaults.size + 1.0; };
   }.${theme.font.monospace};
 
   font_config = font:
-    let options =
-      if variant == "light"
-      then "{weight=${toString font.light.normal.weight}}"
-      else "{}";
+    let
+      options =
+        if variant == "light"
+        then "{weight=${toString font.light.normal.weight}}"
+        else "{}";
     in
     "wezterm.font('${font.family}', ${options})";
 
@@ -64,7 +68,6 @@ in
 {
   programs.wezterm = {
     enable = true;
-
     colorSchemes = { };
     extraConfig =
       ''

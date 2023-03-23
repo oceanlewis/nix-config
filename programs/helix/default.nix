@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, lib, ... }:
 let
 
   makeTrans = themes:
@@ -18,6 +18,14 @@ let
 
 in
 {
+
+  xdg.configFile."helix/languages.toml".text = ''
+    [[language]]
+    name = "nix"
+    language-server = { command = "nil" }
+    formatter = { command = "nixpkgs-fmt" }
+  '';
+
   programs.helix = {
     enable = true;
 
@@ -35,13 +43,6 @@ in
         "A-f" = ":format";
       };
     };
-
-    languages = [
-      {
-        name = "nix";
-        language-server.command = "nil";
-      }
-    ];
 
     themes = makeTrans [
       "bogster"

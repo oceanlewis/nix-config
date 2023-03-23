@@ -36,7 +36,7 @@ let
     };
 
   helix-themes = rec {
-    standard.light = "trans_spacebones_light";
+    standard.light = "trans_papercolor-light";
     standard.dark = "trans_noctis";
     standard.black = standard.dark;
     gruvbox.light = "trans_gruvbox_light";
