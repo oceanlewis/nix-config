@@ -1,18 +1,18 @@
 {
   inputs = {
-    flake-utils.url = github:numtide/flake-utils;
-    nixpkgs-unstable.url = github:nixos/nixpkgs/nixpkgs-unstable;
-    nixos-stable.url = github:nixos/nixpkgs/nixos-22.11;
+    flake-utils.url = "github:numtide/flake-utils";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixos-stable.url = "github:nixos/nixpkgs/nixos-22.11";
     darwin = {
-      url = github:lnl7/nix-darwin/master;
+      url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     home-manager-nixos = {
-      url = github:nix-community/home-manager/release-22.11;
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      url = "github:nix-community/home-manager/release-22.11";
+      inputs.nixpkgs.follows = "nixos-stable";
     };
     home-manager-master = {
-      url = github:nix-community/home-manager/master;
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
@@ -75,7 +75,7 @@
               };
               theme-config = {
                 name = "standard";
-                variant = "light";
+                variant = "black";
                 font.monospace = "JetBrains Mono";
               };
             };

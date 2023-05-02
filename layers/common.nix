@@ -183,6 +183,7 @@ with pkgs; let
 
       zvi = ''nvim $(fzf --preview 'bat --style=numbers --color=always {}')'';
       zhx = ''hx $(fzf --preview 'bat --style=numbers --color=always {}')'';
+      zgc = "git checkout $(git branch | fzf)";
     } //
     lsdAliases //
     lib.optionalAttrs isLinux {

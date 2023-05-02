@@ -1,13 +1,15 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 let
   inherit (pkgs) theme;
   inherit (theme) variant;
+  inherit (lib) lists;
 
   defaults = {
     size = 14;
     line_height = 1.4;
     light.normal.weight = 500;
+    dark.normal.weight = 500;
   };
 
   font = defaults // {
@@ -27,6 +29,7 @@ let
     "JetBrains Mono" = {
       family = "JetBrainsMono Nerd Font";
       light.normal.weight = 700;
+      dark.normal.weight = 600;
     };
     "Cascadia Code" = { family = "CaskaydiaCove Nerd Font"; size = defaults.size + 1.0; };
   }.${theme.font.monospace};
@@ -36,51 +39,40 @@ let
       options =
         if variant == "light"
         then "{weight=${toString font.light.normal.weight}}"
-        else "{}";
+        else "{weight=${toString font.dark.normal.weight}}";
     in
     "wezterm.font('${font.family}', ${options})";
 
   fancy_tab_bar = use_custom:
-    if use_custom then
-      ''
-        config.window_frame = {
-          font = wezterm.font { family = 'Inter', weight = 'Bold' },
-          font_size = 10.0,
-          -- The overall background color of the tab bar when
-          -- the window is focused
-          active_titlebar_bg = '#000000',
-          -- The overall background color of the tab bar when
-          -- the window is not focused
-          inactive_titlebar_bg = '#333333',
-        }
-
-        config.window = {}
-        config.window.colors = {
-          tab_bar = {
-            -- The color of the inactive tab bar edge/divider
-            inactive_tab_edge = '#575757',
-          },
-        }
-      ''
+    if use_custom then null
     else "config.use_fancy_tab_bar = false";
+
+  background_variant_override = variant:
+    if variant == "black"
+    then "config.colors = { background = '#000000' }"
+    else null;
 
 in
 {
   programs.wezterm = {
     enable = true;
     colorSchemes = { };
-    extraConfig =
-      ''
-        local config = {}
-        config.font = ${font_config font}
-        config.font_size = ${toString font.size}
-        config.line_height = ${toString font.line_height}
-        config.color_scheme = '${theme.wezterm}'
-        config.hide_tab_bar_if_only_one_tab = true
-        config.tab_bar_at_bottom = true
-
-        ${fancy_tab_bar false}
-        return config
-      '';
+    extraConfig = builtins.concatStringsSep "\n"
+      (lists.filter (e: e != null) [
+        ''
+          local config = {}
+          config.font = ${font_config font}
+          config.font_size = ${toString font.size}
+          config.line_height = ${toString font.line_height}
+          config.color_scheme = '${theme.wezterm}'
+          config.hide_tab_bar_if_only_one_tab = true
+          config.tab_bar_at_bottom = true''
+        (fancy_tab_bar true)
+        (background_variant_override variant)
+        "return config"
+      ]
+      );
   };
 }
+
+

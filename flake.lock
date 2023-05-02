@@ -63,7 +63,7 @@
     "home-manager-nixos": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs-unstable"
+          "nixos-stable"
         ],
         "utils": "utils"
       },

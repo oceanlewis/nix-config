@@ -31,7 +31,7 @@
     sessionVariables = {
       PAGER = "less -R";
       EDITOR = "hx";
-      VISUAL = "nvim";
+      VISUAL = "hx";
       TERM = "xterm-256color";
 
       XDG_CONFIG_HOME = "${config.home}/.config";
