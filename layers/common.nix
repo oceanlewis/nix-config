@@ -82,6 +82,7 @@ with pkgs; let
     exercism
 
     # Nix
+    cachix
     nixpkgs-fmt
     rnix-lsp
     nil

@@ -67,7 +67,9 @@
           home-manager-master.darwinModules.home-manager
           {
             home-manager.users."david.lewis" = import ./home/darwin-user.nix {
-              pkgs = import nixpkgs-unstable { inherit overlays system config; };
+              pkgs = import nixpkgs-unstable {
+                inherit overlays system config;
+              };
               config = {
                 user = "david.lewis";
                 home = "/Users/david.lewis";
@@ -75,7 +77,7 @@
               };
               theme-config = {
                 name = "standard";
-                variant = "black";
+                variant = "light";
                 font.monospace = "JetBrains Mono";
               };
             };

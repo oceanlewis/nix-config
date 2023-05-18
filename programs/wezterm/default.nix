@@ -60,13 +60,18 @@ in
     extraConfig = builtins.concatStringsSep "\n"
       (lists.filter (e: e != null) [
         ''
+          local act = wezterm.action
           local config = {}
           config.font = ${font_config font}
           config.font_size = ${toString font.size}
           config.line_height = ${toString font.line_height}
           config.color_scheme = '${theme.wezterm}'
           config.hide_tab_bar_if_only_one_tab = true
-          config.tab_bar_at_bottom = true''
+          config.tab_bar_at_bottom = true
+          config.keys = {
+            { key = '+', mods = 'SUPER', action = act.IncreaseFontSize },
+          }
+        ''
         (fancy_tab_bar true)
         (background_variant_override variant)
         "return config"
