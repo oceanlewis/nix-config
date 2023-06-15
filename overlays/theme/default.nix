@@ -9,29 +9,27 @@ let
 
   inherit (settings) name variant font;
 
-  bat-themes =
-    {
+  bat-themes = rec {
       standard.light = "GitHub";
       standard.dark = "OneHalfDark";
-      standard.black = "OneHalfDark";
+      standard.black = standard.black;
       gruvbox.light = "gruvbox-light";
       gruvbox.dark = "gruvbox-dark";
-      gruvbox.black = "gruvbox-dark";
-      monalisa.dark = "gruvbox-dark";
-      monalisa.black = "gruvbox-dark";
+      gruvbox.black = gruvbox.dark;
+      monalisa.dark = "base16";
+      monalisa.black = monalisa.dark;
       nord.dark = "Nord";
     };
 
-  vivid-themes =
-    {
+  vivid-themes = rec {
       standard.light = "one-light";
       standard.dark = "one-dark";
       standard.black = "one-dark";
       gruvbox.light = "gruvbox-light";
       gruvbox.dark = "gruvbox-dark";
-      gruvbox.black = "gruvbox-dark";
+      gruvbox.black = gruvbox.dark;
       monalisa.dark = "lava";
-      monalisa.black = "lava";
+      monalisa.black = monalisa.dark;
       nord.dark = "nord";
     };
 
@@ -42,20 +40,20 @@ let
     gruvbox.light = "trans_gruvbox_light";
     gruvbox.dark = "trans_varua";
     gruvbox.black = gruvbox.dark;
-    monalisa.dark = gruvbox.dark;
-    monalisa.black = gruvbox.dark;
+    monalisa.dark = "base16_transparent";
+    monalisa.black = monalisa.dark;
     nord.dark = "nord";
   };
 
-  zellij-themes = {
+  zellij-themes = rec {
     standard.light = "onelight";
     standard.dark = "snazzy";
-    standard.black = "snazzy";
+    standard.black = standard.dark;
     gruvbox.light = "gruvbox-light";
     gruvbox.dark = "gruvbox-dark";
-    gruvbox.black = "gruvbox-dark";
-    monalisa.dark = "gruvbox-dark";
-    monalisa.black = "gruvbox-dark";
+    gruvbox.black = gruvbox.dark;
+    monalisa.dark = gruvbox.dark;
+    monalisa.black = gruvbox.dark;
     nord.dark = "nord";
   };
 

@@ -43,6 +43,10 @@ with pkgs;
     };
 
     ignores = [
+      ## from programs.git.ignores in ../default.nix
+      # Elixir
+      ".env.local"
+
       # JVM
       "**/.idea"
       "/.classpath"
@@ -58,8 +62,11 @@ with pkgs;
       # clangd
       ".cache"
 
-      # direnv
+      # Nix
       ".direnv"
+      ".envrc"
+      ".nix-mix"
+      ".nix-hex"
     ];
 
     includes = [

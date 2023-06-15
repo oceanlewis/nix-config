@@ -17,10 +17,7 @@
 # clangd
 .cache
 
-# direnv
-.direnv
-## from
-
+# Nix
 .direnv
 .envrc
 .nix-mix

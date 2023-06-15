@@ -35,12 +35,13 @@ in
       editor = {
         line-number = "relative";
         soft-wrap.enable = true;
+        bufferline = "multiple";
       };
 
       keys.normal = {
         "A-l" = "goto_next_buffer";
         "A-h" = "goto_previous_buffer";
-        "A-delete" = ":buffer-close";
+        "A-backspace" = ":buffer-close";
         "A-f" = ":format";
       };
     };

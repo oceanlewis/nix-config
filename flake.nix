@@ -76,8 +76,8 @@
                 state_version = "22.11";
               };
               theme-config = {
-                name = "standard";
-                variant = "light";
+                name = "monalisa";
+                variant = "dark";
                 font.monospace = "JetBrains Mono";
               };
             };
