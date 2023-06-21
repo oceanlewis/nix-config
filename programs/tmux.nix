@@ -1,8 +1,4 @@
-{ pkgs
-, config
-, lib
-, ...
-}:
+{ pkgs, ... }:
 
 let
 
@@ -83,8 +79,8 @@ let
   color = colors.default;
 
   theme = ''
-    # Enable TrueColors
-    set-option -sa terminal-overrides ',screen-256color:RGB,xterm-256color:RGB'
+    # Fix colors under tmux
+    set -g default-terminal "tmux-256color"
 
     # Status Bar and Pane Border
     set -g status-style fg=${color.status.fg},bg=${color.status.bg};

@@ -33,6 +33,7 @@
       EDITOR = "hx";
       VISUAL = "nvim";
       TERM = "xterm-256color";
+      SHELL = "${pkgs.zsh}/bin/zsh";
 
       XDG_CONFIG_HOME = "${config.home}/.config";
       XDG_DATA_HOME = "${config.home}/.local/share";

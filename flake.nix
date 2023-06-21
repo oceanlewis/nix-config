@@ -76,8 +76,8 @@
                 state_version = "22.11";
               };
               theme-config = {
-                name = "monalisa";
-                variant = "dark";
+                name = "gruvbox";
+                variant = "black";
                 font.monospace = "JetBrains Mono";
               };
             };

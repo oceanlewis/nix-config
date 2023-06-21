@@ -45,7 +45,7 @@ in
   };
 
   environment = {
-    systemPackages = with pkgs; [ unixODBC ];
+    systemPackages = with pkgs; [ unixODBC ncurses ];
     shellAliases = { };
     variables = {
       DYLD_LIBRARY_PATH = "${pkgs.unixODBC}/lib";
@@ -73,6 +73,7 @@ in
   };
 
   programs.zsh.enable = true;
+  programs.tmux.enable = true;
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog

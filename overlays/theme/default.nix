@@ -12,7 +12,7 @@ let
   bat-themes = rec {
       standard.light = "GitHub";
       standard.dark = "OneHalfDark";
-      standard.black = standard.black;
+      standard.black = standard.dark;
       gruvbox.light = "gruvbox-light";
       gruvbox.dark = "gruvbox-dark";
       gruvbox.black = gruvbox.dark;
@@ -38,7 +38,7 @@ let
     standard.dark = "trans_noctis";
     standard.black = "trans_bogster";
     gruvbox.light = "trans_gruvbox_light";
-    gruvbox.dark = "trans_varua";
+    gruvbox.dark = "trans_gruvbox";
     gruvbox.black = gruvbox.dark;
     monalisa.dark = "base16_transparent";
     monalisa.black = monalisa.dark;
