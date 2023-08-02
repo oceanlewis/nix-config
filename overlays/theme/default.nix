@@ -46,10 +46,10 @@ let
   };
 
   zellij-themes = rec {
-    standard.light = "onelight";
-    standard.dark = "snazzy";
+    standard.light = "catppuccin-latte";
+    standard.dark = "dracula";
     standard.black = standard.dark;
-    gruvbox.light = "gruvbox-light";
+    gruvbox.light = "kanagawa";
     gruvbox.dark = "gruvbox-dark";
     gruvbox.black = gruvbox.dark;
     monalisa.dark = gruvbox.dark;

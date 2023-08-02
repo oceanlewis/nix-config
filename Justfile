@@ -1,3 +1,6 @@
+default:
+	@just --list
+
 # Download and start a NixOS builder container
 darwin-builder:
 	nix run nixpkgs#darwin.builder

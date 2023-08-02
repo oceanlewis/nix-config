@@ -42,6 +42,7 @@ in
         "A-l" = "goto_next_buffer";
         "A-h" = "goto_previous_buffer";
         "A-backspace" = ":buffer-close";
+        "A-w" = ":buffer-close";
         "A-f" = ":format";
       };
     };
@@ -64,4 +65,8 @@ in
       "varua"
     ];
   };
+
+  home.packages = with pkgs; [
+    nodePackages.vscode-langservers-extracted
+  ];
 }

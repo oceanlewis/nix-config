@@ -9,6 +9,8 @@ mkShell {
     bat
     tmux
     just
+    ncurses
+    git
   ]
   ++ lib.optionals stdenv.isDarwin [ ];
 }

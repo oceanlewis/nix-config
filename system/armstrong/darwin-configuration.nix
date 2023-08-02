@@ -45,11 +45,9 @@ in
   };
 
   environment = {
-    systemPackages = with pkgs; [ unixODBC ncurses ];
+    systemPackages = with pkgs; [ ncurses ];
     shellAliases = { };
-    variables = {
-      DYLD_LIBRARY_PATH = "${pkgs.unixODBC}/lib";
-    };
+    variables = { };
 
     interactiveShellInit = ''
       source ~/.zprofile

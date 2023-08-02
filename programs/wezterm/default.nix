@@ -28,10 +28,13 @@ let
     "Victor Mono" = { family = "Victor Mono"; };
     "JetBrains Mono" = {
       family = "JetBrainsMono Nerd Font";
-      light.normal.weight = 700;
+      light.normal.weight = 600;
       dark.normal.weight = 600;
     };
-    "Cascadia Code" = { family = "CaskaydiaCove Nerd Font"; size = defaults.size + 1.0; };
+    "Cascadia Code" = {
+      family = "CaskaydiaCove Nerd Font";
+      size = defaults.size + 1.0;
+    };
   }.${theme.font.monospace};
 
   font_config = font:
@@ -68,8 +71,10 @@ in
           config.color_scheme = '${theme.wezterm}'
           config.hide_tab_bar_if_only_one_tab = true
           config.tab_bar_at_bottom = true
+          config.native_macos_fullscreen_mode = false
           config.keys = {
             { key = '+', mods = 'SUPER', action = act.IncreaseFontSize },
+            { key = 'f', mods = 'SUPER|CTRL', action = act.ToggleFullScreen },
           }
         ''
         (fancy_tab_bar true)

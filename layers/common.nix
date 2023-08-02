@@ -34,6 +34,7 @@ with pkgs; let
     dua
     duf
     du-dust
+    hexyl
 
     # Multimedia
     ffmpeg

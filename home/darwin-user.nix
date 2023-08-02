@@ -3,6 +3,7 @@
 , theme-config ? { }
 }:
 {
+  nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = pkgs.overlays ++ [
     (import ../overlays/theme { config = theme-config; })
     (import ../overlays/ipython.nix)
@@ -19,6 +20,7 @@
     ../programs/helix
     ../programs/zellij
     ../programs/wezterm
+    ../programs/neovim
   ];
 
   programs.home-manager.enable = true;
@@ -29,6 +31,7 @@
     homeDirectory = config.home;
 
     sessionVariables = {
+      PATH = "$PATH:$HOME/.local/bin";
       PAGER = "less -R";
       EDITOR = "hx";
       VISUAL = "nvim";
