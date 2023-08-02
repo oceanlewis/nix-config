@@ -19,6 +19,8 @@ let
 in
 {
 
+  nixpkgs.config.allowUnfree = true;
+
   xdg.configFile."helix/languages.toml".text = ''
     [[language]]
     name = "nix"
@@ -68,5 +70,6 @@ in
 
   home.packages = with pkgs; [
     nodePackages.vscode-langservers-extracted
+    terraform-ls
   ];
 }
