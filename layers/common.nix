@@ -35,6 +35,7 @@ with pkgs; let
     duf
     du-dust
     hexyl
+    iconv
 
     # Multimedia
     ffmpeg
@@ -180,6 +181,9 @@ with pkgs; let
       # Tmux
       te = "tmux list-sessions";
       ta = "tmux attach";
+
+      # Zellij
+      za = "zellij attach";
 
       tf = "terraform";
 

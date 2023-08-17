@@ -120,7 +120,6 @@ in
       ${setPrefix}
       ${enableViNavigation}
       ${enableMouseIntegration}
-      ${selectDoesNotResetCursorPosition}
       ${enableCopyToSystemClipboard}
       ${theme}
       ${style.default}
