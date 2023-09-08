@@ -184,6 +184,7 @@ with pkgs; let
 
       # Zellij
       za = "zellij attach";
+      ze = "zellij list-sessions";
 
       tf = "terraform";
 

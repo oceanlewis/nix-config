@@ -10,33 +10,33 @@ let
   inherit (settings) name variant font;
 
   bat-themes = rec {
-      standard.light = "GitHub";
-      standard.dark = "OneHalfDark";
-      standard.black = standard.dark;
-      gruvbox.light = "gruvbox-light";
-      gruvbox.dark = "gruvbox-dark";
-      gruvbox.black = gruvbox.dark;
-      monalisa.dark = "base16";
-      monalisa.black = monalisa.dark;
-      nord.dark = "Nord";
-    };
+    standard.light = "GitHub";
+    standard.dark = "OneHalfDark";
+    standard.black = standard.dark;
+    gruvbox.light = "gruvbox-light";
+    gruvbox.dark = "gruvbox-dark";
+    gruvbox.black = gruvbox.dark;
+    monalisa.dark = "base16";
+    monalisa.black = monalisa.dark;
+    nord.dark = "Nord";
+  };
 
   vivid-themes = rec {
-      standard.light = "one-light";
-      standard.dark = "one-dark";
-      standard.black = "one-dark";
-      gruvbox.light = "gruvbox-light";
-      gruvbox.dark = "gruvbox-dark";
-      gruvbox.black = gruvbox.dark;
-      monalisa.dark = "lava";
-      monalisa.black = monalisa.dark;
-      nord.dark = "nord";
-    };
+    standard.light = "one-light";
+    standard.dark = "one-dark";
+    standard.black = "one-dark";
+    gruvbox.light = "gruvbox-light";
+    gruvbox.dark = "gruvbox-dark";
+    gruvbox.black = gruvbox.dark;
+    monalisa.dark = "lava";
+    monalisa.black = monalisa.dark;
+    nord.dark = "nord";
+  };
 
   helix-themes = rec {
-    standard.light = "trans_onelight";
-    standard.dark = "trans_noctis";
-    standard.black = "trans_bogster";
+    standard.light = "trans_spacebones_light";
+    standard.dark = "trans_catppuccin_mocha";
+    standard.black = "trans_catppuccin_mocha";
     gruvbox.light = "trans_gruvbox_light";
     gruvbox.dark = "trans_gruvbox";
     gruvbox.black = gruvbox.dark;
@@ -47,11 +47,11 @@ let
 
   zellij-themes = rec {
     standard.light = "catppuccin-latte";
-    standard.dark = "dracula";
-    standard.black = standard.dark;
+    standard.dark = "one-half-dark-custom";
+    standard.black = "dracula";
     gruvbox.light = "kanagawa";
-    gruvbox.dark = "gruvbox-dark";
-    gruvbox.black = gruvbox.dark;
+    gruvbox.dark = "gruvbox-dark-medium";
+    gruvbox.black = "gruvbox-dark-black";
     monalisa.dark = gruvbox.dark;
     monalisa.black = gruvbox.dark;
     nord.dark = "nord";
@@ -60,8 +60,8 @@ let
   wezterm-themes = rec {
     standard.light = "Humanoid light (base16)";
     # standard.light = "Mexico Light (base16)";
-      # standard.light = "iA Light (base16)";
-      # standard.light = "Heetch Light (base16)";
+    # standard.light = "iA Light (base16)";
+    # standard.light = "Heetch Light (base16)";
 
     standard.dark = "Invisibone (terminal.sexy)";
     # standard.dark = "laserwave (Gogh)";
@@ -78,7 +78,7 @@ let
 
     # gruvbox.dark = "Darktooth (base16)";
     # gruvbox.dark = "Gruvbox dark, pale (base16)";
-    gruvbox.dark = "Gruvbox Dark";
+    gruvbox.dark = "Gruvbox dark, medium (base16)";
     gruvbox.black = "Gruvbox dark, hard (base16)";
 
     monalisa.dark = "IC_Orange_PPL";

@@ -7,11 +7,25 @@
       enable = true;
       settings = {
         theme = pkgs.theme.zellij;
-        # default_layout = "compact";
-        # simplified_ui = true;
+        default_layout = "compact";
+        simplified_ui = true;
         pane_frames = false;
 
         themes = {
+          one-half-dark-custom = {
+            fg = [ 220 223 228 ];
+            bg = [ 40 44 52 ];
+            black = [ 35 35 35 ];
+            red = [ 227 63 76 ];
+            green = [ 152 195 121 ];
+            yellow = [ 229 192 123 ];
+            blue = [ 97 175 239 ];
+            magenta = [ 198 120 221 ];
+            cyan = [ 86 182 194 ];
+            white = [ 233 225 254 ];
+            orange = [ 216 133 76 ];
+          };
+
           gruvbox-light-custom = {
             fg = [ 213 196 161 ];
             bg = [ 251 82 75 ];
@@ -26,10 +40,24 @@
             orange = [ 214 93 14 ];
           };
 
-          gruvbox-dark = {
+          gruvbox-dark-medium = {
             fg = [ 213 196 161 ];
             bg = [ 40 40 40 ];
-            black = [ 60 56 54 ];
+            black = [ 40 40 40 ];
+            red = [ 204 36 29 ];
+            green = [ 152 151 26 ];
+            yellow = [ 215 153 33 ];
+            blue = [ 69 133 136 ];
+            magenta = [ 177 98 134 ];
+            cyan = [ 104 157 106 ];
+            white = [ 251 241 199 ];
+            orange = [ 214 93 14 ];
+          };
+
+          gruvbox-dark-black = {
+            fg = [ 213 196 161 ];
+            bg = [ 40 40 40 ];
+            black = [ 0 0 0 ];
             red = [ 204 36 29 ];
             green = [ 152 151 26 ];
             yellow = [ 215 153 33 ];

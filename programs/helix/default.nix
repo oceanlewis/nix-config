@@ -26,6 +26,10 @@ in
     name = "nix"
     language-server = { command = "nil" }
     formatter = { command = "nixpkgs-fmt" }
+
+    [[language]]
+    name = "java"
+    language-server = { command = "jdtls" }
   '';
 
   programs.helix = {
