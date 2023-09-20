@@ -29,7 +29,7 @@ let
     "JetBrains Mono" = {
       family = "JetBrainsMono Nerd Font";
       light.normal.weight = 600;
-      dark.normal.weight = 600;
+      dark.normal.weight = 700;
     };
     "Cascadia Code" = {
       family = "CaskaydiaCove Nerd Font";
@@ -55,6 +55,21 @@ let
     then "config.colors = { background = '#000000' }"
     else null;
 
+  window_decorations =
+    if pkgs.stdenv.isDarwin
+    then "RESIZE|INTEGRATED_BUTTONS|MACOS_FORCE_ENABLE_SHADOW"
+    else "RESIZE|INTEGRATED_BUTTONS";
+
+  window_padding = {
+      left = "'1cell'";
+      right = "'1cell'";
+      top = "'0.5cell'";
+      bottom = "'0.5cell'";
+    } //
+    (if pkgs.stdenv.isDarwin
+    then {top = "'65px'";}
+    else {});
+
 in
 {
   programs.wezterm = {
@@ -72,10 +87,18 @@ in
           config.hide_tab_bar_if_only_one_tab = true
           config.tab_bar_at_bottom = true
           config.native_macos_fullscreen_mode = false
+          config.window_decorations = "${window_decorations}"
           config.keys = {
             { key = '+', mods = 'SUPER', action = act.IncreaseFontSize },
             { key = 'f', mods = 'SUPER|CTRL', action = act.ToggleFullScreen },
           }
+          config.window_padding = {
+            left = ${window_padding.left},
+            right = ${window_padding.right},
+            top = ${window_padding.top},
+            bottom = ${window_padding.bottom},
+          }
+          config.window_close_confirmation = 'NeverPrompt'
         ''
         (fancy_tab_bar true)
         (background_variant_override variant)
