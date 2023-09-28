@@ -27,8 +27,8 @@ with pkgs;
       };
     };
 
-    userName = "David Armstrong Lewis";
-    userEmail = "6754950+davidarmstronglewis@users.noreply.github.com";
+    userName = "oceanlewis Armstrong Lewis";
+    userEmail = "6754950+oceanlewis@users.noreply.github.com";
 
     extraConfig = {
       core.editor = "hx";

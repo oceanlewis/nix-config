@@ -3,5 +3,5 @@
   excludesFile = ~/Developer/nix-config/programs/git/hg/gitignore
 
 [user]
-  email = david.lewis@hginsights.com
-  name = David Armstrong Lewis
+  email = ocean.lewis@hginsights.com
+  name = Ocean Armstrong Lewis

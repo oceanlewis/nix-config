@@ -9,7 +9,7 @@ rustPlatform.buildRustPackage rec {
   version = "0.35.0";
 
   src = fetchFromGitHub {
-    owner = "davidarmstronglewis";
+    owner = "oceanlewis";
     repo = pname;
     rev = "c94e6b13df93d2d98125d951a090f125b88574cd";
     sha256 = "0ljqbs3k7wl1jh71ia3svhg7v9byz7mqz43ap2l22cawzx8ma2lf";
@@ -19,7 +19,7 @@ rustPlatform.buildRustPackage rec {
 
   meta = with lib; {
     description = "Manage your environment variables - Rustaceously!";
-    homepage = "https://github.com/davidarmstronglewis/dingus";
+    homepage = "https://github.com/oceanlewis/dingus";
     license = licenses.mit;
   };
 }

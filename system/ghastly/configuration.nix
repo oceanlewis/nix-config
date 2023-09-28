@@ -53,9 +53,9 @@
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.david = {
+  users.users.ocean = {
     isNormalUser = true;
-    description = "David Lewis";
+    description = "Ocean Lewis";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [ nushell ];
     shell = pkgs.zsh;

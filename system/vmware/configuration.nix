@@ -115,10 +115,10 @@
     mutableUsers = false;
     defaultUserShell = pkgs.zsh;
 
-    extraUsers.armstrong = {
+    extraUsers.ocean = {
       hashedPassword = "$6$tqrKEXT2FY/km7kj$t/1ONmxKdfRLcdzMZxRqjxp71btl/6seF47I/zPMFPsPhn0wYXcgg32bds86uHZfQDTRQ.bz4UwhMhdbWDgPD0";
       isNormalUser = true;
-      description = "David Armstrong Lewis";
+      description = "Ocean Armstrong Lewis";
       extraGroups = [
         "wheel"
         "networkmanager"
