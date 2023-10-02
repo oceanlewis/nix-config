@@ -57,7 +57,7 @@ let
 
   window_decorations =
     if pkgs.stdenv.isDarwin
-    then "RESIZE|INTEGRATED_BUTTONS|MACOS_FORCE_ENABLE_SHADOW"
+    then "RESIZE|INTEGRATED_BUTTONS"
     else "RESIZE|INTEGRATED_BUTTONS";
 
   window_padding = {
