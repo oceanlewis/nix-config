@@ -27,7 +27,6 @@ in
       ];
     };
 
-
   networking = {
     computerName = HOST_NAME;
     hostName = HOST_NAME;
