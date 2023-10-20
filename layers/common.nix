@@ -10,7 +10,7 @@ with pkgs; let
     felix-fm
     chafa # required for felix-fm file previews
     file
-    exa
+    eza
     fd
     ripgrep
     sd

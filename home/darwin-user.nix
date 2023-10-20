@@ -5,7 +5,6 @@
 {
   nixpkgs.overlays = pkgs.overlays ++ [
     (import ../overlays/theme { config = theme-config; })
-    (import ../overlays/ipython.nix)
     (import ../overlays/vimPlugins.nix)
   ];
 
