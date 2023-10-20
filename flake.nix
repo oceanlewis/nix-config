@@ -28,7 +28,7 @@
     }:
     let
       overlays = [ ];
-      config.allowUnfree = true;
+      config = { allowUnfree = true; };
     in
     flake-utils.lib.eachDefaultSystem
       (system: {

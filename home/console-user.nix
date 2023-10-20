@@ -4,7 +4,7 @@
 }:
 {
   nixpkgs.overlays = pkgs.overlays ++ [
-    (import ../overlays/theme { config = theme-config; })
+    (import ../overlay/theme { config = theme-config; })
   ];
 
   imports = [

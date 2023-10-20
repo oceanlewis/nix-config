@@ -5,8 +5,8 @@
 {
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = pkgs.overlays ++ [
-    (import ../overlays/theme { config = theme-config; })
-    (import ../overlays/vimPlugins.nix)
+    (import ../overlay/theme { config = theme-config; })
+    (import ../overlay/vimPlugins.nix)
   ];
 
   imports = [
