@@ -3,7 +3,7 @@
 let
 
   HOST_NAME = "Armstrong";
-  USER = "david.lewis";
+  USER = "ocean.lewis";
   HOME = "/Users/${USER}";
 
 in
@@ -31,6 +31,42 @@ in
     computerName = HOST_NAME;
     hostName = HOST_NAME;
   };
+
+  security.pam.enableSudoTouchIdAuth = true;
+
+  system.defaults = {
+    SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
+
+    trackpad = {
+      Clicking = true; # Tap-to-click
+      TrackpadThreeFingerDrag = true;
+    };
+
+    NSGlobalDomain = {
+      "com.apple.trackpad.scaling" = 3.0; # Trackpad tracking speed (0-3f)
+
+      # Keyboard Settings
+      InitialKeyRepeat = 15;
+      KeyRepeat = 2;
+
+      # Grammatical Help Settings
+      NSAutomaticCapitalizationEnabled = false;
+      NSAutomaticDashSubstitutionEnabled = false;
+      NSAutomaticPeriodSubstitutionEnabled = false;
+      NSAutomaticQuoteSubstitutionEnabled = false;
+      NSAutomaticSpellingCorrectionEnabled = false;
+    };
+    alf = {
+      globalstate = 1; # Prevent unauthorized incoming requests
+      stealthenabled = 1; # Ignore incoming ICMP traffic (pings, etc.)
+    };
+    dock = {
+      autohide = true;
+      mineffect = "scale"; # Minimize to dock settings
+      mru-spaces = false; # Don't automatically rearrange spaces
+    };
+  };
+
 
   fonts = {
     fontDir.enable = true;

@@ -66,18 +66,18 @@
           ./system/armstrong/darwin-configuration.nix
           home-manager-master.darwinModules.home-manager
           {
-            home-manager.users."david.lewis" = import ./home/darwin-user.nix {
+            home-manager.users."ocean.lewis" = import ./home/darwin-user.nix {
               pkgs = import nixpkgs-unstable {
                 inherit overlays system config;
               };
               config = {
-                user = "david.lewis";
-                home = "/Users/david.lewis";
+                user = "ocean.lewis";
+                home = "/Users/ocean.lewis";
                 state_version = "22.11";
               };
               theme-config = {
                 name = "standard";
-                variant = "dark";
+                variant = "black";
                 font.monospace = "JetBrains Mono";
               };
             };
