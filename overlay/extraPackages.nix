@@ -2,13 +2,7 @@ inputs@{ ... }:
 
 final: prev:
 let
-  inherit (prev) pkgs;
-  inherit (pkgs) stdenv;
-  inherit (stdenv) system;
-
+  system = prev.pkgs.stdenv.system;
   next-ls = inputs.next-ls.packages.${system}.default;
-
 in
-{
-  next-ls = next-ls;
-}
+{ inherit next-ls; }

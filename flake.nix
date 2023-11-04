@@ -28,20 +28,19 @@
     , nixpkgs-unstable
     , nixos-stable
     , darwin
-    , ...
+    , flake-utils
+    , next-ls
     }:
     let
       overlays = [
-        (import ./overlay/extraPackages.nix {
-          next-ls = inputs.next-ls;
-        })
+        (import ./overlay/extraPackages.nix { inherit next-ls; })
       ];
       config = { allowUnfree = true; };
 
       nixosSystem-stable = nixos-stable.lib.nixosSystem;
       darwinSystem = darwin.lib.darwinSystem;
     in
-    inputs.flake-utils.lib.eachDefaultSystem
+    flake-utils.lib.eachDefaultSystem
       (system: {
         devShells.default = import ./shell.nix {
           pkgs =
