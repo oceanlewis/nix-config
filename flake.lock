@@ -82,6 +82,26 @@
         "type": "github"
       }
     },
+    "next-ls": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1699033441,
+        "narHash": "sha256-aKzbNiw+VjcnlPXY9G0LMKKvn1qvkyLB84guPyYKr9U=",
+        "owner": "elixir-tools",
+        "repo": "next-ls",
+        "rev": "d4b090e76da8ee1d0cf1e74e449ce991efd638b4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "elixir-tools",
+        "repo": "next-ls",
+        "type": "github"
+      }
+    },
     "nixos-stable": {
       "locked": {
         "lastModified": 1688392541,
@@ -120,6 +140,7 @@
         "flake-utils": "flake-utils",
         "home-manager-master": "home-manager-master",
         "home-manager-nixos": "home-manager-nixos",
+        "next-ls": "next-ls",
         "nixos-stable": "nixos-stable",
         "nixpkgs-unstable": "nixpkgs-unstable"
       }

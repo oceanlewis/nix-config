@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, overlays, ... }:
 
 let
 
@@ -9,6 +9,7 @@ let
 in
 {
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = overlays;
 
   nix.extraOptions = ''
     build-users-group = nixbld

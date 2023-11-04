@@ -83,6 +83,9 @@ with pkgs; let
     gnumake
     just
 
+    # BEAM Languages
+    next-ls
+
     # Languages
     exercism
 

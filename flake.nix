@@ -15,22 +15,33 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    next-ls = {
+      url = "github:elixir-tools/next-ls";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs =
-    { self
-    , flake-utils
-    , darwin
+    inputs@{ self
     , home-manager-master
     , home-manager-nixos
     , nixpkgs-unstable
     , nixos-stable
+    , darwin
+    , ...
     }:
     let
-      overlays = [ ];
+      overlays = [
+        (import ./overlay/extraPackages.nix {
+          next-ls = inputs.next-ls;
+        })
+      ];
       config = { allowUnfree = true; };
+
+      nixosSystem-stable = nixos-stable.lib.nixosSystem;
+      darwinSystem = darwin.lib.darwinSystem;
     in
-    flake-utils.lib.eachDefaultSystem
+    inputs.flake-utils.lib.eachDefaultSystem
       (system: {
         devShells.default = import ./shell.nix {
           pkgs =
@@ -41,17 +52,17 @@
       })
     //
     {
-      nixosConfigurations.ghastly = nixos-stable.lib.nixosSystem rec {
+      nixosConfigurations.ghastly = nixosSystem-stable rec {
         system = "aarch64-linux";
         modules = [
           ./system/ghastly/configuration.nix
           home-manager-nixos.nixosModules.home-manager
           {
-            home-manager.users.david = import ./home/console-user.nix {
+            home-manager.users.ocean = import ./home/console-user.nix {
               pkgs = import nixos-stable { inherit overlays system config; };
               config = {
-                user = "david";
-                home = "/home/david";
+                user = "ocean";
+                home = "/home/ocean";
                 state_version = "22.11";
               };
               theme-config.helix = "base16_transparent";
@@ -60,8 +71,9 @@
         ];
       };
 
-      darwinConfigurations.armstrong = darwin.lib.darwinSystem rec {
+      darwinConfigurations.armstrong = darwinSystem rec {
         system = "aarch64-darwin";
+        specialArgs = { inherit inputs overlays; };
         modules = [
           ./system/armstrong/darwin-configuration.nix
           home-manager-master.darwinModules.home-manager

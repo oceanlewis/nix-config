@@ -22,6 +22,10 @@ in
   nixpkgs.config.allowUnfree = true;
 
   xdg.configFile."helix/languages.toml".text = ''
+    [language-server.nextls]
+    command = "nextls"
+    args = ["--stdio=true"]  
+
     [[language]]
     name = "nix"
     language-servers = ["nil"]
@@ -30,6 +34,12 @@ in
     [[language]]
     name = "java"
     language-servers = ["jdtls"]
+
+    ## NextLS seems to not work in VSCode or Helix for me :(
+    # [[language]]
+    # name = "elixir"
+    # scope = "source.elixir"
+    # language-servers = ["nextls"]
   '';
 
   programs.helix = {
