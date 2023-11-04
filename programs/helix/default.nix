@@ -24,12 +24,12 @@ in
   xdg.configFile."helix/languages.toml".text = ''
     [[language]]
     name = "nix"
-    language-server = { command = "nil" }
+    language-servers = ["nil"]
     formatter = { command = "nixpkgs-fmt" }
 
     [[language]]
     name = "java"
-    language-server = { command = "jdtls" }
+    language-servers = ["jdtls"]
   '';
 
   programs.helix = {

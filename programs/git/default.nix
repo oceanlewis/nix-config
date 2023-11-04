@@ -27,7 +27,7 @@ with pkgs;
       };
     };
 
-    userName = "oceanlewis Armstrong Lewis";
+    userName = "Ocean Armstrong Lewis";
     userEmail = "6754950+oceanlewis@users.noreply.github.com";
 
     extraConfig = {
