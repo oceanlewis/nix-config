@@ -19,6 +19,6 @@ wizard:
 ghastly:
 	sudo nixos-rebuild switch --flake .#ghastly
 
-# Start a Zellij session
-session:
+# Start a Zellij session to make quick edits
+edit:
 	zellij --session System --layout=zellij-layout.kdl

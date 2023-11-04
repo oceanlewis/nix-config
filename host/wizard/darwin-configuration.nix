@@ -31,7 +31,7 @@ in
 
   fonts = {
     enableFontDir = true;
-    fonts = import ./layers/fonts.nix { inherit pkgs; };
+    fonts = import ../../layers/fonts.nix { inherit pkgs; };
   };
 
   users.users."${USER}" = {
@@ -81,13 +81,13 @@ in
     users."${USER}" = { pkgs, ... }: {
 
       imports = [
-        ./layers/common.nix
-        ./programs/nushell.nix
-        ./programs/tmux.nix
-        ./programs/starship.nix
-        ./programs/git
-        ./programs/neovim
-        ./programs/alacritty
+        ../../layers/common.nix
+        ../../programs/nushell.nix
+        ../../programs/tmux.nix
+        ../../programs/starship.nix
+        ../../programs/git
+        ../../programs/neovim
+        ../../programs/alacritty
       ];
 
       programs.home-manager.enable = true;
