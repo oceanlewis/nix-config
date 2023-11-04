@@ -54,7 +54,7 @@
       nixosConfigurations.ghastly = nixosSystem-stable rec {
         system = "aarch64-linux";
         modules = [
-          ./system/ghastly/configuration.nix
+          ./host/ghastly/configuration.nix
           home-manager-nixos.nixosModules.home-manager
           {
             home-manager.users.ocean = import ./home/console-user.nix {
@@ -74,7 +74,7 @@
         system = "aarch64-darwin";
         specialArgs = { inherit inputs overlays; };
         modules = [
-          ./system/armstrong/darwin-configuration.nix
+          ./host/armstrong/darwin-configuration.nix
           home-manager-master.darwinModules.home-manager
           {
             home-manager.users."ocean.lewis" = import ./home/darwin-user.nix {
