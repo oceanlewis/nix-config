@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1698429334,
-        "narHash": "sha256-Gq3+QabboczSu7RMpcy79RSLMSqnySO3wsnHQk4DfbE=",
+        "lastModified": 1699569089,
+        "narHash": "sha256-MdOnyXrmMdVU9o7GpcbWKgehoK9L76ihp8rTikPcC1k=",
         "owner": "lnl7",
         "repo": "nix-darwin",
-        "rev": "afe83cbc2e673b1f08d32dd0f70df599678ff1e7",
+        "rev": "c8f385766ba076a096caa794309c40f89894d88a",
         "type": "github"
       },
       "original": {
@@ -46,11 +46,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1698795315,
-        "narHash": "sha256-fF5ScAWLMHXOuqsbLSG137kS1D+gr9JPtm4H2c4yBbU=",
+        "lastModified": 1699368917,
+        "narHash": "sha256-nUtGIWf86BOkUbtksWtfglvCZ/otP0FTZlQH8Rzc7PA=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "9bc7d84b8213255ecd5eb6299afdb77c36ece71d",
+        "rev": "6a8444467c83c961e2f5ff64fb4f422e303c98d3",
         "type": "github"
       },
       "original": {
@@ -82,26 +82,6 @@
         "type": "github"
       }
     },
-    "next-ls": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs-unstable"
-        ]
-      },
-      "locked": {
-        "lastModified": 1699033441,
-        "narHash": "sha256-aKzbNiw+VjcnlPXY9G0LMKKvn1qvkyLB84guPyYKr9U=",
-        "owner": "elixir-tools",
-        "repo": "next-ls",
-        "rev": "d4b090e76da8ee1d0cf1e74e449ce991efd638b4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "elixir-tools",
-        "repo": "next-ls",
-        "type": "github"
-      }
-    },
     "nixos-stable": {
       "locked": {
         "lastModified": 1688392541,
@@ -120,11 +100,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1698553279,
-        "narHash": "sha256-T/9P8yBSLcqo/v+FTOBK+0rjzjPMctVymZydbvR/Fak=",
+        "lastModified": 1699343069,
+        "narHash": "sha256-s7BBhyLA6MI6FuJgs4F/SgpntHBzz40/qV0xLPW6A1Q=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "90e85bc7c1a6fc0760a94ace129d3a1c61c3d035",
+        "rev": "ec750fd01963ab6b20ee1f0cb488754e8036d89d",
         "type": "github"
       },
       "original": {
@@ -140,7 +120,6 @@
         "flake-utils": "flake-utils",
         "home-manager-master": "home-manager-master",
         "home-manager-nixos": "home-manager-nixos",
-        "next-ls": "next-ls",
         "nixos-stable": "nixos-stable",
         "nixpkgs-unstable": "nixpkgs-unstable"
       }

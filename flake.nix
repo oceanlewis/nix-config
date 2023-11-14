@@ -15,10 +15,6 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    next-ls = {
-      url = "github:elixir-tools/next-ls";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
   };
 
   outputs =
@@ -29,12 +25,9 @@
     , nixos-stable
     , darwin
     , flake-utils
-    , next-ls
     }:
     let
-      overlays = [
-        (import ./overlay/extraPackages.nix { inherit next-ls; })
-      ];
+      overlays = [ ];
       config = { allowUnfree = true; };
 
       nixosSystem-stable = nixos-stable.lib.nixosSystem;

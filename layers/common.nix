@@ -84,7 +84,7 @@ with pkgs; let
     just
 
     # BEAM Languages
-    next-ls
+    # next-ls
 
     # Languages
     exercism
