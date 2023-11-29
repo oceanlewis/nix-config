@@ -80,8 +80,9 @@ in
     shell = pkgs.zsh;
   };
 
-  environment = {
-    systemPackages = with pkgs; [ ncurses ];
+  environment = with pkgs; {
+    systemPackages = [ ncurses nushell zsh ];
+    shells = [ nushell zsh ];
     shellAliases = { };
     variables = { };
 

@@ -83,6 +83,7 @@ in
       imports = [
         ../../layers/common.nix
         ../../programs/nushell.nix
+        ../../programs/zoxide.nix
         ../../programs/tmux.nix
         ../../programs/starship.nix
         ../../programs/git
