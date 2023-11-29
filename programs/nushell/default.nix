@@ -2,10 +2,13 @@
 let
   zoxideInit =
     pkgs.runCommand "zoxide-init-nushell"
-      { buildInputs = [ pkgs.zoxide ]; }
+      { buildInputs = with pkgs; [ zoxide nushell ]; }
       ''
         mkdir $out
-        zoxide init nushell > $out/init.nu
+
+        zoxide init nushell \
+        | nu --stdin -c '$in | str replace --all "def-env" "def --env"' \
+        > $out/init.nu
       '';
 
   config = ''
