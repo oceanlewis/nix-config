@@ -29,7 +29,7 @@ let
     "JetBrains Mono" = {
       family = "JetBrainsMono Nerd Font";
       light.normal.weight = 700;
-      dark.normal.weight = 700;
+      dark.normal.weight = 400;
     };
     "Cascadia Code" = {
       family = "CaskaydiaCove Nerd Font";

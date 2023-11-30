@@ -33,7 +33,7 @@
       PATH = "$PATH:$HOME/.local/bin";
       PAGER = "less -R";
       EDITOR = "hx";
-      VISUAL = "nvim";
+      VISUAL = "hx";
       TERM = "xterm-256color";
       SHELL = "${pkgs.zsh}/bin/zsh";
 

@@ -8,6 +8,7 @@ let
     standard.light = "PaperColor"; #"flattened_light";
     standard.dark = "challenger_deep";
     standard.black = standard.dark;
+    high-contrast.dark = standard.dark;
     gruvbox.light = "gruvbox8";
     gruvbox.dark = "gruvbox8";
     gruvbox.black = gruvbox.dark;

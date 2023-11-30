@@ -8,10 +8,23 @@
       settings = {
         theme = pkgs.theme.zellij;
         default_layout = "compact";
-        simplified_ui = true;
         pane_frames = false;
 
         themes = {
+          dracula-custom = {
+            fg = [ 80 80 80 ];
+            bg = [ 40 42 54 ];
+            black = [ 0 0 0 ];
+            red = [ 0 0 0 ];
+            green = [ 193 145 201 ];
+            yellow = [ 241 250 140 ];
+            blue = [ 98 114 164 ];
+            magenta = [ 255 121 198 ];
+            cyan = [ 139 233 253 ];
+            white = [ 80 80 80 ];
+            orange = [ 255 184 108 ];
+          };
+
           one-half-dark-custom = {
             fg = [ 220 223 228 ];
             bg = [ 40 44 52 ];

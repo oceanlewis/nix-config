@@ -80,8 +80,8 @@
                 state_version = "22.11";
               };
               theme-config = {
-                name = "gruvbox";
-                variant = "light";
+                name = "high-contrast";
+                variant = "dark";
                 font.monospace = "JetBrains Mono";
               };
             };

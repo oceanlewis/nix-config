@@ -13,6 +13,7 @@ let
     standard.light = "GitHub";
     standard.dark = "OneHalfDark";
     standard.black = standard.dark;
+    high-contrast.dark = standard.dark;
     gruvbox.light = "gruvbox-light";
     gruvbox.dark = "gruvbox-dark";
     gruvbox.black = gruvbox.dark;
@@ -24,7 +25,8 @@ let
   vivid-themes = rec {
     standard.light = "one-light";
     standard.dark = "one-dark";
-    standard.black = "one-dark";
+    standard.black = standard.dark;
+    high-contrast.dark = standard.dark;
     gruvbox.light = "gruvbox-light";
     gruvbox.dark = "gruvbox-dark";
     gruvbox.black = gruvbox.dark;
@@ -37,6 +39,7 @@ let
     standard.light = "trans_spacebones_light";
     standard.dark = "trans_catppuccin_mocha";
     standard.black = "trans_catppuccin_mocha";
+    high-contrast.dark = "dark_high_contrast";
     gruvbox.light = "trans_gruvbox_light";
     gruvbox.dark = "trans_gruvbox";
     gruvbox.black = gruvbox.dark;
@@ -48,7 +51,8 @@ let
   zellij-themes = rec {
     standard.light = "catppuccin-latte";
     standard.dark = "one-half-dark-custom";
-    standard.black = "dracula";
+    standard.black = "dracula-custom";
+    high-contrast.dark = "dracula-custom";
     gruvbox.light = "kanagawa";
     gruvbox.dark = "gruvbox-dark-medium";
     gruvbox.black = "gruvbox-dark-black";
@@ -70,7 +74,13 @@ let
     # standard.dark = "Horizon Dark (base16)";
     # standard.dark = "Sequoia Moonlight";
     # standard.dark = "Erebus (terminal.sexy)";
-    standard.black = standard.dark;
+
+    # standard.black = standard.dark;
+    # standard.black = "Chalk (dark) (terminal.sexy)";
+    standard.black = "Classic Dark (base16)";
+    # standard.black = "Bitmute (terminal.sexy)";
+
+    high-contrast.dark = "Bitmute (terminal.sexy)";
 
     # gruvbox.light = "Gruvbox (Gogh)";
     gruvbox.light = "Gruvbox Light";

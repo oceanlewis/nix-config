@@ -1,4 +1,5 @@
 alias e = clear
+alias k = kubectl
 
 def r [...paths: string] { e; lsd $paths }
 def er [...paths: string] { e; lsd -l $paths }

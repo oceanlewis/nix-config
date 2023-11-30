@@ -115,6 +115,8 @@ let
     indexed_colors = [ ];
   };
 
+  themes."high-contrast-dark" = themes."standard-black";
+
   themes."gruvbox-light" = {
     primary = {
       background = "0xF9F5D7";
