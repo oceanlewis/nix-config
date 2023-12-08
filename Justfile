@@ -21,4 +21,4 @@ ghastly:
 
 # Start a Zellij session to make quick edits
 edit:
-	zellij --layout=zellij-layout.kdl attach System --create
+	zellij --layout=zellij-layout.kdl attach System --create --force-run-commands

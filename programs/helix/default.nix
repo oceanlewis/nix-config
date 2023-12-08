@@ -26,6 +26,10 @@ in
     command = "nextls"
     args = ["--stdio=true"]  
 
+    [language-server.nushell]
+    command = "nu"
+    args = ["--lsp"]
+
     [[language]]
     name = "nix"
     language-servers = ["nil"]
@@ -34,6 +38,10 @@ in
     [[language]]
     name = "java"
     language-servers = ["jdtls"]
+
+    [[language]]
+    name = "nu"
+    language-servers = ["nushell"]
 
     ## NextLS seems to not work in VSCode or Helix for me :(
     # [[language]]
@@ -68,6 +76,7 @@ in
       "catppuccin_mocha"
       "emacs"
       "fleet_dark"
+      "github_dark_high_contrast"
       "gruvbox"
       "gruvbox_light"
       "meliora"
@@ -85,5 +94,6 @@ in
   home.packages = with pkgs; [
     nodePackages.vscode-langservers-extracted
     terraform-ls
+    marksman
   ];
 }

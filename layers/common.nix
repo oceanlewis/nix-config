@@ -191,6 +191,7 @@ with pkgs; let
       # Zellij
       za = "zellij attach";
       ze = "zellij list-sessions";
+      zd = "zellij delete-all-sessions --yes";
 
       tf = "terraform";
 
@@ -250,11 +251,24 @@ in
 
       defaultKeymap = "viins";
 
+      # enableFzfCompletion = true;
+      # enableFzfGit = true;
+      # enableFzfHistory = true;
+
       oh-my-zsh = {
         enable = true;
-        plugins = [ "vi-mode" "history-substring-search" ];
+        plugins = [
+          "vi-mode"
+          "history-substring-search"
+        ];
       };
     };
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+    enableBashIntegration = true;
+  };
 
   programs.bash = let shell = shellFor "bash"; in
     {

@@ -80,6 +80,11 @@ in
     shell = pkgs.zsh;
   };
 
+  homebrew = {
+    enable = true;
+    onActivation.autoUpdate = true;
+  };
+
   environment = with pkgs; {
     systemPackages = [ ncurses nushell zsh ];
     shells = [ nushell zsh ];
@@ -87,7 +92,7 @@ in
     variables = { };
 
     interactiveShellInit = ''
-      source ~/.zprofile
+      eval "$(/opt/homebrew/bin/brew shellenv)"
     '';
   };
 
