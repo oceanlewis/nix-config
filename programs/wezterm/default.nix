@@ -29,7 +29,7 @@ let
     "JetBrains Mono" = {
       family = "JetBrainsMono Nerd Font";
       light.normal.weight = 700;
-      dark.normal.weight = 400;
+      dark.normal.weight = 500;
     };
     "Cascadia Code" = {
       family = "CaskaydiaCove Nerd Font";
@@ -61,14 +61,50 @@ let
     else "RESIZE|INTEGRATED_BUTTONS";
 
   window_padding = {
-      left = "'1cell'";
-      right = "'1cell'";
-      top = "'0.5cell'";
-      bottom = "'0.5cell'";
-    } //
-    (if pkgs.stdenv.isDarwin
-    then {top = "'65px'";}
-    else {});
+    left = "'1cell'";
+    right = "'1cell'";
+    top = "'0.5cell'";
+    bottom = "'0.5cell'";
+  } //
+  (if pkgs.stdenv.isDarwin
+  then { top = "'65px'"; }
+  else { });
+
+  recompute_window_padding = ''
+    function recompute_padding(window)
+      local window_dims = window:get_dimensions()
+      local overrides = window:get_config_overrides() or {}
+
+      if not window_dims.is_full_screen then
+        if
+          overrides.window_padding
+          and overrides.window_padding.left == ${window_padding.left}
+        then
+          -- padding is same, avoid triggering further changes
+          return
+        end
+
+        overrides.window_padding = {
+          left = ${window_padding.left},
+          right = ${window_padding.right},
+          top = ${window_padding.top},
+          bottom = ${window_padding.bottom},
+        }
+      else
+        overrides.window_padding = nil
+      end
+
+      window:set_config_overrides(overrides)
+    end
+
+    wezterm.on('window-resized', function(window, pane)
+      recompute_padding(window)
+    end)
+
+    wezterm.on('window-config-reloaded', function(window)
+      recompute_padding(window)
+    end)
+  '';
 
 in
 {
@@ -92,16 +128,11 @@ in
             { key = '+', mods = 'SUPER', action = act.IncreaseFontSize },
             { key = 'f', mods = 'SUPER|CTRL', action = act.ToggleFullScreen },
           }
-          config.window_padding = {
-            left = ${window_padding.left},
-            right = ${window_padding.right},
-            top = ${window_padding.top},
-            bottom = ${window_padding.bottom},
-          }
           config.window_close_confirmation = 'NeverPrompt'
         ''
         (fancy_tab_bar true)
         (background_variant_override variant)
+        recompute_window_padding
         "return config"
       ]
       );

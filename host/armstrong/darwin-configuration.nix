@@ -82,7 +82,36 @@ in
 
   homebrew = {
     enable = true;
-    onActivation.autoUpdate = true;
+    onActivation = {
+      autoUpdate = true;
+      upgrade = true;
+      cleanup = "uninstall";
+    };
+
+    taps = [
+      "homebrew/cask-versions"
+      "hginsights/tap"
+    ];
+    brews = [
+      "awscli"
+      "gimme-aws-creds"
+      "kubernetes-cli"
+      "kubectx"
+      "hginsights/tap/gimme-snowflake-creds"
+    ];
+    casks = [
+      "google-chrome"
+      "obsidian"
+      "pritunl"
+      "sfdx"
+      "slack"
+      "transmission"
+      "utm"
+      "visual-studio-code"
+      "vlc"
+      { name = "wezterm-nightly"; greedy = true; }
+      "zoom"
+    ];
   };
 
   environment = with pkgs; {
