@@ -82,6 +82,7 @@ in
 
   homebrew = {
     enable = true;
+
     onActivation = {
       autoUpdate = true;
       upgrade = true;
@@ -91,14 +92,18 @@ in
     taps = [
       "homebrew/cask-versions"
       "hginsights/tap"
+      "hcavarsan/kftray"
     ];
+
     brews = [
       "awscli"
       "gimme-aws-creds"
       "kubernetes-cli"
       "kubectx"
       "hginsights/tap/gimme-snowflake-creds"
+      { name = "kftray"; args = [ "HEAD" ]; }
     ];
+
     casks = [
       "google-chrome"
       "obsidian"
