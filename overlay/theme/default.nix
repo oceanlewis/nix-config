@@ -13,6 +13,7 @@ let
     standard.light = "GitHub";
     standard.dark = "OneHalfDark";
     standard.black = standard.dark;
+    high-contrast.light = standard.light;
     high-contrast.dark = standard.dark;
     gruvbox.light = "gruvbox-light";
     gruvbox.dark = "gruvbox-dark";
@@ -26,6 +27,7 @@ let
     standard.light = "one-light";
     standard.dark = "one-dark";
     standard.black = standard.dark;
+    high-contrast.light = standard.light;
     high-contrast.dark = standard.dark;
     gruvbox.light = "gruvbox-light";
     gruvbox.dark = "gruvbox-dark";
@@ -39,6 +41,7 @@ let
     standard.light = "trans_spacebones_light";
     standard.dark = "trans_catppuccin_mocha";
     standard.black = "trans_catppuccin_mocha";
+    high-contrast.light = standard.light;
     high-contrast.dark = "trans_github_dark_high_contrast";
     gruvbox.light = "trans_gruvbox_light";
     gruvbox.dark = "trans_gruvbox";
@@ -52,6 +55,7 @@ let
     standard.light = "catppuccin-latte";
     standard.dark = "one-half-dark-custom";
     standard.black = "dracula-custom";
+    high-contrast.light = standard.light;
     high-contrast.dark = "dracula-custom";
     gruvbox.light = "kanagawa";
     gruvbox.dark = "gruvbox-dark-medium";
@@ -80,6 +84,7 @@ let
     standard.black = "Classic Dark (base16)";
     # standard.black = "Bitmute (terminal.sexy)";
 
+    high-contrast.light = standard.light;
     high-contrast.dark = "Bitmute (terminal.sexy)";
 
     # gruvbox.light = "Gruvbox (Gogh)";
