@@ -9,8 +9,8 @@ with pkgs; let
     # Files & Text
 
     ## Broken: "framework not found Security"
-    # felix-fm
-    # chafa # required for felix-fm file previews
+    felix-fm
+    chafa # required for felix-fm file previews
 
     file
     eza
@@ -95,6 +95,9 @@ with pkgs; let
     rnix-lsp
     nil
     nix-tree
+
+    # Kubernetes
+    k9s
   ]
   ++ lib.optionals isLinux [
     xsel # rmesg

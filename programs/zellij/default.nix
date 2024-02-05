@@ -1,5 +1,7 @@
 { pkgs, lib, ... }:
 {
+  home.packages = [ pkgs.zjstatus ];
+  xdg.configFile."zellij/layouts/default.kdl".source = ./zjstatus_layout.kdl;
   programs.zellij = lib.attrsets.recursiveUpdate
     (lib.attrsets.optionalAttrs pkgs.stdenv.isDarwin
       { settings.copy_command = "pbcopy"; })
@@ -7,7 +9,7 @@
       enable = true;
       settings = {
         theme = pkgs.theme.zellij;
-        default_layout = "compact";
+        # default_layout = "compact";
         pane_frames = false;
 
         themes = {

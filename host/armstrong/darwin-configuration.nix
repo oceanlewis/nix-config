@@ -8,8 +8,8 @@ let
 
 in
 {
-  nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = overlays;
+  nixpkgs.config.allowUnfree = true;
 
   nix.extraOptions = ''
     build-users-group = nixbld
@@ -84,9 +84,9 @@ in
     enable = true;
 
     onActivation = {
-      autoUpdate = true;
-      upgrade = true;
-      cleanup = "uninstall";
+      # autoUpdate = true;
+      # upgrade = true;
+      # cleanup = "uninstall";
     };
 
     taps = [
@@ -101,7 +101,11 @@ in
       "kubernetes-cli"
       "kubectx"
       "hginsights/tap/gimme-snowflake-creds"
-      { name = "kftray"; args = [ "HEAD" ]; }
+      {
+        name = "kftray";
+        args = [ "HEAD" ];
+        link = true;
+      }
     ];
 
     casks = [

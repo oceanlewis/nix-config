@@ -10,8 +10,10 @@
       add_newline = true;
       scan_timeout = 30;
 
-      git_branch.symbol = "";
+      git_branch.disabled = true;
+      git_status.disabled = true;
       nix_shell.format = "[nix]($style) ";
+      aws.format = "on [(\($region\) )]($style)";
 
       character = {
         success_symbol = "\n[ λ](bold purple)";

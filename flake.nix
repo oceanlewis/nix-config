@@ -3,6 +3,7 @@
     flake-utils.url = "github:numtide/flake-utils";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixos-stable.url = "github:nixos/nixpkgs/nixos-22.11";
+    zjstatus.url = "github:dj95/zjstatus";
     darwin = {
       url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -25,9 +26,14 @@
     , nixos-stable
     , darwin
     , flake-utils
+    , zjstatus
     }:
     let
-      overlays = [ ];
+      overlays = [
+        (final: prev: {
+          zjstatus = zjstatus.packages.${prev.system}.default;
+        })
+      ];
       config = { allowUnfree = true; };
 
       nixosSystem-stable = nixos-stable.lib.nixosSystem;
@@ -80,8 +86,8 @@
                 state_version = "22.11";
               };
               theme-config = {
-                name = "high-contrast";
-                variant = "dark";
+                name = "standard";
+                variant = "light";
                 font.monospace = "JetBrains Mono";
               };
             };

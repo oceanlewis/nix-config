@@ -20,5 +20,8 @@ ghastly:
 	sudo nixos-rebuild switch --flake .#ghastly
 
 # Start a Zellij session to make quick edits
-edit:
-	zellij --layout=zellij-layout.kdl attach System --create --force-run-commands
+edit: && _cleanup
+	@zellij --layout=zellij-layout.kdl attach System --create --force-run-commands
+
+_cleanup:
+	@zellij delete-session --force System
