@@ -1,7 +1,21 @@
 { pkgs, lib, ... }:
+let
+  inherit (pkgs) theme;
+
+  modeBackground = {
+    light = "#F8F8F3";
+    dark = "#000000";
+    black = "#000000";
+  }.${theme.variant};
+
+  defaultLayout = builtins.replaceStrings
+    [ "$MODE_BG" ]
+    [ modeBackground ]
+    (builtins.readFile ./zjstatus_layout.kdl);
+in
 {
   home.packages = [ pkgs.zjstatus ];
-  xdg.configFile."zellij/layouts/default.kdl".source = ./zjstatus_layout.kdl;
+  xdg.configFile."zellij/layouts/default.kdl".text = defaultLayout;
   programs.zellij = lib.attrsets.recursiveUpdate
     (lib.attrsets.optionalAttrs pkgs.stdenv.isDarwin
       { settings.copy_command = "pbcopy"; })

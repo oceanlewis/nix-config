@@ -87,7 +87,7 @@
               };
               theme-config = {
                 name = "standard";
-                variant = "light";
+                variant = "black";
                 font.monospace = "JetBrains Mono";
               };
             };
