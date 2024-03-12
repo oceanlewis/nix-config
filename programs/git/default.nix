@@ -11,6 +11,7 @@ with pkgs;
     gitAndTools.git-crypt
     gitAndTools.lfs
     github-cli
+    gitu
     act
     difftastic
   ];

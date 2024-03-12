@@ -99,7 +99,7 @@ let
   languageClientConfig = ''
     let g:LanguageClient_serverCommands = {
     \ 'rust': ['rust-analyzer'],
-    \ 'nix': ['rnix-lsp'],
+    \ 'nix': ['nil'],
     \ 'elixir': ['elixir-ls'],
     \ 'c': ['clangd'],
     \ 'cpp': ['clangd'],
@@ -206,7 +206,7 @@ let
           "settings": {}
         },
         "nix": {
-          "command": "rnix-lsp",
+          "command": "nil",
           "filetypes": ["nix"]
         },
         "elixir": {
@@ -277,7 +277,7 @@ let
       'pyright',
       'rust_analyzer',
       'tsserver',
-      'rnix',
+      'nil',
     }
 
     for _, lsp in pairs(servers) do

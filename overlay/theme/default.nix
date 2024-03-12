@@ -12,7 +12,7 @@ let
   bat-themes = rec {
     standard.light = "GitHub";
     standard.dark = "OneHalfDark";
-    standard.black = standard.dark;
+    standard.black = "ansi";
     high-contrast.light = standard.light;
     high-contrast.dark = standard.dark;
     gruvbox.light = "gruvbox-light";
@@ -79,9 +79,10 @@ let
     # standard.dark = "Sequoia Moonlight";
     # standard.dark = "Erebus (terminal.sexy)";
 
+    # standard.black = "Classic Dark (base16)";
+    standard.black = "astromouse (terminal.sexy)";
     # standard.black = standard.dark;
     # standard.black = "Chalk (dark) (terminal.sexy)";
-    standard.black = "Classic Dark (base16)";
     # standard.black = "Bitmute (terminal.sexy)";
 
     high-contrast.light = standard.light;

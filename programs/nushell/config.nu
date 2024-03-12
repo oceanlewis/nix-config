@@ -1,15 +1,15 @@
 alias e = clear
 alias k = kubectl
 
-def r [...paths: string] { e; lsd $paths }
+def r [...paths: string] { e; lsd ...$paths }
 def re [] { e; lsd * }
-def er [...paths: string] { e; lsd -l $paths }
-def err [...paths: string] { e; lsd -lR $paths }
-def et [...paths: string] { e; lsd --tree --depth=1 $paths }
-def et2 [...paths: string] { e; lsd --tree --depth=2 $paths }
-def et3 [...paths: string] { e; lsd --tree --depth=3 $paths }
-def et4 [...paths: string] { e; lsd --tree --depth=4 $paths }
-def etr [...paths: string] { e; lsd --tree $paths }
+def er [...paths: string] { e; lsd -l ...$paths }
+def err [...paths: string] { e; lsd -lR ...$paths }
+def et [...paths: string] { e; lsd --tree --depth=1 ...$paths }
+def et2 [...paths: string] { e; lsd --tree --depth=2 ...$paths }
+def et3 [...paths: string] { e; lsd --tree --depth=3 ...$paths }
+def et4 [...paths: string] { e; lsd --tree --depth=4 ...$paths }
+def etr [...paths: string] { e; lsd --tree ...$paths }
 
 def eg  [] { clear; git status }
 def egg [] { clear; git status; echo; git diff }
@@ -32,6 +32,8 @@ def zgc [] { git checkout (git branch | fzf) }
 
 def cdcopy [] { pwd | pbcopy }
 def cdpaste [] { cd $"\"(pbpaste)\"" }
+
+$env.config.show_banner = false
 
 $env.config.keybindings = (
   try { $env.config.keybindings } catch { [] }

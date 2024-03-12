@@ -10,7 +10,7 @@
       add_newline = true;
       scan_timeout = 30;
 
-      git_branch.disabled = true;
+      git_branch.disabled = false;
       git_status.disabled = true;
       nix_shell.format = "[nix]($style) ";
       aws.format = "on [(\($region\) )]($style)";

@@ -122,7 +122,7 @@ in
           config.color_scheme = '${theme.wezterm}'
           config.hide_tab_bar_if_only_one_tab = true
           config.tab_bar_at_bottom = true
-          config.native_macos_fullscreen_mode = false
+          config.native_macos_fullscreen_mode = true
           config.window_decorations = "${window_decorations}"
           config.keys = {
             { key = '+', mods = 'SUPER', action = act.IncreaseFontSize },

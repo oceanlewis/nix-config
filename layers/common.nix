@@ -92,7 +92,6 @@ with pkgs; let
     # Nix
     cachix
     nixpkgs-fmt
-    rnix-lsp
     nil
     nix-tree
 
