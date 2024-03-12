@@ -88,7 +88,7 @@
               theme-config = {
                 name = "standard";
                 variant = "light";
-                font.monospace = "JetBrains Mono";
+                font.monospace = "Menlo";
               };
             };
           }

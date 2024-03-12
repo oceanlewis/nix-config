@@ -13,7 +13,11 @@ let
   };
 
   font = defaults // {
-    "Menlo" = { family = "MesloLGL Nerd Font"; line_height = 1.0; };
+    "Menlo" = {
+      family = "MesloLGL Nerd Font";
+      line_height = 1.0;
+      light.normal.weight = 600;
+    };
     "Monaco" = { family = "Monaco"; };
     "DejaVu" = { family = "DejaVuSansMono Nerd Font"; };
     "Go" = { family = "GoMono Nerd Font"; };
