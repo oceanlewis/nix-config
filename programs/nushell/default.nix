@@ -1,20 +1,17 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
   zoxideInit =
     pkgs.runCommand "zoxide-init-nushell"
       { buildInputs = with pkgs; [ zoxide nushell ]; }
       ''
         mkdir $out
-
-        zoxide init nushell \
-        | nu --stdin -c '$in | str replace --all "def-env" "def --env"' \
-        > $out/init.nu
+        zoxide init nushell > $out/init.nu
       '';
 
-  config = ''
-    ${builtins.readFile ./config.nu}     
-    source ${zoxideInit}/init.nu
-  '';
+  config = lib.concatLines [
+    (builtins.readFile ./config.nu)
+    "source ${zoxideInit}/init.nu"
+  ];
 in
 {
   programs.nushell = {
