@@ -1,14 +1,9 @@
-{ pkgs
-, config
-, theme-config ? { }
+{ username
+, homeDirectory
+, stateVersion
+, ...
 }:
 {
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.overlays = pkgs.overlays ++ [
-    (import ../overlay/theme { config = theme-config; })
-    (import ../overlay/vimPlugins.nix)
-  ];
-
   imports = [
     ../layers/common.nix
     ../programs/nushell
@@ -25,9 +20,7 @@
   programs.home-manager.enable = true;
 
   home = {
-    stateVersion = config.state_version;
-    username = config.user;
-    homeDirectory = config.home;
+    inherit stateVersion username homeDirectory;
 
     sessionVariables = {
       PATH = "$PATH:$HOME/.local/bin";
@@ -35,17 +28,16 @@
       EDITOR = "hx";
       VISUAL = "hx";
       TERM = "xterm-256color";
-      SHELL = "${pkgs.zsh}/bin/zsh";
 
-      XDG_CONFIG_HOME = "${config.home}/.config";
-      XDG_DATA_HOME = "${config.home}/.local/share";
-      XDG_DATA_DIRS = "${config.home}/.local/data";
-      XDG_RUNTIME_DIR = "${config.home}/.local/run";
+      XDG_CONFIG_HOME = "${homeDirectory}/.config";
+      XDG_DATA_HOME = "${homeDirectory}/.local/share";
+      XDG_DATA_DIRS = "${homeDirectory}/.local/data";
+      XDG_RUNTIME_DIR = "${homeDirectory}/.local/run";
 
       # TODO: Refactor
       FZF_DEFAULT_COMMAND = "fd --type f";
-      BAT_CONFIG_PATH = "${config.home}/.config/bat/config";
-      GOPATH = "${config.home}/Developer/go/";
+      BAT_CONFIG_PATH = "${homeDirectory}/.config/bat/config";
+      GOPATH = "${homeDirectory}/Developer/go/";
     };
   };
 }

@@ -9,8 +9,14 @@ let
   }.${theme.variant};
 
   defaultLayout = builtins.replaceStrings
-    [ "$MODE_BG" ]
-    [ modeBackground ]
+    [
+      "$PLUGIN_LOCATION"
+      "$MODE_BG"
+    ]
+    [
+      "file:${pkgs.zjstatus}/bin/zjstatus.wasm"
+      modeBackground
+    ]
     (builtins.readFile ./zjstatus_layout.kdl);
 
   configContents = lib.concatLines (

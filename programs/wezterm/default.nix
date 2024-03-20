@@ -19,7 +19,7 @@ let
       light.normal.weight = 600;
     };
     "Monaco" = { family = "Monaco"; };
-    "DejaVu" = { family = "DejaVuSansMono Nerd Font"; };
+    "DejaVu" = { family = "DejaVuSansM Nerd Font"; };
     "Go" = { family = "GoMono Nerd Font"; };
     "ShureTech" = { family = "ShureTechMono Nerd Font"; size = defaults.size + 1.5; };
     "SF Mono" = { family = "SF Mono"; };

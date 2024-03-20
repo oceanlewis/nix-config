@@ -25,9 +25,9 @@ let
     };
 
     "DejaVu" = {
-      normal = { family = "DejaVuSansMono Nerd Font"; style = "Book"; };
-      bold = { family = "DejaVuSansMono Nerd Font"; style = "Bold"; };
-      italic = { family = "DejaVuSansMono Nerd Font"; style = "Oblique"; };
+      normal = { family = "DejaVuSansM Nerd Font"; style = "Book"; };
+      bold = { family = "DejaVuSansM Nerd Font"; style = "Bold"; };
+      italic = { family = "DejaVuSansM Nerd Font"; style = "Oblique"; };
       offset = { x = 1; y = 3; };
     };
 

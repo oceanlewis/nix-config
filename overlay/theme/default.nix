@@ -1,13 +1,10 @@
-{ config }:
+{ name ? "standard"
+, variant ? "dark"
+, font ? { monospace = "DejaVu"; }
+, override ? { }
+}:
 
 let
-  settings = {
-    name = "standard";
-    variant = "dark";
-    font.monospace = "DejaVu";
-  } // config;
-
-  inherit (settings) name variant font;
 
   bat-themes = rec {
     standard.light = "GitHub";
@@ -123,7 +120,7 @@ self: super: {
     inherit
       name variant font;
 
-    helix = settings.helix or (selectTheme "helix" helix-themes name variant);
+    helix = override.helix or (selectTheme "helix" helix-themes name variant);
     zellij = selectTheme "zellij" zellij-themes name variant;
     bat = selectTheme "bat" bat-themes name variant;
     vivid = selectTheme "vivid" vivid-themes name variant;

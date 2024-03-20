@@ -5,7 +5,7 @@ layout {
     }
 
     pane size=1 borderless=true {
-        plugin location="file:/Users/ocean.lewis/.nix-profile/bin/zjstatus.wasm" {
+        plugin location="$PLUGIN_LOCATION" {
             format_left  "{mode} #[fg=#89B4FA,bold]{session} {tabs}"
             // format_right "{command_git_branch} {datetime}"
             format_right "{datetime}"
