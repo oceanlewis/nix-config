@@ -1,5 +1,4 @@
 { pkgs
-, config
 , lib
 , ...
 }:
@@ -36,6 +35,7 @@ with pkgs;
       init.defaultBranch = "main";
       pull.ff = "only";
 
+      diff.external = "difft";
       diff.tool = "difftastic";
       difftool.prompt = false;
       "difftool \"difftastic\"".cmd = ''difft "$LOCAL" "$REMOTE"'';
