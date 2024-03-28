@@ -13,6 +13,7 @@ with pkgs;
     gitu
     act
     difftastic
+    riffdiff
   ];
 
   # Program Definition
@@ -20,8 +21,13 @@ with pkgs;
   programs.git = {
     enable = true;
 
+    difftastic = {
+      enable = false;
+      background = theme.difftastic;
+    };
+
     delta = {
-      enable = true;
+      enable = false;
       options = {
         syntax-theme = lib.optionalString (theme.delta != null) theme.delta;
       };
@@ -35,11 +41,17 @@ with pkgs;
       init.defaultBranch = "main";
       pull.ff = "only";
 
-      diff.external = "difft";
+      interactive.diffFilter = "riff --color=on";
+      pager = {
+        difftool = true;
+        diff = "riff";
+        show = "riff";
+        log = "riff";
+      };
+
       diff.tool = "difftastic";
       difftool.prompt = false;
       "difftool \"difftastic\"".cmd = ''difft "$LOCAL" "$REMOTE"'';
-      pager.difftool = true;
       alias.difft = "difftool";
     };
 

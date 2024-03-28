@@ -114,6 +114,28 @@ let
       ''
     );
 
+
+  difftasticTheme = variant:
+    let
+      themeMap = {
+        dark = "dark";
+        black = "dark";
+        light = "light";
+      };
+    in
+      themeMap.${variant} or (
+        throw ''
+          Unsupported name-variant combination for difftastic theme: ${variant}
+          Supported combinations:
+          ${
+            builtins.concatStringsSep "\n" (
+              builtins.map (attrName: "  - ${attrName}")
+                (builtins.attrNames themeMap)
+            )
+          }
+        ''
+      );
+
 in
 self: super: {
   theme = rec {
@@ -126,5 +148,6 @@ self: super: {
     vivid = selectTheme "vivid" vivid-themes name variant;
     wezterm = selectTheme "wezterm" wezterm-themes name variant;
     delta = bat;
+    difftastic = difftasticTheme variant;
   };
 }
