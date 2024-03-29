@@ -73,7 +73,7 @@
         ];
       };
 
-      darwinConfigurations.armstrong = darwinSystem {
+      darwinConfigurations.Armstrong = darwinSystem {
         system = "aarch64-darwin";
         specialArgs = {
           inherit inputs;

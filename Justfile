@@ -10,8 +10,8 @@ update:
 	nix flake update
 
 # Armstrong's nix-darwin rebuild command
-armstrong:
-	darwin-rebuild switch --flake .#armstrong
+Armstrong:
+	darwin-rebuild switch --flake .#Armstrong
 
 ghastly:
 	sudo nixos-rebuild switch --flake .#ghastly
@@ -21,7 +21,7 @@ edit: && _cleanup
 	@zellij --layout=zellij-layout.kdl attach System --create --force-run-commands
 
 # Runs the `just` target when file changes are detected
-watch target:
+watch target=`hostname`:
 	fd | entr -pc sh -c 'just {{target}}'
 
 _cleanup:

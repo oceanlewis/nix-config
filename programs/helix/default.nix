@@ -72,22 +72,34 @@ in
     };
 
     themes = makeTrans [
+      "base16_default"
       "bogster"
       "catppuccin_mocha"
+      "cyan_light"
+      "dracula_at_night"
       "emacs"
+      "flatwhite"
       "fleet_dark"
       "github_dark_high_contrast"
+      "github_light"
+      "github_light_high_contrast"
       "gruvbox"
       "gruvbox_light"
       "meliora"
       "noctis"
       "noctis_bordo"
       "onelight"
+      "papercolor-dark"
       "papercolor-light"
+      "penumbra"
+      "pop-dark"
       "snazzy"
+      "sonokai"
       "spacebones_light"
       "tokyonight"
       "varua"
+      "zed_onedark"
+      "zed_onelight"
     ];
   };
 
