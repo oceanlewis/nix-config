@@ -13,15 +13,16 @@ update:
 armstrong:
 	darwin-rebuild switch --flake .#armstrong
 
-wizard:
-	darwin-rebuild witch --flake .#armstrong
-
 ghastly:
 	sudo nixos-rebuild switch --flake .#ghastly
 
 # Start a Zellij session to make quick edits
 edit: && _cleanup
 	@zellij --layout=zellij-layout.kdl attach System --create --force-run-commands
+
+# Runs the `just` target when file changes are detected
+watch target:
+	fd | entr -pc sh -c 'just {{target}}'
 
 _cleanup:
 	@zellij delete-session --force System

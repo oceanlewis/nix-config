@@ -120,6 +120,8 @@ in
         ''
           local act = wezterm.action
           local config = {}
+          config.initial_cols = 116
+          config.initial_rows = 30
           config.font = ${font_config font}
           config.font_size = ${toString font.size}
           config.line_height = ${toString font.line_height}

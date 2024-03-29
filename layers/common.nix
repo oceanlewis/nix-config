@@ -8,7 +8,9 @@ with pkgs; let
   packages = [
     # Files & Text
 
-    ## Broken: "framework not found Security"
+    # Felix alternative
+    yazi
+
     felix-fm
     chafa # required for felix-fm file previews
 
