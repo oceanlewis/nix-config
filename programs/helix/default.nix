@@ -91,7 +91,6 @@ in
       "onelight"
       "papercolor-dark"
       "papercolor-light"
-      "penumbra"
       "pop-dark"
       "snazzy"
       "sonokai"
