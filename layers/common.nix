@@ -23,6 +23,7 @@ with pkgs; let
     fzf
     zoxide
     bat
+    ijq
     jq
     yq-go
     mdcat
