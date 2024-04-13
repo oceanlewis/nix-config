@@ -28,7 +28,7 @@ let
     "IBM Plex Mono" = { family = "BlexMono Nerd Font Mono"; size = defaults.size + 0.5; };
     "Comic Mono" = { family = "Comic Mono"; };
     "DM Mono" = { family = "DM Mono"; };
-    "Hack" = { family = "Hack"; };
+    "Hack" = { family = "Hack Nerd Font Mono"; };
     "Victor Mono" = { family = "Victor Mono"; };
     "JetBrains Mono" = {
       family = "JetBrainsMono Nerd Font";

@@ -33,7 +33,7 @@
         (final: prev: {
           zjstatus = zjstatus.packages.${prev.system}.default;
         })
-        (import overlay/vimPlugins.nix)
+        (import ./overlay/vimPlugins.nix)
       ];
       config = {
         allowUnfree = true;
@@ -78,10 +78,10 @@
         specialArgs = {
           inherit inputs;
           overlays = overlays ++ [
-            (import overlay/theme {
+            (import ./overlay/theme {
               name = "standard";
               variant = "light";
-              font.monospace = "Menlo";
+              font.monospace = "JetBrains Mono";
             })
           ];
         };

@@ -17,6 +17,7 @@
     ../programs/neovim
   ];
 
+  xdg.enable = true;
   programs.home-manager.enable = true;
 
   home = {
@@ -28,11 +29,6 @@
       EDITOR = "hx";
       VISUAL = "hx";
       TERM = "xterm-256color";
-
-      XDG_CONFIG_HOME = "${homeDirectory}/.config";
-      XDG_DATA_HOME = "${homeDirectory}/.local/share";
-      XDG_DATA_DIRS = "${homeDirectory}/.local/data";
-      XDG_RUNTIME_DIR = "${homeDirectory}/.local/run";
 
       # TODO: Refactor
       FZF_DEFAULT_COMMAND = "fd --type f";
