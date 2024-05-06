@@ -10,11 +10,9 @@
     ../programs/tmux.nix
     ../programs/starship.nix
     ../programs/git
-    ../programs/alacritty
     ../programs/helix
     ../programs/zellij
     ../programs/wezterm
-    ../programs/neovim
   ];
 
   xdg.enable = true;

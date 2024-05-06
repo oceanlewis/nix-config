@@ -47,8 +47,8 @@ with pkgs; let
     ffmpeg
 
     # Shells and Unix Environment
-    (pkgs.callPackage ../packages/dingus.nix { })
-    (pkgs.callPackage ../packages/itm { })
+    # (pkgs.callPackage ../packages/dingus.nix { })
+    # (pkgs.callPackage ../packages/itm { })
 
     # Chat & Browsing
     # irssi
