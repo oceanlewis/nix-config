@@ -9,6 +9,10 @@ darwin-builder:
 update:
 	nix flake update
 
+# Runs the `just` target for the current host
+rebuild target=`hostname`:
+	just {{target}}
+
 # Armstrong's nix-darwin rebuild command
 Armstrong:
 	darwin-rebuild switch --flake .#Armstrong
@@ -21,8 +25,8 @@ edit: && _cleanup
 	@zellij --layout=zellij-layout.kdl attach System --create --force-run-commands
 
 # Runs the `just` target when file changes are detected
-watch target=`hostname`:
-	fd | entr -pc sh -c 'just {{target}}'
+watch:
+	fd | entr -pc sh -c 'just rebuild'
 
 _cleanup:
 	@zellij delete-session --force System
