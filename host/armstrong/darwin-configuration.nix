@@ -118,7 +118,7 @@ in
       "utm"
       "visual-studio-code"
       "vlc"
-      { name = "wezterm-nightly"; greedy = true; }
+      { name = "wezterm@nightly"; greedy = true; }
       "zoom"
     ];
   };
