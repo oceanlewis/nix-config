@@ -102,15 +102,26 @@ let
 
   selectTheme = programName: themeMap: name: variant:
     themeMap.${name}.${variant} or (
+      let
+        themeNames = (builtins.attrNames themeMap);
+        availableOptions =
+          builtins.foldl'
+            (acc: name:
+              let
+                nameVariants = builtins.attrNames themeMap.${name};
+                expanded = builtins.map
+                  (variant: "  - ${name}.${variant}")
+                  nameVariants;
+              in
+              acc ++ expanded
+            )
+            [ ]
+            themeNames;
+      in
       throw ''
         Unsupported name-variant combination for ${programName} theme: ${name}.${variant}
         Supported combinations:
-        ${
-          builtins.concatStringsSep "\n" (
-            builtins.map (attrName: "  - ${attrName}")
-              (builtins.attrNames themeMap)
-          )
-        }
+        ${builtins.concatStringsSep "\n" ( availableOptions)}
       ''
     );
 
