@@ -40,6 +40,7 @@ with pkgs;
       core.editor = "hx";
       init.defaultBranch = "main";
       pull.ff = "only";
+      push.autoSetupRemote = true;
 
       interactive.diffFilter = "riff --color=on";
       pager = {
