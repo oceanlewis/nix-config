@@ -63,6 +63,7 @@ with pkgs; let
     # Process Management
     killall
     htop
+    btop
     procs
     bandwhich
     bottom
@@ -197,6 +198,8 @@ with pkgs; let
       za = "zellij attach";
       ze = "zellij list-sessions";
       zd = "zellij delete-all-sessions --yes";
+      zw = "zellij -l welcome";
+      zri = "zellij run --in-place";
 
       tf = "terraform";
 

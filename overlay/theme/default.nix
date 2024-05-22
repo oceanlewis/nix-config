@@ -39,7 +39,7 @@ let
     standard.dark = "trans_noctis";
     standard.black = "trans_catppuccin_mocha";
     high-contrast.light = standard.light;
-    high-contrast.dark = "trans_github_dark_high_contrast";
+    high-contrast.dark = "curzon";
     gruvbox.light = "trans_gruvbox_light";
     gruvbox.dark = "trans_gruvbox";
     gruvbox.black = gruvbox.dark;

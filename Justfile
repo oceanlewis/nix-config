@@ -10,15 +10,8 @@ update:
 	nix flake update
 
 # Runs the `just` target for the current host
-rebuild target=`hostname`:
+apply target=`hostname`:
 	just {{target}}
-
-# Armstrong's nix-darwin rebuild command
-Armstrong:
-	darwin-rebuild switch --flake .#Armstrong
-
-ghastly:
-	sudo nixos-rebuild switch --flake .#ghastly
 
 # Start a Zellij session to make quick edits
 edit: && _cleanup
@@ -26,7 +19,16 @@ edit: && _cleanup
 
 # Runs the `just` target when file changes are detected
 watch:
-	fd | entr -pc sh -c 'just rebuild'
+	fd | entr -pc sh -c 'just apply'
 
 _cleanup:
-	@zellij delete-session --force System
+	@zellij delete-session System
+
+# Armstrong's nix-darwin rebuild command
+[private]
+Armstrong:
+	darwin-rebuild switch --flake .#Armstrong
+
+[private]
+ghastly:
+	sudo nixos-rebuild switch --flake .#ghastly
