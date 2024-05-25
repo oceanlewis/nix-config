@@ -79,8 +79,8 @@
           inherit inputs;
           overlays = overlays ++ [
             (import ./overlay/theme {
-              name = "high-contrast";
-              variant = "dark";
+              name = "standard";
+              variant = "light";
               font.monospace = "JetBrains Mono";
             })
           ];
