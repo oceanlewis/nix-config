@@ -1,22 +1,9 @@
 { pkgs, lib, ... }:
 let
-  inherit (pkgs) theme;
-
-  modeBackground = {
-    light = "#F8F8F3";
-    dark = "#000000";
-    black = "#000000";
-  }.${theme.variant};
 
   defaultLayout = builtins.replaceStrings
-    [
-      "$PLUGIN_LOCATION"
-      "$MODE_BG"
-    ]
-    [
-      "file:${pkgs.zjstatus}/bin/zjstatus.wasm"
-      modeBackground
-    ]
+    [ "$PLUGIN_LOCATION" ]
+    [ "file:${pkgs.zjstatus}/bin/zjstatus.wasm" ]
     (builtins.readFile ./zjstatus_layout.kdl);
 
   configContents = lib.concatLines (

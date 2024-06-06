@@ -109,7 +109,10 @@ in
     ];
 
     casks = [
+      "blurred"
       "google-chrome"
+      "hiddenbar"
+      "little-snitch"
       "obsidian"
       "pritunl"
       "sfdx"

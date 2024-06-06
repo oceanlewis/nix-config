@@ -36,7 +36,7 @@ let
 
   helix-themes = rec {
     standard.light = "trans_flatwhite";
-    standard.dark = "trans_noctis";
+    standard.dark = "trans_bogster";
     standard.black = "trans_catppuccin_mocha";
     high-contrast.light = standard.light;
     high-contrast.dark = "curzon";
