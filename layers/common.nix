@@ -136,6 +136,8 @@ with pkgs; let
     erra = "clear; ls -lRa";
     et = "clear; ls --tree --depth 1";
     eta = "clear; ls -a --tree --depth 1";
+    et0 = "clear; ls --tree --depth 0";
+    et1 = "clear; ls --tree --depth 1";
     et2 = "clear; ls --tree --depth 2";
     et3 = "clear; ls --tree --depth 3";
     et4 = "clear; ls --tree --depth 4";
