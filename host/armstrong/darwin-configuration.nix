@@ -69,10 +69,7 @@ in
   };
 
 
-  fonts = {
-    fontDir.enable = true;
-    fonts = import ../../layers/fonts.nix { inherit pkgs; };
-  };
+  fonts.packages = import ../../layers/fonts.nix { inherit pkgs; };
 
   users.users."${USER}" = {
     home = HOME;
