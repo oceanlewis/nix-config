@@ -16,7 +16,7 @@ in
 {
   programs.nushell = {
     enable = true;
-    package = pkgs.nushellFull;
+    package = pkgs.nushell;
     configFile.text = config;
   };
 }
