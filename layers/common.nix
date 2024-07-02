@@ -18,6 +18,7 @@ with pkgs; let
     eza
     fd
     ripgrep
+    ack
     sd
     grex
     fzf
