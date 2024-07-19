@@ -11,23 +11,28 @@ in
   nixpkgs.overlays = overlays;
   nixpkgs.config.allowUnfree = true;
 
-  nix.extraOptions = ''
-    build-users-group = nixbld
-    experimental-features = nix-command flakes
-    extra-platforms = x86_64-darwin aarch64-darwin
-    keep-outputs = true
-    keep-derivations = true
-  '';
+  nix = {
+    extraOptions = ''
+      build-users-group = nixbld
+      experimental-features = nix-command flakes
+      extra-platforms = x86_64-darwin aarch64-darwin
+      keep-outputs = true
+      keep-derivations = true
+    '';
 
-  nix.settings =
-    {
+    optimise = {
+      automatic = true;
+      interval = [{ Hour = 7; Minute = 0; }];
+    };
+
+    settings = {
       trusted-users = [ USER ];
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
     };
-
+  };
   networking = {
     computerName = HOST_NAME;
     hostName = HOST_NAME;
@@ -83,7 +88,7 @@ in
     onActivation = {
       # autoUpdate = true;
       # upgrade = true;
-      # cleanup = "uninstall";
+      # cleanup = "zap";
     };
 
     taps = [
@@ -106,12 +111,11 @@ in
     ];
 
     casks = [
-      "blurred"
       "google-chrome"
-      "hiddenbar"
+      "jordanbaird-ice"
       "little-snitch"
-      "obsidian"
       "pritunl"
+      "rectangle-pro"
       "sfdx"
       "slack"
       "transmission"
