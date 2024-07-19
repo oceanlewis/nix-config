@@ -80,7 +80,6 @@ with pkgs; let
 
     # Content
     yt-dlp
-    youtube-dl
 
     # Build Tools
     autoconf
