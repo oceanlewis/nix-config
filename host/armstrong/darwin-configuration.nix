@@ -111,6 +111,7 @@ in
     ];
 
     casks = [
+      "arc"
       "google-chrome"
       "jordanbaird-ice"
       "little-snitch"

@@ -1,4 +1,4 @@
-default:
+_default:
 	@just --list
 
 # Download and start a NixOS builder container
@@ -9,6 +9,7 @@ darwin-builder:
 update:
 	nix flake update
 
+alias rebuild := apply
 # Runs the `just` target for the current host
 apply target=`hostname`:
 	just {{target}}

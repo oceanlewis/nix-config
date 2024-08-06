@@ -79,7 +79,7 @@ with pkgs; let
     inetutils
 
     # Content
-    yt-dlp
+    # yt-dlp
 
     # Build Tools
     autoconf
@@ -210,6 +210,8 @@ with pkgs; let
       zgc = "git checkout $(git branch | fzf)";
 
       k = "kubectl";
+
+      fe = "yazi";
     } //
     lsdAliases //
     lib.optionalAttrs isLinux {
