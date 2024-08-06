@@ -4,7 +4,10 @@ layout {
   }
   pane split_direction="vertical" {
     pane edit="flake.nix"
-    pane
+    pane {
+      command "just"
+      args "watch"
+    }
   }
   pane size=2 borderless=true {
     plugin location="zellij:status-bar"
