@@ -86,8 +86,8 @@ in
     enable = true;
 
     onActivation = {
-      # autoUpdate = true;
-      # upgrade = true;
+      autoUpdate = false;
+      upgrade = false;
       # cleanup = "zap";
     };
 
@@ -112,6 +112,8 @@ in
 
     casks = [
       "arc"
+      "firefox"
+      "firefox@nightly"
       "google-chrome"
       "jordanbaird-ice"
       "little-snitch"
@@ -156,6 +158,9 @@ in
   };
 
   programs.zsh.enable = true;
+  programs.zsh.loginShellInit = ''
+    cd ${HOME}/Developer/hg
+  '';
   programs.tmux.enable = true;
 
   # Used for backwards compatibility, please read the changelog before changing.

@@ -1,8 +1,7 @@
 { pkgs }:
 
 let
-  inherit (pkgs) theme;
-  inherit (theme) name variant;
+  inherit (pkgs.theme) name variant;
 
   color_scheme = rec {
     standard.light = "PaperColor"; #"flattened_light";

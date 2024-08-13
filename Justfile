@@ -1,5 +1,7 @@
+z_session := "nix"
+
 _default:
-	@just --list
+	@clear -x; just --list
 
 # Download and start a NixOS builder container
 darwin-builder:
@@ -16,14 +18,20 @@ apply target=`hostname`:
 
 # Start a Zellij session to make quick edits
 edit: && _cleanup
-	@zellij --layout=zellij-layout.kdl attach System --create --force-run-commands
+	@zellij \
+			--config-dir=$HOME/.config/zellij \
+			--layout=zellij-layout.kdl \
+		attach {{z_session}} \
+			--force-run-commands \
+			--create
 
 # Runs the `just` target when file changes are detected
 watch:
-	fd | entr -pc sh -c 'just apply'
+	@echo "Watching for changes..."
+	@watchexec --clear=clear --postpone --quiet just apply
 
 _cleanup:
-	@zellij delete-session System
+	zellij delete-session {{z_session}}
 
 # Armstrong's nix-darwin rebuild command
 [private]

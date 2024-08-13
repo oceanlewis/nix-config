@@ -1,9 +1,7 @@
 { pkgs, lib, ... }:
 
 with pkgs; let
-
-  inherit (pkgs) stdenv;
-  inherit (stdenv) isDarwin isLinux;
+  inherit (pkgs.stdenv) isDarwin isLinux;
 
   packages = [
     # Files & Text
@@ -32,7 +30,7 @@ with pkgs; let
     icdiff
     tokei
     entr
-    fswatch
+    watchexec
     pv
     wget
     rsync
@@ -107,25 +105,6 @@ with pkgs; let
     xclip
     usbutils # lsusb and others
   ];
-
-  exaAliases = {
-    ls = "exa";
-    ll = "exa -l";
-    er = "clear; ls -lg";
-    r = "clear; ls";
-    e = "clear";
-    era = "clear; ls -la";
-    err = "clear; ls -lR";
-    erra = "clear; ls -lRa";
-    et = "clear; ls -TL 1";
-    eta = "clear; ls -aTL 1";
-    et2 = "clear; ls -TL 2";
-    et3 = "clear; ls -TL 3";
-    et4 = "clear; ls -TL 4";
-    etr = "clear; ls -T";
-    re = "clear; ls *";
-    rea = "clear; ls -a *";
-  };
 
   lsdAliases = {
     er = "clear; ls -l";
@@ -239,6 +218,7 @@ in
 
   programs.direnv = {
     enable = true;
+    silent = true;
     enableNushellIntegration = true;
     enableZshIntegration = true;
     nix-direnv.enable = true;
@@ -249,8 +229,9 @@ in
   programs.zsh = let shell = shellFor "zsh"; in
     {
       enable = true;
-      dotDir = ".config/zsh";
+      enableVteIntegration = true;
       shellAliases = shell.aliases;
+      dotDir = ".config/zsh";
       initExtra = ''
         unset RPS1
         function custom_preexec () {

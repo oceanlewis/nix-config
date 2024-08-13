@@ -37,7 +37,11 @@ let
   helix-themes = rec {
     standard.light = "trans_flatwhite";
     standard.dark = "trans_bogster";
-    standard.black = "trans_catppuccin_mocha";
+    # standard.black = "trans_varua";
+    # standard.black = "trans_papercolor-dark";
+    # standard.black = "trans_base16_default_dark";
+    standard.black = "trans_pop-dark";
+    # standard.black = "trans_ayu_dark";
     high-contrast.light = standard.light;
     high-contrast.dark = "curzon";
     gruvbox.light = "trans_gruvbox_light";
@@ -76,8 +80,8 @@ let
     # standard.dark = "Sequoia Moonlight";
     # standard.dark = "Erebus (terminal.sexy)";
 
-    # standard.black = "Classic Dark (base16)";
-    standard.black = "astromouse (terminal.sexy)";
+    standard.black = "Classic Dark (base16)";
+    ## standard.black = "astromouse (terminal.sexy)";
     # standard.black = standard.dark;
     # standard.black = "Chalk (dark) (terminal.sexy)";
     # standard.black = "Bitmute (terminal.sexy)";

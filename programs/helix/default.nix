@@ -43,6 +43,10 @@ in
     name = "nu"
     language-servers = ["nushell"]
 
+    [[language]]
+    name = "elixir"
+    indent = { tab-width = 2, unit = "  " }
+
     ## NextLS seems to not work in VSCode or Helix for me :(
     # [[language]]
     # name = "elixir"
@@ -72,12 +76,21 @@ in
     };
 
     themes = makeTrans [
+      "acme"
+      "ayu_dark"
+      "ayu_evolve"
       "base16_default"
+      "base16_default_dark"
       "bogster"
+      "bogster_light"
       "catppuccin_mocha"
+      "catppuccin_latte"
+      "curzon"
       "cyan_light"
+      "dracula"
       "dracula_at_night"
       "emacs"
+      "ferra"
       "flatwhite"
       "fleet_dark"
       "github_dark_high_contrast"
@@ -85,9 +98,14 @@ in
       "github_light_high_contrast"
       "gruvbox"
       "gruvbox_light"
+      "kaolin-dark"
+      "kaolin-light"
+      "kaolin-valley-dark"
       "meliora"
       "noctis"
       "noctis_bordo"
+      "modus_operandi_tinted"
+      "modus_vivendi_tinted"
       "onelight"
       "papercolor-dark"
       "papercolor-light"
