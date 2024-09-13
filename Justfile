@@ -28,7 +28,7 @@ edit: && _cleanup
 # Runs the `just` target when file changes are detected
 watch:
 	@echo "Watching for changes..."
-	@watchexec --clear=clear --postpone --quiet just apply
+	@fd | entr -pc just apply
 
 _cleanup:
 	zellij delete-session {{z_session}}

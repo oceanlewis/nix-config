@@ -32,7 +32,7 @@ let
     "Victor Mono" = { family = "Victor Mono"; };
     "JetBrains Mono" = {
       family = "JetBrainsMono Nerd Font";
-      light.normal.weight = 700;
+      light.normal.weight = 600;
       dark.normal.weight = 500;
     };
     "Cascadia Code" = {

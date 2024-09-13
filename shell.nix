@@ -11,7 +11,7 @@ mkShell {
     just
     ncurses
     git
-    watchexec
+    entr
   ]
   ++ lib.optionals stdenv.isDarwin [ ];
 }

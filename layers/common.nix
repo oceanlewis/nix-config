@@ -9,8 +9,8 @@ with pkgs; let
     # Felix alternative
     yazi
 
-    felix-fm
-    chafa # required for felix-fm file previews
+    # felix-fm
+    # chafa # required for felix-fm file previews
 
     file
     eza
@@ -30,7 +30,6 @@ with pkgs; let
     icdiff
     tokei
     entr
-    watchexec
     pv
     wget
     rsync
@@ -191,6 +190,11 @@ with pkgs; let
       k = "kubectl";
 
       fe = "yazi";
+
+      system-config = ''pushd "$HOME/.config/nixpkgs" && just edit && popd'';
+      sys = "system-config";
+      config = "system-config";
+      conf = "system-config";
     } //
     lsdAliases //
     lib.optionalAttrs isLinux {
