@@ -22,6 +22,10 @@ in
   nixpkgs.config.allowUnfree = true;
 
   xdg.configFile."helix/languages.toml".text = ''
+    [[language]]
+    name = "sql"
+    formatter = { command = "sleek", args = ["--indent-spaces=2"] }
+
     [language-server.nextls]
     command = "nextls"
     args = ["--stdio=true"]  
@@ -124,5 +128,8 @@ in
     nodePackages.vscode-langservers-extracted
     terraform-ls
     marksman
+
+    # SQL formatter
+    sleek
   ];
 }
