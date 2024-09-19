@@ -59,6 +59,14 @@ let
     then "config.colors = { background = '#000000' }"
     else null;
 
+  background_transparency = enabled:
+    let opacity = "0.91"; in
+    if enabled then ''
+      config.window_background_opacity = ${opacity}
+      config.text_background_opacity = ${opacity}
+    ''
+    else null;
+
   window_decorations =
     if pkgs.stdenv.isDarwin
     then "RESIZE|INTEGRATED_BUTTONS"
@@ -68,7 +76,7 @@ let
     left = "'1cell'";
     right = "'1cell'";
     top = "'0.5cell'";
-    bottom = "'0.5cell'";
+    bottom = "'0.0cell'";
   } //
   (if pkgs.stdenv.isDarwin
   then { top = "'65px'"; }
@@ -138,6 +146,7 @@ in
         ''
         (fancy_tab_bar true)
         (background_variant_override variant)
+        (background_transparency false)
         recompute_window_padding
         "return config"
       ]
