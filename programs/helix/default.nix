@@ -40,16 +40,16 @@ in
     formatter = { command = "nixpkgs-fmt" }
 
     [[language]]
+    name = "elixir"
+    indent = { tab-width = 2, unit = "  " }
+
+    [[language]]
     name = "java"
     language-servers = ["jdtls"]
 
     [[language]]
     name = "nu"
     language-servers = ["nushell"]
-
-    [[language]]
-    name = "elixir"
-    indent = { tab-width = 2, unit = "  " }
 
     ## NextLS seems to not work in VSCode or Helix for me :(
     # [[language]]
@@ -126,6 +126,7 @@ in
 
   home.packages = with pkgs; [
     nodePackages.vscode-langservers-extracted
+    docker-compose-language-service
     terraform-ls
     marksman
 

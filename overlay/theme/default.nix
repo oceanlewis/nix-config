@@ -40,7 +40,8 @@ let
     # standard.black = "trans_varua";
     # standard.black = "trans_papercolor-dark";
     # standard.black = "trans_base16_default_dark";
-    standard.black = "trans_pop-dark";
+    # standard.black = "trans_pop-dark";
+    standard.black = "trans_kaolin-dark";
     # standard.black = "trans_ayu_dark";
     high-contrast.light = standard.light;
     high-contrast.dark = "curzon";

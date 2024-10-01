@@ -118,6 +118,7 @@ in
       "jordanbaird-ice"
       "little-snitch"
       "pritunl"
+      "raycast"
       "rectangle-pro"
       "sfdx"
       "slack"

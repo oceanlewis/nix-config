@@ -60,10 +60,13 @@ let
     else null;
 
   background_transparency = enabled:
-    let opacity = "0.91"; in
+    let
+      text_opacity = "0.91";
+      background_opacity = "0.81";
+    in
     if enabled then ''
-      config.window_background_opacity = ${opacity}
-      config.text_background_opacity = ${opacity}
+      config.window_background_opacity = ${background_opacity}
+      config.text_background_opacity = ${text_opacity}
     ''
     else null;
 
@@ -146,7 +149,7 @@ in
         ''
         (fancy_tab_bar true)
         (background_variant_override variant)
-        (background_transparency false)
+        (background_transparency true)
         recompute_window_padding
         "return config"
       ]
