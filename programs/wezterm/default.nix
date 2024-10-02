@@ -136,6 +136,7 @@ in
           config.font = ${font_config font}
           config.font_size = ${toString font.size}
           config.line_height = ${toString font.line_height}
+          config.adjust_window_size_when_changing_font_size = false
           config.color_scheme = '${theme.wezterm}'
           config.hide_tab_bar_if_only_one_tab = true
           config.tab_bar_at_bottom = true
@@ -149,7 +150,7 @@ in
         ''
         (fancy_tab_bar true)
         (background_variant_override variant)
-        (background_transparency true)
+        (background_transparency false)
         recompute_window_padding
         "return config"
       ]
