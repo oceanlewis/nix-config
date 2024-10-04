@@ -93,7 +93,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users."ocean.lewis" =
-              import ./home/darwin-user.nix {
+              import ./home/desktop-user.nix {
                 username = "ocean.lewis";
                 homeDirectory = "/Users/ocean.lewis";
                 stateVersion = "22.11";

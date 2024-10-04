@@ -112,6 +112,7 @@ in
 
     casks = [
       "arc"
+      "equinox"
       "firefox"
       "firefox@nightly"
       "google-chrome"
