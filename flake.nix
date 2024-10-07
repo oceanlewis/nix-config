@@ -86,7 +86,7 @@
           ];
         };
         modules = [
-          ./host/armstrong/darwin-configuration.nix
+          ./host/armstrong/configuration.nix
           home-manager-master.darwinModules.home-manager
           {
             nixpkgs.config = config;

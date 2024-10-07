@@ -41,8 +41,8 @@ in
   };
 
   environment = {
-    # $ darwin-rebuild switch -I darwin-config=$HOME/.nixpkgs/darwin-configuration.nix
-    darwinConfig = "$HOME/.config/nixpkgs/darwin-configuration.nix";
+    # $ darwin-rebuild switch -I darwin-config=$HOME/.nixpkgs/host/wizard/configuration.nix
+    darwinConfig = "$HOME/.config/nixpkgs/host/wizard/configuration.nix";
 
     # Append paths to the system PATH
     #systemPath = [

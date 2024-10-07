@@ -116,6 +116,7 @@ in
       "firefox"
       "firefox@nightly"
       "google-chrome"
+      "handbrake"
       "jordanbaird-ice"
       "little-snitch"
       "pritunl"
