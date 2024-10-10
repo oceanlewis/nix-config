@@ -112,6 +112,7 @@ in
 
     casks = [
       "arc"
+      "chatgpt"
       "equinox"
       "firefox"
       "firefox@nightly"
