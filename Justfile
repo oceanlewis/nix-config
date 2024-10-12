@@ -1,4 +1,5 @@
 z_session := "nix"
+hostname := `hostname`
 
 _default:
 	@clear -x; just --list
@@ -13,7 +14,7 @@ update:
 
 alias rebuild := apply
 # Runs the `just` target for the current host
-apply target=`hostname`:
+apply target=hostname:
 	just {{target}}
 
 # Start a Zellij session to make quick edits
@@ -24,6 +25,9 @@ edit: && _cleanup
 		attach {{z_session}} \
 			--force-run-commands \
 			--create
+
+_theme host=hostname:
+	@$EDITOR ./host/{{hostname}}/theme.nix
 
 # Runs the `just` target when file changes are detected
 watch:

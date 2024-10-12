@@ -1,11 +1,11 @@
-{ name ? "standard"
+{ source ? null
+, name ? "standard"
 , variant ? "dark"
 , font ? { monospace = "DejaVu"; }
-, override ? { }
-}:
+, ...
+}@config:
 
 let
-
   bat-themes = rec {
     standard.light = "GitHub";
     standard.dark = "OneHalfDark";
@@ -152,18 +152,24 @@ let
         ''
       );
 
-in
-self: super: {
-  theme = rec {
-    inherit
-      name variant font;
+  configuredTheme = opt@{ name, variant, font, ... }: {
+    inherit name variant font;
 
-    helix = override.helix or (selectTheme "helix" helix-themes name variant);
+    helix = opt.helix or (selectTheme "helix" helix-themes name variant);
     zellij = selectTheme "zellij" zellij-themes name variant;
     bat = selectTheme "bat" bat-themes name variant;
     vivid = selectTheme "vivid" vivid-themes name variant;
     wezterm = selectTheme "wezterm" wezterm-themes name variant;
-    delta = bat;
+    delta = selectTheme "bat" bat-themes name variant;
     difftastic = difftasticTheme variant;
   };
+
+  settings =
+    if source != null
+    then config // import source
+    else config;
+
+in
+self: super: {
+  theme = configuredTheme settings;
 }

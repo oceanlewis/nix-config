@@ -2,14 +2,13 @@ layout {
   pane size=1 borderless=true {
     plugin location="zellij:tab-bar"
   }
-  pane split_direction="vertical" {
-    pane size="57%" edit="."
-    pane split_direction="horizontal" {
-      pane size="80%"
-      pane {
-        command "just"
-        args "watch"
-      }
+  pane split_direction="horizontal" {
+    pane command="just" {
+      args "_theme"
+    }
+    pane size="5"{
+      command "just"
+      args "watch"
     }
   }
   pane size=1 borderless=true {

@@ -78,11 +78,7 @@
         specialArgs = {
           inherit inputs;
           overlays = overlays ++ [
-            (import ./overlay/theme {
-              name = "standard";
-              variant = "light";
-              font.monospace = "JetBrains Mono";
-            })
+            (import ./overlay/theme { source = ./host/armstrong/theme.nix; })
           ];
         };
         modules = [
