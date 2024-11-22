@@ -75,10 +75,14 @@ in
         "A-h" = "goto_previous_buffer";
         "A-backspace" = ":buffer-close";
         "A-w" = ":buffer-close";
-        "A-f" = ":format";
+
+        space = {
+          "=" = ":format";
+          "f" = "file_picker_in_current_directory";
+          "F" = "file_picker";
+        };
       };
     };
-
     themes = makeTrans [
       "acme"
       "ayu_dark"

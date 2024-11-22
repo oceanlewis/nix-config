@@ -6,7 +6,7 @@ layout {
     pane command="just" {
       args "_theme"
     }
-    pane size="5"{
+    pane size="10%"{
       command "just"
       args "watch"
     }

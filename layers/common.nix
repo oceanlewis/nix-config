@@ -108,6 +108,7 @@ with pkgs; let
   lsdAliases = {
     er = "clear; ls -l";
     r = "clear; ls";
+    ra = "clear; ls -a";
     e = "clear";
     era = "clear; ls -la";
     err = "clear; ls -lR";
@@ -191,10 +192,17 @@ with pkgs; let
 
       fe = "yazi";
 
-      system-config = ''pushd "$HOME/.config/nixpkgs" && just edit && popd'';
+      system-config = ''$SHELL -c "cd \"\$HOME/.config/nixpkgs\" && just edit"'';
       sys = "system-config";
       config = "system-config";
       conf = "system-config";
+
+      # `git` helpers
+      gan = ''git add -N flake.* nix'';
+      grn = ''git reset -- flake.* nix'';
+
+      # Docker
+      dprune = "docker system prune --all --volumes";
     } //
     lsdAliases //
     lib.optionalAttrs isLinux {
