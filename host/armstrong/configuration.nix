@@ -26,6 +26,7 @@ in
     };
 
     settings = {
+      download-buffer-size = 134217728; # 2^27
       trusted-users = [ USER ];
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
@@ -140,7 +141,7 @@ in
     shellAliases = { };
     variables = { };
 
-    interactiveShellInit = ''
+    loginShellInit = ''
       eval "$(/opt/homebrew/bin/brew shellenv)"
     '';
   };
@@ -161,11 +162,15 @@ in
     };
   };
 
-  programs.zsh.enable = true;
-  programs.zsh.loginShellInit = ''
-    cd ${HOME}/Developer/hg
-  '';
-  programs.tmux.enable = true;
+  programs.zsh = {
+    enable = true;
+
+    loginShellInit = ''
+      eval "$(/opt/homebrew/bin/brew shellenv)"
+      cd ${HOME}/Developer/hg
+    '';
+  };
+
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog

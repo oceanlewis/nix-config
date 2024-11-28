@@ -1,21 +1,22 @@
 { pkgs }:
-with pkgs;
-[
-  (nerdfonts.override {
-    fonts = [
-      "FiraCode"
-      "DejaVuSansMono"
-      "Hack"
-      "IBMPlexMono"
-      "Go-Mono"
-      "ShareTechMono"
-      "Meslo"
-      "BigBlueTerminal"
-      "JetBrainsMono"
-      "CascadiaCode"
-    ];
-  })
-
-  victor-mono
-  inter
-]
+let
+  nerd-fonts = pkgs.nerd-fonts;
+in
+(
+  with pkgs; [
+    victor-mono
+    inter
+  ]
+) ++ (
+  with nerd-fonts; [
+    bigblue-terminal
+    blex-mono
+    caskaydia-cove
+    dejavu-sans-mono
+    fira-code
+    go-mono
+    hack
+    jetbrains-mono
+    meslo-lg
+  ]
+)
