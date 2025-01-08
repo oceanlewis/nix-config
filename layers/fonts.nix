@@ -18,5 +18,6 @@ in
     hack
     jetbrains-mono
     meslo-lg
+    zed-mono
   ]
 )

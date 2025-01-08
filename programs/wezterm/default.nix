@@ -2,14 +2,20 @@
 
 let
   inherit (pkgs) theme;
-  inherit (theme) variant;
+  inherit (theme) variant terminal;
   inherit (lib) lists;
 
   defaults = {
     size = 14;
     line_height = 1.4;
-    light.normal.weight = 500;
-    dark.normal.weight = 500;
+    light.normal = {
+      weight = 500;
+      stretch = "Normal";
+    };
+    dark.normal = {
+      weight = 500;
+      stretch = "Normal";
+    };
   };
 
   font = defaults // {
@@ -21,32 +27,50 @@ let
     "Monaco" = { family = "Monaco"; };
     "DejaVu" = { family = "DejaVuSansM Nerd Font"; };
     "Go" = { family = "GoMono Nerd Font"; };
-    "ShureTech" = { family = "ShureTechMono Nerd Font"; size = defaults.size + 1.5; };
+    "ShureTech" = {
+      family = "ShureTechMono Nerd Font";
+      size = defaults.size + 1.5;
+    };
     "SF Mono" = { family = "SF Mono"; };
     "Fira Mono" = { family = "Fira Mono"; };
     "Fira Code" = { family = "FiraCode Nerd Font Mono"; };
-    "IBM Plex Mono" = { family = "BlexMono Nerd Font Mono"; size = defaults.size + 0.5; };
+    "IBM Plex Mono" = {
+      family = "BlexMono Nerd Font Mono";
+      size = defaults.size + 0.5;
+    };
     "Comic Mono" = { family = "Comic Mono"; };
     "DM Mono" = { family = "DM Mono"; };
     "Hack" = { family = "Hack Nerd Font Mono"; };
     "Victor Mono" = { family = "Victor Mono"; };
     "JetBrains Mono" = {
       family = "JetBrainsMono Nerd Font";
-      light.normal.weight = 600;
-      dark.normal.weight = 500;
+      light.normal = defaults.light.normal // { weight = 600; };
+      dark.normal = defaults.dark.normal // { weight = 500; };
     };
     "Cascadia Code" = {
       family = "CaskaydiaCove Nerd Font";
       size = defaults.size + 1.0;
     };
+    "Zed Mono" = {
+      family = "ZedMono Nerd Font";
+      dark.normal = defaults.dark.normal // { weight = "Bold"; stretch = "Expanded"; };
+      light.normal = defaults.light.normal // { weight = "Medium"; stretch = "Expanded"; };
+    };
   }.${theme.font.monospace};
 
   font_config = font:
     let
-      options =
+      normalVariant =
         if variant == "light"
-        then "{weight=${toString font.light.normal.weight}}"
-        else "{weight=${toString font.dark.normal.weight}}";
+        then font.light.normal
+        else font.dark.normal;
+
+      weight =
+        if builtins.isString normalVariant.weight
+        then "'${normalVariant.weight}'"
+        else toString normalVariant.weight;
+
+      options = "{weight=${weight}, stretch='${normalVariant.stretch}'}";
     in
     "wezterm.font('${font.family}', ${options})";
 
@@ -150,7 +174,7 @@ in
         ''
         (fancy_tab_bar true)
         (background_variant_override variant)
-        (background_transparency false)
+        (background_transparency terminal.transparency)
         recompute_window_padding
         "return config"
       ]

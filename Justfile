@@ -27,7 +27,9 @@ edit: && _cleanup
 			--create
 
 _theme host=hostname:
-	@$EDITOR ./host/{{hostname}}/theme.nix
+	@hx --vsplit \
+		./host/{{hostname}}/configuration.nix \
+		./host/{{hostname}}/theme.nix:3:14
 
 # Runs the `just` target when file changes are detected
 watch:

@@ -98,17 +98,22 @@ in
       "hcavarsan/kftray"
     ];
 
+    masApps = {
+      "Craft: Write docs, AI editing" = 1487937127;
+    };
+
     brews = [
       "awscli"
       "gimme-aws-creds"
+      "hginsights/tap/gimme-snowflake-creds"
       "kubernetes-cli"
       "kubectx"
-      "hginsights/tap/gimme-snowflake-creds"
       {
         name = "kftray";
         args = [ "HEAD" ];
         link = true;
       }
+      "mas"
     ];
 
     casks = [
@@ -120,7 +125,8 @@ in
       "google-chrome"
       "handbrake"
       "jordanbaird-ice"
-      "little-snitch"
+      "lunar"
+      "mimestream"
       "pritunl"
       "raycast"
       "rectangle-pro"
@@ -136,7 +142,15 @@ in
   };
 
   environment = with pkgs; {
-    systemPackages = [ ncurses nushell zsh ];
+    systemPackages = [
+      ncurses
+      nushell
+      zsh
+
+      # Apple Shortcuts
+      # - "Set the default browser"
+      defaultbrowser
+    ];
     shells = [ nushell zsh ];
     shellAliases = { };
     variables = { };

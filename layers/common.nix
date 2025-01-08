@@ -76,7 +76,7 @@ with pkgs; let
     inetutils
 
     # Content
-    # yt-dlp
+    yt-dlp
 
     # Build Tools
     autoconf

@@ -2,6 +2,7 @@
 , name ? "standard"
 , variant ? "dark"
 , font ? { monospace = "DejaVu"; }
+, terminal ? { transparency = false; }
 , ...
 }@config:
 
@@ -36,7 +37,7 @@ let
 
   helix-themes = rec {
     standard.light = "trans_flatwhite";
-    standard.dark = "trans_bogster";
+    standard.dark = "trans_dracula";
     # standard.black = "trans_varua";
     # standard.black = "trans_papercolor-dark";
     # standard.black = "trans_base16_default_dark";
@@ -152,8 +153,8 @@ let
         ''
       );
 
-  configuredTheme = opt@{ name, variant, font, ... }: {
-    inherit name variant font;
+  configuredTheme = opt@{ name, variant, font, terminal, ... }: {
+    inherit name variant font terminal;
 
     helix = opt.helix or (selectTheme "helix" helix-themes name variant);
     zellij = selectTheme "zellij" zellij-themes name variant;

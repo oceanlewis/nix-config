@@ -1,6 +1,8 @@
 pane_frames false
 
 keybinds {
+  unbind "Ctrl q"
+
   scroll {
     bind "c" { Clear; }
   }
