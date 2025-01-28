@@ -1,8 +1,8 @@
-{ pkgs
-, lib
-, ...
+{
+  pkgs,
+  lib,
+  ...
 }:
-
 with pkgs;
 {
   home.packages = [
@@ -104,4 +104,3 @@ with pkgs;
     };
   };
 }
-

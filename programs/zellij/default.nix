@@ -1,4 +1,8 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  ...
+}:
 let
   inherit (lib) strings;
   inherit (pkgs) stdenv theme zjstatus;
@@ -58,7 +62,6 @@ let
     staticConfig
     pluginConfig
   ];
-
 in
 {
   programs.zellij.enable = true;

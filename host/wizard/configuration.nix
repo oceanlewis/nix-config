@@ -1,11 +1,13 @@
-{ config, pkgs, lib, ... }:
-
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
-
   HOST_NAME = "Wizard";
   USER = "armstrong";
   HOME = "/Users/${USER}";
-
 in
 {
   nixpkgs.config.allowUnfree = true;
@@ -78,71 +80,72 @@ in
   homebrew.enable = true;
 
   home-manager = {
-    users."${USER}" = { pkgs, ... }: {
+    users."${USER}" =
+      { pkgs, ... }:
+      {
+        imports = [
+          ../../layers/common.nix
+          ../../programs/nushell.nix
+          ../../programs/zoxide.nix
+          ../../programs/tmux.nix
+          ../../programs/starship.nix
+          ../../programs/git
+          ../../programs/neovim
+          ../../programs/alacritty
+        ];
 
-      imports = [
-        ../../layers/common.nix
-        ../../programs/nushell.nix
-        ../../programs/zoxide.nix
-        ../../programs/tmux.nix
-        ../../programs/starship.nix
-        ../../programs/git
-        ../../programs/neovim
-        ../../programs/alacritty
-      ];
+        programs.home-manager.enable = true;
 
-      programs.home-manager.enable = true;
+        home = {
+          stateVersion = "21.11";
+          username = USER;
+          homeDirectory = HOME;
+          packages = [ pkgs.direnv ];
 
-      home = {
-        stateVersion = "21.11";
-        username = USER;
-        homeDirectory = HOME;
-        packages = [ pkgs.direnv ];
+          sessionVariables = {
+            PAGER = "less -R";
+            EDITOR = "nvim";
+            VISUAL = "nvim";
+            TERM = "xterm-256color";
 
-        sessionVariables = {
-          PAGER = "less -R";
-          EDITOR = "nvim";
-          VISUAL = "nvim";
-          TERM = "xterm-256color";
+            XDG_CONFIG_HOME = "${HOME}/.config";
+            XDG_DATA_HOME = "${HOME}/.local/share";
+            XDG_DATA_DIRS = "${HOME}/.local/data";
+            XDG_RUNTIME_DIR = "${HOME}/.local/run";
 
-          XDG_CONFIG_HOME = "${HOME}/.config";
-          XDG_DATA_HOME = "${HOME}/.local/share";
-          XDG_DATA_DIRS = "${HOME}/.local/data";
-          XDG_RUNTIME_DIR = "${HOME}/.local/run";
+            # TODO: Refactor
+            FZF_DEFAULT_COMMAND = "fd --type f";
+            BAT_CONFIG_PATH = "${HOME}/.config/bat/config";
+            GOPATH = "${HOME}/Developer/go/";
+          };
 
-          # TODO: Refactor
-          FZF_DEFAULT_COMMAND = "fd --type f";
-          BAT_CONFIG_PATH = "${HOME}/.config/bat/config";
-          GOPATH = "${HOME}/Developer/go/";
+          file.".ideavimrc".text = ''
+            " Enable relative line numbers
+            set relativenumber
+            set number
+
+            " Integrate with system clipboard
+            set clipboard=unnamedplus,unnamed
+            let mapleader = " "
+            " yank to system clipboard
+            set clipboard=unnamed
+            set clipboard+=ideaput
+
+            "" Tab navigation
+            nnoremap <A-l> :tabnext<CR>
+            nnoremap <A-h> :tabprevious<CR>
+            nnoremap <A-BS> :tabclose<CR>
+
+            "" Code Navigation
+            nnoremap <S-CR> :action GotoDeclaration<CR>
+          '';
+
+          file."${HOME}/.config/nu/config.toml".onChange = ''
+            echo Linking in nushell config file
+            ln -sfv "${HOME}/.config/nu/config.toml" "${HOME}/Library/Application Support/org.nushell.nu/config.toml"
+          '';
         };
-
-        file.".ideavimrc".text = ''
-          " Enable relative line numbers
-          set relativenumber
-          set number
-        
-          " Integrate with system clipboard
-          set clipboard=unnamedplus,unnamed
-          let mapleader = " "
-          " yank to system clipboard
-          set clipboard=unnamed
-          set clipboard+=ideaput
-        
-          "" Tab navigation
-          nnoremap <A-l> :tabnext<CR>
-          nnoremap <A-h> :tabprevious<CR>
-          nnoremap <A-BS> :tabclose<CR>
-        
-          "" Code Navigation
-          nnoremap <S-CR> :action GotoDeclaration<CR>
-        '';
-
-        file."${HOME}/.config/nu/config.toml".onChange = ''
-          echo Linking in nushell config file
-          ln -sfv "${HOME}/.config/nu/config.toml" "${HOME}/Library/Application Support/org.nushell.nu/config.toml"
-        '';
       };
-    };
   };
 
   # Used for backwards compatibility, please read the changelog before changing.

@@ -1,9 +1,9 @@
-{ stdenv
-, lib
-, fetchFromGitHub
-, rustPlatform
+{
+  stdenv,
+  lib,
+  fetchFromGitHub,
+  rustPlatform,
 }:
-
 rustPlatform.buildRustPackage {
   pname = "itm";
   version = "0.3.1";

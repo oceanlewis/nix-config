@@ -1,5 +1,10 @@
-{ config, lib, pkgs, modulesPath, ... }:
-
+{
+  config,
+  lib,
+  pkgs,
+  modulesPath,
+  ...
+}:
 {
   services.udev.extraRules = ''
     # STM32F3DISCOVERY - ST-LINK/V2.1

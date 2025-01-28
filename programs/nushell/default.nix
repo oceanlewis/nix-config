@@ -1,15 +1,16 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  ...
+}:
 let
   inherit (pkgs) runCommandLocal zoxide nushell;
   inherit (pkgs.nushellPlugins) polars;
 
-  zoxideInit =
-    runCommandLocal "zoxide-init-nushell"
-      { buildInputs = [ zoxide ]; }
-      ''
-        mkdir $out
-        zoxide init nushell > $out/init.nu
-      '';
+  zoxideInit = runCommandLocal "zoxide-init-nushell" { buildInputs = [ zoxide ]; } ''
+    mkdir $out
+    zoxide init nushell > $out/init.nu
+  '';
 
   config = lib.concatLines [
     (builtins.readFile ./config.nu)

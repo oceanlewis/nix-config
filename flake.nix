@@ -19,14 +19,15 @@
   };
 
   outputs =
-    inputs@{ self
-    , home-manager-master
-    , home-manager-nixos
-    , nixpkgs-unstable
-    , nixos-stable
-    , darwin
-    , flake-utils
-    , zjstatus
+    inputs@{
+      self,
+      home-manager-master,
+      home-manager-nixos,
+      nixpkgs-unstable,
+      nixos-stable,
+      darwin,
+      flake-utils,
+      zjstatus,
     }:
     let
       overlays = [
@@ -43,17 +44,21 @@
       nixosSystem-stable = nixos-stable.lib.nixosSystem;
       darwinSystem = darwin.lib.darwinSystem;
     in
-    flake-utils.lib.eachDefaultSystem
-      (system: {
-        devShells.default = import ./shell.nix {
-          pkgs =
-            if builtins.elem system [ "aarch64-darwin" "x86_64-darwin" ]
-            then import nixpkgs-unstable { inherit overlays system config; }
-            else import nixos-stable { inherit overlays system config; };
-        };
-      })
-    //
-    {
+    flake-utils.lib.eachDefaultSystem (system: {
+      devShells.default = import ./shell.nix {
+        pkgs =
+          if
+            builtins.elem system [
+              "aarch64-darwin"
+              "x86_64-darwin"
+            ]
+          then
+            import nixpkgs-unstable { inherit overlays system config; }
+          else
+            import nixos-stable { inherit overlays system config; };
+      };
+    })
+    // {
       nixosConfigurations.ghastly = nixosSystem-stable rec {
         system = "aarch64-linux";
         modules = [
@@ -88,12 +93,11 @@
             nixpkgs.config = config;
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users."ocean.lewis" =
-              import ./home/desktop-user.nix {
-                username = "ocean.lewis";
-                homeDirectory = "/Users/ocean.lewis";
-                stateVersion = "22.11";
-              };
+            home-manager.users."ocean.lewis" = import ./home/desktop-user.nix {
+              username = "ocean.lewis";
+              homeDirectory = "/Users/ocean.lewis";
+              stateVersion = "22.11";
+            };
           }
         ];
       };

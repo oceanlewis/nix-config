@@ -1,24 +1,23 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  ...
+}:
 let
-
-  makeTrans = themes:
+  makeTrans =
+    themes:
     let
       inherit (lib) attrsets;
       inherit (attrsets) genAttrs mapAttrs' nameValuePair;
 
-      t = genAttrs themes (theme:
-        { inherits = theme; "ui.background" = { }; }
-      );
+      t = genAttrs themes (theme: {
+        inherits = theme;
+        "ui.background" = { };
+      });
     in
-    mapAttrs'
-      (name: value:
-        nameValuePair "trans_${name}" value
-      )
-      t;
-
+    mapAttrs' (name: value: nameValuePair "trans_${name}" value) t;
 in
 {
-
   nixpkgs.config.allowUnfree = true;
 
   xdg.configFile."helix/languages.toml".text = ''
@@ -28,7 +27,7 @@ in
 
     [language-server.nextls]
     command = "nextls"
-    args = ["--stdio=true"]  
+    args = ["--stdio=true"]
 
     [language-server.nixd]
     command = "nixd"
@@ -40,7 +39,7 @@ in
     [[language]]
     name = "nix"
     language-servers = ["nixd"]
-    formatter = { command = "alejandra" }
+    formatter = { command = "nixfmt" }
 
     [[language]]
     name = "elixir"
@@ -138,6 +137,7 @@ in
     marksman
     nixd
     alejandra
+    nixfmt-rfc-style
 
     # SQL formatter
     sleek

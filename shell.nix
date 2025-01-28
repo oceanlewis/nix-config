@@ -1,6 +1,5 @@
 { pkgs }:
 with pkgs;
-
 mkShell {
   buildInputs = [
     helix
@@ -12,6 +11,5 @@ mkShell {
     ncurses
     git
     entr
-  ]
-  ++ lib.optionals stdenv.isDarwin [ ];
+  ] ++ lib.optionals stdenv.isDarwin [ ];
 }

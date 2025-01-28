@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
-
+{
+  config,
+  pkgs,
+  ...
+}:
 {
   nixpkgs.config.allowUnfree = true;
   nix.settings = {
@@ -45,8 +48,14 @@
   };
 
   services.xserver.layout = "us";
-  services.xserver.videoDrivers = [ "vmware" "amdgpu" "radeon" "nouveau" "modesetting" "fbdev" ];
-
+  services.xserver.videoDrivers = [
+    "vmware"
+    "amdgpu"
+    "radeon"
+    "nouveau"
+    "modesetting"
+    "fbdev"
+  ];
 
   fonts = {
     enableDefaultFonts = true;
@@ -55,11 +64,14 @@
       inter
       open-sans
       roboto-mono
-      (
-        nerdfonts.override {
-          fonts = [ "FiraCode" "DejaVuSansMono" "Hack" "IBMPlexMono" ];
-        }
-      )
+      (nerdfonts.override {
+        fonts = [
+          "FiraCode"
+          "DejaVuSansMono"
+          "Hack"
+          "IBMPlexMono"
+        ];
+      })
     ];
   };
 
@@ -82,7 +94,13 @@
   fileSystems."/mnt" = {
     device = ".host:/";
     fsType = "fuse./run/current-system/sw/bin/vmhgfs-fuse";
-    options = [ "uid=1000" "gid=1000" "allow_other" "defaults" "auto_unmount" ];
+    options = [
+      "uid=1000"
+      "gid=1000"
+      "allow_other"
+      "defaults"
+      "auto_unmount"
+    ];
   };
 
   # Enable Flatpak

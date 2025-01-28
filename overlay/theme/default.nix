@@ -1,11 +1,15 @@
-{ source ? null
-, name ? "standard"
-, variant ? "dark"
-, font ? { monospace = "DejaVu"; }
-, terminal ? { transparency = false; }
-, ...
+{
+  source ? null,
+  name ? "standard",
+  variant ? "dark",
+  font ? {
+    monospace = "DejaVu";
+  },
+  terminal ? {
+    transparency = false;
+  },
+  ...
 }@config:
-
 let
   bat-themes = rec {
     standard.light = "GitHub";
@@ -42,7 +46,7 @@ let
     # standard.black = "trans_papercolor-dark";
     # standard.black = "trans_base16_default_dark";
     # standard.black = "trans_pop-dark";
-    standard.black = standard.dark; #"trans_kaolin-dark";
+    standard.black = standard.dark; # "trans_kaolin-dark";
     # standard.black = "trans_ayu_dark";
     high-contrast.light = standard.light;
     high-contrast.dark = "curzon";
@@ -106,33 +110,29 @@ let
     nord.dark = "nord";
   };
 
-  selectTheme = programName: themeMap: name: variant:
+  selectTheme =
+    programName: themeMap: name: variant:
     themeMap.${name}.${variant} or (
       let
-        themeNames = (builtins.attrNames themeMap);
-        availableOptions =
-          builtins.foldl'
-            (acc: name:
-              let
-                nameVariants = builtins.attrNames themeMap.${name};
-                expanded = builtins.map
-                  (variant: "  - ${name}.${variant}")
-                  nameVariants;
-              in
-              acc ++ expanded
-            )
-            [ ]
-            themeNames;
+        themeNames = builtins.attrNames themeMap;
+        availableOptions = builtins.foldl' (
+          acc: name:
+          let
+            nameVariants = builtins.attrNames themeMap.${name};
+            expanded = builtins.map (variant: "  - ${name}.${variant}") nameVariants;
+          in
+          acc ++ expanded
+        ) [ ] themeNames;
       in
       throw ''
         Unsupported name-variant combination for ${programName} theme: ${name}.${variant}
         Supported combinations:
-        ${builtins.concatStringsSep "\n" ( availableOptions)}
+        ${builtins.concatStringsSep "\n" availableOptions}
       ''
     );
 
-
-  difftasticTheme = variant:
+  difftasticTheme =
+    variant:
     let
       themeMap = {
         dark = "dark";
@@ -140,36 +140,40 @@ let
         light = "light";
       };
     in
-      themeMap.${variant} or (
-        throw ''
-          Unsupported name-variant combination for difftastic theme: ${variant}
-          Supported combinations:
-          ${
-            builtins.concatStringsSep "\n" (
-              builtins.map (attrName: "  - ${attrName}")
-                (builtins.attrNames themeMap)
-            )
-          }
-        ''
-      );
+    themeMap.${variant} or (throw ''
+      Unsupported name-variant combination for difftastic theme: ${variant}
+      Supported combinations:
+      ${builtins.concatStringsSep "\n" (
+        builtins.map (attrName: "  - ${attrName}") (builtins.attrNames themeMap)
+      )}
+    '');
 
-  configuredTheme = opt@{ name, variant, font, terminal, ... }: {
-    inherit name variant font terminal;
+  configuredTheme =
+    opt@{
+      name,
+      variant,
+      font,
+      terminal,
+      ...
+    }:
+    {
+      inherit
+        name
+        variant
+        font
+        terminal
+        ;
 
-    helix = opt.helix or (selectTheme "helix" helix-themes name variant);
-    zellij = selectTheme "zellij" zellij-themes name variant;
-    bat = selectTheme "bat" bat-themes name variant;
-    vivid = selectTheme "vivid" vivid-themes name variant;
-    wezterm = selectTheme "wezterm" wezterm-themes name variant;
-    delta = selectTheme "bat" bat-themes name variant;
-    difftastic = difftasticTheme variant;
-  };
+      helix = opt.helix or (selectTheme "helix" helix-themes name variant);
+      zellij = selectTheme "zellij" zellij-themes name variant;
+      bat = selectTheme "bat" bat-themes name variant;
+      vivid = selectTheme "vivid" vivid-themes name variant;
+      wezterm = selectTheme "wezterm" wezterm-themes name variant;
+      delta = selectTheme "bat" bat-themes name variant;
+      difftastic = difftasticTheme variant;
+    };
 
-  settings =
-    if source != null
-    then config // import source
-    else config;
-
+  settings = if source != null then config // import source else config;
 in
 self: super: {
   theme = configuredTheme settings;

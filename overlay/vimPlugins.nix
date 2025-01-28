@@ -1,5 +1,4 @@
 self: super:
-
 let
   inherit (super) vimUtils fetchFromGitHub;
 
@@ -37,7 +36,6 @@ let
       };
     };
   };
-
 in
 {
   vimPlugins = super.vimPlugins // customPackages;

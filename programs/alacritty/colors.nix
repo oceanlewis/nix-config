@@ -1,5 +1,4 @@
 { pkgs }:
-
 let
   inherit (pkgs) theme;
 
@@ -75,13 +74,12 @@ let
     };
 
     indexed_colors = [ ];
-
   };
 
   themes."standard-black" = {
     primary = {
-      background = "0x000000"; #"0x1A1A1A";
-      foreground = "0xFFFFFF"; #"0xFAEED9"; # Sepia
+      background = "0x000000"; # "0x1A1A1A";
+      foreground = "0xFFFFFF"; # "0xFAEED9"; # Sepia
       bright_foreground = "0xFF9C9C";
     };
 
@@ -265,9 +263,9 @@ let
 
     indexed_colors = [ ];
   };
-  themes."monalisa-black" =
-    pkgs.lib.attrsets.recursiveUpdate themes."monalisa-dark"
-      { primary.background = "0x000000"; };
+  themes."monalisa-black" = pkgs.lib.attrsets.recursiveUpdate themes."monalisa-dark" {
+    primary.background = "0x000000";
+  };
 
   themes."snazzy-dark" = {
     primary = {
@@ -342,17 +340,11 @@ let
       white = "0xECEFF4";
     };
   };
-
 in
-  themes."${theme.name}-${theme.variant}" or (
-    throw ''
-      Unsupported name-variant combination for alacritty theme: ${theme.name}-${theme.variant}
-      Supported combinations:
-      ${
-        builtins.concatStringsSep "\n" (
-          builtins.map (attrName: "  - ${attrName}")
-            (builtins.attrNames themes)
-        )
-      }
-    ''
-  )
+themes."${theme.name}-${theme.variant}" or (throw ''
+  Unsupported name-variant combination for alacritty theme: ${theme.name}-${theme.variant}
+  Supported combinations:
+  ${builtins.concatStringsSep "\n" (
+    builtins.map (attrName: "  - ${attrName}") (builtins.attrNames themes)
+  )}
+'')

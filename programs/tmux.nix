@@ -1,7 +1,5 @@
 { pkgs, ... }:
-
 let
-
   setPrefix = ''
     # Use ` as control character
     unbind C-b
@@ -36,12 +34,14 @@ let
   '';
 
   enableCopyToSystemClipboard =
-    if pkgs.stdenv.isLinux then ''
-      bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
-    ''
-    else ''
-      bind-key -T copy-mode-vi 'y' send -X copy-selection-and-cancel
-    '';
+    if pkgs.stdenv.isLinux then
+      ''
+        bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
+      ''
+    else
+      ''
+        bind-key -T copy-mode-vi 'y' send -X copy-selection-and-cancel
+      '';
 
   selectDoesNotResetCursorPosition = ''
     unbind-key -T copy-mode-vi MouseDragEnd1Pane
@@ -100,9 +100,7 @@ let
       set -g status-position bottom
     '';
   };
-
 in
-
 {
   # Program Definition
   # - https://github.com/rycee/home-manager/blob/master/modules/programs/tmux.nix

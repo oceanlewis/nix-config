@@ -1,7 +1,8 @@
-{ username
-, homeDirectory
-, stateVersion
-, ...
+{
+  username,
+  homeDirectory,
+  stateVersion,
+  ...
 }:
 {
   imports = [

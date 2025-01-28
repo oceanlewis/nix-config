@@ -1,111 +1,116 @@
-{ pkgs, lib, ... }:
-
-with pkgs; let
+{
+  pkgs,
+  lib,
+  ...
+}:
+with pkgs;
+let
   inherit (pkgs.stdenv) isDarwin isLinux;
 
-  packages = [
-    # Files & Text
+  packages =
+    [
+      # Files & Text
 
-    # Felix alternative
-    yazi
+      # Felix alternative
+      yazi
 
-    # felix-fm
-    # chafa # required for felix-fm file previews
+      # felix-fm
+      # chafa # required for felix-fm file previews
 
-    file
-    eza
-    fd
-    ripgrep
-    ack
-    sd
-    grex
-    fzf
-    zoxide
-    bat
-    ijq
-    jq
-    yq-go
-    mdcat
-    glow
-    icdiff
-    tokei
-    entr
-    pv
-    wget
-    rsync
-    unzip
-    vivid
-    dua
-    duf
-    du-dust
-    hexyl
-    iconv
+      file
+      eza
+      fd
+      ripgrep
+      ack
+      sd
+      grex
+      fzf
+      zoxide
+      bat
+      ijq
+      jq
+      yq-go
+      mdcat
+      glow
+      icdiff
+      tokei
+      entr
+      pv
+      wget
+      rsync
+      unzip
+      vivid
+      dua
+      duf
+      du-dust
+      hexyl
+      iconv
 
-    # Multimedia
-    ffmpeg
+      # Multimedia
+      ffmpeg
 
-    # Shells and Unix Environment
-    # (pkgs.callPackage ../packages/dingus.nix { })
-    # (pkgs.callPackage ../packages/itm { })
+      # Shells and Unix Environment
+      # (pkgs.callPackage ../packages/dingus.nix { })
+      # (pkgs.callPackage ../packages/itm { })
 
-    # Chat & Browsing
-    # irssi
-    w3m
+      # Chat & Browsing
+      # irssi
+      w3m
 
-    # Identity Management
-    gnupg
+      # Identity Management
+      gnupg
 
-    ## Writing Tools
-    mdbook
+      ## Writing Tools
+      mdbook
 
-    # Process Management
-    killall
-    htop
-    btop
-    procs
-    bandwhich
-    bottom
+      # Process Management
+      killall
+      htop
+      btop
+      procs
+      bandwhich
+      bottom
 
-    # Device Management
-    smartmontools
+      # Device Management
+      smartmontools
 
-    # Networking
-    nmap
-    # See https://github.com/NixOS/nixpkgs/issues/175875
-    # httpie
-    inetutils
+      # Networking
+      nmap
+      # See https://github.com/NixOS/nixpkgs/issues/175875
+      # httpie
+      inetutils
 
-    # Content
-    yt-dlp
+      # Content
+      yt-dlp
 
-    # Build Tools
-    autoconf
-    pkg-config
-    gnumake
-    just
+      # Build Tools
+      autoconf
+      pkg-config
+      gnumake
+      just
 
-    # BEAM Languages
-    next-ls
+      # BEAM Languages
+      next-ls
 
-    # Languages
-    exercism
+      # Languages
+      exercism
 
-    # Nix
-    cachix
-    alejandra
-    nixfmt-rfc-style
-    nil
-    nixd
-    nix-tree
+      # Nix
+      cachix
+      alejandra
+      nixfmt-rfc-style
+      nil
+      nixd
+      nix-tree
 
-    # Kubernetes
-    k9s
-  ]
-  ++ lib.optionals isLinux [
-    xsel # rmesg
-    xclip
-    usbutils # lsusb and others
-  ];
+      # Kubernetes
+      k9s
+    ]
+    ++ lib.optionals isLinux [
+      xsel # rmesg
+      xclip
+      usbutils # lsusb and others
+    ];
 
   lsdAliases = {
     er = "clear; ls -l";
@@ -127,97 +132,99 @@ with pkgs; let
     rea = "clear; ls -a *";
   };
 
-
   shellFor = program: {
-    sessionVariables = {
-      CARGO_TARGET_DIR = "$HOME/.cargo/target";
-    } // lib.optional isLinux {
-      PATH = "$HOME/.local/bin:$HOME/.cargo/bin:$PATH";
-    } // lib.optional isDarwin {
-      PATH = "$HOME/.cargo/bin:$PATH";
-      TMUX_TMPDIR = "$XDG_RUNTIME_DIR";
-    };
-
-    init = ''
-      set -o vi
-
-      function purge_docker() {
-        docker system prune --force
-        docker volume prune --force
-        docker image prune --force
-        docker container prune --force
+    sessionVariables =
+      {
+        CARGO_TARGET_DIR = "$HOME/.cargo/target";
       }
+      // lib.optional isLinux {
+        PATH = "$HOME/.local/bin:$HOME/.cargo/bin:$PATH";
+      }
+      // lib.optional isDarwin {
+        PATH = "$HOME/.cargo/bin:$PATH";
+        TMUX_TMPDIR = "$XDG_RUNTIME_DIR";
+      };
 
-      if test -x "$(which direnv)"; then
-        eval "$(direnv hook ${program})"
-      fi
+    init =
+      ''
+        set -o vi
 
-      if test -x "$(which zoxide)"; then
-        eval "$(zoxide init ${program})"
-      fi
-    ''
-    +
-    lib.optionalString isDarwin ''
-      if ! test -d $TMUX_TMPDIR; then
-        mkdir -p $TMUX_TMPDIR
-      fi
+        function purge_docker() {
+          docker system prune --force
+          docker volume prune --force
+          docker image prune --force
+          docker container prune --force
+        }
 
-      if [ "$(uname)" = "Darwin" -a -n "$NIX_LINK" -a -f $NIX_LINK/etc/X11/fonts.conf ]; then
-        export FONTCONFIG_FILE=$NIX_LINK/etc/X11/fonts.conf
-      fi
-    '';
+        if test -x "$(which direnv)"; then
+          eval "$(direnv hook ${program})"
+        fi
 
-    aliases = {
-      # Git
-      eg = "clear; git status";
-      egg = "clear; git status; echo; git diff";
-      egc = "clear; git status; echo; git diff --cached";
+        if test -x "$(which zoxide)"; then
+          eval "$(zoxide init ${program})"
+        fi
+      ''
+      + lib.optionalString isDarwin ''
+        if ! test -d $TMUX_TMPDIR; then
+          mkdir -p $TMUX_TMPDIR
+        fi
 
-      # Tmux
-      te = "tmux list-sessions";
-      ta = "tmux attach";
+        if [ "$(uname)" = "Darwin" -a -n "$NIX_LINK" -a -f $NIX_LINK/etc/X11/fonts.conf ]; then
+          export FONTCONFIG_FILE=$NIX_LINK/etc/X11/fonts.conf
+        fi
+      '';
 
-      # Zellij
-      za = "zellij attach";
-      ze = "zellij list-sessions";
-      zd = "zellij delete-all-sessions --yes";
-      zw = "zellij -l welcome";
-      zri = "zellij run --in-place";
+    aliases =
+      {
+        # Git
+        eg = "clear; git status";
+        egg = "clear; git status; echo; git diff";
+        egc = "clear; git status; echo; git diff --cached";
 
-      tf = "terraform";
+        # Tmux
+        te = "tmux list-sessions";
+        ta = "tmux attach";
 
-      zvi = ''nvim $(fzf --preview 'bat --style=numbers --color=always {}')'';
-      zhx = ''hx $(fzf --preview 'bat --style=numbers --color=always {}')'';
-      zgc = "git checkout $(git branch | fzf)";
+        # Zellij
+        za = "zellij attach";
+        ze = "zellij list-sessions";
+        zd = "zellij delete-all-sessions --yes";
+        zw = "zellij -l welcome";
+        zri = "zellij run --in-place";
 
-      k = "kubectl";
+        tf = "terraform";
 
-      fe = "yazi";
+        zvi = ''nvim $(fzf --preview 'bat --style=numbers --color=always {}')'';
+        zhx = ''hx $(fzf --preview 'bat --style=numbers --color=always {}')'';
+        zgc = "git checkout $(git branch | fzf)";
 
-      system-config = ''$SHELL -c "cd \"\$HOME/.config/nixpkgs\" && just edit"'';
-      sys = "system-config";
-      config = "system-config";
-      conf = "system-config";
+        k = "kubectl";
 
-      # `git` helpers
-      gan = ''git add -N flake.* nix'';
-      grn = ''git reset -- flake.* nix'';
+        fe = "yazi";
 
-      # Docker
-      dprune = "docker system prune --all --volumes";
-    } //
-    lsdAliases //
-    lib.optionalAttrs isLinux {
-      open = "xdg-open";
-      cdcopy = "pwd | xsel -ib";
-      cdpaste = "cd \"$(xsel -ob)\"";
-    } //
-    lib.optionalAttrs isDarwin {
-      cdcopy = "pwd | pbcopy";
-      cdpaste = "cd \"$(pbpaste)\"";
-    };
+        system-config = ''$SHELL -c "cd \"\$HOME/.config/nixpkgs\" && just edit"'';
+        sys = "system-config";
+        config = "system-config";
+        conf = "system-config";
+
+        # `git` helpers
+        gan = ''git add -N flake.* nix'';
+        grn = ''git reset -- flake.* nix'';
+
+        # Docker
+        dprune = "docker system prune --all --volumes";
+      }
+      // lsdAliases
+      // lib.optionalAttrs isLinux {
+        open = "xdg-open";
+        cdcopy = "pwd | xsel -ib";
+        cdpaste = "cd \"$(xsel -ob)\"";
+      }
+      // lib.optionalAttrs isDarwin {
+        cdcopy = "pwd | pbcopy";
+        cdpaste = "cd \"$(pbpaste)\"";
+      };
   };
-
 in
 {
   home.packages = packages;
@@ -240,7 +247,10 @@ in
 
   # Program Definition
   # - https://github.com/rycee/home-manager/blob/master/modules/programs/zsh.nix
-  programs.zsh = let shell = shellFor "zsh"; in
+  programs.zsh =
+    let
+      shell = shellFor "zsh";
+    in
     {
       enable = true;
       enableVteIntegration = true;
@@ -279,12 +289,23 @@ in
     enableBashIntegration = true;
   };
 
-  programs.bash = let shell = shellFor "bash"; in
+  programs.bash =
+    let
+      shell = shellFor "bash";
+    in
     {
       enable = false;
       shellAliases = shell.aliases;
-      historyControl = [ "erasedups" "ignoredups" "ignorespace" ];
-      historyIgnore = [ "ls" "cd" "exit" ];
+      historyControl = [
+        "erasedups"
+        "ignoredups"
+        "ignorespace"
+      ];
+      historyIgnore = [
+        "ls"
+        "cd"
+        "exit"
+      ];
       initExtra = shell.init;
     };
 

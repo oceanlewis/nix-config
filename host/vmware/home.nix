@@ -1,12 +1,13 @@
-{ pkgs, config, lib, ... }:
-
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 let
-
   USER = "armstrong";
   HOME = "/home/${USER}";
-
 in
-
 {
   programs.home-manager.enable = true;
 

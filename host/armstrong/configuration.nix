@@ -2,11 +2,13 @@
   pkgs,
   overlays,
   ...
-}: let
+}:
+let
   HOST_NAME = "Armstrong";
   USER = "ocean.lewis";
   HOME = "/Users/${USER}";
-in {
+in
+{
   nixpkgs.overlays = overlays;
   nixpkgs.config.allowUnfree = true;
 
@@ -31,7 +33,7 @@ in {
 
     settings = {
       download-buffer-size = 134217728; # 2^27
-      trusted-users = [USER];
+      trusted-users = [ USER ];
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
@@ -81,7 +83,7 @@ in {
     };
   };
 
-  fonts.packages = import ../../layers/fonts.nix {inherit pkgs;};
+  fonts.packages = import ../../layers/fonts.nix { inherit pkgs; };
 
   users.users."${USER}" = {
     home = HOME;
@@ -116,7 +118,7 @@ in {
       "kubectx"
       {
         name = "kftray";
-        args = ["HEAD"];
+        args = [ "HEAD" ];
         link = true;
       }
       "mas"
@@ -161,9 +163,12 @@ in {
       # - "Set the default browser"
       defaultbrowser
     ];
-    shells = [nushell zsh];
-    shellAliases = {};
-    variables = {};
+    shells = [
+      nushell
+      zsh
+    ];
+    shellAliases = { };
+    variables = { };
 
     loginShellInit = ''
       eval "$(/opt/homebrew/bin/brew shellenv)"

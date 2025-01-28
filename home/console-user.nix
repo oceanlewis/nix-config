@@ -1,6 +1,7 @@
-{ pkgs
-, config
-, theme-config ? {}
+{
+  pkgs,
+  config,
+  theme-config ? { },
 }:
 {
   nixpkgs.overlays = pkgs.overlays ++ [
