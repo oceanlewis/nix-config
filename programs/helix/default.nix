@@ -30,14 +30,17 @@ in
     command = "nextls"
     args = ["--stdio=true"]  
 
+    [language-server.nixd]
+    command = "nixd"
+
     [language-server.nushell]
     command = "nu"
     args = ["--lsp"]
 
     [[language]]
     name = "nix"
-    language-servers = ["nil"]
-    formatter = { command = "nixpkgs-fmt" }
+    language-servers = ["nixd"]
+    formatter = { command = "alejandra" }
 
     [[language]]
     name = "elixir"
@@ -133,6 +136,8 @@ in
     docker-compose-language-service
     terraform-ls
     marksman
+    nixd
+    alejandra
 
     # SQL formatter
     sleek

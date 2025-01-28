@@ -1,6 +1,6 @@
 {
   name = "standard";
-  variant = "dark";
+  variant = "light";
   font.monospace = "JetBrains Mono";
-  terminal.transparency = true;
+  terminal.transparency = false;
 }

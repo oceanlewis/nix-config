@@ -1,13 +1,12 @@
-{ pkgs, overlays, ... }:
-
-let
-
+{
+  pkgs,
+  overlays,
+  ...
+}: let
   HOST_NAME = "Armstrong";
   USER = "ocean.lewis";
   HOME = "/Users/${USER}";
-
-in
-{
+in {
   nixpkgs.overlays = overlays;
   nixpkgs.config.allowUnfree = true;
 
@@ -22,18 +21,24 @@ in
 
     optimise = {
       automatic = true;
-      interval = [{ Hour = 7; Minute = 0; }];
+      interval = [
+        {
+          Hour = 7;
+          Minute = 0;
+        }
+      ];
     };
 
     settings = {
       download-buffer-size = 134217728; # 2^27
-      trusted-users = [ USER ];
+      trusted-users = [USER];
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
     };
   };
+
   networking = {
     computerName = HOST_NAME;
     hostName = HOST_NAME;
@@ -63,10 +68,12 @@ in
       NSAutomaticQuoteSubstitutionEnabled = false;
       NSAutomaticSpellingCorrectionEnabled = false;
     };
+
     alf = {
       globalstate = 1; # Prevent unauthorized incoming requests
       stealthenabled = 1; # Ignore incoming ICMP traffic (pings, etc.)
     };
+
     dock = {
       autohide = true;
       mineffect = "scale"; # Minimize to dock settings
@@ -74,8 +81,7 @@ in
     };
   };
 
-
-  fonts.packages = import ../../layers/fonts.nix { inherit pkgs; };
+  fonts.packages = import ../../layers/fonts.nix {inherit pkgs;};
 
   users.users."${USER}" = {
     home = HOME;
@@ -110,7 +116,7 @@ in
       "kubectx"
       {
         name = "kftray";
-        args = [ "HEAD" ];
+        args = ["HEAD"];
         link = true;
       }
       "mas"
@@ -136,7 +142,11 @@ in
       "utm"
       "visual-studio-code"
       "vlc"
-      { name = "wezterm@nightly"; greedy = true; }
+      {
+        name = "wezterm@nightly";
+        greedy = true;
+      }
+      "zen-browser"
       "zoom"
     ];
   };
@@ -151,9 +161,9 @@ in
       # - "Set the default browser"
       defaultbrowser
     ];
-    shells = [ nushell zsh ];
-    shellAliases = { };
-    variables = { };
+    shells = [nushell zsh];
+    shellAliases = {};
+    variables = {};
 
     loginShellInit = ''
       eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -184,7 +194,6 @@ in
       cd ${HOME}/Developer/hg
     '';
   };
-
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog

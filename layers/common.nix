@@ -85,15 +85,17 @@ with pkgs; let
     just
 
     # BEAM Languages
-    # next-ls
+    next-ls
 
     # Languages
     exercism
 
     # Nix
     cachix
-    nixpkgs-fmt
+    alejandra
+    nixfmt-rfc-style
     nil
+    nixd
     nix-tree
 
     # Kubernetes
