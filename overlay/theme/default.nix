@@ -48,7 +48,7 @@ let
     # standard.black = "trans_pop-dark";
     standard.black = standard.dark; # "trans_kaolin-dark";
     # standard.black = "trans_ayu_dark";
-    high-contrast.light = standard.light;
+    high-contrast.light = "trans_papercolor-light";
     high-contrast.dark = "curzon";
     gruvbox.light = "trans_gruvbox_light";
     gruvbox.dark = "trans_gruvbox";

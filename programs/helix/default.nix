@@ -70,6 +70,16 @@ in
         line-number = "relative";
         soft-wrap.enable = true;
         bufferline = "multiple";
+
+        # Minimum severity to show a diagnostic after the end of a line:
+        end-of-line-diagnostics = "hint";
+        inline-diagnostics = {
+          # Minimum severity to show a diagnostic on the primary cursor's line.
+          # Note that `cursor-line` diagnostics are hidden in insert mode.
+          cursor-line = "error";
+          # Minimum severity to show a diagnostic on other lines:
+          other-lines = "error";
+        };
       };
 
       keys.normal = {
@@ -132,6 +142,7 @@ in
 
   home.packages = with pkgs; [
     nodePackages.vscode-langservers-extracted
+    typescript-language-server
     docker-compose-language-service
     terraform-ls
     marksman

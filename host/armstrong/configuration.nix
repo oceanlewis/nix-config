@@ -196,7 +196,6 @@ in
 
     loginShellInit = ''
       eval "$(/opt/homebrew/bin/brew shellenv)"
-      cd ${HOME}/Developer/hg
     '';
   };
 
