@@ -39,7 +39,6 @@ let
       wget
       rsync
       unzip
-      vivid
       dua
       duf
       du-dust
@@ -202,7 +201,7 @@ let
 
         fe = "yazi";
 
-        system-config = ''$SHELL -c "cd \"\$HOME/.config/nixpkgs\" && just edit"'';
+        system-config = ''$SHELL -c "cd \"\$HOME/.config/nix-config\" && just edit"'';
         sys = "system-config";
         config = "system-config";
         conf = "system-config";
@@ -233,10 +232,6 @@ in
     --theme="${theme.bat}" --plain
   '';
 
-  home.file.".config/vivid/theme".text = lib.optionalString (theme.vivid != null) ''
-    ${theme.vivid}
-  '';
-
   programs.direnv = {
     enable = true;
     silent = true;
@@ -256,18 +251,7 @@ in
       enableVteIntegration = true;
       shellAliases = shell.aliases;
       dotDir = ".config/zsh";
-      initExtra = ''
-        unset RPS1
-        function custom_preexec () {
-          if test -x "$(which vivid)"; then
-            export LS_COLORS=$(vivid generate $(cat ~/.config/vivid/theme))
-          fi
-        }
-        add-zsh-hook preexec custom_preexec
-
-        ${shell.init}
-      '';
-
+      initExtra = shell.init;
       defaultKeymap = "viins";
 
       # enableFzfCompletion = true;

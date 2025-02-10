@@ -1,9 +1,12 @@
-{ pkgs }:
-with pkgs;
+{ pkgs, nix-darwin }:
+let
+  inherit (pkgs) lib stdenv mkShell;
+in
 mkShell {
-  buildInputs = [
+  buildInputs = with pkgs; [
     helix
     ripgrep
+    yazi
     fd
     bat
     tmux
@@ -11,5 +14,5 @@ mkShell {
     ncurses
     git
     entr
-  ] ++ lib.optionals stdenv.isDarwin [ ];
+  ] ++ lib.optionals stdenv.isDarwin [ nix-darwin.packages.${stdenv.system}.default ];
 }

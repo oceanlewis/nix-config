@@ -14,6 +14,7 @@ in
   fira-code
   go-mono
   hack
+  inconsolata
   jetbrains-mono
   meslo-lg
   zed-mono

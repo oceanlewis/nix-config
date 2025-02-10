@@ -68,7 +68,8 @@ let
         family = "Victor Mono";
       };
       "JetBrains Mono" = {
-        family = "JetBrainsMono Nerd Font";
+        family = "JetBrainsMono Nerd Font Mono";
+        size = 13;
         light.normal = defaults.light.normal // {
           weight = 600;
         };
@@ -90,6 +91,10 @@ let
           weight = "Medium";
           stretch = "Expanded";
         };
+      };
+      "Inconsolata" = {
+        family = "Inconsolata Nerd Font Mono";
+        size = 15;
       };
     }
     .${theme.font.monospace};

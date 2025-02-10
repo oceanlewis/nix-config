@@ -2,14 +2,14 @@
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixos-stable.url = "github:nixos/nixpkgs/nixos-22.11";
+    nixos-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     zjstatus.url = "github:dj95/zjstatus";
-    darwin = {
+    nix-darwin = {
       url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     home-manager-nixos = {
-      url = "github:nix-community/home-manager/release-22.11";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixos-stable";
     };
     home-manager-master = {
@@ -25,7 +25,7 @@
       home-manager-nixos,
       nixpkgs-unstable,
       nixos-stable,
-      darwin,
+      nix-darwin,
       flake-utils,
       zjstatus,
     }:
@@ -42,10 +42,12 @@
       };
 
       nixosSystem-stable = nixos-stable.lib.nixosSystem;
-      darwinSystem = darwin.lib.darwinSystem;
+      darwinSystem = nix-darwin.lib.darwinSystem;
     in
     flake-utils.lib.eachDefaultSystem (system: {
       devShells.default = import ./shell.nix {
+        inherit nix-darwin;
+
         pkgs =
           if
             builtins.elem system [
@@ -101,5 +103,36 @@
           }
         ];
       };
+
+      darwinConfigurations.pigeon =
+        let
+          username = "ocean";
+          homeDirectory = "/Users/ocean";
+
+        in
+        darwinSystem {
+          system = "aarch64-darwin";
+          specialArgs = {
+            inherit inputs;
+            overlays = overlays ++ [
+              (import ./overlay/theme {
+                source = ./host/pigeon/theme.nix;
+              })
+            ];
+          };
+          modules = [
+            ./host/pigeon/configuration.nix
+            home-manager-master.darwinModules.home-manager
+            {
+              nixpkgs.config = config;
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.${username} = import ./home/desktop-user.nix {
+                inherit username homeDirectory;
+                stateVersion = "24.11";
+              };
+            }
+          ];
+        };
     };
 }

@@ -8,7 +8,7 @@
   imports = [
     ../layers/common.nix
     ../programs/nushell
-    ../programs/tmux.nix
+    # ../programs/tmux.nix
     ../programs/starship.nix
     ../programs/git
     ../programs/helix

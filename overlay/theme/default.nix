@@ -25,20 +25,6 @@ let
     nord.dark = "Nord";
   };
 
-  vivid-themes = rec {
-    standard.light = "one-light";
-    standard.dark = "one-dark";
-    standard.black = standard.dark;
-    high-contrast.light = standard.light;
-    high-contrast.dark = standard.dark;
-    gruvbox.light = "gruvbox-light";
-    gruvbox.dark = "gruvbox-dark";
-    gruvbox.black = gruvbox.dark;
-    monalisa.dark = "lava";
-    monalisa.black = monalisa.dark;
-    nord.dark = "nord";
-  };
-
   helix-themes = rec {
     standard.light = "trans_flatwhite";
     standard.dark = "trans_dracula";
@@ -78,7 +64,10 @@ let
     # standard.light = "iA Light (base16)";
     # standard.light = "Heetch Light (base16)";
 
-    standard.dark = "Invisibone (terminal.sexy)";
+    standard.dark = "Dracula+";
+    # standard.dark = "Kolorit";
+
+    # standard.dark = "Invisibone (terminal.sexy)";
     # standard.dark = "laserwave (Gogh)";
     # standard.dark = "hund (terminal.sexy)";
     # standard.dark = "Chalk (base16)";
@@ -167,7 +156,6 @@ let
       helix = opt.helix or (selectTheme "helix" helix-themes name variant);
       zellij = selectTheme "zellij" zellij-themes name variant;
       bat = selectTheme "bat" bat-themes name variant;
-      vivid = selectTheme "vivid" vivid-themes name variant;
       wezterm = selectTheme "wezterm" wezterm-themes name variant;
       delta = selectTheme "bat" bat-themes name variant;
       difftastic = difftasticTheme variant;

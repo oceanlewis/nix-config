@@ -1,5 +1,4 @@
 z_session := "nix"
-hostname := `hostname`
 
 _default:
 	@clear -x; just --list
@@ -14,7 +13,7 @@ update:
 
 alias rebuild := apply
 # Runs the `just` target for the current host
-apply target=hostname:
+apply target=`hostname`:
 	just {{target}}
 
 # Start a Zellij session to make quick edits
@@ -26,10 +25,10 @@ edit: && _cleanup
 			--force-run-commands \
 			--create
 
-_theme host=hostname:
+_theme host=`hostname`:
 	@hx --vsplit \
-		./host/{{hostname}}/configuration.nix \
-		./host/{{hostname}}/theme.nix:3:14
+		./host/{{host}}/configuration.nix \
+		./host/{{host}}/theme.nix:3:14
 
 # Runs the `just` target when file changes are detected
 watch:
@@ -39,10 +38,13 @@ watch:
 _cleanup:
 	zellij delete-session {{z_session}}
 
-# Armstrong's nix-darwin rebuild command
 [private]
 Armstrong:
 	darwin-rebuild switch --flake .#Armstrong
+
+[private]
+pigeon:
+	darwin-rebuild switch --flake .#pigeon
 
 [private]
 ghastly:
