@@ -64,8 +64,13 @@ let
   ];
 in
 {
-  programs.zellij.enable = true;
   home.packages = [ zjstatus ];
+  programs.zellij = {
+    enable = true;
+    enableBashIntegration = false;
+    enableFishIntegration = false;
+    enableZshIntegration = false;
+  };
 
   xdg.configFile = {
     "zellij/layouts/default.kdl".source = ./zjstatus_layout.kdl;
