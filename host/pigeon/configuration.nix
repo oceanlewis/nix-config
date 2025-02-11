@@ -89,6 +89,10 @@ in
     home = HOME;
     isHidden = false;
     shell = pkgs.zsh;
+
+    packages = with pkgs; [
+      ollama
+    ];
   };
 
   homebrew = {

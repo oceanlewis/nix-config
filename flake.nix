@@ -108,7 +108,6 @@
         let
           username = "ocean";
           homeDirectory = "/Users/ocean";
-
         in
         darwinSystem {
           system = "aarch64-darwin";
