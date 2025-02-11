@@ -26,7 +26,7 @@ edit: && _cleanup
 			--create
 
 _theme host=`hostname`:
-	@hx --vsplit \
+	@hx --hsplit \
 		./host/{{host}}/configuration.nix \
 		./host/{{host}}/theme.nix:3:14
 
