@@ -99,8 +99,8 @@ in
     enable = true;
 
     onActivation = {
-      autoUpdate = false;
-      upgrade = false;
+      autoUpdate = true;
+      upgrade = true;
       cleanup = "zap";
     };
 
@@ -121,7 +121,6 @@ in
       "chatgpt"
       "discord"
       "docker"
-      "firefox"
       "handbrake"
       "jordanbaird-ice"
       "lunar"
