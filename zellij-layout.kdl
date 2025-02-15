@@ -3,11 +3,11 @@ layout {
     plugin location="zellij:tab-bar"
   }
   pane split_direction="vertical" {
-    pane command="just" {
+    pane command="just" focus=true {
       args "_theme"
     }
     pane split_direction="horizontal" {
-      pane focus=true
+      pane
       pane size="10%"{
         command "just"
         args "watch"

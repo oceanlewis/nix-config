@@ -135,7 +135,6 @@ in
       "jordanbaird-ice"
       "lunar"
       "mimestream"
-      "pritunl"
       "raycast"
       "rectangle-pro"
       "sfdx"
@@ -143,6 +142,7 @@ in
       "transmission"
       "utm"
       "visual-studio-code"
+      "visual-studio-code@insiders"
       "vlc"
       {
         name = "wezterm@nightly";
@@ -167,7 +167,11 @@ in
       nushell
       zsh
     ];
-    shellAliases = { };
+    shellAliases = {
+      hg = ''cd "${HOME}/Developer/hg"'';
+      code = "/opt/homebrew/bin/code-insiders";
+      code-stable = "/opt/homebrew/bin/code";
+    };
     variables = { };
 
     loginShellInit = ''
@@ -176,7 +180,6 @@ in
   };
 
   services = {
-    nix-daemon.enable = true;
     lorri.enable = true;
 
     redis = {
@@ -201,5 +204,6 @@ in
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
+  ids.gids.nixbld = 350;
   system.stateVersion = 4;
 }
