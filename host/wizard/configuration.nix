@@ -60,7 +60,6 @@ in
   };
 
   services = {
-    nix-daemon.enable = true;
     lorri.enable = true;
 
     redis = {

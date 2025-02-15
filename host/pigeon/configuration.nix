@@ -121,6 +121,7 @@ in
       "chatgpt"
       "discord"
       "docker"
+      "gog-galaxy"
       "handbrake"
       "jordanbaird-ice"
       "lunar"
@@ -165,7 +166,6 @@ in
   };
 
   services = {
-    nix-daemon.enable = true;
     lorri.enable = true;
   };
 
