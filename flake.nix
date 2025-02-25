@@ -92,7 +92,6 @@
           ./host/armstrong/configuration.nix
           home-manager-master.darwinModules.home-manager
           {
-            nixpkgs.config = config;
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users."ocean.lewis" = import ./home/desktop-user.nix {

@@ -18,8 +18,6 @@ let
     mapAttrs' (name: value: nameValuePair "trans_${name}" value) t;
 in
 {
-  nixpkgs.config.allowUnfree = true;
-
   xdg.configFile."helix/languages.toml".text = ''
     [[language]]
     name = "sql"

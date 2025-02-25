@@ -72,6 +72,7 @@ with pkgs;
 
       # macOS
       ".DS_Store"
+      "**/.DS_Store"
 
       # clangd
       ".cache"

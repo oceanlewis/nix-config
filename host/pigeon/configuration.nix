@@ -46,7 +46,7 @@ in
     hostName = HOST_NAME;
   };
 
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   system.defaults = {
     SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
