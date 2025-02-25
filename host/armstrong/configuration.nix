@@ -10,6 +10,7 @@ let
 in
 {
   nixpkgs.overlays = overlays;
+  # nixpkgs.config.allowUnfree = true;
 
   nix = {
     extraOptions = ''
@@ -43,6 +44,11 @@ in
   networking = {
     computerName = HOST_NAME;
     hostName = HOST_NAME;
+    hosts = {
+      # Required by Docker Desktop
+      # Allows the same kube context to work on the host and the container
+      "127.0.0.1" = [ "kubernetes.docker.internal" ];
+    };
   };
 
   security.pam.services.sudo_local.touchIdAuth = true;
