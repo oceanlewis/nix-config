@@ -1,13 +1,9 @@
 {
-  pkgs,
+  # pkgs,
   config,
-  theme-config ? { },
+  ...
 }:
 {
-  nixpkgs.overlays = pkgs.overlays ++ [
-    (import ../overlay/theme { config = theme-config; })
-  ];
-
   imports = [
     ../layers/common.nix
     ../programs/nushell

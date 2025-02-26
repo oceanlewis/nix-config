@@ -26,7 +26,8 @@ let
   };
 
   helix-themes = rec {
-    standard.light = "trans_flatwhite";
+    # standard.light = "trans_flatwhite";
+    standard.light = "trans_papercolor-light";
     standard.dark = "trans_dracula";
     # standard.black = "trans_varua";
     # standard.black = "trans_papercolor-dark";

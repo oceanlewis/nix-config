@@ -20,7 +20,7 @@
 
   outputs =
     inputs@{
-      self,
+      # self,
       home-manager-master,
       home-manager-nixos,
       nixpkgs-unstable,
@@ -28,9 +28,10 @@
       nix-darwin,
       flake-utils,
       zjstatus,
+      ...
     }:
     let
-      overlays = [
+      baseOverlays = [
         (final: prev: {
           zjstatus = zjstatus.packages.${prev.system}.default;
         })
@@ -40,51 +41,54 @@
         allowUnfree = true;
         allowUnfreePredicate = _: true;
       };
-
-      nixosSystem-stable = nixos-stable.lib.nixosSystem;
-      darwinSystem = nix-darwin.lib.darwinSystem;
     in
-    flake-utils.lib.eachDefaultSystem (system: {
-      devShells.default = import ./shell.nix {
-        inherit nix-darwin;
-
-        pkgs =
-          if
-            builtins.elem system [
-              "aarch64-darwin"
-              "x86_64-darwin"
-            ]
-          then
-            import nixpkgs-unstable { inherit overlays system config; }
-          else
-            import nixos-stable { inherit overlays system config; };
-      };
-    })
-    // {
-      nixosConfigurations.ghastly = nixosSystem-stable rec {
-        system = "aarch64-linux";
-        modules = [
-          ./host/ghastly/configuration.nix
-          home-manager-nixos.nixosModules.home-manager
-          {
-            home-manager.users.ocean = import ./home/console-user.nix {
-              pkgs = import nixos-stable { inherit overlays system config; };
-              config = {
-                user = "ocean";
-                home = "/home/ocean";
-                state_version = "22.11";
-              };
-              theme-config.helix = "base16_transparent";
-            };
-          }
+    flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        overlays = baseOverlays;
+        isDarwin = builtins.elem system [
+          "aarch64-darwin"
+          "x86_64-darwin"
         ];
-      };
+        nixpkgs = if isDarwin then nixpkgs-unstable else nixos-stable;
+      in
+      {
+        devShells.default = import ./shell.nix {
+          inherit nix-darwin;
+          pkgs = import nixpkgs { inherit overlays system config; };
+        };
+      }
+    )
+    // {
+      nixosConfigurations.ghastly =
+        let
+          system = "aarch64-linux";
+          overlays = baseOverlays;
+        in
+        nixos-stable.lib.nixosSystem rec {
+          inherit system;
+          modules = [
+            ./host/ghastly/configuration.nix
+            home-manager-nixos.nixosModules.home-manager
+            {
+              home-manager.users.ocean = import ./home/console-user.nix {
+                pkgs = import nixos-stable { inherit overlays system config; };
+                config = {
+                  user = "ocean";
+                  home = "/home/ocean";
+                  state_version = "22.11";
+                };
+                theme-config.helix = "base16_transparent";
+              };
+            }
+          ];
+        };
 
-      darwinConfigurations.Armstrong = darwinSystem {
+      darwinConfigurations.Armstrong = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         specialArgs = {
           inherit inputs;
-          overlays = overlays ++ [
+          overlays = baseOverlays ++ [
             (import ./overlay/theme { source = ./host/armstrong/theme.nix; })
           ];
         };
@@ -107,22 +111,35 @@
         let
           username = "ocean";
           homeDirectory = "/Users/ocean";
-        in
-        darwinSystem {
           system = "aarch64-darwin";
-          specialArgs = {
-            inherit inputs;
-            overlays = overlays ++ [
+
+          pkgs = import nixpkgs-unstable {
+            inherit system config;
+            overlays = baseOverlays ++ [
               (import ./overlay/theme {
                 source = ./host/pigeon/theme.nix;
               })
             ];
           };
+        in
+        nix-darwin.lib.darwinSystem {
+          inherit pkgs;
+          specialArgs = {
+            rosetta-pkgs =
+              import nixpkgs-unstable {
+                inherit config;
+                system = "x86_64-darwin";
+                overlays = baseOverlays ++ [
+                  (import ./overlay/theme {
+                    source = ./host/pigeon/theme.nix;
+                  })
+                ];
+              };
+          };
           modules = [
             ./host/pigeon/configuration.nix
             home-manager-master.darwinModules.home-manager
             {
-              nixpkgs.config = config;
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.${username} = import ./home/desktop-user.nix {

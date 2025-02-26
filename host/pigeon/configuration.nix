@@ -1,6 +1,6 @@
 {
   pkgs,
-  overlays,
+  rosetta-pkgs,
   ...
 }:
 let
@@ -9,9 +9,6 @@ let
   HOME = "/Users/${USER}";
 in
 {
-  nixpkgs.overlays = overlays;
-  nixpkgs.config.allowUnfree = true;
-
   nix = {
     extraOptions = ''
       build-users-group = nixbld
@@ -95,23 +92,30 @@ in
     isHidden = false;
     shell = pkgs.zsh;
 
-    packages = with pkgs; [
-      ollama
-    ];
+    packages =
+      (with pkgs; [
+        ollama
+      ])
+      ++ (with rosetta-pkgs; [
+        # wineWow64Packages.stableFull
+        # winetricks
+      ]);
   };
 
   homebrew = {
     enable = true;
 
     onActivation = {
-      autoUpdate = true;
-      upgrade = true;
+      # extraFlags = [ "--verbose" ];
       cleanup = "zap";
+      # autoUpdate = true;
+      # upgrade = true;
     };
 
     taps = [ ];
 
     masApps = {
+      "Amazon Kindle" = 302584613;
       "Craft: Write docs, AI editing" = 1487937127;
       "1Password for Safari" = 1569813296;
       "Things 3" = 904280696;
@@ -123,6 +127,7 @@ in
 
     casks = [
       "1password"
+      "calibre"
       "chatgpt"
       "discord"
       "docker"
@@ -130,9 +135,12 @@ in
       "handbrake"
       "jordanbaird-ice"
       "lunar"
+      "musescore"
       "notion"
+      "plex"
       "raycast"
       "rectangle-pro"
+      "signal"
       "spotify"
       "steam"
       "thingsmacsandboxhelper"
