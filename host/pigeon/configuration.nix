@@ -83,6 +83,11 @@ in
       mineffect = "scale"; # Minimize to dock settings
       mru-spaces = false; # Don't automatically rearrange spaces
     };
+
+    CustomUserPreferences = {
+      "com.microsoft.VSCode".ApplePressAndHoldEnabled = false;
+      "com.microsoft.VSCodeInsiders".ApplePressAndHoldEnabled = false;
+    };
   };
 
   fonts.packages = import ../../layers/fonts.nix { inherit pkgs; };

@@ -222,6 +222,8 @@ let
       // lib.optionalAttrs isDarwin {
         cdcopy = "pwd | pbcopy";
         cdpaste = "cd \"$(pbpaste)\"";
+        code = "/opt/homebrew/bin/code-insiders";
+        code-stable = "/opt/homebrew/bin/code";
       };
   };
 in

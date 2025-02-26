@@ -107,7 +107,7 @@ in
   programs.tmux = {
     enable = true;
     keyMode = "vi";
-    terminal = "xterm-256color";
+    terminal = "tmux-256color";
     historyLimit = 100000;
     baseIndex = 1;
     escapeTime = 10;
