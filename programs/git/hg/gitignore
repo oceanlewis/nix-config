@@ -1,6 +1,8 @@
 ## from programs.git.ignores in ../default.nix
 # Elixir
 .env.local
+.env.staging
+.env.prod
 
 # JVM
 **/.idea
