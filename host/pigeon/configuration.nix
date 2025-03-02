@@ -41,11 +41,11 @@ in
   networking = {
     computerName = HOST_NAME;
     hostName = HOST_NAME;
-    hosts = {
-      # Required by Docker Desktop
-      # Allows the same kube context to work on the host and the container
-      # "127.0.0.1" = [ "kubernetes.docker.internal" ];
-    };
+    # hosts = {
+    #   # Required by Docker Desktop
+    #   # Allows the same kube context to work on the host and the container
+    #   # "127.0.0.1" = [ "kubernetes.docker.internal" ];
+    # };
   };
 
   security.pam.services.sudo_local.touchIdAuth = true;
@@ -121,6 +121,7 @@ in
 
     masApps = {
       "Amazon Kindle" = 302584613;
+      "Amazon Prime Video" = 545519333;
       "Craft: Write docs, AI editing" = 1487937127;
       "1Password for Safari" = 1569813296;
       "Things 3" = 904280696;
@@ -139,6 +140,7 @@ in
       "gog-galaxy"
       "handbrake"
       "jordanbaird-ice"
+      "librewolf"
       "lunar"
       "musescore"
       "notion"

@@ -121,7 +121,7 @@
     open-vm-tools
     vim
     wget
-    firefox
+    librewolf
     alacritty
   ];
 
