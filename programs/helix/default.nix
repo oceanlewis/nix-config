@@ -1,21 +1,14 @@
-{
-  pkgs,
-  lib,
-  ...
-}:
+{ pkgs, ... }:
 let
-  makeTrans =
-    themes:
-    let
-      inherit (lib) attrsets;
-      inherit (attrsets) genAttrs mapAttrs' nameValuePair;
-
-      t = genAttrs themes (theme: {
-        inherits = theme;
-        "ui.background" = { };
-      });
-    in
-    mapAttrs' (name: value: nameValuePair "trans_${name}" value) t;
+  transThemes =
+    pkgs.runCommandLocal "helix-transparent-themes"
+      {
+        buildInputs = [ pkgs.nushell ];
+      }
+      ''
+        mkdir $out
+        nu ${./make-trans-themes.nu} ${pkgs.helix}/lib/runtime/themes > $out/themes.json
+      '';
 in
 {
   xdg.configFile."helix/languages.toml".text = ''
@@ -93,49 +86,8 @@ in
         };
       };
     };
-    themes = makeTrans [
-      "acme"
-      "ayu_dark"
-      "ayu_evolve"
-      "base16_default"
-      "base16_default_dark"
-      "bogster"
-      "bogster_light"
-      "catppuccin_mocha"
-      "catppuccin_latte"
-      "curzon"
-      "cyan_light"
-      "dracula"
-      "dracula_at_night"
-      "emacs"
-      "ferra"
-      "flatwhite"
-      "fleet_dark"
-      "github_dark_high_contrast"
-      "github_light"
-      "github_light_high_contrast"
-      "gruvbox"
-      "gruvbox_light"
-      "kaolin-dark"
-      "kaolin-light"
-      "kaolin-valley-dark"
-      "meliora"
-      "noctis"
-      "noctis_bordo"
-      "modus_operandi_tinted"
-      "modus_vivendi_tinted"
-      "onelight"
-      "papercolor-dark"
-      "papercolor-light"
-      "pop-dark"
-      "snazzy"
-      "sonokai"
-      "spacebones_light"
-      "tokyonight"
-      "varua"
-      "zed_onedark"
-      "zed_onelight"
-    ];
+
+    themes = builtins.fromJSON (builtins.readFile "${transThemes}/themes.json");
   };
 
   home.packages = with pkgs; [

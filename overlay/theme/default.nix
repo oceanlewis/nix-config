@@ -26,21 +26,21 @@ let
   };
 
   helix-themes = rec {
-    # standard.light = "trans_flatwhite";
-    standard.light = "trans_papercolor-light";
-    standard.dark = "trans_dracula";
-    # standard.black = "trans_varua";
-    # standard.black = "trans_papercolor-dark";
-    # standard.black = "trans_base16_default_dark";
-    # standard.black = "trans_pop-dark";
-    standard.black = standard.dark; # "trans_kaolin-dark";
-    # standard.black = "trans_ayu_dark";
-    high-contrast.light = "trans_papercolor-light";
+    # standard.light = "_flatwhite";
+    standard.light = "_papercolor-light";
+    standard.dark = "_dracula";
+    # standard.black = "_varua";
+    # standard.black = "_papercolor-dark";
+    # standard.black = "_base16_default_dark";
+    # standard.black = "_pop-dark";
+    standard.black = standard.dark; # "_kaolin-dark";
+    # standard.black = "_ayu_dark";
+    high-contrast.light = "_papercolor-light";
     high-contrast.dark = "curzon";
-    gruvbox.light = "trans_gruvbox_light";
-    gruvbox.dark = "trans_gruvbox";
+    gruvbox.light = "_gruvbox_light";
+    gruvbox.dark = "_gruvbox";
     gruvbox.black = gruvbox.dark;
-    monalisa.dark = "base16_transparent";
+    monalisa.dark = "base16_parent";
     monalisa.black = monalisa.dark;
     nord.dark = "nord";
   };

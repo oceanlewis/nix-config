@@ -211,7 +211,11 @@ let
         grn = ''git reset -- flake.* nix'';
 
         # Docker
-        dprune = "docker system prune --all --volumes";
+        dsprune = "docker system prune --all --volumes --force";
+        diprune = "docker image prune --all --force";
+        dcprune = "docker container prune --force";
+        dnprune = "docker network prune --force";
+        daprune = "dsprune && diprune && dcprune && dnprune";
       }
       // lsdAliases
       // lib.optionalAttrs isLinux {
