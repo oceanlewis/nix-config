@@ -10,7 +10,6 @@ let
 in
 {
   nixpkgs.overlays = overlays;
-  # nixpkgs.config.allowUnfree = true;
 
   nix = {
     extraOptions = ''
@@ -190,7 +189,7 @@ in
     };
 
     postgresql = {
-      enable = true;
+      enable = false;
       package = pkgs.postgresql_14;
       dataDir = "${HOME}/.postgresql_14";
     };

@@ -13,7 +13,7 @@
 let
   bat-themes = rec {
     standard.light = "GitHub";
-    standard.dark = "OneHalfDark";
+    standard.dark = "Dracula";
     standard.black = "ansi";
     high-contrast.light = standard.light;
     high-contrast.dark = standard.dark;
@@ -28,7 +28,7 @@ let
   helix-themes = rec {
     # standard.light = "_flatwhite";
     standard.light = "_papercolor-light";
-    standard.dark = "_dracula";
+    standard.dark = "_dracula_at_night";
     # standard.black = "_varua";
     # standard.black = "_papercolor-dark";
     # standard.black = "_base16_default_dark";
@@ -156,7 +156,10 @@ let
 
       helix = opt.helix or (selectTheme "helix" helix-themes name variant);
       zellij = selectTheme "zellij" zellij-themes name variant;
-      bat = selectTheme "bat" bat-themes name variant;
+      bat = {
+        dark = selectTheme "bat" bat-themes name "dark";
+        light = selectTheme "bat" bat-themes name "light";
+      };
       wezterm = selectTheme "wezterm" wezterm-themes name variant;
       delta = selectTheme "bat" bat-themes name variant;
       difftastic = difftasticTheme variant;

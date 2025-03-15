@@ -215,7 +215,8 @@ let
         diprune = "docker image prune --all --force";
         dcprune = "docker container prune --force";
         dnprune = "docker network prune --force";
-        daprune = "dsprune && diprune && dcprune && dnprune";
+        dvprune = "docker volume prune --all --force";
+        daprune = "dsprune && diprune && dcprune && dnprune && dvprune && dsprune";
       }
       // lsdAliases
       // lib.optionalAttrs isLinux {
@@ -235,7 +236,9 @@ in
   home.packages = packages;
 
   home.file.".config/bat/config".text = lib.optionalString (theme.bat != null) ''
-    --theme="${theme.bat}" --plain
+    --theme=${
+      if isDarwin then "auto:system" else "auto"
+    } --theme-dark="${theme.bat.dark}" --theme-light="${theme.bat.light}" --plain
   '';
 
   programs.direnv = {
