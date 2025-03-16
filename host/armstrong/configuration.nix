@@ -142,6 +142,7 @@ in
       "rectangle-pro"
       "sfdx"
       "slack"
+      "tailscale"
       "transmission"
       "utm"
       "visual-studio-code"
