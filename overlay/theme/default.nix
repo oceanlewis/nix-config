@@ -36,7 +36,8 @@ let
     standard.black = standard.dark; # "_kaolin-dark";
     # standard.black = "_ayu_dark";
     high-contrast.light = "_papercolor-light";
-    high-contrast.dark = "curzon";
+    # high-contrast.dark = "curzon";
+    high-contrast.dark = "_starlight";
     gruvbox.light = "_gruvbox_light";
     gruvbox.dark = "_gruvbox";
     gruvbox.black = gruvbox.dark;
