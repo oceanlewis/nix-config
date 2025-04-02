@@ -22,8 +22,12 @@
   home = {
     inherit stateVersion username homeDirectory;
 
+    sessionPath = [
+      "$HOME/.local/bin"
+      "$HOME/.docker/bin"
+    ];
+
     sessionVariables = {
-      PATH = "$PATH:$HOME/.local/bin";
       PAGER = "less -R";
       EDITOR = "hx";
       VISUAL = "hx";
