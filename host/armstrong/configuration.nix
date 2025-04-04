@@ -140,6 +140,7 @@ in
       "mimestream"
       "raycast"
       "rectangle-pro"
+      "rio"
       "sfdx"
       "slack"
       "tailscale"
