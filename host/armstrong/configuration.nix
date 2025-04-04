@@ -110,9 +110,9 @@ in
       "hcavarsan/kftray"
     ];
 
-    masApps = {
-      "Craft: Write docs, AI editing" = 1487937127;
-    };
+    # masApps = {
+    #   "Craft: Write docs, AI editing" = 1487937127;
+    # };
 
     brews = [
       "awscli"
