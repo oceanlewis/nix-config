@@ -9,6 +9,27 @@ let
   HOME = "/Users/${USER}";
 in
 {
+  # '/Users/ocean/Library/Mobile Documents/com~apple~CloudDocs'
+  stylix = {
+    enable = true;
+    autoEnable = true;
+    polarity = "dark";
+    # targets = {
+      # rio.enable = true;
+      # wezterm = "foo";
+      # wezterm = true;
+    # };
+    # stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+
+    # stylix.image = "/Users/ocean/Library/Mobile\ Documents/";
+
+    image = ../../stag-at-sunset.png;
+    # image = pkgs.fetchurl {
+    #   url = "https://www.pixelstalk.net/wp-content/uploads/2016/05/Epic-Anime-Awesome-Wallpapers.jpg";
+    #   sha256 = "enQo3wqhgf0FEPHj2coOCvo7DuZv+x5rL/WIo4qPI50=";
+    # };
+  };
+
   nix = {
     extraOptions = ''
       build-users-group = nixbld
@@ -59,6 +80,8 @@ in
     };
 
     NSGlobalDomain = {
+      AppleInterfaceStyleSwitchesAutomatically = false;
+
       "com.apple.trackpad.scaling" = 3.0; # Trackpad tracking speed (0-3f)
 
       # Keyboard Settings
@@ -146,6 +169,7 @@ in
       "plex"
       "raycast"
       "rectangle-pro"
+      "rio"
       "signal"
       "spotify"
       "steam"

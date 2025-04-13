@@ -4,10 +4,7 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixos-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     zjstatus.url = "github:dj95/zjstatus";
-    nix-darwin = {
-      url = "github:lnl7/nix-darwin/master";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
+
     home-manager-nixos = {
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixos-stable";
@@ -15,6 +12,22 @@
     home-manager-master = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
+    nix-darwin = {
+      url = "github:lnl7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
+    stylix-unstable = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.home-manager.follows = "home-manager-master";
+    };
+    stylix-stable = {
+      url = "github:danth/stylix/release-24.11";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.home-manager.follows = "home-manager-master";
     };
   };
 
@@ -28,6 +41,7 @@
       nix-darwin,
       flake-utils,
       zjstatus,
+      stylix-unstable,
       ...
     }:
     let
@@ -116,27 +130,27 @@
           pkgs = import nixpkgs-unstable {
             inherit system config;
             overlays = baseOverlays ++ [
-              (import ./overlay/theme {
-                source = ./host/pigeon/theme.nix;
-              })
+              # (import ./overlay/theme {
+              #   source = ./host/pigeon/theme.nix;
+              # })
             ];
           };
         in
         nix-darwin.lib.darwinSystem {
           inherit pkgs;
           specialArgs = {
-            rosetta-pkgs =
-              import nixpkgs-unstable {
-                inherit config;
-                system = "x86_64-darwin";
-                overlays = baseOverlays ++ [
-                  (import ./overlay/theme {
-                    source = ./host/pigeon/theme.nix;
-                  })
-                ];
-              };
+            rosetta-pkgs = import nixpkgs-unstable {
+              inherit config;
+              system = "x86_64-darwin";
+              overlays = baseOverlays ++ [
+                (import ./overlay/theme {
+                  source = ./host/pigeon/theme.nix;
+                })
+              ];
+            };
           };
           modules = [
+            stylix-unstable.darwinModules.stylix
             ./host/pigeon/configuration.nix
             home-manager-master.darwinModules.home-manager
             {

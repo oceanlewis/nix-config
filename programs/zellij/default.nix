@@ -5,9 +5,13 @@
 }:
 let
   inherit (lib) strings;
-  inherit (pkgs) stdenv theme zjstatus;
+  inherit (pkgs)
+    stdenv
+    # theme
+    zjstatus
+    ;
 
-  themeConfig = ''theme "${theme.zellij}"'';
+  # themeConfig = ''theme "${theme.zellij}"'';
   platformSpecificConfig = strings.optionalString stdenv.isDarwin ''copy_command "pbcopy"'';
   staticConfig = builtins.readFile ./config.kdl;
 
@@ -57,7 +61,7 @@ let
   '';
 
   configText = lib.concatLines [
-    themeConfig
+    # themeConfig
     platformSpecificConfig
     staticConfig
     pluginConfig

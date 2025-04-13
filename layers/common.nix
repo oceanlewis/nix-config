@@ -3,11 +3,11 @@
   lib,
   ...
 }:
-with pkgs;
 let
   inherit (pkgs.stdenv) isDarwin isLinux;
 
   packages =
+    with pkgs;
     [
       # Files & Text
 
@@ -235,11 +235,11 @@ in
 {
   home.packages = packages;
 
-  home.file.".config/bat/config".text = lib.optionalString (theme.bat != null) ''
-    --theme=${
-      if isDarwin then "auto:system" else "auto"
-    } --theme-dark="${theme.bat.dark}" --theme-light="${theme.bat.light}" --plain
-  '';
+  # home.file.".config/bat/config".text = lib.optionalString (theme.bat != null) ''
+  #   --theme=${
+  #     if isDarwin then "auto:system" else "auto"
+  #   } --theme-dark="${theme.bat.dark}" --theme-light="${theme.bat.light}" --plain
+  # '';
 
   programs.direnv = {
     enable = true;

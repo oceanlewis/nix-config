@@ -13,11 +13,14 @@
     ../programs/git
     ../programs/helix
     ../programs/zellij
-    ../programs/wezterm
+    # ../programs/wezterm
   ];
 
   xdg.enable = true;
   programs.home-manager.enable = true;
+  programs.rio.enable = true;
+  programs.wezterm.enable = true;
+  stylix.enable = true;
 
   home = {
     inherit stateVersion username homeDirectory;
