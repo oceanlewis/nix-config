@@ -159,6 +159,7 @@ in
         name = "wezterm@nightly";
         greedy = true;
       }
+      "zed"
       "zen-browser"
       "zoom"
     ];
