@@ -17,6 +17,7 @@ let
     standard.black = "ansi";
     high-contrast.light = standard.light;
     high-contrast.dark = standard.dark;
+    high-contrast.black = high-contrast.dark;
     gruvbox.light = "gruvbox-light";
     gruvbox.dark = "gruvbox-dark";
     gruvbox.black = gruvbox.dark;
@@ -33,11 +34,12 @@ let
     # standard.black = "_papercolor-dark";
     # standard.black = "_base16_default_dark";
     # standard.black = "_pop-dark";
-    standard.black = standard.dark; # "_kaolin-dark";
+    standard.black = "_iroaseta";
     # standard.black = "_ayu_dark";
     high-contrast.light = "_papercolor-light";
     # high-contrast.dark = "curzon";
     high-contrast.dark = "_starlight";
+    high-contrast.black = high-contrast.dark;
     gruvbox.light = "_gruvbox_light";
     gruvbox.dark = "_gruvbox";
     gruvbox.black = gruvbox.dark;
@@ -52,6 +54,7 @@ let
     standard.black = "dracula-custom";
     high-contrast.light = standard.light;
     high-contrast.dark = "dracula-custom";
+    high-contrast.black = high-contrast.dark;
     gruvbox.light = "kanagawa";
     gruvbox.dark = "gruvbox-dark-medium";
     gruvbox.black = "gruvbox-dark-black";
@@ -85,6 +88,7 @@ let
 
     high-contrast.light = standard.light;
     high-contrast.dark = "Bitmute (terminal.sexy)";
+    high-contrast.black = high-contrast.dark;
 
     # gruvbox.light = "Gruvbox (Gogh)";
     gruvbox.light = "Gruvbox Light";

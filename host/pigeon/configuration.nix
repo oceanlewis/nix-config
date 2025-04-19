@@ -114,14 +114,14 @@ in
 
     taps = [ ];
 
-    # masApps = {
-    #   "1Password for Safari" = 1569813296;
-    #   "Amazon Kindle" = 302584613;
-    #   "Amazon Prime Video" = 545519333;
-    #   "Audible: Audio Entertainment" = 379693831;
-    #   "Craft: Write docs, AI editing" = 1487937127;
-    #   "Things 3" = 904280696;
-    # };
+    masApps = {
+      "1Password for Safari" = 1569813296;
+      "Amazon Kindle" = 302584613;
+      "Amazon Prime Video" = 545519333;
+      "Audible: Audio Entertainment" = 379693831;
+      "Craft: Write docs, AI editing" = 1487937127;
+      "Things 3" = 904280696;
+    };
 
     brews = [
       "mas"

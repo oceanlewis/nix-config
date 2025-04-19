@@ -307,4 +307,11 @@ in
     enableAliases = true;
     settings.color.when = "never";
   };
+
+  programs.carapace = {
+    enable = true;
+    enableZshIntegration = true;
+    enableBashIntegration = true;
+    enableNushellIntegration = true;
+  };
 }
