@@ -87,7 +87,7 @@ in
 
   fonts.packages = import ../../layers/fonts.nix { inherit pkgs; };
 
-  users.users."${USER}" = {
+  users.users.${USER} = {
     home = HOME;
     isHidden = false;
     shell = pkgs.zsh;

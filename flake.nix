@@ -125,26 +125,30 @@
         nix-darwin.lib.darwinSystem {
           inherit pkgs;
           specialArgs = {
-            rosetta-pkgs =
-              import nixpkgs-unstable {
-                inherit config;
-                system = "x86_64-darwin";
-                overlays = baseOverlays ++ [
-                  (import ./overlay/theme {
-                    source = ./host/pigeon/theme.nix;
-                  })
-                ];
-              };
+            rosetta-pkgs = import nixpkgs-unstable {
+              inherit config;
+              system = "x86_64-darwin";
+              overlays = baseOverlays ++ [
+                (import ./overlay/theme {
+                  source = ./host/pigeon/theme.nix;
+                })
+              ];
+            };
           };
           modules = [
             ./host/pigeon/configuration.nix
             home-manager-master.darwinModules.home-manager
             {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.${username} = import ./home/desktop-user.nix {
-                inherit username homeDirectory;
-                stateVersion = "24.11";
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.${username} = (
+                  import ./home/desktop-user.nix {
+                    inherit username homeDirectory;
+                    stateVersion = "24.11";
+                    imports = [ ./host/pigeon/home-configuration.nix ];
+                  }
+                );
               };
             }
           ];

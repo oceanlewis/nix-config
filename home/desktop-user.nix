@@ -2,10 +2,11 @@
   username,
   homeDirectory,
   stateVersion,
+  imports ? [ ],
   ...
 }:
 {
-  imports = [
+  imports = imports ++ [
     ../layers/common.nix
     ../programs/nushell
     ../programs/tmux.nix
@@ -24,6 +25,7 @@
 
     sessionPath = [
       "$HOME/.local/bin"
+      "$HOME/.local/scripts"
       "$HOME/.docker/bin"
     ];
 
