@@ -29,12 +29,13 @@ let
   helix-themes = rec {
     # standard.light = "_flatwhite";
     standard.light = "_papercolor-light";
-    standard.dark = "_dracula_at_night";
+    standard.dark = "_dracula";
     # standard.black = "_varua";
     # standard.black = "_papercolor-dark";
     # standard.black = "_base16_default_dark";
     # standard.black = "_pop-dark";
-    standard.black = "_iroaseta";
+    # standard.black = "_iroaseta";
+    standard.black = standard.dark;
     # standard.black = "_ayu_dark";
     high-contrast.light = "_papercolor-light";
     # high-contrast.dark = "curzon";

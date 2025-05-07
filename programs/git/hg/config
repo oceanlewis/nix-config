@@ -1,5 +1,5 @@
 [core]
-  sshCommand = ssh -i ~/.ssh/id_rsa
+  # sshCommand = ssh -i ~/.ssh/id_rsa
   excludesFile = ~/.config/nix-config/programs/git/hg/gitignore
 
 [user]

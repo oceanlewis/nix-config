@@ -116,11 +116,19 @@ in
 
     masApps = {
       "1Password for Safari" = 1569813296;
-      "Amazon Kindle" = 302584613;
-      "Amazon Prime Video" = 545519333;
-      "Audible: Audio Entertainment" = 379693831;
-      "Craft: Write docs, AI editing" = 1487937127;
-      "Things 3" = 904280696;
+      "Craft" = 1487937127;
+      "Kindle" = 302584613;
+      "Prime Video" = 545519333;
+      "Audible" = 379693831;
+      "Tailscale" = 1475387142;
+      "Things" = 904280696;
+      "WhatsApp" = 310633997;
+
+      "GarageBand" = 682658836;
+      "iMovie" = 408981434;
+      "Keynote" = 409183694;
+      "Numbers" = 409203825;
+      "Pages" = 409201541;
     };
 
     brews = [
@@ -143,6 +151,7 @@ in
       "musescore"
       "notion"
       "nvidia-geforce-now"
+      "obsidian"
       "plex"
       "raycast"
       "rectangle-pro"

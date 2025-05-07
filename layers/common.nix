@@ -260,7 +260,7 @@ in
       enableVteIntegration = true;
       shellAliases = shell.aliases;
       dotDir = ".config/zsh";
-      initExtra = shell.init;
+      initContent = shell.init;
       defaultKeymap = "viins";
 
       # enableFzfCompletion = true;
@@ -304,7 +304,10 @@ in
 
   programs.lsd = {
     enable = true;
-    enableAliases = true;
+    # enableAliases = true;
+    enableZshIntegration = true;
+    enableBashIntegration = true;
+    # enableNushellIntegration = true;
     settings.color.when = "never";
   };
 

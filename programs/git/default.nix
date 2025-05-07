@@ -8,7 +8,6 @@ with pkgs;
   home.packages = [
     gitAndTools.delta
     gitAndTools.git-crypt
-    gitAndTools.lfs
     github-cli
     gitu
     act
