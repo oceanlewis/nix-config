@@ -7,6 +7,7 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "icon_theme": "Catppuccin Macchiato",
   "agent": {
     "default_profile": "ask",
     "default_model": {
@@ -31,11 +32,11 @@
   "theme": "One Hunter Light",
   "ui_font_size": 13.0,
   "buffer_font_family": "JetBrainsMono Nerd Font",
-  "buffer_font_size": 14.0,
+  "buffer_font_size": 13.0,
   "terminal": {
     "dock": "right",
     "option_as_meta": true,
-    "font_size": 13.0,
+    "font_size": 12.0,
     "line_height": "standard"
   },
   "vim_mode": true,

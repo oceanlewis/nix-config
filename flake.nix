@@ -149,7 +149,10 @@
                   import ./home/desktop-user.nix {
                     inherit username homeDirectory;
                     stateVersion = "24.11";
-                    imports = [ ./host/pigeon/home-configuration.nix ];
+                    imports = [
+                      ./programs/zed
+                      ./host/pigeon/home-configuration.nix
+                    ];
                   }
                 );
               };
