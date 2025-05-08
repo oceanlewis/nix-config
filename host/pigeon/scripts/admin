@@ -1,0 +1,27 @@
+#!/usr/bin/env nu -i
+
+def main [] {
+  let action = [
+      # nix
+      jellyfin
+    ]
+    | str join "\n"
+    | ( fzf --prompt="Choose an appropriate action with ↑ ↓ ← → and <tab> "
+            --height=~100%
+            --layout=reverse
+      )
+
+  match $action {
+    'jellyfin' => jellyfin
+  }
+
+  print "Goodbye"
+}
+
+# Manage the Jellyfin server
+def --env "main jellyfin" [] { jellyfin }
+
+def jellyfin [] {
+    cd ~/Server/jellyfin
+    nu -e 'just'
+}

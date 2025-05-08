@@ -4,7 +4,13 @@
   ...
 }:
 let
-  inherit (pkgs) runCommandLocal zoxide nushell;
+  inherit (pkgs)
+    runCommandLocal
+    zoxide
+    nushell
+    nufmt
+    ;
+
   inherit (pkgs.nushellPlugins) polars;
 
   zoxideInit = runCommandLocal "zoxide-init-nushell" { buildInputs = [ zoxide ]; } ''
@@ -26,5 +32,9 @@ in
     package = nushell;
     configFile.text = config;
   };
-  home.packages = [ polars ];
+
+  home.packages = [
+    polars
+    nufmt
+  ];
 }

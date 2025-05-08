@@ -9,6 +9,8 @@ let
         mkdir $out
         nu ${./make-trans-themes.nu} ${pkgs.helix}/lib/runtime/themes > $out/themes.json
       '';
+
+  themes = "${transThemes}/themes.json" |> builtins.readFile |> builtins.fromJSON;
 in
 {
   xdg.configFile."helix/languages.toml".text = ''
@@ -43,6 +45,8 @@ in
     [[language]]
     name = "nu"
     language-servers = ["nushell"]
+    ## Super broken
+    # formatter = { command = "nufmt", args = ["--stdin"] }
 
     ## NextLS seems to not work in VSCode or Helix for me :(
     # [[language]]
@@ -54,6 +58,7 @@ in
   programs.helix = {
     enable = true;
 
+    inherit themes;
     settings = {
       theme = pkgs.theme.helix;
 
@@ -87,7 +92,6 @@ in
       };
     };
 
-    themes = builtins.fromJSON (builtins.readFile "${transThemes}/themes.json");
   };
 
   home.packages = with pkgs; [

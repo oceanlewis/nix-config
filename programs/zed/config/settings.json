@@ -9,7 +9,7 @@
 {
   "icon_theme": "Catppuccin Macchiato",
   "agent": {
-    "default_profile": "ask",
+    "default_profile": "write",
     "default_model": {
       "provider": "copilot_chat",
       "model": "gpt-4o"
@@ -50,6 +50,9 @@
           "command": "nixfmt"
         }
       }
+    },
+    "Nu": {
+      "tab_size": 2
     }
   }
 }
