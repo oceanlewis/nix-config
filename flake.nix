@@ -96,12 +96,15 @@
           ./host/armstrong/configuration.nix
           home-manager-master.darwinModules.home-manager
           {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users."ocean.lewis" = import ./home/desktop-user.nix {
-              username = "ocean.lewis";
-              homeDirectory = "/Users/ocean.lewis";
-              stateVersion = "22.11";
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users."ocean.lewis" = import ./home/desktop-user.nix {
+                username = "ocean.lewis";
+                homeDirectory = "/Users/ocean.lewis";
+                stateVersion = "22.11";
+                imports = [ ./programs/zed ];
+              };
             };
           }
         ];
