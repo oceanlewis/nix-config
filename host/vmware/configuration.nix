@@ -6,7 +6,7 @@
 {
   nixpkgs.config.allowUnfree = true;
   nix.settings = {
-    extra-experimental-features = [ "nix-command" ];
+    extra-experimental-features = [ "nix-command" "pipe-operators" ];
   };
 
   imports = [

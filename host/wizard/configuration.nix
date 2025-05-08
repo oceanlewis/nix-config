@@ -18,7 +18,7 @@ in
     # - https://github.com/NixOS/nixpkgs/issues/144704
     useSandbox = false;
     extraOptions = ''
-      experimental-features = nix-command flakes
+      experimental-features = nix-command flakes pipe-operators
     '';
   };
 
