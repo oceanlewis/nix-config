@@ -1,27 +1,37 @@
 #!/usr/bin/env nu -i
 
 def main [] {
-  let action = [
-      # nix
-      jellyfin
-    ]
-    | str join "\n"
-    | ( fzf --prompt="Choose an appropriate action with ↑ ↓ ← → and <tab> "
-            --height=~100%
-            --layout=reverse
-      )
+  nu -c $"($env.PROCESS_PATH) --help"
 
-  match $action {
-    'jellyfin' => jellyfin
-  }
+  [ edit system jellyfin ]
+  | str join "\n"
+  | ( fzf --prompt="Choose an appropriate subcommand"
+          --height=~100%
+          --layout=reverse
+    )
+  | do { exec $env.PROCESS_PATH $in }
 
   print "Goodbye"
 }
 
-# Manage the Jellyfin server
-def --env "main jellyfin" [] { jellyfin }
+# Manage the system configuration
+def "main system" [] { system }
+def system [] {
+  cd ~/.config/nix-config
+  clear -k
+  nu -e 'just'
+}
 
+# Manage the Jellyfin server
+def "main jellyfin" [] { jellyfin }
 def jellyfin [] {
     cd ~/Server/jellyfin
+    clear -k
     nu -e 'just'
+}
+
+# Edit this script
+def "main edit" [] { edit }
+def edit [] {
+    nu -e $"($env.EDITOR) ($env.CURRENT_FILE)"
 }
