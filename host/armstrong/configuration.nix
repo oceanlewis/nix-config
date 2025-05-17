@@ -126,12 +126,14 @@ in
         args = [ "HEAD" ];
         link = true;
       }
+      "ollama"
       "mas"
     ];
 
     casks = [
       "arc"
       "chatgpt"
+      "cursor"
       "equinox"
       "librewolf"
       "google-chrome"
