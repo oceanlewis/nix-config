@@ -50,6 +50,7 @@ in
 
   security.pam.services.sudo_local.touchIdAuth = true;
 
+  system.primaryUser = USER;
   system.defaults = {
     SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
 
