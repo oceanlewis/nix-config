@@ -43,11 +43,11 @@ _cleanup:
 
 [private]
 Armstrong:
-    darwin-rebuild switch --flake .#Armstrong
+    sudo darwin-rebuild switch --flake .#Armstrong
 
 [private]
 pigeon:
-    darwin-rebuild switch --flake .#pigeon
+    sudo darwin-rebuild switch --flake .#pigeon
 
 [private]
 ghastly:
