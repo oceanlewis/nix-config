@@ -24,8 +24,6 @@ let
         border_format   "#[fg=#6C7086]{char}"
         border_position "top"
 
-        hide_frame_for_single_pane "true"
-
         mode_normal        "#[bg=] {name} "
         mode_locked        "#[bg=] {name} "
         mode_resize        "#[bg=] {name} "

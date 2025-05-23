@@ -14,8 +14,7 @@
       "provider": "copilot_chat",
       "model": "gpt-4.1"
     },
-    "version": "2",
-    "enable_experimental_live_diffs": true
+    "version": "2"
   },
   "language_models": {
     "ollama": {
@@ -29,8 +28,9 @@
       ]
     }
   },
-  "theme": "One Hunter Flexokit Light",
+  "theme": "kontras-light",
   "ui_font_size": 13.0,
+  // "buffer_font_family": "MesloLGL Nerd Font Propo",
   "buffer_font_family": "JetBrainsMono Nerd Font",
   "buffer_font_size": 13.0,
   "terminal": {

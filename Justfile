@@ -11,8 +11,10 @@ darwin-builder:
 update:
     nix flake update
 
-alias rebuild := apply
+dev *recipe:
+    nix develop --command just {{ recipe }}
 
+alias rebuild := apply
 # Runs the `just` target for the current host
 apply target=`hostname`:
     just {{ target }}
