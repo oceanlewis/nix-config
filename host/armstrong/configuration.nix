@@ -47,6 +47,7 @@ in
 
   security.pam.services.sudo_local.touchIdAuth = true;
 
+  system.primaryUser = USER;
   system.defaults = {
     SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
 
@@ -117,6 +118,7 @@ in
 
     brews = [
       "awscli"
+      "defaultbrowser"
       "gimme-aws-creds"
       "hginsights/tap/gimme-snowflake-creds"
       "kubernetes-cli"
@@ -166,10 +168,6 @@ in
       ncurses
       nushell
       zsh
-
-      # Apple Shortcuts
-      # - "Set the default browser"
-      defaultbrowser
     ];
     shells = [
       nushell
