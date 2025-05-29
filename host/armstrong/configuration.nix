@@ -158,7 +158,7 @@ in
         name = "wezterm@nightly";
         greedy = true;
       }
-      "zen-browser"
+      "zen"
       "zoom"
     ];
   };

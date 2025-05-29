@@ -170,7 +170,7 @@ in
         greedy = true;
       }
       "zed"
-      "zen-browser"
+      "zen"
       "zoom"
     ];
   };
