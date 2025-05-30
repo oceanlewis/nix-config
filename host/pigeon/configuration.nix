@@ -138,7 +138,6 @@ in
 
     casks = [
       "1password"
-      "arc"
       "calibre"
       "chatgpt"
       "discord"
