@@ -83,12 +83,12 @@ with pkgs;
       ".nix-hex"
     ];
 
-    includes = [
-      {
-        path = ./hg/config;
-        condition = "gitdir:~/Developer/hg/";
-      }
-    ];
+    # includes = [
+    #   {
+    #     path = ./example/config;
+    #     condition = "gitdir:~/example/path/";
+    #   }
+    # ];
 
     aliases = {
       lg1-specific = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'";

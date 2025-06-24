@@ -42,10 +42,6 @@ _cleanup:
     zellij delete-session {{ z_session }}
 
 [private]
-Armstrong:
-    sudo darwin-rebuild switch --flake .#Armstrong
-
-[private]
 pigeon:
     sudo darwin-rebuild switch --flake .#pigeon
 

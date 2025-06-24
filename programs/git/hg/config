@@ -1,7 +1,0 @@
-[core]
-  # sshCommand = ssh -i ~/.ssh/id_rsa
-  excludesFile = ~/.config/nix-config/programs/git/hg/gitignore
-
-[user]
-  email = ocean.lewis@hginsights.com
-  name = Ocean Armstrong Lewis
