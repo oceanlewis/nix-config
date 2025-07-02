@@ -41,6 +41,11 @@ in
   networking = {
     computerName = HOST_NAME;
     hostName = HOST_NAME;
+    applicationFirewall = {
+      enable = true; # Prevent unauthorized incoming requests
+      enableStealthMode = true; # Ignore incoming ICMP traffic (pings, etc.)
+    };
+
     # hosts = {
     #   # Required by Docker Desktop
     #   # Allows the same kube context to work on the host and the container
@@ -72,11 +77,6 @@ in
       NSAutomaticPeriodSubstitutionEnabled = false;
       NSAutomaticQuoteSubstitutionEnabled = false;
       NSAutomaticSpellingCorrectionEnabled = false;
-    };
-
-    alf = {
-      globalstate = 1; # Prevent unauthorized incoming requests
-      stealthenabled = 1; # Ignore incoming ICMP traffic (pings, etc.)
     };
 
     dock = {
@@ -133,18 +133,21 @@ in
     };
 
     brews = [
+      "asdf"
+      "cocoapods"
       "mas"
     ];
 
     casks = [
       "1password"
+      "brave-browser"
       "calibre"
-      "chatgpt"
+      "claude"
       "discord"
-      "docker"
+      "docker-desktop"
       "firefox"
       "gog-galaxy"
-      "handbrake"
+      "handbrake-app"
       "jordanbaird-ice"
       "librewolf"
       "lunar"

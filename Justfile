@@ -1,23 +1,7 @@
 z_session := "nix"
 
 _default:
-    @clear -x; just --list
-
-# Download and start a NixOS builder container
-darwin-builder:
-    nix run nixpkgs#darwin.builder
-
-# Update flake.lock
-update:
-    nix flake update
-
-dev *recipe:
-    nix develop --command just {{ recipe }}
-
-alias rebuild := apply
-# Runs the `just` target for the current host
-apply target=`hostname`:
-    just {{ target }}
+    @clear -x; just --list --unsorted
 
 # Start a Zellij session to make quick edits
 edit: && _cleanup
@@ -27,6 +11,22 @@ edit: && _cleanup
     	attach {{ z_session }} \
     		--force-run-commands \
     		--create
+
+alias rebuild := apply
+# Runs the `just` target for the current host
+apply target=`hostname`:
+    just {{ target }}
+
+dev *recipe:
+    nix develop --command just {{ recipe }}
+
+# Update flake.lock
+update:
+    nix flake update
+
+# Download and start a NixOS builder container
+darwin-builder:
+    nix run nixpkgs#darwin.builder
 
 _theme host=`hostname`:
     @hx --hsplit \

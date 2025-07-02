@@ -104,6 +104,9 @@ let
 
       # Kubernetes
       k9s
+
+      # LLMs
+      claude-code
     ]
     ++ lib.optionals isLinux [
       xsel # rmesg
@@ -227,7 +230,6 @@ let
       // lib.optionalAttrs isDarwin {
         cdcopy = "pwd | pbcopy";
         cdpaste = "cd \"$(pbpaste)\"";
-        code = "/opt/homebrew/bin/code-insiders";
         code-stable = "/opt/homebrew/bin/code";
       };
   };

@@ -89,27 +89,20 @@
           username = "ocean";
           homeDirectory = "/Users/ocean";
           system = "aarch64-darwin";
-
-          pkgs = import nixpkgs-unstable {
-            inherit system config;
-            overlays = baseOverlays ++ [
-              (import ./overlay/theme {
-                source = ./host/pigeon/theme.nix;
-              })
-            ];
-          };
+          overlays = baseOverlays ++ [
+            (import ./overlay/theme {
+              source = ./host/pigeon/theme.nix;
+            })
+          ];
         in
         nix-darwin.lib.darwinSystem {
-          inherit pkgs;
+          pkgs = import nixpkgs-unstable {
+            inherit system config overlays;
+          };
           specialArgs = {
             rosetta-pkgs = import nixpkgs-unstable {
-              inherit config;
+              inherit config overlays;
               system = "x86_64-darwin";
-              overlays = baseOverlays ++ [
-                (import ./overlay/theme {
-                  source = ./host/pigeon/theme.nix;
-                })
-              ];
             };
           };
           modules = [

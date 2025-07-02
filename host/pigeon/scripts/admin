@@ -1,10 +1,16 @@
 #!/usr/bin/env nu -i
 
+let available_commands = [
+    config
+    edit
+    jellyfin
+]
+
 # System management script
 def main [] {
   nu -c $"($env.PROCESS_PATH) --help"
 
-  [ edit system jellyfin ]
+  $available_commands
   | str join "\n"
   | ( fzf --prompt="Choose an appropriate subcommand"
           --height=~100%
@@ -16,11 +22,11 @@ def main [] {
 }
 
 # Manage the system configuration
-def "main system" [] { system }
-def system [] {
+def "main config" [] { config }
+def config [] {
   cd ~/.config/nix-config
   clear -k
-  nu -e 'just'
+  nu -e 'just --choose --unsorted'
 }
 
 # Manage the Jellyfin server
