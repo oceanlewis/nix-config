@@ -117,10 +117,11 @@ in
 
     masApps = {
       "1Password for Safari" = 1569813296;
+      "Audible" = 379693831;
       "Craft" = 1487937127;
       "Kindle" = 302584613;
       "Prime Video" = 545519333;
-      "Audible" = 379693831;
+      "reMarkable" = 1276493162; # (3.19.0)
       "Tailscale" = 1475387142;
       "Things" = 904280696;
       "WhatsApp" = 310633997;
@@ -142,6 +143,7 @@ in
       "1password"
       "brave-browser"
       "calibre"
+      "chatgpt"
       "claude"
       "discord"
       "docker-desktop"

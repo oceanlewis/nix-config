@@ -19,7 +19,7 @@
   };
 
   outputs =
-    inputs@{
+    {
       # self,
       home-manager-master,
       home-manager-nixos,
