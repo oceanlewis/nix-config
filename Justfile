@@ -28,6 +28,11 @@ update:
 darwin-builder:
     nix run nixpkgs#darwin.builder
 
+# Upgrade installed Homebrew formulas
+brew-upgrade:
+    brew upgrade --cask wezterm@nightly --no-quarantine --greedy-latest
+    brew upgrade --greedy-latest
+
 _theme host=`hostname`:
     @hx --hsplit \
     	./host/{{ host }}/configuration.nix \

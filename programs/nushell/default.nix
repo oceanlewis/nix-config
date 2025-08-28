@@ -21,9 +21,6 @@ let
   config = lib.concatLines [
     (builtins.readFile ./config.nu)
     "source ${zoxideInit}/init.nu"
-    ''
-      plugin add ${polars}/bin/nu_plugin_polars
-    ''
   ];
 in
 {
@@ -31,10 +28,8 @@ in
     enable = true;
     package = nushell;
     configFile.text = config;
+    plugins = [ polars ];
   };
 
-  home.packages = [
-    polars
-    nufmt
-  ];
+  home.packages = [ nufmt ];
 }

@@ -16,10 +16,11 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    nixos-raspberrypi.url = "github:nvmd/nixos-raspberrypi/main";
   };
 
   outputs =
-    {
+    inputs@{
       # self,
       home-manager-master,
       home-manager-nixos,
@@ -28,6 +29,7 @@
       nix-darwin,
       flake-utils,
       zjstatus,
+      nixos-raspberrypi,
       ...
     }:
     let
@@ -83,6 +85,44 @@
             }
           ];
         };
+
+      nixosConfigurations.rpi5 = nixos-raspberrypi.lib.nixosInstaller {
+        specialArgs = inputs;
+        modules = [
+          {
+            # Hardware specific configuration, see section below for a more complete
+            # list of modules
+            imports = with nixos-raspberrypi.nixosModules; [
+              raspberry-pi-5.base
+              raspberry-pi-5.display-vc4
+              raspberry-pi-5.display-rp1
+              raspberry-pi-5.bluetooth
+            ];
+          }
+
+          (
+            {
+              config,
+              pkgs,
+              lib,
+              ...
+            }:
+            {
+              networking.hostName = "rpi5-demo";
+
+              system.nixos.tags =
+                let
+                  cfg = config.boot.loader.raspberryPi;
+                in
+                [
+                  "raspberry-pi-${cfg.variant}"
+                  cfg.bootloader
+                  config.boot.kernelPackages.kernel.version
+                ];
+            }
+          )
+        ];
+      };
 
       darwinConfigurations.pigeon =
         let

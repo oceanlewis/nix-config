@@ -10,10 +10,28 @@ let
 in
 {
   nix = {
+    linux-builder = {
+      enable = true;
+      ephemeral = true;
+      config = {
+        virtualisation = {
+          darwin-builder = {
+            diskSize = 40 * 1024;
+            memorySize = 8 * 1024;
+          };
+          cores = 10;
+        };
+      };
+      systems = [
+        "aarch64-linux"
+        "x86_64-linux"
+      ];
+    };
+
     extraOptions = ''
       build-users-group = nixbld
       experimental-features = nix-command flakes pipe-operators
-      extra-platforms = x86_64-darwin aarch64-darwin
+      extra-platforms = x86_64-darwin aarch64-darwin x86_64-linux aarch64-linux
       keep-outputs = true
       keep-derivations = true
     '';
@@ -30,7 +48,10 @@ in
 
     settings = {
       download-buffer-size = 134217728; # 2^27
-      trusted-users = [ USER ];
+      trusted-users = [
+        USER
+        "@admin" # Required for nix-darwin's `nix.linux-builder`
+      ];
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
@@ -94,9 +115,7 @@ in
     shell = pkgs.zsh;
 
     packages =
-      (with pkgs; [
-        ollama
-      ])
+      (with pkgs; [ ])
       ++ (with rosetta-pkgs; [
         # wineWow64Packages.stableFull
         # winetricks
@@ -117,7 +136,7 @@ in
 
     masApps = {
       "1Password for Safari" = 1569813296;
-      "Audible" = 379693831;
+      # "Audible" = 379693831;
       "Craft" = 1487937127;
       "Kindle" = 302584613;
       "Prime Video" = 545519333;
@@ -137,16 +156,17 @@ in
       "asdf"
       "cocoapods"
       "mas"
+      "ollama"
     ];
 
     casks = [
       "1password"
+      "android-studio"
       "brave-browser"
       "calibre"
       "chatgpt"
       "claude"
       "discord"
-      "docker-desktop"
       "firefox"
       "gog-galaxy"
       "handbrake-app"
@@ -157,10 +177,13 @@ in
       "notion"
       "nvidia-geforce-now"
       "obsidian"
+      "orbstack"
       "plex"
+      "protonvpn"
       "raycast"
       "rectangle-pro"
       "signal"
+      "slack"
       "spotify"
       "steam"
       "tableplus"

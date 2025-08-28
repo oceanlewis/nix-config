@@ -7,11 +7,11 @@ let
   inherit (lib) strings;
   inherit (pkgs) stdenv theme zjstatus;
 
-  themeConfig = ''theme "${theme.zellij}"'';
-  platformSpecificConfig = strings.optionalString stdenv.isDarwin ''copy_command "pbcopy"'';
-  staticConfig = builtins.readFile ./config.kdl;
+  configText = ''
+    theme "${theme.zellij}"
+    ${strings.optionalString stdenv.isDarwin ''copy_command "pbcopy"''}
+    ${builtins.readFile ./config.kdl}
 
-  pluginConfig = ''
     plugins {
       zjstatus location="file:${zjstatus}/bin/zjstatus.wasm" {
         format_left  "{mode} #[fg=#89B4FA,bold]{session} {tabs}"
@@ -53,22 +53,10 @@ let
       }
     }
   '';
-
-  configText = lib.concatLines [
-    themeConfig
-    platformSpecificConfig
-    staticConfig
-    pluginConfig
-  ];
 in
 {
+  programs.zellij.enable = true;
   home.packages = [ zjstatus ];
-  programs.zellij = {
-    enable = true;
-    enableBashIntegration = false;
-    enableFishIntegration = false;
-    enableZshIntegration = false;
-  };
 
   xdg.configFile = {
     "zellij/layouts/default.kdl".source = ./zjstatus_layout.kdl;
