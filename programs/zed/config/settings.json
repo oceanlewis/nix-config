@@ -58,5 +58,14 @@
     "Nu": {
       "tab_size": 2
     }
+  },
+  "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        "cargo": {
+          "features": "all"
+        }
+      }
+    }
   }
 }

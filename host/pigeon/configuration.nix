@@ -157,6 +157,14 @@ in
       "cocoapods"
       "mas"
       "ollama"
+
+      # Added for RustConf 2025
+      # 
+      # Remove later:
+      #   ~/.rustup
+      #   ~/.cargo
+      # "rustup"
+      # "folly"
     ];
 
     casks = [
@@ -168,6 +176,7 @@ in
       "claude"
       "discord"
       "firefox"
+      "focusrite-control"
       "gog-galaxy"
       "handbrake-app"
       "jordanbaird-ice"
@@ -186,6 +195,7 @@ in
       "slack"
       "spotify"
       "steam"
+      "swiftformat-for-xcode"
       "tableplus"
       "thingsmacsandboxhelper"
       "transmission"
