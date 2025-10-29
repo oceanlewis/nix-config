@@ -40,7 +40,7 @@ let
     unzip
     dua
     duf
-    du-dust
+    dust
     hexyl
     iconv
     zstd

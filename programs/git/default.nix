@@ -6,8 +6,8 @@
 with pkgs;
 {
   home.packages = [
-    gitAndTools.delta
-    gitAndTools.git-crypt
+    delta
+    git-crypt
     github-cli
     gitu
     act
@@ -20,22 +20,25 @@ with pkgs;
   programs.git = {
     enable = true;
 
-    difftastic = {
-      enable = false;
-      background = theme.difftastic;
-    };
-
-    delta = {
-      enable = false;
-      options = {
-        syntax-theme = lib.optionalString (theme.delta != null) theme.delta;
+    settings = {
+      user = {
+        name = "Ocean Armstrong Lewis";
+        email = "6754950+oceanlewis@users.noreply.github.com";
       };
-    };
 
-    userName = "Ocean Armstrong Lewis";
-    userEmail = "6754950+oceanlewis@users.noreply.github.com";
+      aliases = {
+        lg1-specific = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'";
 
-    extraConfig = {
+        lg2-specific = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'";
+
+        lg3-specific = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'";
+
+        lg1 = "lg1-specific --all";
+        lg2 = "lg2-specific --all";
+        lg3 = "lg3-specific --all";
+        lg = "lg1";
+      };
+
       core.editor = "hx";
       init.defaultBranch = "main";
       pull.ff = "only";
@@ -90,17 +93,17 @@ with pkgs;
     #   }
     # ];
 
-    aliases = {
-      lg1-specific = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'";
+  };
 
-      lg2-specific = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'";
-
-      lg3-specific = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'";
-
-      lg1 = "lg1-specific --all";
-      lg2 = "lg2-specific --all";
-      lg3 = "lg3-specific --all";
-      lg = "lg1";
+  programs.delta = {
+    enable = false;
+    options = {
+      syntax-theme = lib.optionalString (theme.delta != null) theme.delta;
     };
+  };
+
+  programs.difftastic = {
+    enable = false;
+    options.background = theme.difftastic;
   };
 }

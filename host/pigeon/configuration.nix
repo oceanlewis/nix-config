@@ -11,7 +11,7 @@ in
 {
   nix = {
     linux-builder = {
-      enable = true;
+      enable = false;
       ephemeral = true;
       config = {
         virtualisation = {
@@ -170,6 +170,7 @@ in
     casks = [
       "1password"
       "android-studio"
+      "anytype"
       "brave-browser"
       "calibre"
       "chatgpt"
@@ -189,6 +190,7 @@ in
       "orbstack"
       "plex"
       "protonvpn"
+      "raspberry-pi-imager"
       "raycast"
       "rectangle-pro"
       "signal"
