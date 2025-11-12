@@ -51,12 +51,8 @@ def jellyfin [] {
     cd /Volumes/Jellyfin
     clear -k
 
-    try {
-      just serve
-    } catch { |err: error|
-        magenta $"\nStarting interactive shell..."
-        nu --execute 'just --list'
-    }
+    magenta $"Starting interactive shell...\n"
+    nu --execute 'just --list'
 }
 
 # Edit this script

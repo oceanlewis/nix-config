@@ -115,7 +115,10 @@ in
     shell = pkgs.zsh;
 
     packages =
-      (with pkgs; [ ])
+      (with pkgs; [
+        imagemagick
+        poppler-utils
+      ])
       ++ (with rosetta-pkgs; [
         # wineWow64Packages.stableFull
         # winetricks
@@ -159,7 +162,7 @@ in
       "ollama"
 
       # Added for RustConf 2025
-      # 
+      #
       # Remove later:
       #   ~/.rustup
       #   ~/.cargo
