@@ -122,6 +122,7 @@ in
       "1password"
       "chatgpt"
       "claude"
+      "docker-desktop"
       "handbrake-app"
       "jordanbaird-ice"
       # "orbstack"
