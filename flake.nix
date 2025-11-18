@@ -35,7 +35,7 @@
     let
       baseOverlays = [
         (final: prev: {
-          zjstatus = zjstatus.packages.${prev.system}.default;
+          zjstatus = zjstatus.packages.${prev.stdenv.hostPlatform.system}.default;
         })
         (import ./overlay/vimPlugins.nix)
       ];
@@ -159,6 +159,44 @@
                     imports = [
                       ./programs/zed
                       ./host/pigeon/home-configuration.nix
+                    ];
+                  }
+                );
+              };
+            }
+          ];
+        };
+
+      darwinConfigurations.espeon =
+        let
+          username = "hazel";
+          homeDirectory = "/Users/hazel";
+          system = "aarch64-darwin";
+          overlays = baseOverlays ++ [
+            (import ./overlay/theme {
+              source = ./host/espeon/theme.nix;
+            })
+          ];
+        in
+        nix-darwin.lib.darwinSystem {
+          pkgs = import nixpkgs-unstable {
+            inherit system config overlays;
+          };
+          specialArgs = { };
+          modules = [
+            ./host/espeon/configuration.nix
+            home-manager-master.darwinModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.${username} = (
+                  import ./home/desktop-user.nix {
+                    inherit username homeDirectory;
+                    stateVersion = "25.05";
+                    imports = [
+                      ./programs/zed
+                      ./host/espeon/home-configuration.nix
                     ];
                   }
                 );

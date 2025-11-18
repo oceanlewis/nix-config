@@ -51,5 +51,9 @@ pigeon:
     sudo darwin-rebuild switch --flake .#pigeon
 
 [private]
+espeon:
+    sudo darwin-rebuild switch --flake .#espeon
+
+[private]
 ghastly:
     sudo nixos-rebuild switch --flake .#ghastly

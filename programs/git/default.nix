@@ -86,13 +86,12 @@ with pkgs;
       ".nix-hex"
     ];
 
-    # includes = [
-    #   {
-    #     path = ./example/config;
-    #     condition = "gitdir:~/example/path/";
-    #   }
-    # ];
-
+    includes = [
+      {
+        path = ./onesignal/includes;
+        condition = "gitdir:~/Developer/onesignal/";
+      }
+    ];
   };
 
   programs.delta = {

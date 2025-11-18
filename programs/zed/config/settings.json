@@ -7,8 +7,13 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "vim_mode": true,
   "disable_ai": true,
-  "icon_theme": "Catppuccin Macchiato",
+  "icon_theme": {
+    "mode": "system",
+    "light": "Catppuccin Macchiato",
+    "dark": "Catppuccin Macchiato"
+  },
   "edit_predictions": {
     "mode": "subtle"
   },
@@ -31,7 +36,11 @@
       ]
     }
   },
-  "theme": "kontras-light",
+  "theme": {
+    "mode": "system",
+    "light": "Warm",
+    "dark": "kontras-light"
+  },
   "ui_font_size": 13.0,
   // "buffer_font_family": "MesloLGL Nerd Font Propo",
   "buffer_font_family": "DejaVuSansM Nerd Font Mono",

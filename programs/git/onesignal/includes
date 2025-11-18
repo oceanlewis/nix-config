@@ -1,0 +1,7 @@
+[core]
+  sshCommand = ssh -i ~/.ssh/id_ed25519
+  # excludesFile = ~/.config/nix-config/programs/git/onesignal/gitignore
+
+[user]
+  email = hazel@onesignal.com
+  name = Hazel Ocean Lewis
