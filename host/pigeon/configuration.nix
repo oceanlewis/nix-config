@@ -160,14 +160,6 @@ in
       "cocoapods"
       "mas"
       "ollama"
-
-      # Added for RustConf 2025
-      #
-      # Remove later:
-      #   ~/.rustup
-      #   ~/.cargo
-      # "rustup"
-      # "folly"
     ];
 
     casks = [
