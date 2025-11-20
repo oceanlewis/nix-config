@@ -91,9 +91,11 @@ in
     isHidden = false;
     shell = pkgs.zsh;
 
-    packages =
-      (with pkgs; [
-      ]);
+    packages = (
+      with pkgs;
+      [
+      ]
+    );
   };
 
   homebrew = {
@@ -116,15 +118,36 @@ in
       "Things" = 904280696;
     };
 
-    brews = [ ];
+    brews = [
+      "mas"
+      "postgresql@15"
+      "libpq"
+      "graphviz"
+      "protobuf"
+      "imagemagick"
+      "libsodium"
+      "mise"
+      "docker"
+      "docker-compose"
+      "jemalloc"
+      "readline"
+      "shellcheck"
+      "zsh"
+      "mkcert"
+      "libyaml"
+      "coreutils"
+      "libomp"
+    ];
 
     casks = [
       "1password"
+      "asana"
       "chatgpt"
       "claude"
       "docker-desktop"
       "handbrake-app"
       "jordanbaird-ice"
+      "miro"
       # "orbstack"
       "raycast"
       "rectangle-pro"
@@ -149,6 +172,19 @@ in
       nushell
       zsh
 
+      # From overlays
+      tuios
+
+      # OneSignal
+      (google-cloud-sdk.withExtraComponents (
+        with google-cloud-sdk.components;
+        [
+          gke-gcloud-auth-plugin
+        ]
+      ))
+      kubectl
+      kubectx
+
       # Apple Shortcuts
       # - "Set the default browser"
       defaultbrowser
@@ -161,6 +197,7 @@ in
     variables = { };
 
     loginShellInit = ''
+      # Hello environment.loginShellInit
       eval "$(/opt/homebrew/bin/brew shellenv)"
     '';
   };
@@ -173,6 +210,7 @@ in
     enable = true;
 
     loginShellInit = ''
+      # Hello zsh.loginShellInit
       eval "$(/opt/homebrew/bin/brew shellenv)"
     '';
   };

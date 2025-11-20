@@ -17,6 +17,10 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     nixos-raspberrypi.url = "github:nvmd/nixos-raspberrypi/main";
+    tuios = {
+      url = "github:Gaurav-Gosain/tuios";
+      inputs.nixpkgs.follows = "nixpkgs-unstable"; # keep it compatible with your pkgs
+    };
   };
 
   outputs =
@@ -29,6 +33,7 @@
       nix-darwin,
       flake-utils,
       zjstatus,
+      tuios,
       nixos-raspberrypi,
       ...
     }:
@@ -173,6 +178,7 @@
           homeDirectory = "/Users/hazel";
           system = "aarch64-darwin";
           overlays = baseOverlays ++ [
+            (final: prev: { tuios = tuios.packages.${system}.default; })
             (import ./overlay/theme {
               source = ./host/espeon/theme.nix;
             })

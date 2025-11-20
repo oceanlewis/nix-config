@@ -7,6 +7,7 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "helix_mode": true,
   "vim_mode": true,
   "disable_ai": true,
   "icon_theme": {
@@ -38,7 +39,7 @@
   },
   "theme": {
     "mode": "system",
-    "light": "Warm",
+    "light": "kontras-light",
     "dark": "kontras-light"
   },
   "ui_font_size": 13.0,
@@ -53,7 +54,6 @@
     "line_height": "standard"
   },
   // "vim_mode": true,
-  "helix_mode": true,
   // "vim": { "default_mode": "helix_normal" },
   "load_direnv": "shell_hook",
   "languages": {
