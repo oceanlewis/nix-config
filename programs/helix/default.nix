@@ -103,6 +103,8 @@ in
     nixd
     alejandra
     nixfmt-rfc-style
+    ruby-lsp
+    solargraph
 
     # SQL formatter
     sleek

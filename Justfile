@@ -41,7 +41,7 @@ _theme host=`hostname`:
 # Runs the `just` target when file changes are detected
 watch:
     @echo "Watching for changes..."
-    @fd | entr -pc sh -c 'just apply && echo Done'
+    @fd --exclude=programs/zed/config | entr -pc sh -c 'just apply && echo Done'
 
 _cleanup:
     zellij delete-session {{ z_session }}
