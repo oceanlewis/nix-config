@@ -119,29 +119,32 @@ in
     };
 
     brews = [
-      "mas"
-      "postgresql@15"
-      "libpq"
-      "graphviz"
-      "protobuf"
-      "imagemagick"
-      "libsodium"
-      "mise"
+      "mas" # Required for `masApps` above
+
+      # OneSignal Repos
+      "coreutils"
       "docker"
       "docker-compose"
+      "graphviz"
+      "imagemagick"
       "jemalloc"
+      "libomp"
+      "libpq"
+      "libsodium"
+      "libyaml"
+      "mise"
+      "mkcert"
+      "postgresql@15"
+      "protobuf"
       "readline"
       "shellcheck"
       "zsh"
-      "mkcert"
-      "libyaml"
-      "coreutils"
-      "libomp"
     ];
 
     casks = [
       "1password"
       "asana"
+      "brave-browser"
       "chatgpt"
       "claude"
       "docker-desktop"
