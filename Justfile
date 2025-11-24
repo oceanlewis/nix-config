@@ -13,6 +13,7 @@ edit: && _cleanup
     		--create
 
 alias rebuild := apply
+
 # Runs the `just` target for the current host
 apply target=`hostname`:
     just {{ target }}
@@ -30,7 +31,7 @@ darwin-builder:
 
 # Upgrade installed Homebrew formulas
 brew-upgrade:
-    brew upgrade --cask wezterm@nightly --no-quarantine --greedy-latest
+    brew update --force
     brew upgrade --greedy-latest
 
 _theme host=`hostname`:
@@ -41,7 +42,10 @@ _theme host=`hostname`:
 # Runs the `just` target when file changes are detected
 watch:
     @echo "Watching for changes..."
-    @fd --exclude=programs/zed/config | entr -pc sh -c 'just apply && echo Done'
+    @fd --exclude=programs/zed/config \
+        --exclude=host/*/scripts \
+        --exclude=Justfile \
+      | entr -pc sh -c 'just apply && echo Done'
 
 _cleanup:
     zellij delete-session {{ z_session }}
