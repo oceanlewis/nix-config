@@ -183,6 +183,7 @@ in
       "nvidia-geforce-now"
       "obsidian"
       "orbstack"
+      "orion"
       "plex"
       "protonvpn"
       "raspberry-pi-imager"

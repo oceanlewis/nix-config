@@ -154,6 +154,7 @@ in
       "jordanbaird-ice"
       "miro"
       # "orbstack"
+      "orion"
       "obsidian"
       "raycast"
       "rectangle-pro"
